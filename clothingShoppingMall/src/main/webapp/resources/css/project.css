@@ -1,0 +1,11 @@
+@charset "UTF-8";
+td {
+	width:300px;
+	text-align: center;
+	font-size: 20px;
+}
+
+img{
+	height:300px;
+	width:600px;
+}

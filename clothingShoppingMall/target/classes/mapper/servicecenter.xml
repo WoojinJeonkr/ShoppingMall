@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="servicecenter">
+	<select id="one" parameterType="serviceVO" resultType="serviceVO">
+		select * from servicecenter where serviceIdx = #{serviceIdx}
+	</select>
+	
+	
+	<select id="list" resultType="serviceVO">
+		select * from servicecenter order by serviceIdx desc
+	</select>
+	
+	<insert id="create" parameterType="serviceVO">
+		insert into servicecenter values (null, #{serviceWriter}, #{serviceTitle}, #{serviceQuestion}, null)	
+		<!-- read 빼고 //return은 무조건 int -->
+	</insert>
+	<delete id="del"  parameterType="serviceVO">
+		delete from servicecenter  where serviceIdx = #{serviceIdx}
+	</delete>
+	
+	<update id="up" parameterType="serviceVO">
+		update servicecenter set serviceTitle =  #{serviceTitle}, serviceQuestion = #{serviceQuestion} where serviceIdx=#{serviceIdx}
+	</update>
+
+</mapper>
