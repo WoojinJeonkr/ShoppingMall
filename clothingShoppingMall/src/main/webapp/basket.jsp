@@ -53,26 +53,32 @@ $('#del').click(function() {
 		
 		<span><%=list.size()%></span>개의 물건이 장바구니에 들어있습니다.
 		 <table border="1">
+		 
 		 <%int i=0; %>
 			   <tr>
 			   	  <td>번호</td>
-			      <td>상품ISDN</td>
-			      <td>상품이름</td>
-			      <td>상품가격</td>
+			      <td>상품명</td>
+			      <td>상품 가격</td>
+			      <td>상품수량</td>
 			   </tr>
+			   
    <%
    		for(ProductListVO one: list) {
   		i++;
    %>
+   
    <tr>
    	  <td><%=i%></td> 
-      <td class="text_over"><%=one.getP_isbn()%></td> <!-- one.getId() -->
-      <td class="text_over"><%=one.getP_title()%></td>
-      <td class="text_over"><%=one.getP_price()%></td>
+      <td class="text_over"><%=one.getProduct_title()%></td> <!-- one.getId() -->
+      <td class="text_over"><%=one.getProduct_price()%></td>
+      <td class="text_over"></td>
    </tr>
+   
    <%
    } 
    %>
+   
+   
    </table>
    <%}else { %>
    	<span>0개의 물건이 장바구니에 들어 있습니다.</span>
