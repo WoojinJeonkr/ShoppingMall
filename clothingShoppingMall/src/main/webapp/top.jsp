@@ -22,6 +22,7 @@
 						<i class="fa fa-bars"></i>
 					</button>
 					<div class="nav-box navbar-collapse">
+						<!-- 메뉴 구성(수정 부분) : 로그인, 마이페이지, 장바구니, 상품 목록, 고객센터 -->
 						<ul class="navigation-menu nav navbar-nav navbars" id="nav">
 							<li><a href="member.jsp">회원가입</a></li>
 							<li><a href="productList.jsp">상품정보</a></li>
