@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>등록 오류</title>
 </head>
 <body>
 <div id="total">
@@ -15,10 +15,10 @@
 			<jsp:include page="../../top2.jsp"></jsp:include>
 		</div>
 		<div id="center">
-			<h3>����</h3>
+			<h3>오류오류</h3>
 			<hr>
-				<a href="serviceList"><button>��Ϻ���.</button></a>
-				<a href="serviceWrite.jsp"><button>�۾���.</button></a>
+				<a href="serviceList"><button>목록으로 돌아가기</button></a>
+				<a href="serviceWrite.jsp"><button>후기 등록하기</button></a>
 </div></div>
 </body>
 </html>
