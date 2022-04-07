@@ -18,7 +18,6 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
 
-
 	<bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${db.driver}"></property>
 		<property name="url" value="${db.url}"></property>

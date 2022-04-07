@@ -1,105 +1,88 @@
 package com.hi.clothingStore.vo;
 
+import com.sun.jmx.snmp.Timestamp;
+
 public class ProductListVO {
 
-	private int p_idx;
-	private String p_category;
-	private String p_isbn;
-	private String p_author;
-	private String p_company;
-	private int p_page;
-	private String p_weight;
-	private int p_price;
-	private String p_title;
-	private String p_content; 
-	private String p_img; 
-	private String p_mdfydate;
-	private String p_rgstdate;
-	public int getP_idx() {
-		return p_idx;
+	private int product_number;
+	private String product_title;
+	private String product_img;
+	private String product_price;
+	private String product_category;
+	private String product_tag;
+	private String product_like;
+	private String product_description;
+	private Timestamp product_rgstdate;
+	private Timestamp product_mdfydate;
+	
+	public int getProduct_number() {
+		return product_number;
 	}
-	public void setP_idx(int p_idx) {
-		this.p_idx = p_idx;
+	public void setProduct_number(int product_number) {
+		this.product_number = product_number;
 	}
-	public String getP_category() {
-		return p_category;
+	public String getProduct_title() {
+		return product_title;
 	}
-	public void setP_category(String p_category) {
-		this.p_category = p_category;
+	public void setProduct_title(String product_title) {
+		this.product_title = product_title;
 	}
-	public String getP_isbn() {
-		return p_isbn;
+	public String getProduct_img() {
+		return product_img;
 	}
-	public void setP_isbn(String p_isbn) {
-		this.p_isbn = p_isbn;
+	public void setProduct_img(String product_img) {
+		this.product_img = product_img;
 	}
-	public String getP_author() {
-		return p_author;
+	public String getProduct_price() {
+		return product_price;
 	}
-	public void setP_author(String p_author) {
-		this.p_author = p_author;
+	public void setProduct_price(String product_price) {
+		this.product_price = product_price;
 	}
-	public String getP_company() {
-		return p_company;
+	public String getProduct_category() {
+		return product_category;
 	}
-	public void setP_company(String p_company) {
-		this.p_company = p_company;
+	public void setProduct_category(String product_category) {
+		this.product_category = product_category;
 	}
-	public int getP_page() {
-		return p_page;
+	public String getProduct_tag() {
+		return product_tag;
 	}
-	public void setP_page(int p_page) {
-		this.p_page = p_page;
+	public void setProduct_tag(String product_tag) {
+		this.product_tag = product_tag;
 	}
-	public String getP_weight() {
-		return p_weight;
+	public String getProduct_like() {
+		return product_like;
 	}
-	public void setP_weight(String p_weight) {
-		this.p_weight = p_weight;
+	public void setProduct_like(String product_like) {
+		this.product_like = product_like;
 	}
-	public int getP_price() {
-		return p_price;
+	public String getProduct_description() {
+		return product_description;
 	}
-	public void setP_price(int p_price) {
-		this.p_price = p_price;
+	public void setProduct_description(String product_description) {
+		this.product_description = product_description;
 	}
-	public String getP_title() {
-		return p_title;
+	public Timestamp getProduct_rgstdate() {
+		return product_rgstdate;
 	}
-	public void setP_title(String p_title) {
-		this.p_title = p_title;
+	public void setProduct_rgstdate(Timestamp product_rgstdate) {
+		this.product_rgstdate = product_rgstdate;
 	}
-	public String getP_content() {
-		return p_content;
+	public Timestamp getProduct_mdfydate() {
+		return product_mdfydate;
 	}
-	public void setP_content(String p_content) {
-		this.p_content = p_content;
-	}
-	public String getP_img() {
-		return p_img;
-	}
-	public void setP_img(String p_img) {
-		this.p_img = p_img;
-	}
-	public String getP_mdfydate() {
-		return p_mdfydate;
-	}
-	public void setP_mdfydate(String p_mdfydate) {
-		this.p_mdfydate = p_mdfydate;
-	}
-	public String getP_rgstdate() {
-		return p_rgstdate;
-	}
-	public void setP_rgstdate(String p_rgstdate) {
-		this.p_rgstdate = p_rgstdate;
-	}
-	@Override
-	public String toString() {
-		return "ProductListVO [p_idx=" + p_idx + ", p_category=" + p_category + ", p_isbn=" + p_isbn + ", p_author="
-				+ p_author + ", p_company=" + p_company + ", p_page=" + p_page + ", p_weight=" + p_weight + ", p_price="
-				+ p_price + ", p_title=" + p_title + ", p_content=" + p_content + ", p_img=" + p_img + ", p_mdfydate="
-				+ p_mdfydate + ", p_rgstdate=" + p_rgstdate + "]";
+	public void setProduct_mdfydate(Timestamp product_mdfydate) {
+		this.product_mdfydate = product_mdfydate;
 	}
 	
+	@Override
+	public String toString() {
+		return "ProductListVO [product_number=" + product_number + ", product_title=" + product_title + ", product_img="
+				+ product_img + ", product_price=" + product_price + ", product_category=" + product_category
+				+ ", product_tag=" + product_tag + ", product_like=" + product_like + ", product_description="
+				+ product_description + ", product_rgstdate=" + product_rgstdate + ", product_mdfydate="
+				+ product_mdfydate + "]";
+	}
 	
 }
