@@ -22,19 +22,20 @@ public class ProductListService {
 		int productListTotal = productlistDAO.count();
 		
 		System.out.println("========productListTotal:"+productListTotal);
-		//Math.ceil() 함수 --> 입력받은 숫자를 올림한 정수를 리턴하는 함수 
-		//1.lastPage 변수 생성 
+		//Math.ceil() 입력받은 숫자보다 크거나 같은 정수 중 가장 적은 정수를 리턴 
+		//입력받은 숫자를 올림한 정수를 리턴하는 함수 
+		//1.lastPage 
 		int lastPage = (int)Math.ceil((double)productListTotal/rowPerPage);
 		System.out.println("========lastPage:"+lastPage);
-		//컨트롤러에서 보내준 매개값 가공 
+		
 		ProductPageVO page = new ProductPageVO(); 
 		
-		page.setBeginRow((currentPage-1)*rowPerPage); //행 개수 
+		page.setBeginRow((currentPage-1)*rowPerPage); 
 		page.setRowPerPage(rowPerPage);				  //0*rowPerPage    1    2    3   4....
 													  //1*rowPerPage
 													  //2*rowPerPage
 		
-		//dao 호출 
+		//dao 
 		List<ProductListVO> list = productlistDAO.all(page);
 		
 		Map<String,Object> map = new HashMap<String, Object>();

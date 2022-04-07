@@ -7,15 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="resources/css/project.css">
+<!-- <link rel="stylesheet" type="text/css" href="resources/css/project.css"> -->
 </head>
-<script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
-<script type="text/javascript">
-
-
+<script type="text/javascript" src="resources/js/jquery-3.4.1.js">
 </script>
 <style>
-	tbody{
+    .box01{
+       border-width:5px; 
+       border-style:solid; 
+       border-color:#F6F6F6;
+    }
+  
+	/* tbody{
 		height:1200px;
 		display:inline-block; 
 		width:1800px; 
@@ -25,7 +28,7 @@
 	#wrapper{
 		width:300px;
 		margin:auto;
-	}
+	} */
 	
 </style>
 <body>
@@ -42,11 +45,22 @@
 		i+=1;
 	%>
 	<td>
+<<<<<<< HEAD
+	 <div style = "height: 250px; overflow; hidden;position: relative;">
+      <div class="box01">
+      	<img src="resources/img/${one.product_img}" width="210px" height="200px" >
+      </div>
+      <div style="display: none;">${one.product_idx}</div><!-- one.getId() -->
+      <div><a href="productOne?p_idx=${one.product_idx}">${one.product_title}</a></div>
+      <div>￦${one.product_price}</div>     
+	  </div>
+=======
       <div><img src="resources/img/${one.product_img}" width="20px" height="20px"></div>
       <div style="display: none;">${one.product_number}</div><!-- one.getId() -->
       <!--  <div>책 카테고리 :${one.p_category}</div> --> <!-- one.getId() -->
       <div>책 제목:<a href="productOne?p_idx=${one.product_number}">${one.product_title}</a></div>
       <div>책 가격: ${one.product_price}원</div>     
+>>>>>>> 99f9321ea71421181b3d61f6d28c827c8c6ed2a2
 	</td> 
 	<%
 		if(i%5==0){ //상품 5개마다 다음 행으로 이동 

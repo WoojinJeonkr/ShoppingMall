@@ -21,8 +21,9 @@ public class ProductListDAO {
 		System.out.println("ProductlistVO vo:"+vo);
 		return my.selectOne("productlist.one", vo);
 	}
-		/////
-	//---------------í˜ì´ì§•---------------------
+	
+	
+	//ÀüÃ¼ ¸®½ºÆ® °¡Á®¿À±â 
 	public List<ProductListVO> all(ProductPageVO page) {
 		return my.selectList("productlist.list", page);
 	}
@@ -31,7 +32,6 @@ public class ProductListDAO {
 		return my.selectOne("productlist.count");
 	}
 	
-	//---------------í˜ì´ì§•------------------
 	public int insert(ProductListVO vo) {
 		return my.insert("productlist.in", vo);
 	}
