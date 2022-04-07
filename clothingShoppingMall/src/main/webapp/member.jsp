@@ -50,10 +50,6 @@
 			<button style="width:200px; height:50px;" class="btn btn-success" >로그아웃</button>
 			</a>
 			<% } %>
-<<<<<<< Updated upstream
-=======
-			<!--.-->
->>>>>>> Stashed changes
 		</div>
 	</div>
 </body>
