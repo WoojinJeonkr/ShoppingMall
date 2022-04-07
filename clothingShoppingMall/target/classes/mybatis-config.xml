@@ -8,7 +8,7 @@
 		<typeAlias type="com.hi.clothingStore.vo.MemberVO" alias="memberVO"/>
 		<typeAlias type="com.hi.clothingStore.vo.ServiceCenterVO" alias="serviceVO"/>
 		<typeAlias type="com.hi.clothingStore.vo.ServiceCenterFaqVO" alias="faqVO"/>
-		<typeAlias type="com.hi.clothingStore.vo.ReviewVO" alias="ReviewVO"/>
+		<typeAlias type="com.hi.clothingStore.vo.ReviewVO" alias="reviewVO"/>
 	</typeAliases>
 	
 	<mappers>
@@ -20,4 +20,3 @@
 	</mappers>
 	
 </configuration>
-
