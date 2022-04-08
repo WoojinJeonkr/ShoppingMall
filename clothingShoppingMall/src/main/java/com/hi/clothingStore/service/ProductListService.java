@@ -30,15 +30,20 @@ public class ProductListService {
 		//1.lastPage 
 		int lastPage = (int)Math.ceil((double)productListTotal/rowPerPage);
 		//2. 숫자리스트의 첫번째 1, 11, 21, 31 ..
-		int startidx = (int) ((Math.floor(currentPage/10.0)*10)+1);
+		int startIdx = (int) ((Math.floor(currentPage/10.0)*10)+1);
 		//3. 숫자리스트의 마지막번째 10, 20, 30, 40... 
-		int endidx = ((int)Math.ceil((currentPage/10.0)))*10;
-		//int endPage = ((int)Math.ceil((double)(currentPage/10.0))*10);
+		int endIdx = ((int)Math.ceil((currentPage/10.0)))*10;
 		
+		if(endIdx>lastPage) {
+			endIdx = lastPage;
+		}
+		
+		//int endPage = ((int)Math.ceil((double)(currentPage/10.0))*10);
+		//int endCorrIdx = 
 		
 		System.out.println("========lastPage:"+lastPage);
-		System.out.println("========startidx:"+startidx);
-		System.out.println("========endidx:"+endidx);
+		System.out.println("========startIdx:"+startIdx);
+		System.out.println("========endIdx:"+endIdx);
 		
 		//System.out.println("========lastPage:"+startPage);
 		//System.out.println("========lastPage:"+endPage);
@@ -75,8 +80,9 @@ public class ProductListService {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("lastPage", lastPage); 
 		map.put("list", list);
-		map.put("startidx", startidx); 
-		map.put("endidx", endidx); 
+		map.put("startIdx", startIdx); 
+		map.put("endIdx", endIdx); 
+		//map.put("productListTotal",productListTotal); 
 		
 		return map; 
 		

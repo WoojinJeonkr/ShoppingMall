@@ -79,10 +79,11 @@
 		   	<c:if test="${currentPage>1}">
 		   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage-1}"><button type="button" class="btn btn-outline-primary">이전</button></a>
 		   	</c:if>
-		   	
-		   	<c:forEach begin ="${startidx}" end ="${endidx}" var = "pageidx"> <!-- endPage값 문제가 있는지 확인해야 함. -->
-		   			<a href="${pageContext.request.contextPath}/productList?currentPage=${pageidx}">${pageidx}</a>
-		   	</c:forEach>
+	
+		   
+			   	<c:forEach begin ="${startIdx}" end ="${endIdx}" var = "pageIdx"> <!-- endPage값 문제가 있는지 확인해야 함. -->
+			   			<a href="${pageContext.request.contextPath}/productList?currentPage=${pageIdx}">${pageIdx}</a>
+			   	</c:forEach>
 		   	
 		   	<c:if test="${currentPage<lastPage}">
 		   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage+1}"><button type="button" class="btn btn-outline-primary">다음</button></a>

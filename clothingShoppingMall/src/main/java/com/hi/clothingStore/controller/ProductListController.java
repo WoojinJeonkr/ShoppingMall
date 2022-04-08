@@ -68,9 +68,10 @@ public class ProductListController {
 		Map<String,Object> map = productListService.getProductList(currentPage, rowPerPage);
 		
 		model.addAttribute("currentPage", currentPage); 
+		model.addAttribute("productListTotal",map.get("productListTotal")); 
 		model.addAttribute("lastPage", map.get("lastPage")); 
-		model.addAttribute("startidx",map.get("startidx")); 
-		model.addAttribute("endidx",map.get("endidx")); 
+		model.addAttribute("startIdx",map.get("startIdx")); 
+		model.addAttribute("endIdx",map.get("endIdx")); 
 		model.addAttribute("list", map.get("list")); 
 		
 	}
@@ -96,14 +97,7 @@ public class ProductListController {
 	 * message conversion을 설정 및 customizing할 수 있다. 
 	 * javax의 @valid, spring의 @validated 애노테이션을 사용함으로써 
 	 * 유효성 검사를 할 수 있다. 
-	 * 
-	 * 
-	 * 
 	 */
-	
-	
-	
-	
 	
 	@RequestMapping("productIn")
 	public void insert(ProductListVO vo, Model model)  {
