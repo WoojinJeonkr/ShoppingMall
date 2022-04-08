@@ -9,18 +9,14 @@
 
 	<!-- 페이징 시  -->
 	<select id="list" parameterType="com.hi.clothingStore.vo.ProductPageVO" resultType="productlistVO"> 
-<<<<<<< HEAD
 		select * from product order by product_idx limit #{beginRow}, #{rowPerPage} <!-- 대문자로 자동으로 컨버팅 됌. 오라클은 테이블 대문자로 써줘야 하는 경우도 있음-->
-=======
-		select * from product order by product_number limit #{beginRow}, #{rowPerPage} <!-- 대문자로 자동으로 컨버팅 됌. 오라클은 테이블 대문자로 써줘야 하는 경우도 있음-->
->>>>>>> 99f9321ea71421181b3d61f6d28c827c8c6ed2a2
-													<!-- limit 시작위치, 반환개수 -->
+					<!-- limit 시작위치, 반환개수 -->
 	</select>
 
 	<!-- null을 받아들일 수 있는 객체타입 integer    -->
-		<select id="count" resultType="Integer"> 
+	<select id="count" resultType="Integer"> 
 			select count(*) from product
-		</select>
+	</select>
 	<!-- 페이징 시 -->
 
 	<update id="up" parameterType="productlistVO">

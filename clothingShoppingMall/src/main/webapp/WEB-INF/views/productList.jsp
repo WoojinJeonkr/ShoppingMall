@@ -45,7 +45,7 @@
 		i+=1;
 	%>
 	<td>
-<<<<<<< HEAD
+
 	 <div style = "height: 250px; overflow; hidden;position: relative;">
       <div class="box01">
       	<img src="resources/img/${one.product_img}" width="210px" height="200px" >
@@ -54,13 +54,6 @@
       <div><a href="productOne?p_idx=${one.product_idx}">${one.product_title}</a></div>
       <div>￦${one.product_price}</div>     
 	  </div>
-=======
-      <div><img src="resources/img/${one.product_img}" width="20px" height="20px"></div>
-      <div style="display: none;">${one.product_number}</div><!-- one.getId() -->
-      <!--  <div>책 카테고리 :${one.p_category}</div> --> <!-- one.getId() -->
-      <div>책 제목:<a href="productOne?p_idx=${one.product_number}">${one.product_title}</a></div>
-      <div>책 가격: ${one.product_price}원</div>     
->>>>>>> 99f9321ea71421181b3d61f6d28c827c8c6ed2a2
 	</td> 
 	<%
 		if(i%5==0){ //상품 5개마다 다음 행으로 이동 
@@ -77,12 +70,24 @@
    </table>
    
    <div id="wrapper">
-   	<c:if test="${currentPage>1}">
-   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage-1}"><button type="button" class="btn btn-outline-primary">이전</button></a>
-   	</c:if>
-   	<c:if test="${currentPage<lastPage}">
-   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage+1}"><button type="button" class="btn btn-outline-primary">다음</button></a>
-	</c:if>   	
+		  <div>
+		  
+		    <c:if test="${currentPage<=1}">
+		    	<button type="button" class="btn btn-outline-primary">이전</button> <!-- 버튼 활성화 안한 장식용 2페이지부터 활성화 -->
+		    </c:if>
+		   	
+		   	<c:if test="${currentPage>1}">
+		   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage-1}"><button type="button" class="btn btn-outline-primary">이전</button></a>
+		   	</c:if>
+		   	
+		   	<c:forEach begin ="${startidx}" end ="${endidx}" var = "pageidx"> <!-- endPage값 문제가 있는지 확인해야 함. -->
+		   			<a href="${pageContext.request.contextPath}/productList?currentPage=${pageidx}">${pageidx}</a>
+		   	</c:forEach>
+		   	
+		   	<c:if test="${currentPage<lastPage}">
+		   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage+1}"><button type="button" class="btn btn-outline-primary">다음</button></a>
+			</c:if>   	
+		</div>
    </div>
 </body>
 </html>

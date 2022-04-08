@@ -58,6 +58,8 @@ public class ProductListController {
 	 */
 	@RequestMapping("productList")
 	public void list(Model model, @RequestParam(value="currentPage",defaultValue = "1",required = false)int currentPage,
+								 // @RequestParam(value="startPage",defaultValue = "1",required = false)int startPage,
+								 // @RequestParam(value="endPage",defaultValue = "1",required = false)int endPage,
 								  @RequestParam(value = "rowPerPage", defaultValue = "20",required = false) int rowPerPage) {
 		
 		System.out.println("productList의 currentPage"+currentPage);
@@ -67,6 +69,8 @@ public class ProductListController {
 		
 		model.addAttribute("currentPage", currentPage); 
 		model.addAttribute("lastPage", map.get("lastPage")); 
+		model.addAttribute("startidx",map.get("startidx")); 
+		model.addAttribute("endidx",map.get("endidx")); 
 		model.addAttribute("list", map.get("list")); 
 		
 	}

@@ -4,11 +4,8 @@ import com.sun.jmx.snmp.Timestamp;
 
 public class ProductListVO {
 
-<<<<<<< HEAD
+
 	private int product_idx;
-=======
-	private int product_number;
->>>>>>> 99f9321ea71421181b3d61f6d28c827c8c6ed2a2
 	private String product_title;
 	private String product_img;
 	private String product_price;
@@ -18,20 +15,11 @@ public class ProductListVO {
 	private String product_description;
 	private Timestamp product_rgstdate;
 	private Timestamp product_mdfydate;
-<<<<<<< HEAD
 	public int getProduct_idx() {
 		return product_idx;
 	}
 	public void setProduct_idx(int product_idx) {
 		this.product_idx = product_idx;
-=======
-	
-	public int getProduct_number() {
-		return product_number;
-	}
-	public void setProduct_number(int product_number) {
-		this.product_number = product_number;
->>>>>>> 99f9321ea71421181b3d61f6d28c827c8c6ed2a2
 	}
 	public String getProduct_title() {
 		return product_title;
@@ -87,18 +75,16 @@ public class ProductListVO {
 	public void setProduct_mdfydate(Timestamp product_mdfydate) {
 		this.product_mdfydate = product_mdfydate;
 	}
-	
 	@Override
 	public String toString() {
-<<<<<<< HEAD
 		return "ProductListVO [product_idx=" + product_idx + ", product_title=" + product_title + ", product_img="
-=======
-		return "ProductListVO [product_number=" + product_number + ", product_title=" + product_title + ", product_img="
->>>>>>> 99f9321ea71421181b3d61f6d28c827c8c6ed2a2
 				+ product_img + ", product_price=" + product_price + ", product_category=" + product_category
 				+ ", product_tag=" + product_tag + ", product_like=" + product_like + ", product_description="
 				+ product_description + ", product_rgstdate=" + product_rgstdate + ", product_mdfydate="
 				+ product_mdfydate + "]";
 	}
+
+	
+	
 	
 }
