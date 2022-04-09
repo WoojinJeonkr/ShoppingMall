@@ -23,6 +23,7 @@ public class ProductListDAO {
 	}
 		/////
 	//---------------페이징---------------------
+	// 전체 리스트 가져오기 
 	public List<ProductListVO> all(ProductPageVO page) {
 		return my.selectList("productlist.list", page);
 	}
