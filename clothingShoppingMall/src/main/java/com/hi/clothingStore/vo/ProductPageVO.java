@@ -2,10 +2,11 @@ package com.hi.clothingStore.vo;
 
 public class ProductPageVO {
 
-	private int rowPerPage; //ÆäÀÌÁö´ç ÇàÀÇ °³¼ö 
-	private int beginRow; //½ÃÀÛ Çà
-	//private int startPage; //ÆäÀÌÁö ¼ıÀÚ ¸®½ºÆ®ÀÇ Ã¹¹øÂ° ½ÃÀÛ ÆäÀÌÁö 
-	//private int endPage; //ÆäÀÌÁö ¼ıÀÚ¸®½ºÆ®ÀÇ ¸¶Áö¸· ÆäÀÌÁö 
+	private int rowPerPage; //í˜ì´ì§€ë‹¹ í–‰ì˜ ê°œìˆ˜ 
+	private int beginRow; //ì‹œì‘ í–‰
+	//private int startPage; //í˜ì´ì§€ ìˆ«ì ë¦¬ìŠ¤íŠ¸ì˜ ì²«ë²ˆì§¸ ì‹œì‘ í˜ì´ì§€ 
+	//private int endPage; //í˜ì´ì§€ ìˆ«ìë¦¬ìŠ¤íŠ¸ì˜ ë§ˆì§€ë§‰ í˜ì´ì§€ 
+  
 	public int getRowPerPage() {
 		return rowPerPage;
 	}

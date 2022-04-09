@@ -21,9 +21,7 @@ public class ProductListDAO {
 		System.out.println("ProductlistVO vo:"+vo);
 		return my.selectOne("productlist.one", vo);
 	}
-	
-	
-	//전체 리스트 가져오기 
+
 	public List<ProductListVO> all(ProductPageVO page) {
 		return my.selectList("productlist.list", page);
 	}
