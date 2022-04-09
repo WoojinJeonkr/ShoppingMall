@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hi.clothingStore.vo.MemberVO;
+import com.hi.clothingStore.vo.ProductListVO;
 
 @Component
 public class MemberDAO {
@@ -32,5 +33,14 @@ public class MemberDAO {
 		MemberVO  vo2  = my.selectOne("member.idCheck", vo);
 		return vo2;
 	}
+	
+	public MemberVO one(MemberVO vo) {
+		return my.selectOne("member.one", vo);
+	}
+	//회원수정
+	public int up(MemberVO vo) {
+		return my.update("member.up", vo);
+	}
+
 	
 }

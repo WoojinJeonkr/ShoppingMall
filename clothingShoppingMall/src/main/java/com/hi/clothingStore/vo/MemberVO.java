@@ -2,47 +2,71 @@ package com.hi.clothingStore.vo;
 
 public class MemberVO {
 
-	private String id;
-	private String pw;
-	private String name;
-	private String tel;
-	private String email;
-	public String getId() {
-		return id;
+	private String user_id;
+	private String user_pw;
+	private String user_name;
+	private int user_age;
+	private String user_tel;
+	private String user_tag;
+	private String addr;
+	private int level;
+	
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
-	public String getPw() {
-		return pw;
+	public String getUser_pw() {
+		return user_pw;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setUser_pw(String user_pw) {
+		this.user_pw = user_pw;
 	}
-	public String getName() {
-		return name;
+	public String getUser_name() {
+		return user_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
-	public String getTel() {
-		return tel;
+	public int getUser_age() {
+		return user_age;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setUser_age(int user_age) {
+		this.user_age = user_age;
 	}
-	public String getEmail() {
-		return email;
+	public String getUser_tel() {
+		return user_tel;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUser_tel(String user_tel) {
+		this.user_tel = user_tel;
+	}
+	public String getUser_tag() {
+		return user_tag;
+	}
+	public void setUser_tag(String user_tag) {
+		this.user_tag = user_tag;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
 	}
 	
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", tel=" + tel + ", email=" + email + "]";
+		return "MemberVO [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_age="
+				+ user_age + ", user_tel=" + user_tel + ", user_tag=" + user_tag + ", addr=" + addr + ", level=" + level
+				+ "]";
 	}
-
+	
 	
 	
 }
