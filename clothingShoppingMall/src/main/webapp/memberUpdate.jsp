@@ -1,3 +1,4 @@
+<!-- 회원정보 수정하는 페이지 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,20 +20,16 @@
 $(document).ready(function(){
 	$('#addMember').click(function(){
 		console.log('addMember click!');
-		if($('#id').val() == ''){				
-			alert('아이디를 입력해주세요.');
+		if($('#name').val() == ''){				
+			alert('이름을 입력해주세요.');
 		} else if($('#pw').val() == ''){		
 			alert('비밀번호를 입력해주세요.');
 		} else if($('#pw2').val() == ''){		
 			alert('비밀번호 중복확인을 해주세요.');
 		} else if($('#pw').val() != $('#pw2').val()){					
 			alert('password가 일치하지 않습니다.');
-		} else if($('#name').val() == ''){			
-			alert('이름을 입력하세요.');
 		}  else if($('#tel').val() == ''){			
 			alert('phone 번호를 입력하세요.');
-		} else if($('#age').val() == ''){		
-			alert('나이를 입력 하세요.');
 		} else if($('#addr').val() == ''){		
 			alert('주소를 입력 하세요.');
 		}
@@ -43,32 +40,19 @@ $(document).ready(function(){
 	
 //asdf
 	
-	$('#idCheck').click(function() {
-		alert('test')
-		$.ajax({
-			url:"memberIdCheck",
-			data:{'id':$('#id').val()},
-			success: function(data) { //views아래에 있는 memberIdCheck.jsp의 실행결과가 data에 담김.
-				alert(data)
-				if(data == 1) {
-					alert("중복된 아이디 입니다.")
-				} else {
-					alert("사용가능한 아이디 입니다.")
-				}
-			}
-		})
-	})
+
 
 });
 </script>
 </head>
 <body>
-<h3 class="active">회원가입</h3>
-			<form action="memberCreate" id="form">
+<h3 class="active">회원수정</h3>
+			<form action="memberUpdate" id="form">
 				<table>
+			
 					<tr>
-						<td class="left">아이디</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="id" id="id"></td>
+						<td class="left">이름</td>
+						<td class="right"><input  class="form-control input-lg"  type="text" name="name" id="name"></td>
 					</tr>
 					<tr>
 						<td class="left">패스워드</td>
@@ -79,29 +63,22 @@ $(document).ready(function(){
 						<td class="right"><input  class="form-control input-lg"  type="text" name="pw2" id="pw2"></td>
 					</tr>
 					<tr>
-						<td class="left">이름</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="name" id="name"></td>
-					</tr>
-					<tr>
 						<td class="left">전화번호</td>
 						<td class="right"><input  class="form-control input-lg"  type="text" name="tel" id="tel"></td>
 					</tr>
-					<tr>
-						<td class="left">나이</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="email" id="age"></td>
-					</tr>
+				
 					<tr>
 						<td class="left">주소</td>
-						<td class="right"><input  class="form-control input-lg"  type="addr" name="email" id="addr"></td>
+						<td class="right"><input  class="form-control input-lg"  type="text" name="addr" id="addr"></td>
 					</tr>
 					<tr>
 						<td colspan="2">
-						<button style="width:200px; height:50px;" class="btn btn-success" type="button" id="addMember">회원가입하기</button>
+						<button type="button" id="upMember">회원수정</button>
 						</td>
 					</tr>
 				</table>
 			</form>
-				<button style="width:200px; height:50px;" class="btn btn-success" type="button" id="idCheck">아이디중복확인</button>
+				<button  type="button" id="cancel">회원수정취소</button>
 			<hr>
 			<div id="result"></div>
 			

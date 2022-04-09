@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import = "java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +14,20 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/project.css">
-
+<script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#addMember').click(function(){
+		console.log('addMember click!');
+		if($('#id').val() == ''){				
+			alert('아이디/패스워를 입력해주세요.');
+		}//if
+		 else{
+				$('#form').submit();
+			}//else
+	})//addMember
+});
+</script>
 </head>
 <body>
 	<div id="total">
@@ -50,6 +62,7 @@
 			<button style="width:200px; height:50px;" class="btn btn-success" >로그아웃</button>
 			</a>
 			<% } %>
+
 		</div>
 	</div>
 </body>
