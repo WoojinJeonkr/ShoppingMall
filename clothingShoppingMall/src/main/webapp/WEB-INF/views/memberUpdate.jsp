@@ -23,10 +23,10 @@
 <link rel="stylesheet" type="text/css" href="resources/css/project.css">
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	//alert("회원가입 성공!!!")
+	//alert("회원수정 성공!!!")구현
 	$(function() {
-		alert('회원가입 성공! 로그인해주세요.~!')
-		location.href="member.jsp";
+		alert('회원수정 성공!')
+		location.href="myPage.jsp";//회원수정 완료시 마이페이지로 이동
 	})
 </script>
 </head>
