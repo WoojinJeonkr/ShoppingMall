@@ -11,7 +11,7 @@ public class ReviewVO {
 	review_context   varchar(5000)   not null
 	review_img        varchar(45)      null
 	review_score      float               not null
-	review_rgstdate  timestamp       not null
+	review_rgstdate  timestamp       current_timestamp
 */
 	private int review_idx;
 	private int product_idx;
