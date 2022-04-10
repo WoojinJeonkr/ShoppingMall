@@ -4,12 +4,12 @@
 <mapper namespace="review">
 
 	<!-- 작성 시간 순으로 목록 보기 -->
-	<select id="list" resultType="reviewVO">
+	<select id="date_list" resultType="reviewVO">
 		select * from review order by review_rgstdate desc
 	</select>
 	
 	<!-- 별점 순으로 목록 보기 -->
-	<select id="list" resultType="reviewVO">
+	<select id="score_list" resultType="reviewVO">
 		select * from review order by review_score desc
 	</select>
 	
