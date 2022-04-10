@@ -29,12 +29,37 @@ public class ProductListService {
 		//변수 가공. 
 		//1.lastPage 
 		int lastPage = (int)Math.ceil((double)productListTotal/rowPerPage);
-		//2. 숫자리스트의 첫번째 1, 11, 21, 31 ..
-		int startIdx = (int) ((Math.floor(currentPage/10.0)*10)+1);
+		int startIdx=0; 
+		
+		//-----------------------------------------------------------
+		//10,20.30..단위에서 페이지 이전숫자리스트 안 보이는 것 해결할것. 
+
+		
+		if(currentPage%10!=0) {//10의 배수가 아닐 때 
+			startIdx = (int) ((Math.floor(currentPage/10.0)*10)+1);//2. 숫자리스트의 첫번째 1, 11, 21, 31 ..
+		}else {
+			startIdx = currentPage-9; 
+		}
+		
+		//10의 배수 일때 
+			/*
+			 * 현재 페이지가 10이면 startIdx = 1 
+			 * 현재 페이지가 20이면 startIdx = 11
+			 * 현재 페이지가 30이면 startIdx = 21
+			 * startIdx = 현재페이지에서 -9라는 규칙이 나온다.  
+			 */
+		//if(currentPage%10==0) {	
+		//	startIdx = currentPage-9; 
+		//}
+		
+		
+		//-----------------------------------------------------------
 		//3. 숫자리스트의 마지막번째 10, 20, 30, 40... 
 		int endIdx = ((int)Math.ceil((currentPage/10.0)))*10;
 		
-		if(endIdx>lastPage) {
+		
+		//상품이 있는 위치까지만 숫자리스트 보일 수 있게  
+		if(endIdx>lastPage) { 
 			endIdx = lastPage;
 		}
 		

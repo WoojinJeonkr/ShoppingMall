@@ -24,6 +24,7 @@ public class ProductListController {
 	@Autowired
 	ProductListDAO dao;
 	
+	//장바구니 추가 
 	@RequestMapping("productAdd")
 	public void plus(ProductListVO vo, Model model, HttpSession session) {
 		System.out.println("add vo"+vo);
@@ -38,6 +39,7 @@ public class ProductListController {
 		model.addAttribute("size", list.size()); 
 	}
 	
+	//상품 상세보기 페이지 
 	@RequestMapping("productOne")
 	public void one(ProductListVO vo, Model model) {
 		System.out.println("ProductlistController vo2:"+vo);

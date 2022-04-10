@@ -3,8 +3,9 @@
 
 <mapper namespace="productlist">
 
+	<!-- 상세보기 -->
 	<select id="one" parameterType="productlistVO" resultType="productlistVO">
-		select * from product where p_idx = #{p_idx}
+		select * from product where product_idx = #{product_idx}
 	</select>
 
 	<!-- 페이징 시  -->

@@ -13,8 +13,8 @@ public class ProductListVO {
 	private String product_tag;
 	private String product_like;
 	private String product_description;
-	private Timestamp product_rgstdate;
-	private Timestamp product_mdfydate;
+	private String product_rgstdate;          //timestamp 적용 시 안 넘어 가는 경우 있음. string으로 변경 
+	private String product_mdfydate;			//timestmap 적용 시 안넘어 가는 경우 있음 string으로 변경
 	public int getProduct_idx() {
 		return product_idx;
 	}
@@ -63,18 +63,19 @@ public class ProductListVO {
 	public void setProduct_description(String product_description) {
 		this.product_description = product_description;
 	}
-	public Timestamp getProduct_rgstdate() {
+	public String getProduct_rgstdate() {
 		return product_rgstdate;
 	}
-	public void setProduct_rgstdate(Timestamp product_rgstdate) {
+	public void setProduct_rgstdate(String product_rgstdate) {
 		this.product_rgstdate = product_rgstdate;
 	}
-	public Timestamp getProduct_mdfydate() {
+	public String getProduct_mdfydate() {
 		return product_mdfydate;
 	}
-	public void setProduct_mdfydate(Timestamp product_mdfydate) {
+	public void setProduct_mdfydate(String product_mdfydate) {
 		this.product_mdfydate = product_mdfydate;
 	}
+	
 	@Override
 	public String toString() {
 		return "ProductListVO [product_idx=" + product_idx + ", product_title=" + product_title + ", product_img="
@@ -83,8 +84,5 @@ public class ProductListVO {
 				+ product_description + ", product_rgstdate=" + product_rgstdate + ", product_mdfydate="
 				+ product_mdfydate + "]";
 	}
-
-	
-	
 	
 }

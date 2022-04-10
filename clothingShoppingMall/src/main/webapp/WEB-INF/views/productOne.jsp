@@ -4,10 +4,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+ .product_left{
+ float:left;  max-width:50%; max-height: 80%;display: block;
+}
+.product_right{
+ float:right; max-width: 50%; display: block;
+} */
+/* .main_product_img{
+  max-width:500px;
+} */
+
+
+</style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상품 상세 페이지</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel = "stylesheet" type = "text/css" href = "resources/css/project.css">
+
 <script type="text/javascript">
 $(function () {
 	$('#add').click(function(){
@@ -15,9 +29,9 @@ $(function () {
 		url: 'productAdd',
 		data : {
 			//ISDN, 이름, 가격, 
-			p_isbn: '${one.p_isbn}',
-			p_title:'${one.p_title}',
-			p_price: ${one.p_price}
+			product_idx: '${one.product_idx}', //string 
+			product_title:'${one.product_title}', //string
+			product_price: ${one.product_price} //int
 		},
 		success: function(result){
 			alert(result)
@@ -37,7 +51,7 @@ $('#deleteBtn').click(function() {
 		$.ajax({
 			url: "productDel",
 			data: {
-				p_idx: ${one.p_idx}	
+				product_idx: ${one.product_idx}	
 			},
 			success : function(result) {
 				if(result == '1'){
@@ -57,82 +71,52 @@ $('#deleteBtn').click(function() {
 </head>
 <body>
 
-<span style="color: blue; float: right;">${userId}님 로그인되었습니다. 좋은 하루 되세요.</span><br>
+<%-- <span style="color: blue; float: right;">${userId}님 로그인되었습니다. 좋은 하루 되세요.</span><br> --%>
 	<div id = "top">
 		<jsp:include page="../../top.jsp"></jsp:include>
-	</div>
-	<a href="productList.jsp">
-			리스트 목록으로 
-	</a>
-<table border="1">
-	<tr>
-   		<td colspan = "2">
-   			<button id="add">
-   				<img src="resources/img/defaultbook2.jpg" width="100" height = "80"><p>그림 클릭 시 장바구니 담기</p>
-   			</button>
-   		</td>
-   	</tr>
-   <tr>
-      <td></td>
-      <td style="display: none;">${one.p_idx}</td> <!-- one.getId() -->
-   </tr>
-   <tr>
-      <td>카테고리</td>
-      <td>${one.p_category}</td> 
-   </tr>
-   <tr>
-      <td>ISBN</td>
-      <td>${one.p_isbn}</td>
-   </tr>
-   <tr>
-      <td>책 저자</td>
-      <td>${one.p_author}</td>
-   </tr>
-   <tr>
-      <td>제품회사</td>
-      <td>${one.p_company}</td> <!-- 이미지가 보이게 -->
-   </tr>
-   <tr>
-      <td>책 페이지</td>
-      <td>${one.p_page}</td> <!-- 이미지가 보이게 -->
-   </tr>
-   <tr>
-      <td>책 무게</td>
-      <td>${one.p_weight}</td> <!-- 이미지가 보이게 -->
-   </tr>
-   <tr>
-      <td>책 가격</td>
-      <td>${one.p_price}</td> <!-- 이미지가 보이게 -->
-   </tr>
-   <tr>
-      <td>책 제목</td>
-      <td>${one.p_title}</td> <!-- 이미지가 보이게 -->
-   </tr>
-   <tr>
-      <td>책 내용</td>
-      <td>${one.p_content}</td> <!-- 이미지가 보이게 -->
-   </tr>
-   <tr>
-      <td>수정일</td>
-      <td>${one.p_mdfydate}</td> <!-- 이미지가 보이게 -->
-   </tr>
-   <tr>
-      <td>등록일</td>
-      <td>${one.p_rgstdate.substring(0,10)}</td> <!-- 이미지가 보이게 -->
-   </tr>
-   	<!-- 유저아이디가 admin 관리자인경우 S버튼 활성화 -->
-   
-</table>
+	   <a href="productList.jsp">리스트 목록으로 </a>
+	</div> 
+	
+	
+	<!-- 상품 정보 -->
+    <div class="product_left"> 
+   	   <img src="resources/img/${one.product_img}" style = width:50%; >
+      <div class="product_right"> 
+	     <div style="display: none;">${one.product_idx}</div> <!-- one.getId() -->
+	     <div>이름:${one.product_title}</div> 
+	     <div>가격:${one.product_price}</div>
+	     <div>카테고리:${one.product_category}</div>
+	     <div>좋아요 수:${one.product_like}</div> <!-- 이미지가 보이게 -->
+	     <div>상세 설명:${one.product_description}</div> <!-- 이미지가 보이게 -->
+      	 <div>등록일:${one.product_rgstdate.substring(0,10)}</div> <!-- 이미지가 보이게 -->
+      	 <div>수정일:${one.product_mdfydate} </div><!-- 이미지가 보이게 -->
+      	 <button>바로구매</button> 
+      	 <button>♥</button> 
+      	 <button id = "add">장바구니</button> 
+     </div>
+	 	<!-- <img src="resources/img/buy.PNG" style = width:30%;> 
+		 <img src="resources/img/love2.PNG" style = width:30%;> 
+		 <img id = "add" src="resources/img/basketimg.PNG" style = width:30%;>
+		 -->		 
+	  </div>	 
+	  
+	      <!-- </div> -->
+   <!--  </div> -->
+   	
 <div id = "total">
-	<% if (session.getAttribute("userId").equals("admin")) {    %>
-		<a href="productInsert"><button>생성</button></a>
-		<a href="productUp?p_idx=${one.p_idx}"><button id="updateBtn" style="width: 50px;">수정</button></a>
-		<button id="deleteBtn" style="width: 50px;">삭제</button>
-	<%}else { %>
+<!-- 유저아이디가 admin 관리자인경우 S버튼 활성화 -->
+	<!-- <%--  <% if (session.getAttribute("userId").equals("admin")) {    %> --%>-->
+	<!--	<a href="productInsert"><button>생성</button></a>-->
+	<!--	<a href="productUp?p_idx=${one.product_idx}"><button id="updateBtn" style="width: 50px;">수정</button></a>-->
+	<!--	<button id="deleteBtn" style="width: 50px;">삭제</button>-->
+	<!--<%-- -<%}else { %> --%>-->
+		<%-- <a href="productInsert"><button style="display:none;">생성</button></a>
+		<a href="productUp?p_idx=${one.product_idx}"><button style="display:none;">수정</button></a>
+		<button id="deleteBtn" style="display:none;">삭제</button> --%>
 		<a href="productInsert"><button style="display:none;">생성</button></a>
-		<a href="productUp?p_idx=${one.p_idx}"><button style="display:none;">수정</button></a>
+		<a href="productUp?p_idx=${one.product_idx}"><button style="display:none;">수정</button></a>
 		<button id="deleteBtn" style="display:none;">삭제</button>
-	<%}%>
+	<!--<%-- <%}%> --%>-->
 </div>
 </body>
 </html>
