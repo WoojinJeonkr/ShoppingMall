@@ -3,31 +3,31 @@
 
 <mapper namespace="review">
 
-	<!-- 작성 시간 순으로 목록 보기 -->
-	<select id="date_list" resultType="reviewVO">
-		select * from review order by review_rgstdate desc
-	</select>
-	
-	<!-- 별점 순으로 목록 보기 -->
-	<select id="score_list" resultType="reviewVO">
-		select * from review order by review_score desc
-	</select>
-	
-	<!-- 상품 구매 후기 작성 -->
-	<insert id="create" parameterType="reviewVO">
-		insert into review values (null, null, null, #{review_context}, 
-		#{review_img}, #{review_score}, now())
+	<!-- 후기 작성 -->
+	<insert id="reviewCreate">
+		insert into review values (review_seq.nextval, #{product_idx}, #{user_id}, #{review_content}, #{review_img}, #{review_score}, now())
 	</insert>
 	
-	<!-- 상품 구매 후기 수정 -->
-	<update id="update" parameterType="reviewVO">
-		update review set review_context = #{review_context}, review_img = #{review_img}, 
-		review_score = #{review_score} where review_idx = #{review_idx}
+	<!-- 후기 보기 -->
+	<select id="reviewList" resultType="com.hi.clothingStore.vo.ReviewVO">
+		select r.review_idx, r.product_idx, r.user_id, r.review_content, r.review_img, r.review_score, r.review_rgstdate from review r 
+		inner join member m on r.user_id = m.user_id where product_idx = #{product_idx}
+	</select>
+	
+	<!-- 후기 수정 -->
+	<update id="reviewUpdate">
+		update review set review_content = #{review_content}, review_img = #{review_img}, review_score = #{review_score} 
+		where review_idx = #{review_idx} and user_id = #{user_id}
 	</update>
 	
-	<!-- 상품 구매 후기 삭제 -->
-	<delete id="delete" parameterType="reviewVO">
-		delete from review where review_idx = #{review_idx}
+	<!-- 후기 삭제 -->
+	<delete id="reviewDelete">
+		delete review where review_idx = #{review_idx} and user_id = #{user_id}
 	</delete>
+
+	<!-- 아이디 체크 -->
+	<select id="reviewUserIdCheck" resultType="String">
+		select user_id from review where review_idx = #{review_idx}
+	</select>
 	
 </mapper>
