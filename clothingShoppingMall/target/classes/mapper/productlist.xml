@@ -9,9 +9,18 @@
 	</select>
 
 	<!-- 페이징 시  -->
-	<select id="list" parameterType="com.hi.clothingStore.vo.ProductPageVO" resultType="productlistVO"> 
-		select * from product order by product_idx limit #{beginRow}, #{rowPerPage} <!-- 대문자로 자동으로 컨버팅 됌. 오라클은 테이블 대문자로 써줘야 하는 경우도 있음-->
-					<!-- limit 시작위치, 반환개수 -->
+	<!-- 매개변수로 담을 값 여러 개 map에 담아야 하고, 결과적으로 여러 개의 변수를 담은 map을 리턴 -->
+	<select id="list" parameterType="java.util.Map" resultType="java.util.Map"> 
+		select * from product 
+		
+		<where>
+			<if test="categoryList!= null">
+				AND product_category = #{categoryName}
+			</if>
+		</where>
+		
+		order by product_idx limit #{beginRow}, #{rowPerPage} <!-- 대문자로 자동으로 컨버팅 됌. 오라클은 테이블 대문자로 써줘야 하는 경우도 있음-->
+																					<!-- limit 시작위치, 반환개수 -->
 	</select>
 
 	<!-- null을 받아들일 수 있는 객체타입 integer    -->

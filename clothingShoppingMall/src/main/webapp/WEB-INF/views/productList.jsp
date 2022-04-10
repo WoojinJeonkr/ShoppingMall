@@ -10,6 +10,13 @@
 <!-- <link rel="stylesheet" type="text/css" href="resources/css/project.css"> -->
 </head>
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js">
+	$(document).ready(function(){
+			$('#btn').click(function(){
+					$('#productForm').submit();
+			});
+	});
+
+
 </script>
 <style>
     .box01{
@@ -35,6 +42,69 @@
  <div id = "top">
 		<jsp:include page="../../top.jsp"></jsp:include>
 </div>
+
+
+
+
+
+<!-- 값을 넘겨줘야 하므로 form을 만들자 -->
+<form id = "productForm" action="${pageContext.request.contextPath}/productList" method ="get">
+
+product_category: 
+	<select name = "categoryName">
+		<option value="">카테고리 선택</option>
+		<!-- <option value="test">test</option> -->
+		<!-- Controller에서 받아온 productCategory 값과 
+			 쇼핑몰 이용자가 선택한 productCategory.name이 일치하면 그 값이 옵션에서 선택되고 
+			 그렇지 않다면  선택된 것이 아니라 목록만 보여주게 된다.(본인은 값이 안 넘어간다로 이해.)-->
+		
+		<c:forEach var="c" items = "${categoryList}">
+			<c:if test="${c== categoryName}">
+				<option value="${c}" selected="selected">${c}</option>
+			</c:if>
+			<c:if test="${c!=categoryName}">
+				<option value="${c}">${c}</option>
+			</c:if>
+		</c:forEach>
+		
+	</select>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <button id="btn" type="button">검색</button>
+</form>
+
 <table border="1"> 
  <tr>
 	<%

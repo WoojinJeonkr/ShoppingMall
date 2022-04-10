@@ -9,12 +9,17 @@ public class ProductListVO {
 	private String product_title;
 	private String product_img;
 	private String product_price;
-	private String product_category;
+	
+	private String product_category; 
+	//팬츠, 가디건&풀오버, 데님/진, 드레스, 맨투맨&후디, 블레이저, 셔츠&블라우스, 쇼츠, 스커트 , 재킷&코트 , 탑&티셔츠 
+	
 	private String product_tag;
 	private String product_like;
 	private String product_description;
 	private String product_rgstdate;          //timestamp 적용 시 안 넘어 가는 경우 있음. string으로 변경 
-	private String product_mdfydate;			//timestmap 적용 시 안넘어 가는 경우 있음 string으로 변경
+	private String product_mdfydate;	      //timestmap 적용 시 안넘어 가는 경우 있음 string으로 변경
+	
+	
 	public int getProduct_idx() {
 		return product_idx;
 	}

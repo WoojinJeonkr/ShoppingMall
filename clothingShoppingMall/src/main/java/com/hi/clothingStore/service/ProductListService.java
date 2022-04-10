@@ -17,7 +17,25 @@ public class ProductListService {
 	@Autowired
 	ProductListDAO productlistDAO;
 	
-	public Map<String, Object> getProductList(int currentPage, int rowPerPage){
+	//상품 리스트 서비스 
+	public Map<String, Object> getProductList(int currentPage, int rowPerPage, String productName){
+		
+	
+		
+	   System.out.println("ProductListService currentPage:"+currentPage);
+	   System.out.println("ProductListService rowPerPage:"+rowPerPage);
+	   System.out.println("ProductListService productList:"+productName);
+		
+		
+	  //카테고리 내용 	
+	  //팬츠, 가디건&풀오버, 데님/진, 드레스, 맨투맨&후디, 블레이저, 
+	  //셔츠&블라우스, 쇼츠, 스커트 , 재킷&코트 , 탑&티셔츠  
+		
+	  //productCategory = new String[10];  	
+	  String[] categoryList = {"팬츠", "가디건&풀오버","데님/진","드레스","맨투맨&후디",
+			  					"블레이저","셔츠&블라우저","스커트","재킷&코트","탑&티셔츠"}; 
+		
+		
 		
 		int productListTotal = productlistDAO.count();
 		
@@ -78,12 +96,15 @@ public class ProductListService {
 		
 		ProductPageVO page = new ProductPageVO(); 
 		
+		//beginRow, rowPerPage
+		
 		page.setBeginRow((currentPage-1)*rowPerPage); 
 		page.setRowPerPage(rowPerPage);				  //0*rowPerPage    1    2    3   4....
 													  //1*rowPerPage
 													  //2*rowPerPage
 		//page.setStartPage(((currentPage/10.0)*10)+1); //각 페이지의 1, 11, 21, 31을 나타내기 위함 
 		
+		int beginRow = page.getBeginRow();
 		
 		/*
 		 * 1.currentPage에 10을 나눈다.
@@ -99,17 +120,37 @@ public class ProductListService {
 		//System.out.println("Service부분========startPage:"+startPage);
 	 	//System.out.println("Service부분========endPage:"+page);
 		
-		//dao 
-		List<ProductListVO> list = productlistDAO.all(page);
+		//페이징 뿐만 아니라 담아질 것들이 많아질 것을 예상해 map에 다 담아준다. 카테고리..검색..페이징..등등 
+		//DAO로 넘겨주는 변수들 
 		
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("lastPage", lastPage); 
-		map.put("list", list);
-		map.put("startIdx", startIdx); 
-		map.put("endIdx", endIdx); 
+		Map<String,Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("beginRow",beginRow);
+		paramMap.put("rowPerPage",rowPerPage);
+		paramMap.put("productName",productName); 
+		
+		
+		
+		
+		
+		
+		
+		List<Map<String,Object>> list = productlistDAO.all(paramMap);
+		
+		
+		
+		
+		
+		
+		//Service에서 Controller로 넘어가는 변수 
+		Map<String,Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("lastPage", lastPage); 
+		returnMap.put("list", list);
+		returnMap.put("startIdx", startIdx); 
+		returnMap.put("endIdx", endIdx); 
+		returnMap.put("categoryList",categoryList); 
 		//map.put("productListTotal",productListTotal); 
 		
-		return map; 
+		return returnMap; 
 		
 	}	
 	

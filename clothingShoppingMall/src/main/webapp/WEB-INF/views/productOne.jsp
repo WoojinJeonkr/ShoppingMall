@@ -6,7 +6,7 @@
 <head>
 <style>
  .product_left{
- float:left;  max-width:50%; max-height: 80%;display: block;
+ float:left;  max-width:50%; max-height: auto;display: block;
 }
 .product_right{
  float:right; max-width: 50%; display: block;
@@ -81,24 +81,32 @@ $('#deleteBtn').click(function() {
 	<!-- 상품 정보 -->
     <div class="product_left"> 
    	   <img src="resources/img/${one.product_img}" style = width:50%; >
-      <div class="product_right"> 
-	     <div style="display: none;">${one.product_idx}</div> <!-- one.getId() -->
-	     <div>이름:${one.product_title}</div> 
-	     <div>가격:${one.product_price}</div>
-	     <div>카테고리:${one.product_category}</div>
-	     <div>좋아요 수:${one.product_like}</div> <!-- 이미지가 보이게 -->
-	     <div>상세 설명:${one.product_description}</div> <!-- 이미지가 보이게 -->
-      	 <div>등록일:${one.product_rgstdate.substring(0,10)}</div> <!-- 이미지가 보이게 -->
-      	 <div>수정일:${one.product_mdfydate} </div><!-- 이미지가 보이게 -->
-      	 <button>바로구매</button> 
-      	 <button>♥</button> 
-      	 <button id = "add">장바구니</button> 
+     	 <div class="product_right"> 
+		     <div style="display: none;">${one.product_idx}</div> <!-- one.getId() -->
+		     <div>이름:${one.product_title}</div> 
+		     <div>가격:${one.product_price}</div>
+		     <div>카테고리:${one.product_category}</div>
+		     <div>좋아요 수:${one.product_like}</div> 
+		     <div>상세 설명:${one.product_description}</div>
+	      	 <div>등록일:${one.product_rgstdate.substring(0,10)}</div> 
+	      	 <div>수정일:${one.product_mdfydate} </div>
+		      	 <button>바로구매</button> 
+		      	 <button>♥</button> 
+		      	 <button id = "add">장바구니</button> 
+		      	 
+		     <!-- 카테고리, 좋아요, 작업 이후에  구현되도록 수정할 것. -->
+     	 <div>
+	      	 <a href="productInsert"><button>생성</button></a>
+			 <a href="productUp?p_idx=${one.product_idx}"><button>수정</button></a>
+			 <button id="deleteBtn">삭제</button>
+      	 </div>
+      	 	<!-- -------------------------------------------- -->
      </div>
 	 	<!-- <img src="resources/img/buy.PNG" style = width:30%;> 
 		 <img src="resources/img/love2.PNG" style = width:30%;> 
 		 <img id = "add" src="resources/img/basketimg.PNG" style = width:30%;>
-		 -->		 
-	  </div>	 
+		 -->	
+  </div>	 
 	  
 	      <!-- </div> -->
    <!--  </div> -->
@@ -113,9 +121,21 @@ $('#deleteBtn').click(function() {
 		<%-- <a href="productInsert"><button style="display:none;">생성</button></a>
 		<a href="productUp?p_idx=${one.product_idx}"><button style="display:none;">수정</button></a>
 		<button id="deleteBtn" style="display:none;">삭제</button> --%>
+	<!-- ========================================================================= -->
+	
+		
 		<a href="productInsert"><button style="display:none;">생성</button></a>
 		<a href="productUp?p_idx=${one.product_idx}"><button style="display:none;">수정</button></a>
 		<button id="deleteBtn" style="display:none;">삭제</button>
+	
+
+	
+	<!-- ========================================================================= -->
+	
+	
+	
+	
+	
 	<!--<%-- <%}%> --%>-->
 </div>
 </body>

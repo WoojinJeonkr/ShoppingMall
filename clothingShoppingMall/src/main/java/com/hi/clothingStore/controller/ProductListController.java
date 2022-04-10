@@ -59,15 +59,26 @@ public class ProductListController {
 	 * Java Bean spec을 충족해야 하고 즉 , setter가 존재해야 한다 
 	 */
 	@RequestMapping("productList")
-	public void list(Model model, @RequestParam(value="currentPage",defaultValue = "1",required = false)int currentPage,
+	public String list(Model model, @RequestParam(value="currentPage",defaultValue = "1",required = false)int currentPage,
 								 // @RequestParam(value="startPage",defaultValue = "1",required = false)int startPage,
 								 // @RequestParam(value="endPage",defaultValue = "1",required = false)int endPage,
-								  @RequestParam(value = "rowPerPage", defaultValue = "20",required = false) int rowPerPage) {
+								  @RequestParam(value = "rowPerPage", defaultValue = "20",required = false) int rowPerPage,
+								  @RequestParam(name="categoryName", required = false)String categoryName
+								  
+			
+			
+																														) {
 		
+		
+		if(categoryName != null && categoryName.equals("")) {
+			categoryName = null; 
+		}
+		
+		System.out.println("productList의 productCategory"+categoryName);
 		System.out.println("productList의 currentPage"+currentPage);
 		System.out.println("productList의 rowPerPage"+rowPerPage);
 		
-		Map<String,Object> map = productListService.getProductList(currentPage, rowPerPage);
+		Map<String,Object> map = productListService.getProductList(currentPage, rowPerPage, categoryName);
 		
 		model.addAttribute("currentPage", currentPage); 
 		model.addAttribute("productListTotal",map.get("productListTotal")); 
@@ -75,6 +86,9 @@ public class ProductListController {
 		model.addAttribute("startIdx",map.get("startIdx")); 
 		model.addAttribute("endIdx",map.get("endIdx")); 
 		model.addAttribute("list", map.get("list")); 
+		model.addAttribute("productCategory", map.get("productCategory")); 
+		
+		return "productList";
 		
 	}
 	
