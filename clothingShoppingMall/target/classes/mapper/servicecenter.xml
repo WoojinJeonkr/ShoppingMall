@@ -3,24 +3,24 @@
 
 <mapper namespace="servicecenter">
 	<select id="one" parameterType="serviceVO" resultType="serviceVO">
-		select * from servicecenter where serviceIdx = #{serviceIdx}
+		select * from servicecenter where service_idx = #{service_idx}
 	</select>
 	
 	
 	<select id="list" resultType="serviceVO">
-		select * from servicecenter order by serviceIdx desc
+		select * from servicecenter order by service_idx desc
 	</select>
 	
 	<insert id="create" parameterType="serviceVO">
-		insert into servicecenter values (null, #{serviceWriter}, #{serviceTitle}, #{serviceQuestion}, null)	
+		insert into servicecenter values (null, #{service_writer}, #{service_title}, #{service_question}, null)	
 		<!-- read 빼고 //return은 무조건 int -->
 	</insert>
 	<delete id="del"  parameterType="serviceVO">
-		delete from servicecenter  where serviceIdx = #{serviceIdx}
+		delete from servicecenter  where service_idx = #{service_idx}
 	</delete>
 	
 	<update id="up" parameterType="serviceVO">
-		update servicecenter set serviceTitle =  #{serviceTitle}, serviceQuestion = #{serviceQuestion} where serviceIdx=#{serviceIdx}
+		update servicecenter set serviceTitle =  #{service_title}, serviceQuestion = #{service_question} where service_idx=#{service_idx}
 	</update>
 
 </mapper>
