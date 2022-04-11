@@ -63,7 +63,8 @@ public class ProductListController {
 								 // @RequestParam(value="startPage",defaultValue = "1",required = false)int startPage,
 								 // @RequestParam(value="endPage",defaultValue = "1",required = false)int endPage,
 								  @RequestParam(value = "rowPerPage", defaultValue = "20",required = false) int rowPerPage,
-								  @RequestParam(value="categoryName", required = false)String categoryName
+								  @RequestParam(value="categoryName", required = false)String categoryName,
+								  @RequestParam(value="searchWord", required = false) String searchWord
 
 								  
 			
@@ -72,16 +73,15 @@ public class ProductListController {
 		
 
 		
-		if(categoryName != null && categoryName.equals("")) {
-			categoryName = null; 
-		}
 		
+		System.out.println("Controller productList의 rowPerPage"+searchWord);
 		System.out.println("Controller productList의 productCategory"+categoryName);
 		System.out.println("Controller productList의 currentPage"+currentPage);
 		System.out.println("Controller productList의 rowPerPage"+rowPerPage);
 		
+		
 
-		Map<String,Object> map = productListService.getProductList(currentPage, rowPerPage, categoryName);
+		Map<String,Object> map = productListService.getProductList(currentPage, rowPerPage, categoryName,searchWord);
 		
 		model.addAttribute("currentPage", currentPage); 
 		model.addAttribute("productListTotal",map.get("productListTotal")); 
@@ -89,8 +89,9 @@ public class ProductListController {
 		model.addAttribute("startIdx",map.get("startIdx")); 
 		model.addAttribute("endIdx",map.get("endIdx")); 
 		model.addAttribute("list", map.get("list")); 
-		model.addAttribute("categoryList", map.get("categoryList")); 
-
+		model.addAttribute("categoryList", map.get("categoryList"));
+		model.addAttribute("funcCount",map.get("funcCount"));
+		model.addAttribute("categoryName", map.get("categoryName")); 
 		
 		return "productList";
 		

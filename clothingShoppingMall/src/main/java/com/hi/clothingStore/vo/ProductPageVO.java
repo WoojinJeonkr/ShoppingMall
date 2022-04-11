@@ -6,8 +6,8 @@ public class ProductPageVO {
 	private int rowPerPage;
 	private int beginRow; 
 	private String product_category; 
+	private String searchWord;
 	
-
 	public int getRowPerPage() {
 		return rowPerPage;
 	}
@@ -26,12 +26,20 @@ public class ProductPageVO {
 	public void setProduct_category(String product_category) {
 		this.product_category = product_category;
 	}
+	public String getSearchWord() {
+		return searchWord;
+	}
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
 	
 	@Override
 	public String toString() {
 		return "ProductPageVO [rowPerPage=" + rowPerPage + ", beginRow=" + beginRow + ", product_category="
-				+ product_category + "]";
-	}
+				+ product_category + ", searchWord=" + searchWord + "]";
+	} 
+
+	
 	
 	
 }

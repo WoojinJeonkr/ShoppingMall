@@ -33,6 +33,12 @@ public class ProductListDAO {
 	}
 	
 	
+	public int funcCount(Map<String,Object> map) {
+		System.out.println("funcCount map:"+map);
+		return my.selectOne("productlist.funcCount", map); 
+	}
+	
+	
 	public int count() {
 		return my.selectOne("productlist.count");
 	}

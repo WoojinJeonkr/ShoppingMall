@@ -18,7 +18,7 @@ public class ProductListService {
 	ProductListDAO productlistDAO;
 	
 	//상품 리스트 서비스 
-	public Map<String, Object> getProductList(int currentPage, int rowPerPage, String categoryName){
+	public Map<String, Object> getProductList(int currentPage, int rowPerPage, String categoryName, String searchWord){
 
 		
 	
@@ -26,6 +26,7 @@ public class ProductListService {
 	   System.out.println("ProductListService currentPage:"+currentPage);
 	   System.out.println("ProductListService rowPerPage:"+rowPerPage);
 	   System.out.println("ProductListService categoryName:"+categoryName);
+	   System.out.println("ProductListService searchWord:"+searchWord);
 		
 		
 	  //카테고리 내용 	
@@ -105,6 +106,7 @@ public class ProductListService {
 													  //1*rowPerPage
 													  //2*rowPerPage
 		page.setProduct_category(categoryName);
+		page.setSearchWord(searchWord);
 		//page.setStartPage(((currentPage/10.0)*10)+1); //각 페이지의 1, 11, 21, 31을 나타내기 위함 
 		
 		int beginRow = page.getBeginRow();
@@ -126,10 +128,60 @@ public class ProductListService {
 		//페이징 뿐만 아니라 담아질 것들이 많아질 것을 예상해 map에 다 담아준다. 카테고리..검색..페이징..등등 
 		//DAO로 넘겨주는 변수들 
 		
+		
+		//1~20 1 페이지 
+		//21~40 2페이지 
+		//41~60 3페이지 .... 
+		
+		//-------------------------------------------------------
+		// %20 20으로 나누었을 때 나머지가 1
+		//     20으로 나누었을때 나머지가 2 
+		//     20으로 나누었을 때 나머지가 3
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//-------------------------------------------------------------
+		
+		
+		
+		
+		
+		
+		
+		
 		Map<String,Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("beginRow",beginRow);
 		paramMap.put("rowPerPage",rowPerPage);
 		paramMap.put("categoryName",categoryName); 
+		paramMap.put("searchWord",searchWord); 
+		
 
 		
 		
@@ -140,8 +192,20 @@ public class ProductListService {
 
 		//dao 호출 
 		List<Map<String,Object>> list = productlistDAO.all(paramMap);
-		List<String> categoryList = productlistDAO.selectCategoryList(); 
+		List<String> categoryList = productlistDAO.selectCategoryList();
+		int funcCount = productlistDAO.funcCount(paramMap);
 		
+	
+		
+		/*
+		 * if(categoryName!= null) { endIdx=funcCount%20; }
+		 */
+		 
+		
+		
+		
+		
+		System.out.println("Service의 funcCount:"+funcCount);
 		System.out.println("Service의 list:"+list);
 		System.out.println("Service의 categoryList:"+categoryList);
 		
@@ -153,6 +217,8 @@ public class ProductListService {
 		returnMap.put("startIdx", startIdx); 
 		returnMap.put("endIdx", endIdx); 
 		returnMap.put("categoryList",categoryList); 
+		returnMap.put("funcCount", funcCount); 
+		returnMap.put("categoryName", categoryName); 
 		//map.put("productListTotal",productListTotal); 
 		
 		return returnMap; 

@@ -67,46 +67,32 @@ product_category:
 		</c:forEach>
 		
 	</select>
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <button id="btn" type="submit">검색</button>
-
+	<button type="submit"> 검색</button>
 </form>
+
+
+ <!-- 원래는 form 하나에 담았으나.. form 하나에 하나의 변수만 넣어줄 수 있는것으로 보인다. --> 
+<form id = "productForm" action="${pageContext.request.contextPath}/productList" method ="get">
+	<label for = "searchWord">apperal name</label>
+	<input name = "searchWord" type = "text">
+	<button type="submit"> 검색</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <table border="1"> 
  <tr>
+ 
 	<%
 	 int i=0; 
 	%>   
@@ -147,7 +133,7 @@ product_category:
 		    </c:if>
 		   	
 		   	<c:if test="${currentPage>1}">
-		   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage-1}"><button type="button" class="btn btn-outline-primary">이전</button></a>
+		   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage-1}&categoryName=${categoryName}&searchWord=${searchWord}"><button type="button" class="btn btn-outline-primary">이전</button></a>
 		   	</c:if>
 	
 		   
@@ -156,7 +142,7 @@ product_category:
 			   	</c:forEach>
 		   	
 		   	<c:if test="${currentPage<lastPage}">
-		   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage+1}"><button type="button" class="btn btn-outline-primary">다음</button></a>
+		   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage+1}&categoryName=${categoryName}&searchWord=${searchWord}"><button type="button" class="btn btn-outline-primary">다음</button></a>
 			</c:if>   	
 		</div>
    </div>
