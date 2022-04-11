@@ -9,8 +9,8 @@
 	</insert>
 	
 	<!-- 후기 보기 -->
-	<select id="reviewList" resultType="com.hi.clothingStore.vo.ReviewVO">
-		select r.review_idx, r.product_idx, r.user_id, r.review_content, r.review_img, r.review_score, r.review_rgstdate from review r 
+	<select id="reviewList" resultType="com.hi.clothingStore.vo.ReviewListVO">
+		select r.review_idx, r.product_idx, r.user_id, r.review_content, r.review_img, r.review_score, r.review_rgstdate, m.user_name from review r 
 		inner join member m on r.user_id = m.user_id where product_idx = #{product_idx}
 	</select>
 	

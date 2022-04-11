@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.hi.clothingStore.dao.ReviewDAO;
+import com.hi.clothingStore.vo.ReviewListVO;
 import com.hi.clothingStore.vo.ReviewVO;
 
 // 인터페이스 구현
@@ -25,7 +26,7 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	// 후기 목록 보기
 	@Override
-	public List<ReviewVO> reviewList(int product_idx) throws Exception {
+	public List<ReviewListVO> reviewList(int product_idx) throws Exception {
 		return dao.reviewList(product_idx);
 	}
 
