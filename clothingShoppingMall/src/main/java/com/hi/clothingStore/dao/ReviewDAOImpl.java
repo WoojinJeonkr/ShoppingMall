@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.hi.clothingStore.vo.ReviewListVO;
 import com.hi.clothingStore.vo.ReviewVO;
 
 // 인터페이스 구현
@@ -26,7 +27,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	
 	// 후기 리스트
 	@Override
-	public List<ReviewVO> reviewList(int product_idx) throws Exception {
+	public List<ReviewListVO> reviewList(int product_idx) throws Exception {
 		return sql.selectList(namespace + ".reviewList", product_idx);
 	}
 }
