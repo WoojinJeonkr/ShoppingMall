@@ -138,7 +138,7 @@ product_category:
 	
 		   
 			   	<c:forEach begin ="${startIdx}" end ="${endIdx}" var = "pageIdx"> <!-- endPage값 문제가 있는지 확인해야 함. -->
-			   			<a href="${pageContext.request.contextPath}/productList?currentPage=${pageIdx}">${pageIdx}</a>
+			   			<a href="${pageContext.request.contextPath}/productList?currentPage=${pageIdx}&categoryName=${categoryName}&searchWord=${searchWord}">${pageIdx}</a>
 			   	</c:forEach>
 		   	
 		   	<c:if test="${currentPage<lastPage}">

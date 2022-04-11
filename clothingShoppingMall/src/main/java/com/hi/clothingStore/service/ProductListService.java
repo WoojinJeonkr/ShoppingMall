@@ -33,12 +33,6 @@ public class ProductListService {
 	  //팬츠, 가디건&풀오버, 데님/진, 드레스, 맨투맨&후디, 블레이저, 
 	  //셔츠&블라우스, 쇼츠, 스커트 , 재킷&코트 , 탑&티셔츠  
 		
-	  //productCategory = new String[10];  	
-		/*
-		 * String[] categoryList = {"팬츠", "가디건&풀오버","데님/진","드레스","맨투맨&후디",
-		 * "블레이저","셔츠&블라우저","스커트","재킷&코트","탑&티셔츠"};
-		 */
-		
 		
 		int productListTotal = productlistDAO.count();
 		
@@ -49,7 +43,7 @@ public class ProductListService {
 		
 		//변수 가공. 
 		//1.lastPage 
-		int lastPage = (int)Math.ceil((double)productListTotal/rowPerPage);
+		//int lastPage = (int)Math.ceil((double)productListTotal/rowPerPage);
 		int startIdx=0; 
 		
 		//-----------------------------------------------------------
@@ -79,15 +73,12 @@ public class ProductListService {
 		int endIdx = ((int)Math.ceil((currentPage/10.0)))*10;
 		
 		
-		//상품이 있는 위치까지만 숫자리스트 보일 수 있게  
-		if(endIdx>lastPage) { 
-			endIdx = lastPage;
-		}
+		
 		
 		//int endPage = ((int)Math.ceil((double)(currentPage/10.0))*10);
 		//int endCorrIdx = 
 		
-		System.out.println("========lastPage:"+lastPage);
+		//System.out.println("========lastPage:"+lastPage);
 		System.out.println("========startIdx:"+startIdx);
 		System.out.println("========endIdx:"+endIdx);
 		
@@ -195,6 +186,22 @@ public class ProductListService {
 		List<String> categoryList = productlistDAO.selectCategoryList();
 		int funcCount = productlistDAO.funcCount(paramMap);
 		
+
+		int lastPage = (int)Math.ceil((double)funcCount/rowPerPage);
+		
+		
+		/*
+		 * if(categoryName!= null) { endIdx=funcCount%20+1; }
+		 */
+		 
+		 
+		//상품이 있는 위치까지만 숫자리스트 보일 수 있게  
+		if(endIdx>lastPage) { 
+			endIdx = lastPage;
+		}
+		
+		
+
 	
 		
 		/*
@@ -205,6 +212,7 @@ public class ProductListService {
 		
 		
 		
+
 		System.out.println("Service의 funcCount:"+funcCount);
 		System.out.println("Service의 list:"+list);
 		System.out.println("Service의 categoryList:"+categoryList);
@@ -219,6 +227,8 @@ public class ProductListService {
 		returnMap.put("categoryList",categoryList); 
 		returnMap.put("funcCount", funcCount); 
 		returnMap.put("categoryName", categoryName); 
+		returnMap.put("searchWord", searchWord); 
+		
 		//map.put("productListTotal",productListTotal); 
 		
 		return returnMap; 

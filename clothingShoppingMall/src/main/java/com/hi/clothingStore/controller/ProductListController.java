@@ -66,14 +66,25 @@ public class ProductListController {
 								  @RequestParam(value="categoryName", required = false)String categoryName,
 								  @RequestParam(value="searchWord", required = false) String searchWord
 
-								  
-			
 			
 																														) {
 		
 
+		//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+		//노드에 쓰레기값 들어있으면 다음 페이지 이미지 나오지 않으므로 꼭 넣어줄 것.
 		
+
+		if(categoryName!= null && categoryName.equals("")) {
+			categoryName = null;
+		}
+	
+		if(searchWord!= null && searchWord.equals("")) {
+			searchWord = null;
+		}
 		
+		//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+		
+
 		System.out.println("Controller productList의 rowPerPage"+searchWord);
 		System.out.println("Controller productList의 productCategory"+categoryName);
 		System.out.println("Controller productList의 currentPage"+currentPage);
@@ -92,6 +103,7 @@ public class ProductListController {
 		model.addAttribute("categoryList", map.get("categoryList"));
 		model.addAttribute("funcCount",map.get("funcCount"));
 		model.addAttribute("categoryName", map.get("categoryName")); 
+		model.addAttribute("searchWord", map.get("searchWord"));
 		
 		return "productList";
 		
