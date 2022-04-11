@@ -28,6 +28,11 @@ public class ProductListDAO {
 		return my.selectList("productlist.list", map);
 	}
 	
+	public List<String> selectCategoryList(){
+		return my.selectList("productlist.selectCategoryList"); 
+	}
+	
+	
 	public int count() {
 		return my.selectOne("productlist.count");
 	}

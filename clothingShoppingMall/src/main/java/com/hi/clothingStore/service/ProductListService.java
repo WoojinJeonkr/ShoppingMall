@@ -18,13 +18,14 @@ public class ProductListService {
 	ProductListDAO productlistDAO;
 	
 	//상품 리스트 서비스 
-	public Map<String, Object> getProductList(int currentPage, int rowPerPage, String productName){
+	public Map<String, Object> getProductList(int currentPage, int rowPerPage, String categoryName){
+
 		
 	
 		
 	   System.out.println("ProductListService currentPage:"+currentPage);
 	   System.out.println("ProductListService rowPerPage:"+rowPerPage);
-	   System.out.println("ProductListService productList:"+productName);
+	   System.out.println("ProductListService categoryName:"+categoryName);
 		
 		
 	  //카테고리 내용 	
@@ -32,9 +33,10 @@ public class ProductListService {
 	  //셔츠&블라우스, 쇼츠, 스커트 , 재킷&코트 , 탑&티셔츠  
 		
 	  //productCategory = new String[10];  	
-	  String[] categoryList = {"팬츠", "가디건&풀오버","데님/진","드레스","맨투맨&후디",
-			  					"블레이저","셔츠&블라우저","스커트","재킷&코트","탑&티셔츠"}; 
-		
+		/*
+		 * String[] categoryList = {"팬츠", "가디건&풀오버","데님/진","드레스","맨투맨&후디",
+		 * "블레이저","셔츠&블라우저","스커트","재킷&코트","탑&티셔츠"};
+		 */
 		
 		
 		int productListTotal = productlistDAO.count();
@@ -102,6 +104,7 @@ public class ProductListService {
 		page.setRowPerPage(rowPerPage);				  //0*rowPerPage    1    2    3   4....
 													  //1*rowPerPage
 													  //2*rowPerPage
+		page.setProduct_category(categoryName);
 		//page.setStartPage(((currentPage/10.0)*10)+1); //각 페이지의 1, 11, 21, 31을 나타내기 위함 
 		
 		int beginRow = page.getBeginRow();
@@ -126,19 +129,21 @@ public class ProductListService {
 		Map<String,Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("beginRow",beginRow);
 		paramMap.put("rowPerPage",rowPerPage);
-		paramMap.put("productName",productName); 
+		paramMap.put("categoryName",categoryName); 
+
 		
 		
 		
 		
 		
 		
-		
+
+		//dao 호출 
 		List<Map<String,Object>> list = productlistDAO.all(paramMap);
+		List<String> categoryList = productlistDAO.selectCategoryList(); 
 		
-		
-		
-		
+		System.out.println("Service의 list:"+list);
+		System.out.println("Service의 categoryList:"+categoryList);
 		
 		
 		//Service에서 Controller로 넘어가는 변수 
