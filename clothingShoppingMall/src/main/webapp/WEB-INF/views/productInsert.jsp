@@ -87,11 +87,27 @@ $(document).ready(function(){
 				
 				
 				<!-- 카테고리명 지정된 영역 내에서 선택 할 수 있게 변경 -->
-				product_category :<input type="text" class="form-control" name="product_category" id="product_category" /><br>
+
+				<!-- product_category :<input type="text" class="form-control" name="product_category" id="product_category" /><br> -->
 				
+				product_category : 
+							<select name = "product_category">
+								<option value ="">카테고리 선택</option>
+								<option value = "가디건">가디건</option>
+								<option value = "진">진</option>
+								<option value = "드레스">드레스</option>
+								<option value = "맨투맨">맨투맨</option>
+								<option value = "블레이저">블레이저</option>
+								<option value = "셔츠">셔츠</option>
+								<option value = "쇼츠">쇼츠</option>
+								<option value = "스커트">스커트</option>
+								<option value = "재킷">재킷</option>
+								<option value = "탑">탑</option>
+								<option value = "팬츠">팬츠</option>
+							</select>
 				
-				
-				
+					<br><br>
+
 				
 				<!-- product_like:<input type="text" class="form-control" name="product_like"id="product_like" pattern="[0-9]+" value=0/><p>숫자로 입력</p><br> -->
 				product_description:<input type="text" class="form-control"name="product_description" id="product_description"/><br>

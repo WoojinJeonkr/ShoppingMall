@@ -97,20 +97,33 @@ input:invalid{
 				
 				<!-- 카테고리 지정된 영역 내에서 변경할 수 있게 변경 -->
 				
-				
-				
-				<div class="form-group">
+
+				<%-- <div class="form-group">
 					<label for="content">product_category:</label> 					
 					<textarea rows="5" cols="5" class="form-control" name="product_category" id="product_category"
 						style="background: white-space;color: green; font-weight: bold;"
 					>${one.product_category}</textarea>
-				</div>
+
+				</div> --%>
 				
-				
-				
-				
-				
-				
+			<div>
+				<label for="content">product_category :</label> 
+							<select name = "product_category">
+								<option value ="">카테고리 선택</option>
+								<option value = "가디건">가디건</option>
+								<option value = "진">진</option>
+								<option value = "드레스">드레스</option>
+								<option value = "맨투맨">맨투맨</option>
+								<option value = "블레이저">블레이저</option>
+								<option value = "셔츠">셔츠</option>
+								<option value = "쇼츠">쇼츠</option>
+								<option value = "스커트">스커트</option>
+								<option value = "재킷">재킷</option>
+								<option value = "탑">탑</option>
+								<option value = "팬츠">팬츠</option>
+							</select>
+			</div>
+
 				
 				<div class="form-group">
 					<label for="content">product_description:</label> 					

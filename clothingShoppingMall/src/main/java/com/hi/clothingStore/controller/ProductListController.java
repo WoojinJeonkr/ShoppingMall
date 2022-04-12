@@ -70,7 +70,6 @@ public class ProductListController {
 																														) {
 		
 		
-
 		//카테고리나 검색 이동 후 전체 상품목록으로 이동하는데 필요한 코드. 
 		
 		System.out.println("productListController의 categoryName 전"+ categoryName);		

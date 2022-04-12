@@ -95,13 +95,15 @@ $('#deleteBtn').click(function() {
 		      	 <button id = "add">장바구니</button> 
 		      	 <button><a href="review.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
 		     <!-- 카테고리, 좋아요, 작업 이후에  구현되도록 수정할 것. -->
+		    </div>
      	 <div>
 	      	 <a href="productInsert"><button>상품 생성</button></a>
-			 <a href="productUp?p_idx=${one.product_idx}"><button>상품 내용 수정</button></a>
+
+			 <a href="productUp?product_idx=${one.product_idx}"><button>상품 내용 수정</button></a>
+
 			 <button id="deleteBtn">상품 삭제</button>
       	 </div>
       	 	<!-- -------------------------------------------- -->
-     </div>
 	 	<!-- <img src="resources/img/buy.PNG" style = width:30%;> 
 		 <img src="resources/img/love2.PNG" style = width:30%;> 
 		 <img id = "add" src="resources/img/basketimg.PNG" style = width:30%;>
