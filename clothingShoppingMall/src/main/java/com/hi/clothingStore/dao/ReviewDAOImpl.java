@@ -30,4 +30,16 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public List<ReviewListVO> reviewList(int product_idx) throws Exception {
 		return sql.selectList(namespace + ".reviewList", product_idx);
 	}
+	
+	// 후기 삭제
+	@Override
+	public void reviewDelete(ReviewVO review) throws Exception {
+		sql.delete(namespace + ".reviewDelete", review);
+	}
+	
+	// 아이디 체크
+	@Override
+	public String idCheck(int review_idx) throws Exception {
+		return sql.selectOne(namespace + ".reviewUserIdCheck", review_idx);
+	}
 }

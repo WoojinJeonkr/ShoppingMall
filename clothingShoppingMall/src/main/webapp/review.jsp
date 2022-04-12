@@ -18,6 +18,7 @@
 	section.reviewList div.userInfo .userId {font-size:24px; font-weight:bold;}
 	section.reviewList div.userInfo .date {color:#999; display:inline-block; margin-left:10px;}
 	section.reviewList div.reviewContent {padding:10px; margin:20px 0;}
+	section.reviewList div.reviewFooter button { font-size:14px; border: 1px solid #999; background:none; margin-right:10px; }
 </style>
 	<!-- 함수로 사용할 스크립트들은 특별한 이유가 있지 않은 한 헤드 내부에 위치시킨다 -->
 	<script>
@@ -34,6 +35,9 @@
 						+ "<span class='userName'>" + this.user_name + "</span>"
 						+ "</div>"
 						+ "<div class='review_content'>" + this.review_content + "</div>"
+						+ "<div class='reviewFooter'>"
+						+ "<button type='button' class='modify' data-review_idx='" + this.review_idx + "'>수정</button>"
+						+ "<button type='button' class='delete' data-review_idx='" + this.review_idx + "'>삭제</button>"
 						+ "</li>";
 				});
 				
@@ -108,6 +112,35 @@
 					</ol>
 					<script>
 						reviewList(); // 헤더 내부에 선언한 함수를 호출
+					</script>
+					<script>
+						$(document).on("click", ".delete", function(){ // .on() 메서드 : 클릭 메서드
+							/*
+								confirm 메서드
+								내부의 텍스트를 사용자에게 보여주며 확인 버튼과 취소 버튼을 같이 보여준다
+								확인 버튼을 클릭하면 참을 반환하고 취소 버튼을 클릭하면 거짓을 반환한다.
+							*/
+							var deleteConfirm = confirm("정말로 삭제하시겠습니까? 삭제 후 복구가 불가능합니다.");
+							if(deleteConfirm){
+								var data = {review_idx : $(this).attr("data-review_idx")}; // ajax를 통해 data-review_idx 값을 전달
+								
+								$.ajax({ // 후기 삭제 관련 ajax
+									url : "/views/reviewDelete",
+									type : "post",
+									data : data,
+									success : function(result){
+										if(result == 1) {
+											reviewList();
+										} else {
+											alert("작성자 본인만 후기 삭제가 가능합니다")
+										}
+									},
+									error: function(){ // 로그인하지 않은 상태에서 버튼을 눌렀을 경우
+										alert("로그인해주세요.")
+									}
+								});
+							}	
+						});
 					</script>
 				</section>
 			</div>
