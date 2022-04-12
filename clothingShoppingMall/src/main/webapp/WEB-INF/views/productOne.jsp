@@ -96,9 +96,9 @@ $('#deleteBtn').click(function() {
 		      	 <button><a href="review.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
 		     <!-- 카테고리, 좋아요, 작업 이후에  구현되도록 수정할 것. -->
      	 <div>
-	      	 <a href="productInsert"><button>생성</button></a>
-			 <a href="productUp?p_idx=${one.product_idx}"><button>수정</button></a>
-			 <button id="deleteBtn">삭제</button>
+	      	 <a href="productInsert"><button>상품 생성</button></a>
+			 <a href="productUp?p_idx=${one.product_idx}"><button>상품 내용 수정</button></a>
+			 <button id="deleteBtn">상품 삭제</button>
       	 </div>
       	 	<!-- -------------------------------------------- -->
      </div>

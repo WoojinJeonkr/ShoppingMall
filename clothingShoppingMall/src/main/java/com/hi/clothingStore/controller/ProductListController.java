@@ -43,7 +43,7 @@ public class ProductListController {
 	@RequestMapping("productOne")
 	public void one(ProductListVO vo, Model model) {
 		System.out.println("ProductlistController vo2:"+vo);
-		ProductListVO vo2 = dao.one(vo);
+		ProductListVO vo2 = dao.productOne(vo);
 		model.addAttribute("one", vo2);
 	}
 
@@ -70,11 +70,7 @@ public class ProductListController {
 																														) {
 		
 		
-		//categoryName이 처음 페이지가 열린 때는 null 상태임. 
-		//categoryName 선택 이후 다시 상품 전체 목록으로 들어갈때는 
-		//""상태 
-		//좌측만 지웠을때는 NullPointerException이 발생.
-		//페이지 이동 시 categoryName에 null이 들어가는 쿼리는 작동하기 떄문에 에러발생. 
+
 		//카테고리나 검색 이동 후 전체 상품목록으로 이동하는데 필요한 코드. 
 		
 		System.out.println("productListController의 categoryName 전"+ categoryName);		
@@ -136,26 +132,30 @@ public class ProductListController {
 	 * 유효성 검사를 할 수 있다. 
 	 */
 	
+	//상품 등록이 성공적으로 이루어졌는지 확인하기 위함. 
 	@RequestMapping("productIn")
-	public void insert(ProductListVO vo, Model model)  {
-		int result = dao.insert(vo); 
+	public String insert(ProductListVO vo, Model model)  {
+		int result = dao.productInsert(vo); 
+		System.out.println("productInsert의 result 값 1이면 성공 0이면 실패 "+result);
 		//model.addAttribute("result",result);
-		//if(result == 1) {
-		//	return "productIn";
-		//}else {
-		//	return "productNo"; 
-		//}
+		if(result == 1) {
+			return "productIn";
+		}else {
+			return "productNo"; 
+		}
 	}
 	
+	//상품 등록 화면으로 이동하기 위함. 
 	@RequestMapping("productInsert")
 	public void insert2(ProductListVO vo, Model model) {
 	
 	}
 
+	//상품 삭제 
 	@RequestMapping("productDel")
 	public void delete(ProductListVO vo, Model model) {
 		System.out.println("Del ProductlistVO vo"+vo);
-		int result = dao.del(vo);
+		int result = dao.productDelete(vo);
 		model.addAttribute("result", result);
 	}
 	
@@ -165,17 +165,19 @@ public class ProductListController {
 		
 	}
 
+	//상품 업데이트 잘 되었는지 확인. 
 	@RequestMapping("productUp")
 	public void update(ProductListVO vo, Model model) {
 		System.out.println("======Controller productUp vo========"+vo);
-		ProductListVO vo2 = dao.one(vo); 
+		ProductListVO vo2 = dao.productOne(vo); 
 		model.addAttribute("one", vo2); 
-	}
+	}	
 	
+	//상품 업데이트 정보 넘어오는 곳. 
 	@RequestMapping("productUpdate")
 	public String update2(ProductListVO vo, Model model) {
 		System.out.println("======Controller productUpdate vo========"+vo);
-		int result = dao.up(vo); 
+		int result = dao.productUpdate(vo); 
 		if(result == 1) {
 			return "productUpdate";
 		}else {

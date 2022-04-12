@@ -19,11 +19,17 @@
 $(document).ready(function(){
 		$('#button').click(function(){
 			console.log('button click!');
-			if($('#p_category').val() == ''){				
-				alert('카테고리를 입력해주세요.');
-			} else if($('#p_price').val() == ''){		
-				alert('가격을 입력해주세요.');
-			} else{
+			if($('#product_title').val() == ''){				
+				alert('상품명을 입력하세요.');
+			} else if($('#product_img').val() == ''){		
+				alert('이미지 주소를 입력하세요.');
+			} else if($('#product_price').val() == ''){		
+				alert('가격을 입력하세요.');
+			} else if($('#product_category').val() == ''){		
+				alert('상품 카테고리을 입력하세요.');
+			} else if($('#product_description').val() == ''){		
+				alert('상품 상세설명을 입력하세요.');
+			}else{
 				$('#form').submit();
 			}
 		})	
@@ -32,7 +38,7 @@ $(document).ready(function(){
 		  
 		  $(document).ready(function(){
 			  var replaceNotInt = /[^0-9]/gi;
-        $("#p_price").on("focusout", function() {
+        $("#product_price").on("focusout", function() {
             var x = $(this).val();
             if (x.length > 0) {
                 if (x.match(replaceNotInt)) {
@@ -68,18 +74,49 @@ input:invalid{
 		<div id="center">
 			<form action="productUpdate" id="form">
 				<div class="form-group">
-					<label for="title"></label> <input type="hidden" name="p_idx"
-						class="form-control" name="p_idx" value="${one.p_idx}">
+					<label for="title"></label> <input type="hidden" name="product_idx"
+						class="form-control" name="product_idx" value="${one.product_idx}">
 				</div>
 				<div class="form-group">
-					<label for="content">p_category:</label> 					
-					<textarea rows="5" cols="5" class="form-control" name="p_category" id="p_category"
+					<label for="content">product_title:</label> 					
+					<textarea rows="5" cols="5" class="form-control" name="product_title" id="product_title"
 						style="background: white-space;color: green; font-weight: bold;"
-					>${one.p_category}</textarea>
+					>${one.product_title}</textarea>
 				</div>
 				<div class="form-group">
-					<label for="title">p_price:</label> <input type="text" 
-						class="form-control" name="p_price" id = "p_price" value="${one.p_price}" pattern="[0-9]+"><p>정수로 입력</p>
+					<label for="content">product_img:</label> 					
+					<textarea rows="5" cols="5" class="form-control" name="product_img" id="product_img"
+						style="background: white-space;color: green; font-weight: bold;"
+					>${one.product_img}</textarea>
+				</div>
+				<div class="form-group">
+					<label for="title">product_price:</label> <input type="text" 
+						class="form-control" name="product_price" id = "product_price" value="${one.product_price}" pattern="[0-9]+"><p>정수로 입력</p>
+				</div>
+				
+				
+				<!-- 카테고리 지정된 영역 내에서 변경할 수 있게 변경 -->
+				
+				
+				
+				<div class="form-group">
+					<label for="content">product_category:</label> 					
+					<textarea rows="5" cols="5" class="form-control" name="product_category" id="product_category"
+						style="background: white-space;color: green; font-weight: bold;"
+					>${one.product_category}</textarea>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				<div class="form-group">
+					<label for="content">product_description:</label> 					
+					<textarea rows="5" cols="5" class="form-control" name="product_description" id="product_description"
+						style="background: white-space;color: green; font-weight: bold;"
+					>${one.product_description}</textarea>
 				</div>
 				<button id = "button" type="button" class="btn btn-success">Submit</button>
 			</form>

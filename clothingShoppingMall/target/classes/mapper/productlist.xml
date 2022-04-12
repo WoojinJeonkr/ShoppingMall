@@ -62,17 +62,26 @@
 	</select>
 	<!-- 페이징 시 -->
 
-	<update id="up" parameterType="productlistVO">
-		update product set p_category = #{p_category}, p_price = #{p_price}, p_mdfydate = now() where p_idx = #{p_idx}
+	<update id="updateProduct" parameterType="productlistVO">
+	update product 
+		set product_title = #{product_title}, 
+			product_img = #{product_img}, 
+			product_price = #{product_price}, 
+			product_category = #{product_category}, 
+			product_description = #{product_description}, 
+			product_mdfydate = now() 
+		where product_idx = #{product_idx}
 	</update>
 
-	<delete id="del" parameterType="productlistVO">
-		delete from product where p_idx = #{p_idx}
+	<delete id="deleteProduct" parameterType="productlistVO">
+		delete from product where product_idx = #{product_idx}
 	</delete>
 
-	<insert id="in" parameterType="productlistVO">
-		insert into product values (null, #{p_category},#{p_isbn},#{p_author},#{p_company}, #{p_page}, #{p_weight},#{p_price},
-		#{p_title}, #{p_content}, #{p_img}, null, now())
+	<insert id="insertProduct" parameterType="productlistVO">
+	<!-- 젤 첫부분 null은 auto_increment로 자동으로 들어감 -->
+	
+		insert into product values (null, #{product_title},#{product_img},#{product_price},#{product_category}, null, 0, #{product_description}, now(), null)
+	
 	</insert>
 	
 </mapper>

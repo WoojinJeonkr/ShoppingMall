@@ -29,8 +29,9 @@ public class ProductListService {
 		  //팬츠, 가디건&풀오버, 데님/진, 드레스, 맨투맨&후디, 블레이저, 
 		  //셔츠&블라우스, 쇼츠, 스커트 , 재킷&코트 , 탑&티셔츠  
 		
-		int productListTotal = productlistDAO.count();
-		
+		int productListTotal = productlistDAO.productListCount();
+
+
 		System.out.println("========productListTotal:"+productListTotal);
 		//Math.ceil() 입력받은 숫자보다 크거나 같은 정수 중 가장 적은 정수를 리턴 
 		//Math.floor() 소수점 버림. 정수반환 
@@ -127,7 +128,7 @@ public class ProductListService {
 
 
 		//dao 호출 
-		List<Map<String,Object>> list = productlistDAO.all(paramMap);
+		List<Map<String,Object>> list = productlistDAO.productList(paramMap);
 		List<String> categoryList = productlistDAO.selectCategoryList();
 		int funcCount = productlistDAO.funcCount(paramMap);
 		

@@ -10,37 +10,30 @@
 $(document).ready(function(){
 	$('#button').click(function(){
 		console.log('button click!');
-		if($('#p_category').val() == ''){				
-			alert('카테고리를 입력해주세요.');
-		} else if($('#p_isbn').val() == ''){		
-			alert('ISBN을 입력해주세요.');
-		} else if($('#p_author').val() == ''){		
-			alert('저자를 입력해주세요.');
-		} else if($('#p_company').val() == ''){			
-			alert('회사명 입력하세요.');
-		}  else if($('#p_page').val() == ''){			
-			alert('페이지수를 입력하세요.');
-		} else if($('#p_weight').val() == ''){		
-			alert('무게를 입력 하세요.');
-		} else if($('#p_price').val() == ''){		
-			alert('가격을 입력 하세요.');
-		}else if($('#p_title').val() == ''){		
-			alert('책 제목을 입력 하세요.');
-		}else if($('#p_content').val() == ''){		
-			alert('책 내용을 입력 하세요.');
+		if($('#product_title').val() == ''){				
+			alert('상품 이름을 입력하세요.');
+		} else if($('#product_img').val() == ''){		
+			alert('이미지 주소를 입력하세요.');
+		} else if($('#product_price').val() == ''){		
+			alert('가격을 입력하세요.');
+		} else if($('#product_category').val() == ''){			
+			alert('카테고리명을 입력하세요.');
+		} else if($('#product_description').val() == ''){		
+			alert('상품 상세설명을 입력 하세요.');
 		}else{
 			$('#form').submit();
 		}
 		})	
 	});
-	//p_page, p_price int형만 입력되게 설정 	
+	
+	//product_price, product_like int형만 입력되게 설정 	
 	
 	// 숫자가 아닌 정규식
     var replaceNotInt = /[^0-9]/gi;
     
     $(document).ready(function(){
         
-        $("#p_page").on("focusout", function() {
+        $("#product_price").on("focusout", function() {
             var x = $(this).val();
             if (x.length > 0) {
                 if (x.match(replaceNotInt)) {
@@ -57,7 +50,7 @@ $(document).ready(function(){
     
  	$(document).ready(function(){
         
-        $("#p_price").on("focusout", function() {
+        $("#product_like").on("focusout", function() {
             var x = $(this).val();
             if (x.length > 0) {
                 if (x.match(replaceNotInt)) {
@@ -85,24 +78,26 @@ $(document).ready(function(){
 			<jsp:include page="../../top.jsp"></jsp:include>
 		</div>
 		<div id="center">
-			<h3>상품정보 등록</h3>
-			<br>
-			<form action="productIn" id="form">
-				p_category :<input type="text" class="form-control"name="p_category" id="p_category"/><br>
-				 p_isbn :<input type="text" class="form-control" name="p_isbn" id="p_isbn"/><br>
-				p_author :<input type="text" class="form-control" name="p_author" id="p_author" /><br>
-				 p_company :<input type="text" class="form-control" name="p_company" id="p_company" /><br>
-				p_page :<input type="text" class="form-control" name="p_page"
-				 id="p_page" pattern="[0-9]+"  /><p>숫자로 입력</p><br>
-				 p_weight<input type="text" class="form-control" name="p_weight" id="p_weight" /><br>
-				p_price:<input type="text" class="form-control" name="p_price"
-				 id="p_price" pattern="[0-9]+" /><p>숫자로 입력</p><br> 
-				p_title:<input type="text" class="form-control" name="p_title" id="p_title" /><br>
-				p_content<input type="text" class="form-control" name="p_content" id="p_content" /><br> 
-				p_img<input type="text" class="form-control" name="p_img" value="defaultbook.jpg" /><br>
-				<button id="button" type="button" class="btn btn-success">Submit</button>
-
-			</form>
+	       <h3>상품정보 등록</h3>
+		<br>
+		 <form action="productIn" id="form">
+				product_title :<input type="text" class="form-control"name="product_title" id="product_title"/><br>
+				 product_img :<input type="text" class="form-control" name="product_img" id="product_img"/><br>
+				product_price:<input type="text" class="form-control" name="product_price"id="product_price" pattern="[0-9]+" /><p>숫자로 입력</p><br>
+				
+				
+				<!-- 카테고리명 지정된 영역 내에서 선택 할 수 있게 변경 -->
+				product_category :<input type="text" class="form-control" name="product_category" id="product_category" /><br>
+				
+				
+				
+				
+				
+				<!-- product_like:<input type="text" class="form-control" name="product_like"id="product_like" pattern="[0-9]+" value=0/><p>숫자로 입력</p><br> -->
+				product_description:<input type="text" class="form-control"name="product_description" id="product_description"/><br>
+				
+			<button id="button" type="button" class="btn btn-success">Submit</button>
+		 </form>
 		</div>
 	</div>
 </body>

@@ -18,12 +18,12 @@ public class ProductListDAO {
 	@Autowired
 	SqlSessionTemplate my;
 
-	public ProductListVO one(ProductListVO vo) {
+	public ProductListVO productOne(ProductListVO vo) {
 		System.out.println("ProductlistVO vo:"+vo);
 		return my.selectOne("productlist.one", vo);
 	}
 
-	public List<Map<String,Object>> all(Map<String,Object> map) {
+	public List<Map<String,Object>> productList(Map<String,Object> map) {
 		System.out.println("ProductLitsDAO map:"+map);
 		return my.selectList("productlist.list", map);
 	}
@@ -39,20 +39,19 @@ public class ProductListDAO {
 	}
 	
 	
-	public int count() {
+	public int productListCount() {
 		return my.selectOne("productlist.count");
 	}
 	
-	public int insert(ProductListVO vo) {
-		return my.insert("productlist.in", vo);
+	public int productInsert(ProductListVO vo) {
+		return my.insert("productlist.insertProduct", vo);
 	}
-	public int up(ProductListVO vo) {
-		System.out.println("DAO vo"+vo);
-		return my.update("productlist.up", vo);
+	public int productUpdate(ProductListVO vo) {
+		System.out.println("productUpdate dao의 vo:"+ vo);
+		return my.update("productlist.updateProduct", vo);
 	}
-	public int del(ProductListVO vo) {
-		System.out.println("DAO del vo"+vo);
-		return my.delete("productlist.del", vo);
+	public int productDelete(ProductListVO vo) {
+		return my.delete("productlist.deleteProduct", vo);
 	}
 	
 	
