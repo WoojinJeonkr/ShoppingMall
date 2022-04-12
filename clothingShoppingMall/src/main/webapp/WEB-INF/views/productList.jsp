@@ -136,10 +136,11 @@ product_category:
 		   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage-1}&categoryName=${categoryName}&searchWord=${searchWord}"><button type="button" class="btn btn-outline-primary">이전</button></a>
 		   	</c:if>
 	
-		   
+		     <%-- <c:if test = "${endIdx!=1}"> --%>
 			   	<c:forEach begin ="${startIdx}" end ="${endIdx}" var = "pageIdx"> <!-- endPage값 문제가 있는지 확인해야 함. -->
 			   			<a href="${pageContext.request.contextPath}/productList?currentPage=${pageIdx}&categoryName=${categoryName}&searchWord=${searchWord}">${pageIdx}</a>
 			   	</c:forEach>
+			<%--  </c:if> --%>
 		   	
 		   	<c:if test="${currentPage<lastPage}">
 		   		<a href="${pageContext.request.contextPath}/productList?currentPage=${currentPage+1}&categoryName=${categoryName}&searchWord=${searchWord}"><button type="button" class="btn btn-outline-primary">다음</button></a>

@@ -20,19 +20,14 @@ public class ProductListService {
 	//상품 리스트 서비스 
 	public Map<String, Object> getProductList(int currentPage, int rowPerPage, String categoryName, String searchWord){
 
-		
-	
-		
 	   System.out.println("ProductListService currentPage:"+currentPage);
 	   System.out.println("ProductListService rowPerPage:"+rowPerPage);
 	   System.out.println("ProductListService categoryName:"+categoryName);
 	   System.out.println("ProductListService searchWord:"+searchWord);
 		
-		
-	  //카테고리 내용 	
-	  //팬츠, 가디건&풀오버, 데님/진, 드레스, 맨투맨&후디, 블레이저, 
-	  //셔츠&블라우스, 쇼츠, 스커트 , 재킷&코트 , 탑&티셔츠  
-		
+		  //카테고리 내용 	
+		  //팬츠, 가디건&풀오버, 데님/진, 드레스, 맨투맨&후디, 블레이저, 
+		  //셔츠&블라우스, 쇼츠, 스커트 , 재킷&코트 , 탑&티셔츠  
 		
 		int productListTotal = productlistDAO.count();
 		
@@ -71,10 +66,6 @@ public class ProductListService {
 		//-----------------------------------------------------------
 		//3. 숫자리스트의 마지막번째 10, 20, 30, 40... 
 		int endIdx = ((int)Math.ceil((currentPage/10.0)))*10;
-		
-		
-		
-		
 		//int endPage = ((int)Math.ceil((double)(currentPage/10.0))*10);
 		//int endCorrIdx = 
 		
@@ -84,9 +75,6 @@ public class ProductListService {
 		
 		//System.out.println("========lastPage:"+startPage);
 		//System.out.println("========lastPage:"+endPage);
-		
-		
-		
 		
 		ProductPageVO page = new ProductPageVO(); 
 		
@@ -128,44 +116,7 @@ public class ProductListService {
 		// %20 20으로 나누었을 때 나머지가 1
 		//     20으로 나누었을때 나머지가 2 
 		//     20으로 나누었을 때 나머지가 3
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		//-------------------------------------------------------------
-		
-		
-		
-		
-		
-		
-		
 		
 		Map<String,Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("beginRow",beginRow);
@@ -174,12 +125,6 @@ public class ProductListService {
 		paramMap.put("searchWord",searchWord); 
 		
 
-		
-		
-		
-		
-		
-		
 
 		//dao 호출 
 		List<Map<String,Object>> list = productlistDAO.all(paramMap);
@@ -189,29 +134,11 @@ public class ProductListService {
 
 		int lastPage = (int)Math.ceil((double)funcCount/rowPerPage);
 		
-		
-		/*
-		 * if(categoryName!= null) { endIdx=funcCount%20+1; }
-		 */
-		 
 		 
 		//상품이 있는 위치까지만 숫자리스트 보일 수 있게  
 		if(endIdx>lastPage) { 
 			endIdx = lastPage;
 		}
-		
-		
-
-	
-		
-		/*
-		 * if(categoryName!= null) { endIdx=funcCount%20; }
-		 */
-		 
-		
-		
-		
-		
 
 		System.out.println("Service의 funcCount:"+funcCount);
 		System.out.println("Service의 list:"+list);

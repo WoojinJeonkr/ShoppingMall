@@ -69,11 +69,16 @@ public class ProductListController {
 			
 																														) {
 		
-
-		//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-		//노드에 쓰레기값 들어있으면 다음 페이지 이미지 나오지 않으므로 꼭 넣어줄 것.
 		
-
+		//categoryName이 처음 페이지가 열린 때는 null 상태임. 
+		//categoryName 선택 이후 다시 상품 전체 목록으로 들어갈때는 
+		//""상태 
+		//좌측만 지웠을때는 NullPointerException이 발생.
+		//페이지 이동 시 categoryName에 null이 들어가는 쿼리는 작동하기 떄문에 에러발생. 
+		//카테고리나 검색 이동 후 전체 상품목록으로 이동하는데 필요한 코드. 
+		
+		System.out.println("productListController의 categoryName 전"+ categoryName);		
+		
 		if(categoryName!= null && categoryName.equals("")) {
 			categoryName = null;
 		}
@@ -82,8 +87,7 @@ public class ProductListController {
 			searchWord = null;
 		}
 		
-		//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-		
+		System.out.println("productListController의 categoryName 후"+ categoryName);		
 
 		System.out.println("Controller productList의 rowPerPage"+searchWord);
 		System.out.println("Controller productList의 productCategory"+categoryName);
