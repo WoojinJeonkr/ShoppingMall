@@ -1,6 +1,7 @@
 package com.hi.clothingStore.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,22 @@ public class ProductListDAO {
 		System.out.println("ProductlistVO vo:"+vo);
 		return my.selectOne("productlist.one", vo);
 	}
-	
-	
-	//전체 리스트 가져오기 
-	public List<ProductListVO> all(ProductPageVO page) {
-		return my.selectList("productlist.list", page);
+
+	public List<Map<String,Object>> all(Map<String,Object> map) {
+		System.out.println("ProductLitsDAO map:"+map);
+		return my.selectList("productlist.list", map);
 	}
+	
+	public List<String> selectCategoryList(){
+		return my.selectList("productlist.selectCategoryList"); 
+	}
+	
+	
+	public int funcCount(Map<String,Object> map) {
+		System.out.println("funcCount map:"+map);
+		return my.selectOne("productlist.funcCount", map); 
+	}
+	
 	
 	public int count() {
 		return my.selectOne("productlist.count");

@@ -2,10 +2,12 @@ package com.hi.clothingStore.vo;
 
 public class ProductPageVO {
 
-	private int rowPerPage; //페이지당 행의 개수 
-	private int beginRow; //시작 행
-	//private int startPage; //페이지 숫자 리스트의 첫번째 시작 페이지 
-	//private int endPage; //페이지 숫자리스트의 마지막 페이지 
+
+	private int rowPerPage;
+	private int beginRow; 
+	private String product_category; 
+	private String searchWord;
+	
 	public int getRowPerPage() {
 		return rowPerPage;
 	}
@@ -18,10 +20,25 @@ public class ProductPageVO {
 	public void setBeginRow(int beginRow) {
 		this.beginRow = beginRow;
 	}
+	public String getProduct_category() {
+		return product_category;
+	}
+	public void setProduct_category(String product_category) {
+		this.product_category = product_category;
+	}
+	public String getSearchWord() {
+		return searchWord;
+	}
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
+	
 	@Override
 	public String toString() {
-		return "ProductPageVO [rowPerPage=" + rowPerPage + ", beginRow=" + beginRow + "]";
-	}
+		return "ProductPageVO [rowPerPage=" + rowPerPage + ", beginRow=" + beginRow + ", product_category="
+				+ product_category + ", searchWord=" + searchWord + "]";
+	} 
+
 	
 	
 	

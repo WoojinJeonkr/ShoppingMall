@@ -3,15 +3,58 @@
 
 <mapper namespace="productlist">
 
+	<!-- 상세보기 -->
 	<select id="one" parameterType="productlistVO" resultType="productlistVO">
-		select * from product where p_idx = #{p_idx}
+		select * from product where product_idx = #{product_idx}
 	</select>
 
 	<!-- 페이징 시  -->
-	<select id="list" parameterType="com.hi.clothingStore.vo.ProductPageVO" resultType="productlistVO"> 
-		select * from product order by product_idx limit #{beginRow}, #{rowPerPage} <!-- 대문자로 자동으로 컨버팅 됌. 오라클은 테이블 대문자로 써줘야 하는 경우도 있음-->
-					<!-- limit 시작위치, 반환개수 -->
+	<!-- 매개변수로 담을 값 여러 개 map에 담아야 하고, 결과적으로 여러 개의 변수를 담은 map을 리턴 -->
+	<select id="list" parameterType="java.util.Map" resultType="java.util.Map"> 
+		select * from product 
+		
+		<where>
+			<if test="categoryName!= null">
+				AND product_category = #{categoryName}
+			</if>
+		
+			<if test="searchWord!= null">
+				AND product_title LIKE CONCAT ('%',#{searchWord},'%') 
+			</if>
+		</where>
+		
+		order by product_idx limit #{beginRow}, #{rowPerPage} <!-- 대문자로 자동으로 컨버팅 됌. 오라클은 테이블 대문자로 써줘야 하는 경우도 있음-->
+																					<!-- limit 시작위치, 반환개수 -->
 	</select>
+
+
+	<!-- 카테고리 생성 후 페이징이 전체 목록 상품을 기준으로  -->
+	<!-- 움직이고 있기에 categoryName과 searchWord를 기준으로 다시 총 개수를 잡아준다. -->
+	 <select id = "funcCount" parameterType="java.util.Map" resultType="Integer">
+	  select count (*) from product 
+	  
+	 	<where>
+			<if test="categoryName!= null">
+				AND product_category = #{categoryName}
+			</if>
+	
+			<if test="searchWord!= null">
+				AND product_title LIKE CONCAT ('%',#{searchWord},'%') 
+			</if>
+		</where>
+	 </select> 
+
+
+
+
+
+
+
+	<select id = "selectCategoryList" resultType = "String">
+	  select distinct product_category from product  
+	</select>
+
+
 
 	<!-- null을 받아들일 수 있는 객체타입 integer    -->
 	<select id="count" resultType="Integer"> 

@@ -2,7 +2,7 @@ package com.hi.clothingStore.vo;
 
 import java.sql.Timestamp;
 
-public class ReviewVO {
+public class ReviewListVO {
 	
 /*
 	review_idx        int(11)             not null
@@ -12,6 +12,8 @@ public class ReviewVO {
 	review_img        varchar(45)      null
 	review_score      float               not null
 	review_rgstdate  timestamp       current_timestamp
+	
+	member table의 user_name으로 review 목록에서 보여주기 위해 추가
 */
 	private int review_idx;
 	private int product_idx;
@@ -20,6 +22,15 @@ public class ReviewVO {
 	private String review_img;
 	private float review_score;
 	private Timestamp review_rgstdate;
+	
+	private String user_name;
+	
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 	public int getReview_idx() {
 		return review_idx;
 	}
@@ -65,8 +76,8 @@ public class ReviewVO {
 	
 	@Override
 	public String toString() {
-		return "ReviewVO [review_idx=" + review_idx + ", product_idx=" + product_idx + ", user_id=" + user_id
+		return "ReviewListVO [review_idx=" + review_idx + ", product_idx=" + product_idx + ", user_id=" + user_id
 				+ ", review_context=" + review_context + ", review_img=" + review_img + ", review_score=" + review_score
-				+ ", review_rgstdate=" + review_rgstdate + "]";
+				+ ", review_rgstdate=" + review_rgstdate + ", user_name=" + user_name + "]";
 	}
 }

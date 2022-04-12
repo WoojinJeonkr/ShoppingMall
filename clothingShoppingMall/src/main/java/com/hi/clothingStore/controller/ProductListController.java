@@ -24,6 +24,7 @@ public class ProductListController {
 	@Autowired
 	ProductListDAO dao;
 	
+	//장바구니 추가 
 	@RequestMapping("productAdd")
 	public void plus(ProductListVO vo, Model model, HttpSession session) {
 		System.out.println("add vo"+vo);
@@ -38,6 +39,7 @@ public class ProductListController {
 		model.addAttribute("size", list.size()); 
 	}
 	
+	//상품 상세보기 페이지 
 	@RequestMapping("productOne")
 	public void one(ProductListVO vo, Model model) {
 		System.out.println("ProductlistController vo2:"+vo);
@@ -57,15 +59,40 @@ public class ProductListController {
 	 * Java Bean spec을 충족해야 하고 즉 , setter가 존재해야 한다 
 	 */
 	@RequestMapping("productList")
-	public void list(Model model, @RequestParam(value="currentPage",defaultValue = "1",required = false)int currentPage,
+	public String list(Model model, @RequestParam(value="currentPage",defaultValue = "1",required = false)int currentPage,
 								 // @RequestParam(value="startPage",defaultValue = "1",required = false)int startPage,
 								 // @RequestParam(value="endPage",defaultValue = "1",required = false)int endPage,
-								  @RequestParam(value = "rowPerPage", defaultValue = "20",required = false) int rowPerPage) {
+								  @RequestParam(value = "rowPerPage", defaultValue = "20",required = false) int rowPerPage,
+								  @RequestParam(value="categoryName", required = false)String categoryName,
+								  @RequestParam(value="searchWord", required = false) String searchWord
+
+			
+																														) {
 		
-		System.out.println("productList의 currentPage"+currentPage);
-		System.out.println("productList의 rowPerPage"+rowPerPage);
+
+		//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+		//노드에 쓰레기값 들어있으면 다음 페이지 이미지 나오지 않으므로 꼭 넣어줄 것.
 		
-		Map<String,Object> map = productListService.getProductList(currentPage, rowPerPage);
+
+		if(categoryName!= null && categoryName.equals("")) {
+			categoryName = null;
+		}
+	
+		if(searchWord!= null && searchWord.equals("")) {
+			searchWord = null;
+		}
+		
+		//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+		
+
+		System.out.println("Controller productList의 rowPerPage"+searchWord);
+		System.out.println("Controller productList의 productCategory"+categoryName);
+		System.out.println("Controller productList의 currentPage"+currentPage);
+		System.out.println("Controller productList의 rowPerPage"+rowPerPage);
+		
+		
+
+		Map<String,Object> map = productListService.getProductList(currentPage, rowPerPage, categoryName,searchWord);
 		
 		model.addAttribute("currentPage", currentPage); 
 		model.addAttribute("productListTotal",map.get("productListTotal")); 
@@ -73,6 +100,12 @@ public class ProductListController {
 		model.addAttribute("startIdx",map.get("startIdx")); 
 		model.addAttribute("endIdx",map.get("endIdx")); 
 		model.addAttribute("list", map.get("list")); 
+		model.addAttribute("categoryList", map.get("categoryList"));
+		model.addAttribute("funcCount",map.get("funcCount"));
+		model.addAttribute("categoryName", map.get("categoryName")); 
+		model.addAttribute("searchWord", map.get("searchWord"));
+		
+		return "productList";
 		
 	}
 	
