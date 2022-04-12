@@ -6,43 +6,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/project.css">
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#addMember').click(function(){
 		console.log('addMember click!');
-		if($('#name').val() == ''){				
-			alert('이름을 입력해주세요.');
-		} else if($('#pw').val() == ''){		
-			alert('비밀번호를 입력해주세요.');
-		} else if($('#pw2').val() == ''){		
-			alert('비밀번호 중복확인을 해주세요.');
-		} else if($('#pw').val() != $('#pw2').val()){					
+		if($('#pw').val() != $('#pw2').val()){					
 			alert('password가 일치하지 않습니다.');
-		}  else if($('#tel').val() == ''){			
-			alert('phone 번호를 입력하세요.');
-		} else if($('#addr').val() == ''){		
-			alert('주소를 입력 하세요.');
-		}
+		} 
 		  else{
 			$('#form').submit();
 		}
-	})	
+	})	 
 	
-//asdf
-	
+//비밀번호가 이전 비번이랑 같은지 아닌지 확인.
+//비밀번호 변경 안할 시-> 그대로 변경 완료.
+//비밀번호 변경 시-> 기존 비밀번호와 다른 비밀번호만 입력 가능.
+$('#upMember').click(function() {
+	alert('')
+	$.ajax({
+		url:"memberModyPw",
+		data:{'pw':$('#user_pw').val()},
+		success: function(data) { //views아래에 있는 memberModyPw.jsp의 실행결과가 data에 담김.
+			alert(data)
+			if(data == 1) {//이부분 수정해야함!!! 기존의 비번과 같은지 아닌지로 수정.
+				alert("사용할 수 없는 비밀번호 입니다.")
+			} else {
+				alert("사용가능한 비밀번호 입니다.")
+			}
+		}
+	})
+})//upMember
 
-
-});
+});//$
 </script>
 </head>
 <body>
@@ -56,11 +55,11 @@ $(document).ready(function(){
 					</tr>
 					<tr>
 						<td class="left">패스워드</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="pw" id="pw"></td>
+						<td class="right"><input  class="form-control input-lg"  type="password" name="pw" id="pw"></td>
 					</tr>
 					<tr>
 						<td class="left">패스워드확인</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="pw2" id="pw2"></td>
+						<td class="right"><input  class="form-control input-lg"  type="password" name="pw2" id="pw2"></td>
 					</tr>
 					<tr>
 						<td class="left">전화번호</td>
