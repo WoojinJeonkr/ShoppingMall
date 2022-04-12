@@ -57,4 +57,25 @@ public class ReviewController {
 		
 		service.reviewCreate(review);
 	}
+	
+	// 구매 후기 삭제
+	@ResponseBody
+	@RequestMapping(value = "/views/ReviewDelete", method = RequestMethod.POST)
+	public int getReviewList(ReviewVO review, HttpSession session) throws Exception {
+		
+		int result = 0;
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String user_id = service.idCheck(review.getReview_idx());
+		
+		if(member.getUser_id().contentEquals(user_id)) {
+			review.setUser_id(member.getUser_id());
+			service.reviewDelete(review);
+			/*if 결과가 참이라면 삭제 작업을 진행한 뒤 변수 result에 1을 저장하고,
+			    거짓이면 아무 작업도 하지 않고 종료함*/
+			result = 1;
+		}
+		
+		return result;
+	}
 }

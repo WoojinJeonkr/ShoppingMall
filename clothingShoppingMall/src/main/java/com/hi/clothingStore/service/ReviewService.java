@@ -13,4 +13,10 @@ public interface ReviewService {
 	
 	// 후기 리스트
 	public List<ReviewListVO> reviewList(int product_idx) throws Exception;
+	
+	// 후기 삭제
+	public void reviewDelete(ReviewVO review) throws Exception;
+	
+	// 아이디 체크
+	public String idCheck(int review_idx) throws Exception;
 }
