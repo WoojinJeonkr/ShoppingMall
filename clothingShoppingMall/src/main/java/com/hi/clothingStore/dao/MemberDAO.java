@@ -18,9 +18,10 @@ public class MemberDAO {
 	public int create(MemberVO vo) {
 		int result = 0;
 		try {
-			result = my.insert("member.create", vo);
+			result = my.insert("member.create", vo);//create는 member.xml의  namespace="member"
 		}catch(Exception e) {
 			System.out.println("에러발생.");
+			e.printStackTrace();
 		}
 		return result;
 	}
@@ -28,18 +29,23 @@ public class MemberDAO {
 	public MemberVO login(MemberVO vo) {
 		return my.selectOne("member.login", vo);
 	}
-	
+	//아이디 중복확인
 	public MemberVO  idCheck(MemberVO vo) {
 		MemberVO  vo2  = my.selectOne("member.idCheck", vo);
+		return vo2;
+	}
+	//비밀번호 수정시 기존 비밀번호와 다른지 체크
+	public MemberVO  modyPw(MemberVO vo) {
+		MemberVO  vo2  = my.selectOne("member.modyPw", vo);
 		return vo2;
 	}
 	
 	public MemberVO one(MemberVO vo) {
 		return my.selectOne("member.one", vo);
 	}
-	//회원수정
-	public int up(MemberVO vo) {
-		return my.update("member.up", vo);
+	//회원수정 update는 리턴값이 int
+	public int update(MemberVO vo) {
+		return my.update("member.update", vo);
 	}
 
 	

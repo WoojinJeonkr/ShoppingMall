@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hi.clothingStore.dao.MemberDAO;
 import com.hi.clothingStore.vo.MemberVO;
+import com.hi.clothingStore.vo.ProductListVO;
 
 
 @Controller
@@ -21,7 +22,7 @@ public class MemberController {
 	//회원가입,검색,수정,탈퇴,로그인 기능을 제어함.
 	
 	//로그인
-	@RequestMapping("memberCheck")
+	@RequestMapping("memberCheck1")
 	public String login(MemberVO vo, HttpSession session) throws Exception {
 		System.out.println(vo);
 		MemberVO vo2 = dao.login(vo);
@@ -33,13 +34,13 @@ public class MemberController {
 			session.setAttribute("userId", vo2.getUser_id());
 			session.setAttribute("userName", vo2.getUser_name());
 			return "redirect:member.jsp";
-		}else { //로그인에 실패했을 때 
+		} else { //로그인에 실패했을 때 
 			return "memberCheck";
 		}
 	}
 
 	//회원가입
-	@RequestMapping("memberCreate")
+	@RequestMapping("memberCreate1")
 	public String create(MemberVO vo) throws Exception {
 		System.out.println(vo);
 		int result = dao.create(vo);
@@ -67,27 +68,39 @@ public class MemberController {
 		}
 		model.addAttribute("result", result);
 	}
-	
-	
+	//비밀번호 변경, 이전과 같은 비밀번호일 경우 쓸 수 없는 비밀번호로 구현
+	@RequestMapping("memberModyPw")
+	public void modyPw(MemberVO vo, Model model) {
+		System.out.println(vo);
+		MemberVO  vo2 = dao.modyPw(vo);
+		System.out.println("결과>> " + vo2);
+		int result = 1;
+		if (vo2 == null ) {
+			result = 0; //쓸 수 있는 pw임.
+		}
+		model.addAttribute("result", result);
+	}
+	//회원 수정 컨트롤러
 	@RequestMapping("memberUp")
-	public void update(MemberVO vo, Model model) {
+	public void up(MemberVO vo, Model model) {
 		//수정하기버튼을 누르면, 기존의 db에 저장된 데이터를
-		//가지고 와서, 수정할 수 있는 화면에 넣어주어야 한다. 
+		//가지고 와서, 수정할 수 있는 화면에 넣어주어야 한다.
+		//그러기 위해서는 로그인 부분을 만들 때 사용한 member를 가져오면 된다.
+
 		MemberVO vo2 = dao.one(vo);
 		model.addAttribute("one", vo2);
 	}
-	
-	@RequestMapping("memberUp2")
-	public String update2(MemberVO vo, Model model) {
-		//수정하고 싶은 것이 있으면 수정처리 요청. 
-		int result = dao.up(vo);
+	//회원 수정 컨트롤러
+	@RequestMapping("memberUpdate")
+	public String update(MemberVO vo, Model model) {
+		//수정하고 싶은 것이 있으면 수정처리 요청
+		int result = dao.update(vo); 
 		if(result == 1) {
-			return "memberUp2";
+			return "memberUpdate";
 		}else {
-			return "no";
+			return "memberNo"; 
 		}
 	}
-	
 	
 	
 }

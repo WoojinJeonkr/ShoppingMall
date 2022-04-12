@@ -8,9 +8,8 @@ public class MemberVO {
 	private int user_age;
 	private String user_tel;
 	private String user_tag;
-	private String addr;
+	private String user_addr;
 	private int level;
-	
 	public String getUser_id() {
 		return user_id;
 	}
@@ -47,11 +46,11 @@ public class MemberVO {
 	public void setUser_tag(String user_tag) {
 		this.user_tag = user_tag;
 	}
-	public String getAddr() {
-		return addr;
+	public String getUser_addr() {
+		return user_addr;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setUser_addr(String user_addr) {
+		this.user_addr = user_addr;
 	}
 	public int getLevel() {
 		return level;
@@ -59,13 +58,15 @@ public class MemberVO {
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	
 	@Override
 	public String toString() {
 		return "MemberVO [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_age="
-				+ user_age + ", user_tel=" + user_tel + ", user_tag=" + user_tag + ", addr=" + addr + ", level=" + level
-				+ "]";
+				+ user_age + ", user_tel=" + user_tel + ", user_tag=" + user_tag + ", user_addr=" + user_addr
+				+ ", level=" + level + "]";
 	}
+	
+	
+	
 	
 	
 	

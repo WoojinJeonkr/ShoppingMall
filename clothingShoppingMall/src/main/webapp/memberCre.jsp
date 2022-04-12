@@ -5,94 +5,139 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/project.css">
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+//빈 값이 있거나 조건에 맞지 않으면 회원가입이 안되도록 구현.
 $(document).ready(function(){
 	$('#addMember').click(function(){
 		console.log('addMember click!');
 		if($('#id').val() == ''){				
-			alert('아이디를 입력해주세요.');
+			$('#idc').text('아이디를 입력해주세요');
+		} else if($('#id').val().length < 4 ){		
+			$('#idc').text('아이디는4~10자로 입력해주세요');
+		//비밀번호 
 		} else if($('#pw').val() == ''){		
-			alert('비밀번호를 입력해주세요.');
+			$('#pwc1').text('비밀번호를 입력해주세요');
+		} else if($('#pw').val() == ''){		
+			$('#pwc1').text('비밀번호를 입력해주세요');
 		} else if($('#pw2').val() == ''){		
-			alert('비밀번호 중복확인을 해주세요.');
+			$('#pwc2').text('비밀번호 중복확인을 해주세요');
 		} else if($('#pw').val() != $('#pw2').val()){					
-			alert('password가 일치하지 않습니다.');
+			$('#pwc2').text('password가 일치하지 않습니다.');
+		//이름
 		} else if($('#name').val() == ''){			
-			alert('이름을 입력하세요.');
-		}  else if($('#tel').val() == ''){			
-			alert('phone 번호를 입력하세요.');
-		} else if($('#age').val() == ''){		
-			alert('나이를 입력 하세요.');
+			$('#nac').text('이름을 입력하세요.');
+		//번호
+		} else if($('#tel').val() == ''){			
+			$('#tec').text('번호를 입력하세요.');
+		} else if(isNaN($('#tel').val())){//핸드폰번호는 숫자만 가능isNaN		
+				$('#tec').text('번호를 다시 입력하세요.');
+		//나이 조건 100살 이하.
+		} else if($('#age').val() == ''){
+			$('#agec').text('나이를 입력하세요.');
+		} else if(isNaN($('#age').val())){//나이는 숫자만 가능isNaN		
+			$('#agec').text('나이를 다시 입력하세요.');
+		//주소
 		} else if($('#addr').val() == ''){		
-			alert('주소를 입력 하세요.');
+			$('#addrc').text('주소를 입력하세요.');
 		}
 		  else{
 			$('#form').submit();
 		}
 	})	
 	
-//asdf
+	///* 다시 한 번 누르면 text 내용을 없애주도록 구현.  */
+	$('#id').click(function() {
+		$('#idc').text('') 
+	})
+	$('#pw2').click(function() {
+		$('#pwc2').text('')
+	})
+	$('#pw').click(function() {
+		$('#pwc1').text('')
+	})
+	$('#name').click(function() {
+		$('#nac').text('')
+	})
+	$('#tel').click(function() {
+		$('#tec').text('')
+	})
+	$('#age').click(function() {
+		$('#agec').text('')
+	})
+	$('#addr').click(function() {
+		$('#addrc').text('')
+	})
+	
 	
 	$('#idCheck').click(function() {
-		alert('test')
+		if ($('#id').val().length == 0) {
+			$('#idc').text('아이디를 입력해주세요')
+		} else {
 		$.ajax({
 			url:"memberIdCheck",
 			data:{'id':$('#id').val()},
 			success: function(data) { //views아래에 있는 memberIdCheck.jsp의 실행결과가 data에 담김.
-				alert(data)
 				if(data == 1) {
-					alert("중복된 아이디 입니다.")
+					alert("사용할 수 없는 아이디 입니다.")
 				} else {
 					alert("사용가능한 아이디 입니다.")
 				}
 			}
 		})
+		}
 	})
-
 });
 </script>
 </head>
 <body>
 <h3 class="active">회원가입</h3>
-			<form action="memberCreate" id="form">
+			<form action="memberCreate1" id="form">
 				<table>
 					<tr>
-						<td class="left">아이디</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="id" id="id"></td>
+						<td class="left">아이디</td> 
+						<td class="right"><input  class="form-control input-lg"  type="text" name="user_id" id="id" placeholder="4~10자 사이로 입력해주세요">
+						<div id="idc" ></div>
+						</td>
 					</tr>
 					<tr>
 						<td class="left">패스워드</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="pw" id="pw"></td>
+						<td class="right"><input  class="form-control input-lg"  type="password" name="user_pw" id="pw" placeholder="영문,숫자합 8글자이상 써주세요">
+						<div id="pwc1" ></div>
+						</td>
 					</tr>
 					<tr>
 						<td class="left">패스워드확인</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="pw2" id="pw2"></td>
+						<td class="right"><input  class="form-control input-lg"  type="password" name="pw2" id="pw2" placeholder="비밀번호를 재입력해주세요">
+						<div id="pwc2" ></div>
+						</td>
 					</tr>
 					<tr>
 						<td class="left">이름</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="name" id="name"></td>
+						<td class="right"><input  class="form-control input-lg"  type="text" name="user_name" id="name" placeholder="성함을 입력해주세요">
+						<div id="nac" ></div>
+						</td>
 					</tr>
 					<tr>
 						<td class="left">전화번호</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="tel" id="tel"></td>
+						<td class="right"><input  class="form-control input-lg"  type="text" name="user_tel" id="tel" maxlength="11" placeholder="전화번호를 입력해주세요">
+						<div id="tec" ></div>
+						</td>
 					</tr>
 					<tr>
 						<td class="left">나이</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="email" id="age"></td>
+						<td class="right"><input  class="form-control input-lg"  type="text" name="user_age" id="age" placeholder="나이를 입력해주세요">
+						<div id="agec" ></div>
+						</td>
 					</tr>
 					<tr>
 						<td class="left">주소</td>
-						<td class="right"><input  class="form-control input-lg"  type="addr" name="email" id="addr"></td>
+						<td class="right"><input  class="form-control input-lg"  type="text" name="user_addr" id="addr" placeholder="주소를 입력해주세요">
+						<div id="addrc" ></div>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
