@@ -34,17 +34,17 @@ th, td {
 			<div id="d1">
 				<hr>
 				<form action="serviceWrite">
-				<input type="hidden" name="serviceWriter" style="width:300px;"
+				<input type="hidden" name="user_id" style="width:300px;"
 								value="${userId}" readonly="readonly">
 					<table>
 						<tr>
 							<td class="left">제목</td>
-							<td class="right"><input type="text" name="serviceTitle" style="width:300px;"></td>
+							<td class="right"><input type="text" name="service_title" style="width:300px;"></td>
 						</tr>
 						
 						<tr>
 							<td class="left">내용</td>
-							<td class="right"><input type="text" name="serviceQuestion" style="width:300px; height:300px"></td>
+							<td class="right"><input type="text" name="service_question" style="width:300px; height:300px"></td>
 						</tr>
 
 					</table>

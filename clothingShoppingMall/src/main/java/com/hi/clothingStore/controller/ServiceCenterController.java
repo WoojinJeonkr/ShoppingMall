@@ -21,6 +21,7 @@ public class ServiceCenterController {
 	public String create(ServiceCenterVO vo) {
 		System.out.println("게시글등록요청");
 		int result =dao.create(vo);
+		dao.number(vo);
 		if(result==1) {
 			System.out.println("게시글등록");
 			
@@ -51,8 +52,8 @@ public class ServiceCenterController {
 	}
 	@RequestMapping("serviceOne")
 	public void readone(ServiceCenterVO vo, Model model) {
-		ServiceCenterVO vo2= dao.readOne(vo);
-		model.addAttribute("one", vo2);
+		ServiceCenterVO one= dao.readOne(vo);
+		model.addAttribute("one", one);
 	}
 	
 	@RequestMapping("serviceList")

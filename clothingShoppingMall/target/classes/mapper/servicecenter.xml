@@ -2,25 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="servicecenter">
-	<select id="one" parameterType="serviceVO" resultType="serviceVO">
+	<select id="one" parameterType="serviceVO"
+		resultType="serviceVO">
 		select * from servicecenter where service_idx = #{service_idx}
 	</select>
-	
-	
 	<select id="list" resultType="serviceVO">
-		select * from servicecenter order by service_idx desc
+		select * from servicecenter order by service_id_origin desc, service_idx_re asc;
 	</select>
-	
 	<insert id="create" parameterType="serviceVO">
-		insert into servicecenter values (null, #{service_writer}, #{service_title}, #{service_question}, null)	
+		insert into servicecenter values (null, #{user_id},#{service_title},#{service_question}, null, #{service_idx_re}, #{service_id_origin},#{service_reply_group})
 		<!-- read 빼고 //return은 무조건 int -->
 	</insert>
-	<delete id="del"  parameterType="serviceVO">
-		delete from servicecenter  where service_idx = #{service_idx}
+	<delete id="del" parameterType="serviceVO">
+		delete from servicecenter where
+		service_idx = #{service_idx}
 	</delete>
-	
-	<update id="up" parameterType="serviceVO">
-		update servicecenter set serviceTitle =  #{service_title}, serviceQuestion = #{service_question} where service_idx=#{service_idx}
-	</update>
 
+	<update id="up" parameterType="serviceVO">
+		update servicecenter set
+		service_title = #{service_title}, service_question = #{service_question}
+		where service_idx=#{service_idx}
+	</update>
+	
+	<update id="number" parameterType="serviceVO">
+		update servicecenter set service_id_origin = service_idx where service_idx_re=0
+	</update>
+<!-- https://gangnam-americano.tistory.com/25 -->
 </mapper>

@@ -13,7 +13,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-
+	
 </script>
 <style>
 button {
@@ -48,7 +48,7 @@ th, td {
 </style>
 
 <meta charset="UTF-8">
-<title>${one.serviceTitle}</title>
+<title>${one.service_title}</title>
 </head>
 <body>
 	<div id="total">
@@ -64,45 +64,50 @@ th, td {
 			<hr>
 			<div id="navii">
 				<a href="serviceMain.jsp"><div>FAQ</div></a> 
-				<a href="serviceMain.jsp"><div>QnA</div></a>
+				<ahref="serviceMain.jsp"><div>QnA</div></a>
 
 			</div>
 			<hr>
 			<table>
 				<tr>
 					<td class="left">제목</td>
-					<td class="right">${one.serviceTitle}</td>
+					<td class="right">${one.service_title}</td>
 					<td class="left">글쓴이</td>
-					<td class="right">${one.serviceWriter}</td>
+					<td class="right">${one.user_id}</td>
 				</tr>
 				<tr>
 					<td class="left">등록일</td>
-					<td class="right" colspan="3">${one.serviceRgstday}</td>
+					<td class="right" colspan="3">${one.service_rgstday}</td>
 				</tr>
 				<tr>
 					<td class="left">내용</td>
-					<td class="right" colspan="3" height=300px>${one.serviceQuestion}</td>
+					<td class="right" colspan="3" height=300px>${one.service_question}</td>
 				</tr>
-				
-				
-		
+
+
+
 				<tr>
-					<td colspan="4">
-					
-					
-					<a href="serviceList"><button>목록</button></a> 
-							<!--  자기 글일때만  삭제, 수정 버튼 활성화. -->
-					<c:if test="${userName eq one.serviceWriter}">
-						<a href="serviceDelete?serviceIdx=${one.serviceIdx}"><button>삭제</button></a> 
-						<a href="serviceUpdate2?serviceIdx=${one.serviceIdx}"><button>수정</button></a>
-					</c:if>
-					<!-- 유저아이디가 admin..즉 관리자인경우 답변하기 버튼 활성화 -->
-				 <% if (session.getAttribute("userId").equals("admin")) {    %>
-						<a href="serviceAnswer.jsp"><button>답변하기</button></a></td>
-					<%} %>
+					<td colspan="4"><a href="serviceList"><button>목록</button></a>
+
+						<!--  자기 글일때만  삭제, 수정 버튼 활성화. --> 
+						<% if (session.getAttribute("userId") != null) {%>
+						<c:if test="${userId eq one.user_id}">
+							<a href="serviceDelete?service_idx=${one.service_idx}"><button>삭제</button></a>
+							<a href="serviceUpdate2?service_idx=${one.service_idx}"><button>수정</button></a>
+						</c:if> <!-- 유저아이디가 admin..즉 관리자인경우 답변하기 버튼 활성화 --> 
+						<% if (session.getAttribute("userId").equals("admin")) { %> 						
+							<a href="serviceDelete?service_idx=${one.service_idx}"><button>삭제</button></a>
+							<a href="serviceUpdate2?service_idx=${one.service_idx}"><button>수정</button></a>
+							<a href="serviceAnswer.jsp?service_idx=${one.service_idx}"><button>답변하기</button></a></td>
+					<%
+						}
+					%>
+					<%
+						}
+					%>
 				</tr>
-				
-		
+
+
 			</table>
 
 
