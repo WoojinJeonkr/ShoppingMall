@@ -19,4 +19,7 @@ public interface ReviewService {
 	
 	// 아이디 체크
 	public String idCheck(int review_idx) throws Exception;
+
+	// 후기 수정
+	public void reviewUpdate(ReviewVO review) throws Exception;
 }
