@@ -3,7 +3,7 @@
 
 mybatis-config.xml
 log4j.xml
-
+db.properties
 lecture
 target
 pom.properties
