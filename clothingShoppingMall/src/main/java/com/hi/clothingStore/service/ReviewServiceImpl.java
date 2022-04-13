@@ -21,7 +21,6 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void reviewCreate(ReviewVO review) throws Exception {
 		dao.reviewCreate(review);
-
 	}
 	
 	// 후기 목록 보기
@@ -42,4 +41,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return dao.idCheck(review_idx);
 	}
 
+	// 후기 수정
+	@Override
+	public void reviewUpdate(ReviewVO review) throws Exception {
+		dao.reviewUpdate(review);
+	}
 }

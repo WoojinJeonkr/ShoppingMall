@@ -42,4 +42,10 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public String idCheck(int review_idx) throws Exception {
 		return sql.selectOne(namespace + ".reviewUserIdCheck", review_idx);
 	}
+	
+	// 후기 수정
+	@Override
+	public void reviewUpdate(ReviewVO review) throws Exception {
+		sql.update(namespace + ".reviewUpdate", review);
+	}
 }

@@ -26,9 +26,15 @@ public class ReviewController {
 	@Autowired
 	ReviewDAOImpl dao;
 	
+	/*
+	@RequestBody를 넣어 주는 이유
+	뷰에서 컨트롤러에 전달한 데이터와, 컨트롤러가 받으려는 매개변수 데이터형이 일치하지 않는 경우
+	또는 다수인 경우 @RequestBody를 넣어준다
+	*/
+	
 	// 구매 후기 목록
 	@ResponseBody
-	@RequestMapping(value = "/views/ReviewList", method = RequestMethod.GET)
+	@RequestMapping(value = "/reviewList", method = RequestMethod.GET)
 	public List<ReviewListVO> getReviewList(@RequestParam("n") int product_idx) throws Exception{
 		List<ReviewListVO> review = service.reviewList(product_idx);
 		return review;
@@ -36,7 +42,7 @@ public class ReviewController {
 	
 	/*
 	// 상품 조회 - 후기 작성
-	@RequestMapping(value = "/view", method = RequestMethod.POST)
+	@RequestMapping(value = "/views/reviewCreate", method = RequestMethod.POST)
 	public String reviewCreate(ReviewVO review, HttpSession session) throws Exception {
 		 MemberVO member = (MemberVO)session.getAttribute("member");
 		 review.setUser_id(member.getUser_id());
@@ -49,7 +55,7 @@ public class ReviewController {
 	
 	// 구매 후기 작성
 	@ResponseBody
-	@RequestMapping(value = "/views/ReviewCreate", method = RequestMethod.POST)
+	@RequestMapping(value = "/reviewList/reviewCreate", method = RequestMethod.POST)
 	public void reviewCreate(ReviewVO review, HttpSession session) throws Exception {
 		
 		MemberVO member = (MemberVO)session.getAttribute("member");
@@ -60,7 +66,7 @@ public class ReviewController {
 	
 	// 구매 후기 삭제
 	@ResponseBody
-	@RequestMapping(value = "/views/ReviewDelete", method = RequestMethod.POST)
+	@RequestMapping(value = "/reviewList/reviewDelete", method = RequestMethod.POST)
 	public int getReviewList(ReviewVO review, HttpSession session) throws Exception {
 		
 		int result = 0;
@@ -75,7 +81,24 @@ public class ReviewController {
 			    거짓이면 아무 작업도 하지 않고 종료함*/
 			result = 1;
 		}
+		return result;
+	}
+	
+	// 구매 후기 수정
+	@ResponseBody
+	@RequestMapping(value = "/reviewList/reviewUpdate", method = RequestMethod.POST)
+	public int reviewUpdate(ReviewVO review, HttpSession session) throws Exception {
 		
+		int result = 0;
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String user_id = service.idCheck(review.getReview_idx());
+		
+		if(member.getUser_id().equals(user_id)){
+			review.setUser_id(member.getUser_id());
+			service.reviewUpdate(review);
+			result = 1;
+		}
 		return result;
 	}
 }
