@@ -109,7 +109,11 @@ product_category:
       <div style="display: none;">${one.product_idx}</div><!-- one.getId() -->
       <div><a href="productOne?product_idx=${one.product_idx}&product_img=${one.product_img}">${one.product_title}</a></div>
       <div>￦${one.product_price}</div> 
-      <%-- <div>${productLikeList}</div> --%>
+      
+       <div>${one.productLikeList}</div> 
+	  
+	  
+	  
 	  </div>
 	</td> 
 	<%

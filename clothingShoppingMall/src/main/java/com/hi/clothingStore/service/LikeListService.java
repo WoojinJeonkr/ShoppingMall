@@ -18,9 +18,13 @@ public class LikeListService {
 		
 			 
 		List<Integer> totalLike= likeDAO.MainLikeCount(vo);
+		System.out.println("LikeListService의 totallike"+totalLike);
+		System.out.println("LikeListService의 totallike size"+totalLike.size());
+		
 		
 		
 		return totalLike;
+		
 		
 	}
 	

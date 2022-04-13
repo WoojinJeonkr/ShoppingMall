@@ -121,10 +121,39 @@ public class ProductListService {
 		paramMap.put("categoryName",categoryName); 
 		paramMap.put("searchWord",searchWord); 
 		
-
-
 		//dao 호출 
 		List<Map<String,Object>> list = productlistDAO.productList(paramMap);
+		System.out.println("Productlist ***************** "+list);
+		
+		/*
+		 *[{product_rgstdate=2022-04-05 11:20:12.0, product_idx=1, product_price=49900, product_description=크롭트 가디건, 
+		 * 분리.
+		 * 
+		 * List에서 빼고 
+		 * Map 딕셔너리 형태로 담긴 Object마다 숫자 0을 채워 넣어준다음에.. 
+		 * VO 없는 상태로 진행. 
+		 * 
+		 */
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//map 
+		Map<String,Object> map = new HashMap<String, Object>();
+		//map.put("", value)
+		list.add(map); 
+		
+		
+		
 		List<String> categoryList = productlistDAO.selectCategoryList();
 		int funcCount = productlistDAO.funcCount(paramMap);
 		
@@ -152,6 +181,8 @@ public class ProductListService {
 		returnMap.put("funcCount", funcCount); 
 		returnMap.put("categoryName", categoryName); 
 		returnMap.put("searchWord", searchWord); 
+		//returnMap.put("like", like); 
+		
 		
 		//map.put("productListTotal",productListTotal); 
 		

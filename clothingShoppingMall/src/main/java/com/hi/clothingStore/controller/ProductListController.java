@@ -67,8 +67,6 @@ public class ProductListController {
 			
 			
 									@RequestParam(value="currentPage",defaultValue = "1",required = false)int currentPage,
-								 // @RequestParam(value="startPage",defaultValue = "1",required = false)int startPage,
-								 // @RequestParam(value="endPage",defaultValue = "1",required = false)int endPage,
 								  @RequestParam(value = "rowPerPage", defaultValue = "20",required = false) int rowPerPage,
 								  @RequestParam(value="categoryName", required = false)String categoryName,
 								  @RequestParam(value="searchWord", required = false) String searchWord
