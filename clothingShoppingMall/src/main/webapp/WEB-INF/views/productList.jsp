@@ -79,41 +79,26 @@ product_category:
 </form>
 
 
-
-
-
-
-
-
-
-
-
-
-
 <table border="1"> 
  <tr>
  
 	<%
 	 int i=0; 
 	%>   
-   <c:forEach items="${list}" var="one">
+   <c:forEach items="${voListResult}" var="one">
 	<%
 		i+=1;
 	%>
 	<td>
 
 	 <div style = "height: 250px; overflow; hidden;position: relative;">
-      <div class="box01">
-      	<img src="resources/img/${one.product_img}" width="210px" height="200px" >
-      </div>
-      <div style="display: none;">${one.product_idx}</div><!-- one.getId() -->
-      <div><a href="productOne?product_idx=${one.product_idx}&product_img=${one.product_img}">${one.product_title}</a></div>
-      <div>￦${one.product_price}</div> 
-      
-       <div>${one.productLikeList}</div> 
-	  
-	  
-	  
+	      <div class="box01">
+	      	<img src="resources/img/${one.product_img}" width="210px" height="200px" >
+	      </div>
+		      <div style="display: none;">${one.product_idx}</div><!-- one.getId() -->
+		      <div><a href="productOne?product_idx=${one.product_idx}&product_img=${one.product_img}">${one.product_title}</a></div>
+		       <div>￦${one.product_price}❤${one.likecheck}</div>
+		        
 	  </div>
 	</td> 
 	<%

@@ -104,7 +104,7 @@ public class ProductListController {
 		model.addAttribute("lastPage", map.get("lastPage")); 
 		model.addAttribute("startIdx",map.get("startIdx")); 
 		model.addAttribute("endIdx",map.get("endIdx")); 
-		model.addAttribute("list", map.get("list")); 
+		model.addAttribute("voListResult", map.get("voListResult")); 
 		model.addAttribute("categoryList", map.get("categoryList"));
 		model.addAttribute("funcCount",map.get("funcCount"));
 		model.addAttribute("categoryName", map.get("categoryName")); 

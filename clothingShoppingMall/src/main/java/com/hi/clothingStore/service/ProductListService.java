@@ -1,8 +1,10 @@
 package com.hi.clothingStore.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Spliterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -122,8 +124,84 @@ public class ProductListService {
 		paramMap.put("searchWord",searchWord); 
 		
 		//dao 호출 
+		//List<Map<String,Object>> list = productlistDAO.productList(paramMap);
 		List<Map<String,Object>> list = productlistDAO.productList(paramMap);
-		System.out.println("Productlist ***************** "+list);
+		
+		
+		//String data = list.get(0).get("product_idx").toString();
+		//System.out.println("★★★★★★★★★★★★★★★★★★★★★★List<Map<String,Object> 가공 test :"+data);
+		
+		
+		List<Map<String,Object>> voListResult = new ArrayList<Map<String,Object>>();
+		
+		
+		//likecheck : 0으로 반복문을 통해서 각각의 map에 넣어준다.
+		//전체의 상품리스트들의 좋아요를 보여주기 위함. 
+		
+			for(Map<String, Object> voList : list) {
+				//System.out.println("ProductListService에 존재하는 voList:"+voList);
+				//Map<String,Object> voList2 = list.get(list.indexOf(voList));  
+				voList.put("likecheck", 0); 
+				System.out.println("==ProductList Service의 voList들:"+voList);
+				
+				voListResult.add(voList); 
+				//이 반복문이 끝나면 사라지므로 따로 담아둘 객체를 선언해서 담아준다. 
+				
+				//System.out.println("");
+				//Map<String, Object> data = list.get(0); 
+				//data.put("likecheck", 0);
+		}
+			
+		
+		//like check:0이 잘 들어간 것을 확인. 
+		System.out.println("========voListResult"+voListResult);
+		
+			
+			
+			
+		
+		
+		//System.out.println("★★★★★★★★★★★★★★★★★★★★★★List<Map<String,Object> 가공 test"+data);
+		
+		
+		
+		//map 데이터를 바꾸려면 반복문 또는 스트림을 활용 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		for(Map<String,Object> l : list) {
+//			System.out.println("============리스트에 담겨있는 map =======================");
+//			System.out.println("product_idx"+l.get("product_idx"));
+//			System.out.println("product_price"+l.get("product_price"));
+//			System.out.println("product_description"+l.get("product_description"));
+//			System.out.println("product_title"+l.get(" product_title"));
+//			System.out.println("product_category"+l.get("product_category"));
+//			System.out.println("product_img"+l.get("product_img"));
+//			System.out.println("product_rgstdate"+l.get("product_rgstdate"));
+//		}
+		
+		
+		
+		
+		
+		
+		
+		//		Spliterator<Map<String, Object>>list2 = list.spliterator();
+		//		
+		//		System.out.println("***************ProductListService list ***************** "+list);
+		//		System.out.println("***************ProductListService list ***************** "+List(list2));
+		
+		
+		
+		
 		
 		/*
 		 *[{product_rgstdate=2022-04-05 11:20:12.0, product_idx=1, product_price=49900, product_description=크롭트 가디건, 
@@ -147,10 +225,19 @@ public class ProductListService {
 		
 		
 		
+		
+		
+		
+		
+		
+		
 		//map 
-		Map<String,Object> map = new HashMap<String, Object>();
+		//Map<String,Object> map = new HashMap<String, Object>();
+		
+		
+		
 		//map.put("", value)
-		list.add(map); 
+		//list.add(map); 
 		
 		
 		
@@ -167,14 +254,13 @@ public class ProductListService {
 		}
 
 		System.out.println("Service의 funcCount:"+funcCount);
-		System.out.println("Service의 list:"+list);
 		System.out.println("Service의 categoryList:"+categoryList);
 		
 		
 		//Service에서 Controller로 넘어가는 변수 
 		Map<String,Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("lastPage", lastPage); 
-		returnMap.put("list", list);
+		returnMap.put("voListResult", voListResult);
 		returnMap.put("startIdx", startIdx); 
 		returnMap.put("endIdx", endIdx); 
 		returnMap.put("categoryList",categoryList); 
@@ -188,6 +274,6 @@ public class ProductListService {
 		
 		return returnMap; 
 		
-	}	
+	}
 	
 }
