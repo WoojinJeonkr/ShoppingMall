@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="productlike">
+
+	
+	<!-- 메인리스트 각 상품의 전체 총 좋아요 개수  -->
+  <select id="MainLikeCountList" parameterType="likeVO" resultType="int">
+	   SELECT COUNT(like_idx)
+	   FROM productlike
+	   WHERE product_idx=#{product_idx}
+  </select>
+
+  <!--  test sql : SELECT COUNT(like_idx) FROM productlike WHERE product_idx=3  -->
+
+	<!-- 상품 상세보기에서 유저들이 보는 하트 좋아요. -->
+
+  <!-- product_idx로 join한 뒤 product_like의 총 개수를 보여준다. -->
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

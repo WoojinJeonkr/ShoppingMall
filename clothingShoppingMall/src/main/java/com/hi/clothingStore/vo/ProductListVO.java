@@ -1,6 +1,6 @@
 package com.hi.clothingStore.vo;
 
-import com.sun.jmx.snmp.Timestamp;
+import java.sql.Timestamp;
 
 public class ProductListVO {
 
@@ -13,13 +13,9 @@ public class ProductListVO {
 	private String product_category; 
 	
 	private String product_tag;
-	private String product_like;
 	private String product_description;
-	private String product_rgstdate;          //timestamp 
-	private String product_mdfydate;	      //timestmap 
-
-	
-	
+	private String product_rgstdate;          //상품 상세화면에서 출력용으로만 하고  
+	private String product_mdfydate;	      //날짜순으로 정렬은 이용하지 않을 것이기 떄문에 String으로 두어도 무방하다. 
 	public int getProduct_idx() {
 		return product_idx;
 	}
@@ -56,12 +52,6 @@ public class ProductListVO {
 	public void setProduct_tag(String product_tag) {
 		this.product_tag = product_tag;
 	}
-	public String getProduct_like() {
-		return product_like;
-	}
-	public void setProduct_like(String product_like) {
-		this.product_like = product_like;
-	}
 	public String getProduct_description() {
 		return product_description;
 	}
@@ -85,9 +75,8 @@ public class ProductListVO {
 	public String toString() {
 		return "ProductListVO [product_idx=" + product_idx + ", product_title=" + product_title + ", product_img="
 				+ product_img + ", product_price=" + product_price + ", product_category=" + product_category
-				+ ", product_tag=" + product_tag + ", product_like=" + product_like + ", product_description="
-				+ product_description + ", product_rgstdate=" + product_rgstdate + ", product_mdfydate="
-				+ product_mdfydate + "]";
+				+ ", product_tag=" + product_tag + ", product_description=" + product_description
+				+ ", product_rgstdate=" + product_rgstdate + ", product_mdfydate=" + product_mdfydate + "]";
 	}
 	
 }

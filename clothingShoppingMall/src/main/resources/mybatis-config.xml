@@ -7,6 +7,7 @@
 		<typeAlias type="com.hi.clothingStore.vo.ServiceCenterVO" alias="serviceVO"/>
 		<typeAlias type="com.hi.clothingStore.vo.ServiceCenterFaqVO" alias="faqVO"/>
 		<typeAlias type="com.hi.clothingStore.vo.ReviewVO" alias="reviewVO"/>
+		<typeAlias type="com.hi.clothingStore.vo.LikeVO" alias="likeVO"/>
 	</typeAliases>
 	
 	<mappers>
@@ -15,6 +16,7 @@
 		<mapper resource="mapper/servicecenter.xml"/>
 		<mapper resource="mapper/servicecenterfaq.xml"/>
 		<mapper resource="mapper/review.xml"/>
+		<mapper resource="mapper/like.xml"/>
 	</mappers>
 	
 </configuration>

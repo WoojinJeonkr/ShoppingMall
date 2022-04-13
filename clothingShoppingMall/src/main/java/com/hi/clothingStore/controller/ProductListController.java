@@ -1,6 +1,7 @@
 package com.hi.clothingStore.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hi.clothingStore.dao.ProductListDAO;
+import com.hi.clothingStore.service.LikeListService;
 import com.hi.clothingStore.service.ProductListService;
+import com.hi.clothingStore.vo.LikeVO;
 import com.hi.clothingStore.vo.ProductListVO;
 
 @Controller
@@ -20,6 +23,7 @@ public class ProductListController {
 
 	@Autowired
 	ProductListService productListService; 
+	LikeListService likeListService; 
 	
 	@Autowired
 	ProductListDAO dao;
@@ -59,7 +63,10 @@ public class ProductListController {
 	 * Java Bean spec을 충족해야 하고 즉 , setter가 존재해야 한다 
 	 */
 	@RequestMapping("productList")
-	public String list(Model model, @RequestParam(value="currentPage",defaultValue = "1",required = false)int currentPage,
+	public String list(Model model, LikeVO vo,
+			
+			
+									@RequestParam(value="currentPage",defaultValue = "1",required = false)int currentPage,
 								 // @RequestParam(value="startPage",defaultValue = "1",required = false)int startPage,
 								 // @RequestParam(value="endPage",defaultValue = "1",required = false)int endPage,
 								  @RequestParam(value = "rowPerPage", defaultValue = "20",required = false) int rowPerPage,
@@ -92,6 +99,7 @@ public class ProductListController {
 		
 
 		Map<String,Object> map = productListService.getProductList(currentPage, rowPerPage, categoryName,searchWord);
+		//List<Integer> productLikeList = likeListService.getProductLikeList(vo);
 		
 		model.addAttribute("currentPage", currentPage); 
 		model.addAttribute("productListTotal",map.get("productListTotal")); 
@@ -103,6 +111,7 @@ public class ProductListController {
 		model.addAttribute("funcCount",map.get("funcCount"));
 		model.addAttribute("categoryName", map.get("categoryName")); 
 		model.addAttribute("searchWord", map.get("searchWord"));
+		//model.addAttribute("productLikeList",productLikeList); 
 		
 		return "productList";
 		

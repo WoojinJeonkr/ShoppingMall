@@ -86,7 +86,7 @@ $('#deleteBtn').click(function() {
 		     <div>이름:${one.product_title}</div> 
 		     <div>가격:${one.product_price}</div>
 		     <div>카테고리:${one.product_category}</div>
-		     <div>좋아요 수:${one.product_like}</div> 
+		    <%--  <div>좋아요 수:${one.product_like}</div>  --%>
 		     <div>상세 설명:${one.product_description}</div>
 	      	 <div>등록일:${one.product_rgstdate.substring(0,10)}</div> 
 	      	 <div>수정일:${one.product_mdfydate} </div>

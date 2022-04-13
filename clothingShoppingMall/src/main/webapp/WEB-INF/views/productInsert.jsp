@@ -48,7 +48,7 @@ $(document).ready(function(){
         
     });
     
- 	$(document).ready(function(){
+ 	/* $(document).ready(function(){
         
         $("#product_like").on("focusout", function() {
             var x = $(this).val();
@@ -63,7 +63,7 @@ $(document).ready(function(){
         });
  
         
-    });
+    }); */
 		
 </script>
 <style>

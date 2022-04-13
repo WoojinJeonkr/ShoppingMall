@@ -1,6 +1,7 @@
 package com.hi.clothingStore.dao;
 
 import java.util.List;
+
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -50,6 +51,7 @@ public class ProductListDAO {
 		System.out.println("productUpdate dao의 vo:"+ vo);
 		return my.update("productlist.updateProduct", vo);
 	}
+	
 	public int productDelete(ProductListVO vo) {
 		return my.delete("productlist.deleteProduct", vo);
 	}
