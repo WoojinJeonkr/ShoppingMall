@@ -34,5 +34,7 @@ public class ServiceCenterDAO {
 	public int delete (ServiceCenterVO vo) {
 		return my.insert("servicecenter.del",vo);
 	}
-	
+	public int number (ServiceCenterVO vo) {
+		return my.update("servicecenter.number",vo);
+	}
 }

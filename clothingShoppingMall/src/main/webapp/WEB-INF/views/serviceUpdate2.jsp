@@ -37,25 +37,25 @@ th, td {
 			<jsp:include page="../../top2.jsp"></jsp:include>
 		</div>
 		<div id="center">
-			<div class="well"><h3>글쓰기</h3></div>
+			<div class="well"><h3>수정하기</h3></div>
 			
 
 			<div id="d1">
 				<hr>
 				<form action="serviceUpdate1">
-					<input type="hidden" name="serviceIdx" style="width: 300px;" value="${one.serviceIdx}">
+					<input type="hidden" name="service_idx" style="width: 300px;" value="${one.service_idx}">
 					<table>
 						<tr>
 							<td class="left">제목</td>
-							<td class="right"><input type="text" name="serviceTitle"
-								style="width: 300px;" value="${one.serviceTitle}"></td>
+							<td class="right"><input type="text" name="service_title"
+								style="width: 300px;" value="${one.service_title}"></td>
 						</tr>
 
 						<tr>
 							<td class="left">내용</td>
-							<td class="right"><input type="text" name="serviceQuestion"
+							<td class="right"><input type="text" name="service_question"
 								style="width: 300px; height: 300px;"
-								value="${one.serviceQuestion}"></td>
+								value="${one.service_question}"></td>
 						</tr>
 
 					</table>

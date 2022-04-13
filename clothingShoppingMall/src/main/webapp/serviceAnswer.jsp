@@ -34,17 +34,21 @@ th, td {
 			<div id="d1">
 				<hr>
 				<form action="serviceWrite">
-				<input type="hidden" name="serviceWriter" style="width:300px;"
+				<input type="hidden" name="user_id" style="width:300px;"
 								value="admin" readonly="readonly">
+				<input type="hidden" name="service_id_origin" style="width:300px;"
+								value="<%= request.getParameter("service_idx") %>" readonly="readonly">
+				<input type="hidden" name="service_idx_re" style="width:300px;"
+								value="1" readonly="readonly">
 					<table>
 						<tr>
 							<td class="left">제목</td>
-							<td class="right"><input type="text" name="serviceTitle" style="width:300px;"  value="ㄴ RE:"></td>
+							<td class="right"><input type="text" name="service_title" style="width:300px;"  value="ㄴ RE:"></td>
 						</tr>
 						
 						<tr>
 							<td class="left">내용</td>
-							<td class="right"><input type="text" name="serviceQuestion" style="width:300px; height:300px"></td>
+							<td class="right"><input type="text" name="service_question" style="width:300px; height:300px"></td>
 						</tr>
 
 					</table>

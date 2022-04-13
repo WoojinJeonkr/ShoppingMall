@@ -33,16 +33,22 @@ FAQ를 보여주는 jsp
 </head>
 <body>
 
-	<div class="well"><h1>FAQ</h1>	<p>자주 묻는 질문사항</p></div>
+	<div class="well", style="width:30%; height:150px; float:left;"><h1>FAQ</h1>	<p>자주 묻는 질문사항</p></div>
+	<div class="well", style="width:70%; height:150px; float:left;">
+		<div id="faqBtn"><a href="faqList"><h4>FAQ</h4></a></div>
+		<div id="qnaBtn"><a href="serviceList"><h4>QnA</h4></a></div>
+		<div id="qnaBtn"><h4>공지사항</h4></div>
+	</div>
 
 	<hr>
 <table>			
 	<c:forEach items="${list}" var="one">
 		<tr>
-			<td id="title">${one.faqTitle}</td><!-- 자주 묻는 질문 -->
+			<td id="title">${one.service_faq_question}</td><!-- 자주 묻는 질문 -->
 		</tr>
-			<td id="answer">${one.faqQuestion}</td><!-- 그에대한 답변 -->
+			<td id="answer">${one.service_faq_answer}</td><!-- 그에대한 답변 -->
 	</c:forEach>
+	
 </table>
 </body>
 </html>

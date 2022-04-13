@@ -6,15 +6,14 @@ public class ServiceCenterVO {
 
 
 	private int service_idx;
-	private String service_writer;
+	private String user_id;
 	private String service_title;
 	private String service_question;
 	private Timestamp service_rgstday;
 	private int service_idx_re ;
 	private int service_id_origin ;
 	private int service_reply_group;
-	private int service_notice;
-	
+
 	
 	public int getService_idx() {
 		return service_idx;
@@ -22,11 +21,12 @@ public class ServiceCenterVO {
 	public void setService_idx(int service_idx) {
 		this.service_idx = service_idx;
 	}
-	public String getService_writer() {
-		return service_writer;
+	
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setService_writer(String service_writer) {
-		this.service_writer = service_writer;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 	public String getService_title() {
 		return service_title;
@@ -64,19 +64,15 @@ public class ServiceCenterVO {
 	public void setService_reply_group(int service_reply_group) {
 		this.service_reply_group = service_reply_group;
 	}
-	public int getService_notice() {
-		return service_notice;
-	}
-	public void setService_notice(int service_notice) {
-		this.service_notice = service_notice;
-	}
 	@Override
 	public String toString() {
-		return "ServiceCenterVO [service_idx=" + service_idx + ", service_writer=" + service_writer + ", service_title="
+		return "ServiceCenterVO [service_idx=" + service_idx + ", user_id=" + user_id + ", service_title="
 				+ service_title + ", service_question=" + service_question + ", service_rgstday=" + service_rgstday
 				+ ", service_idx_re=" + service_idx_re + ", service_id_origin=" + service_id_origin
-				+ ", service_reply_group=" + service_reply_group + ", service_notice=" + service_notice + "]";
+				+ ", service_reply_group=" + service_reply_group + "]";
 	}
+	
+	
 	
 	
 }
