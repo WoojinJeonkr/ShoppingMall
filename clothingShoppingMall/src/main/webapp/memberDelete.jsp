@@ -29,7 +29,7 @@
 <body>
 	<hr>
 	<form action="memberDelete">
-	 <input type="hidden" name="id" value="${userId}"><br>
+	 <input type="hidden" name="user_id" value="${userId}"><br>
 		<button type="submit" id="delete">회원탈퇴</button>
 	</form>
 

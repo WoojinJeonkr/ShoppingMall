@@ -79,7 +79,7 @@ $(document).ready(function(){
 		} else {
 		$.ajax({
 			url:"memberIdCheck",
-			data:{'id':$('#id').val()},
+			data:{'id':$('#user_id').val()},
 			success: function(data) { //views아래에 있는 memberIdCheck.jsp의 실행결과가 data에 담김.
 				if(data == 1) {
 					alert("사용할 수 없는 아이디 입니다.")

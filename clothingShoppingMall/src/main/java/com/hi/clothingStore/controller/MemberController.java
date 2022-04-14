@@ -30,9 +30,10 @@ public class MemberController {
 		//vo2가 로그인에 실패한 경우 null
 		//vo2가 로그인에 성공한 경우 주소가 들어있음.
 		if(vo2 != null) { //로그인에 성공했을 때
-			//세션을 잡자!
+			//세션을 잡자!//세션을 너무 많이 잡으면 용량 차지를 많이해서 안좋다.
 			session.setAttribute("userId", vo2.getUser_id());
 			session.setAttribute("userName", vo2.getUser_name());
+			
 			return "redirect:member.jsp";
 		} else { //로그인에 실패했을 때 
 			return "memberCheck";
@@ -57,12 +58,12 @@ public class MemberController {
 		return "redirect:member.jsp";
 	}
 	//아이디중복체크
-	@RequestMapping("memberIdCheck")
+	@RequestMapping("memberIdCheck")//memberCre.jsp에 ajax의 url의 주소로 들어가 있다.
 	public void idCheck(MemberVO vo, Model model) {
 		System.out.println(vo);
 		MemberVO  vo2 = dao.idCheck(vo);
 		System.out.println("결과>> " + vo2);
-		int result = 1;
+		int result = 1; //기존에 있는 id로 쓸 수 없는 id.
 		if (vo2 == null ) {
 			result = 0; //쓸 수 있는 id임.
 		}
@@ -72,11 +73,12 @@ public class MemberController {
 	@RequestMapping("memberModyPw")
 	public void modyPw(MemberVO vo, Model model) {
 		System.out.println(vo);
-		MemberVO  vo2 = dao.modyPw(vo);
+		MemberVO  vo2 = dao.modyPw(vo);//vo1:내가 입력한 값들 담김.,vo2:db에서 가져온 id,pw,tel,..의 값들.
 		System.out.println("결과>> " + vo2);
-		int result = 1;
-		if (vo2 == null ) {
-			result = 0; //쓸 수 있는 pw임.
+		int result = 0; //쓸 수 없는 pw
+		if (vo.getUser_pw().equals(vo2.getUser_pw()) ) {
+			//vo에 들어있는 내가 입력한 pw인 getUser_pw()와 vo2(db에 있는)에 들어있는 pw인 getUser_pw가 같은지(equals)확인.
+			result = 1; //쓸 수 있는 pw
 		}
 		model.addAttribute("result", result);
 	}
@@ -86,13 +88,13 @@ public class MemberController {
 		//수정하기버튼을 누르면, 기존의 db에 저장된 데이터를
 		//가지고 와서, 수정할 수 있는 화면에 넣어주어야 한다.
 		//그러기 위해서는 로그인 부분을 만들 때 사용한 member를 가져오면 된다.
-
 		MemberVO vo2 = dao.one(vo);
 		model.addAttribute("one", vo2);
 	}
 	//회원 수정 컨트롤러
 	@RequestMapping("memberUpdate")
 	public String update(MemberVO vo, Model model) {
+		System.out.println("회원수정vo를 찍어보자: "+vo);
 		//수정하고 싶은 것이 있으면 수정처리 요청
 		int result = dao.update(vo); 
 		if(result == 1) {
@@ -101,7 +103,13 @@ public class MemberController {
 			return "memberNo"; 
 		}
 	}
-	
-	
+	//회원탈퇴 컨트롤러
+	@RequestMapping("memberDelete")
+	public String delete1(MemberVO vo, Model model, HttpSession session) {
+		int result = dao.delete(vo);
+		model.addAttribute("result", result);
+		session.invalidate();
+		return "redirect:member.jsp";
+	}
 }
 

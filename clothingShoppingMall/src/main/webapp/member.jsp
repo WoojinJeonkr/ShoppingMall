@@ -49,7 +49,8 @@ $(document).ready(function(){
 					</tr>
 					<tr>
 						<td class="left">패스워드</td>
-						<td class="right"><input  class="form-control input-lg"  type="password" name="user_pw" 
+						<td class="right"><input  class="form-control input-lg"  
+						type="password" name="user_pw" 
 						value="12345678"
 						id="pw">
 						<div id="pwc"></div>
@@ -66,13 +67,17 @@ $(document).ready(function(){
 			
 			
 			<% }else{ %>
-			<span style="color:red; font-size: 20px; font-weight: bold;">${userName}님!! 환영합니다. 아이디가 ${user_id}로 로그인되었습니다.</span>
+			<span style="color:red; font-size: 20px; font-weight: bold;">${userName}님!! 환영합니다. 아이디가 ${userId}로 로그인되었습니다.</span>
 			<a href="logout">
 			<button style="width:200px; height:50px;" class="btn btn-success" >로그아웃</button>
 			</a>
+			<!-- 회원수정,회원탈퇴 버튼 myPage.jsp로 이동 -->
+			<!-- <a href="memberUpdate.jsp">
+			<button style="width:200px; height:50px;" class="btn btn-success" >회원수정</button>
+			</a>
 			<a href="memberDelete.jsp">
 			<button style="width:200px; height:50px;" class="btn btn-success" >회원탈퇴</button>
-			</a>
+			</a> -->
 			<% } %>
 		</div>
 	</div>
