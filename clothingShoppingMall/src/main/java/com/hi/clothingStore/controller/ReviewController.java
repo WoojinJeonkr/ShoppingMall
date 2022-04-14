@@ -21,7 +21,7 @@ import com.hi.clothingStore.vo.ReviewVO;
 public class ReviewController {
 
 	@Autowired
-	ReviewServiceImpl service;
+	ReviewServiceImpl reviewServiceImpl;
 	
 	@Autowired
 	ReviewDAOImpl dao;
@@ -33,10 +33,13 @@ public class ReviewController {
 	*/
 	
 	// 구매 후기 목록
+	// reviewList?product_idx=${one.product_idx}
 	@ResponseBody
-	@RequestMapping(value = "/reviewList", method = RequestMethod.GET)
-	public List<ReviewListVO> getReviewList(@RequestParam("n") int product_idx) throws Exception{
-		List<ReviewListVO> review = service.reviewList(product_idx);
+	@RequestMapping("reviewList")
+	public List<ReviewListVO> getReviewList(int product_idx) throws Exception{
+		//public List<ReviewListVO> getReviewList(@RequestParam("n") int product_idx) throws Exception{
+		System.out.println("후기 목록이 호출되었습니다.");
+		List<ReviewListVO> review = reviewServiceImpl.reviewList(product_idx);
 		return review;
 	}
 	
@@ -55,28 +58,28 @@ public class ReviewController {
 	
 	// 구매 후기 작성
 	@ResponseBody
-	@RequestMapping(value = "/reviewList/reviewCreate", method = RequestMethod.POST)
+	@RequestMapping(value = "reviewCreate", method = RequestMethod.POST)
 	public void reviewCreate(ReviewVO review, HttpSession session) throws Exception {
-		
+		System.out.println("후기 작성이 호출되었습니다.");
 		MemberVO member = (MemberVO)session.getAttribute("member");
 		review.setUser_id(member.getUser_id());
 		
-		service.reviewCreate(review);
+		reviewServiceImpl.reviewCreate(review);
 	}
 	
 	// 구매 후기 삭제
 	@ResponseBody
-	@RequestMapping(value = "/reviewList/reviewDelete", method = RequestMethod.POST)
+	@RequestMapping(value = "reviewDelete", method = RequestMethod.POST)
 	public int getReviewList(ReviewVO review, HttpSession session) throws Exception {
-		
+		System.out.println("후기 삭제가 호출되었습니다.");
 		int result = 0;
 		
 		MemberVO member = (MemberVO)session.getAttribute("member");
-		String user_id = service.idCheck(review.getReview_idx());
+		String user_id = reviewServiceImpl.idCheck(review.getReview_idx());
 		
 		if(member.getUser_id().contentEquals(user_id)) {
 			review.setUser_id(member.getUser_id());
-			service.reviewDelete(review);
+			reviewServiceImpl.reviewDelete(review);
 			/*if 결과가 참이라면 삭제 작업을 진행한 뒤 변수 result에 1을 저장하고,
 			    거짓이면 아무 작업도 하지 않고 종료함*/
 			result = 1;
@@ -86,17 +89,17 @@ public class ReviewController {
 	
 	// 구매 후기 수정
 	@ResponseBody
-	@RequestMapping(value = "/reviewList/reviewUpdate", method = RequestMethod.POST)
+	@RequestMapping(value = "reviewUpdate", method = RequestMethod.POST)
 	public int reviewUpdate(ReviewVO review, HttpSession session) throws Exception {
-		
+		System.out.println("후기 수정이 호출되었습니다.");
 		int result = 0;
 		
 		MemberVO member = (MemberVO)session.getAttribute("member");
-		String user_id = service.idCheck(review.getReview_idx());
+		String user_id = reviewServiceImpl.idCheck(review.getReview_idx());
 		
 		if(member.getUser_id().equals(user_id)){
 			review.setUser_id(member.getUser_id());
-			service.reviewUpdate(review);
+			reviewServiceImpl.reviewUpdate(review);
 			result = 1;
 		}
 		return result;
