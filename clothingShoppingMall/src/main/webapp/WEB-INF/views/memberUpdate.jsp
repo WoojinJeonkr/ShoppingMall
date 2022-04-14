@@ -25,7 +25,7 @@
 <script type="text/javascript">
 	//alert("회원수정 성공!!!")구현
 	$(function() {
-		alert('회원수정 성공!')
+		alert('회원수정 되었습니다')
 		location.href="member.jsp";//회원수정 완료시 로그인 페이지로 이동
 	})
 </script>

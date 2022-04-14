@@ -47,6 +47,8 @@ public class MemberDAO {
 	public int update(MemberVO vo) {
 		return my.update("member.update", vo);
 	}
-
+	public int delete(MemberVO vo) {
+		return my.delete("book.delete1", vo);
+	}
 	
 }
