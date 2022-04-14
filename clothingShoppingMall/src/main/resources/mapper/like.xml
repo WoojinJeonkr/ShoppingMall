@@ -3,22 +3,36 @@
 
 <mapper namespace="productlike">
 
-	
+	<!-- 쿼리없이 가공으로 전체 하트리스트 만들었음. -->
 	<!-- 메인리스트 각 상품의 전체 총 좋아요 개수  -->
-  <select id="MainLikeCountList" parameterType="likeVO" resultType="int">
+  <!-- <select id="MainLikeCountList" parameterType="likeVO" resultType="int">
 	   SELECT COUNT(like_idx)
 	   FROM productlike
 	   WHERE product_idx=#{product_idx}
-  </select>
+  </select> -->
 
   <!--  test sql : SELECT COUNT(like_idx) FROM productlike WHERE product_idx=3  -->
 
 	<!-- 상품 상세보기에서 유저들이 보는 하트 좋아요. -->
 
   <!-- product_idx로 join한 뒤 product_like의 총 개수를 보여준다. -->
+  <!-- product 테이블에서 product_like 컬럼이 없어졌으므로 서비스에서 컬렉션 2차 재가공한다. -->
+  
+  
+  <!-- product_idx 상품마다 좋아요 총합. -->
+  <select id="SumProductLike" resultType="java.util.Map">
+  	select
+		product_idx , sum(likecheck) as likecheck 
+		from productlike 
+	group by product_idx , likecheck 
+  </select>
 
-
-
+	<!-- 	select
+		product_idx ,sum(likecheck) 
+		from productlike 
+		group by product_idx , likecheck 
+	
+	 -->
 
 
 
