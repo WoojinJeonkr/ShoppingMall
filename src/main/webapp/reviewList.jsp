@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>구매 후기 목록</title>
 <%
-	int product_idx = Integer.parseInt(request.getParameter("product_idx"));
+	int product_idx = Integer.parseInt(request.getParameter("product_idx"));	
 %>
 <style>
 	section.reviewForm {padding:30px 0;}
@@ -22,6 +23,13 @@
 	section.reviewList div.userInfo .date {color:#999; display:inline-block; margin-left:10px;}
 	section.reviewList div.reviewContent {padding:10px; margin:20px 0;}
 	section.reviewList div.reviewFooter button { font-size:14px; border: 1px solid #999; background:none; margin-right:10px;}
+	
+	div.replyModal { position:relative; z-index:1; display:none;}
+	div.modalBackground { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.8); z-index:-1; }
+	div.modalContent { position:fixed; top:20%; left:calc(50% - 250px); width:500px; height:250px; padding:20px 10px; background:#fff; border:2px solid #666; }
+	div.modalContent textarea { font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:500px; height:200px; }
+	div.modalContent button { font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc; }
+	div.modalContent button.modal_cancel { margin-left:20px;}
 </style>
 	<!-- 함수로 사용할 스크립트들은 특별한 이유가 있지 않은 한 헤드 내부에 위치시킨다 -->
 	<script>
@@ -35,9 +43,11 @@
 				$(data).each(function(idx, one){
 					console.log(one); // 콘솔에서 data 확인
 					
-					// 날짜 표현 방식 변경
+					/* // 날짜 표현 방식 변경
 					Timestamp review_rgstdate = new Timestamp(System.currentTimeMills());
-					SimpleDateFormat format = nwe SimpleDateFormat("yyyy-MM-dd");
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); */
+
+					<fmt:formatDate pattern="yyyy-MM-dd" value="${review_rgstdate}"/>
 					
 					// HTML 코드 조립
 					str += "<li data-review_idx='" + this.review_idx + "'>"
@@ -46,7 +56,7 @@
 						+ "<span class='date'>" + review_rgstdate + "</span>"
 						+ "</div>"
 						+ "<div class='review_content'>" + this.review_content + "</div>"
-						+ "<c:if test='${userId != null}'>"
+						+ "<c:if test='${member != null}'>"
 						+ "<div class='reviewFooter'>"
 						+ "<button type='button' class='modify' data-review_idx='" + this.review_idx + "'>후기 수정</button>"
 						+ "<button type='button' class='delete' data-review_idx='" + this.review_idx + "'>후기 삭제</button>"
@@ -87,12 +97,18 @@
 								var product_idx = $("#product_idx").val(); // 상품 번호 변수 선언
 								var review_content = $("#review_content").val(); // 후기 내용 변수 선언
 								
+								var data = {
+										review_idx : review_idx,
+										review_content : review_content
+								};
+								
 								$.ajax({
 									url : "reviewCreate", // 데이터가 전송될 주소
 									type : "post", // 타입
 									data : data, // 전송될 데이터
 									success : function(){ // 데이터 전송이 성공되었을 경우 실행할 함수부
-										//reviewList();
+										reviewList();
+										$("#review_content").val("")
 									},
 									error: function() {
 										alert('실패')
@@ -100,6 +116,7 @@
 								});
 							});
 						</script>
+					</div>
 						<!-- 수정 버튼 스크립트 -->
 						<script>
 							$(document).on("click", ".modify", function(){

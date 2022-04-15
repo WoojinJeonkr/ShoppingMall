@@ -1,7 +1,6 @@
 package com.hi.clothingStore.dao;
 
 import java.util.List;
-
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hi.clothingStore.vo.ProductListVO;
-import com.hi.clothingStore.vo.ProductPageVO;
 
 
 
