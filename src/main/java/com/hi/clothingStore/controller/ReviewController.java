@@ -60,8 +60,8 @@ public class ReviewController {
 	@RequestMapping(value = "reviewCreate", method = RequestMethod.POST)
 	public void reviewCreate(ReviewVO review, HttpSession session) throws Exception {
 		System.out.println("후기 작성이 호출되었습니다.");
-		MemberVO member = (MemberVO)session.getAttribute("member");
-		review.setUser_id(member.getUser_id());
+		String user_id = (String)session.getAttribute("user_id");
+		review.setUser_id(user_id);
 		
 		reviewServiceImpl.reviewCreate(review);
 	}
@@ -73,7 +73,7 @@ public class ReviewController {
 		System.out.println("후기 삭제가 호출되었습니다.");
 		int result = 0;
 		
-		MemberVO member = (MemberVO)session.getAttribute("member");
+		MemberVO member = (MemberVO)session.getAttribute("user_id");
 		String user_id = reviewServiceImpl.idCheck(review.getReview_idx());
 		
 		if(member.getUser_id().contentEquals(user_id)) {
@@ -93,7 +93,7 @@ public class ReviewController {
 		System.out.println("후기 수정이 호출되었습니다.");
 		int result = 0;
 		
-		MemberVO member = (MemberVO)session.getAttribute("member");
+		MemberVO member = (MemberVO)session.getAttribute("user_id");
 		String user_id = reviewServiceImpl.idCheck(review.getReview_idx());
 		
 		if(member.getUser_id().equals(user_id)){

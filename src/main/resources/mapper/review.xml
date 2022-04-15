@@ -4,29 +4,29 @@
 <mapper namespace="review">
 
 	<!-- 후기 작성 -->
-	<insert id="reviewCreate">
-		insert into review values (review_seq.nextval, #{product_idx}, #{user_id}, #{review_content}, #{review_img}, #{review_score}, now())
+	<insert id="reviewCreate" parameterType="reviewVO">
+		insert into review values (null, #{product_idx}, #{user_id}, #{review_content}, #{review_img}, #{review_score}, now())
 	</insert>
 	
 	<!-- 후기 보기 -->
-	<select id="reviewList" resultType="com.hi.clothingStore.vo.ReviewListVO">
+	<select id="reviewList" parameterType="reviewVO" resultType="reviewlistVO">
 		select r.review_idx, r.product_idx, r.user_id, r.review_content, r.review_img, r.review_score, r.review_rgstdate, m.user_name from review r 
 		inner join member m on r.user_id = m.user_id where product_idx = #{product_idx}
 	</select>
 	
 	<!-- 후기 수정 -->
-	<update id="reviewUpdate">
+	<update id="reviewUpdate" parameterType="reviewVO">
 		update review set review_content = #{review_content}, review_img = #{review_img}, review_score = #{review_score} 
 		where review_idx = #{review_idx} and user_id = #{user_id}
 	</update>
 	
 	<!-- 후기 삭제 -->
-	<delete id="reviewDelete">
-		delete review where review_idx = #{review_idx} and user_id = #{user_id}
+	<delete id="reviewDelete" parameterType="reviewVO">
+		delete from review where review_idx = #{review_idx} and user_id = #{user_id}
 	</delete>
 
 	<!-- 아이디 체크 -->
-	<select id="reviewUserIdCheck" resultType="String">
+	<select id="reviewUserIdCheck" resultType="reviewVO">
 		select user_id from review where review_idx = #{review_idx}
 	</select>
 	
