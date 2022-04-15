@@ -18,7 +18,6 @@ public class LikeDAO {
 	SqlSessionTemplate my;
 	
 	//List 내부에는 int가 아니라 Integer 객체로 들어가야 함. 
-	
 	public List<Integer> MainLikeCount(LikeVO vo) {
 		System.out.println("MainLikeCount vo:"+vo);
 		return my.selectList("productlike.MainLikeCountList", vo);
@@ -27,6 +26,20 @@ public class LikeDAO {
 	//상품별 좋아요 수 갱신 메서드. 
 	public List<Map<String, Object>> SumProductLike(ProductPageVO vo) {
 		return my.selectList("productlike.SumProductLike", vo);
+
+	}
+	
+	//회원이 하트 버튼 클릭했을 때 메서드 
+	public int createMemberLike(LikeVO vo) {
+		System.out.println("createMemberLike의 vo:"+vo);
+		return my.insert("productlike.createMemberLike", vo);
+	}
+	
+	//회원이 이전에 하트를 눌렀는지 안 눌렀는지 알게 해주는 메서드 
+	public LikeVO selectOneLike(LikeVO vo) {
+		System.out.println("selectOneLike vo"+vo);
+		return my.selectOne("productlike.selectOneLike", vo); 
+
 	}
 	
 	

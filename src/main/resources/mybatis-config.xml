@@ -9,7 +9,7 @@
 		<typeAlias type="com.hi.clothingStore.vo.ServiceCenterVO" alias="serviceVO"/>
 		<typeAlias type="com.hi.clothingStore.vo.ServiceCenterFaqVO" alias="faqVO"/>
 		<typeAlias type="com.hi.clothingStore.vo.ReviewVO" alias="reviewVO"/>
-		<typeAlias type="com.hi.clothingStore.vo.LikeVO" alias="likeVO"/>
+		<typeAlias type="com.hi.clothingStore.vo.LikeVO" alias="likeVO"/> 
 	</typeAliases>
 	
 	<mappers>

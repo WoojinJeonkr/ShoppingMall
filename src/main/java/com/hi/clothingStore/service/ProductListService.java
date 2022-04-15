@@ -304,16 +304,23 @@ public class ProductListService {
 		/*
 		 * IndexOutofRange에러.. 첫 페이지만 기준으로 상품이 들어온 20개의 정보에만 현재 likecheck가 들어오는 걸로 되어있어서 
 		 * 그거보다 큰 product_idx를 지금 현재 못 넣는 상태. 
+		 * 페이지 넘어갈 때마다 product_idx도 페이징으로 제한을 걸어 IndexOutofRange 방지완료.
 		 * 전체 정보를 가져온뒤 likecheck를 넣어주고 그것을 20개로 나누고.. 전체정보를 가져온 곳에다가 업데이트 시킬것...
-		 * 
-		 * 
-		 * 
 		 */
 		
 		
 		
+
+		//ArrayList 두 개를 가져와서 product_idx를 기준으로 likehceck만 갱신할 수 있도록 넣어준다. 
+		//MySQL 의 INT형 컬럼 데이터를 HashMap 타입으로 받아 java에서 사용하려고 할때 오류 발생 String.valueOf로 해결. 
+		//Mybatis에서 int형 컬럼 데이터를 map으로 받을 때 자동으로 BigDecimal로 변환 시킴. 
+		//BigDecimal은 Integer의 자식임. 그래서 오토박싱과 오토언박싱이 일어남.  
+		//ex) int index = ((BigDecimal)dataMap.put("number")).intValue(); 
+		//이렇게 해결해도 됌. 
+		
+		
 		for(int i=0;i<productLikeRenew.size();i++) {
-			System.out.println("================voListResult에서 likecheck변환될 개수:"+i);
+			//System.out.println("================voListResult에서 likecheck변환될 개수:"+i);
 			Map<String,Object> map2 = productLikeRenew.get(i); 
 			int product_idx = Integer.parseInt(String.valueOf(map2.get("product_idx"))); 
 			int likecheck = Integer.parseInt(String.valueOf((map2.get("likecheck"))));

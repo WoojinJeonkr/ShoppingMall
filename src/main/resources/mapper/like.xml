@@ -29,16 +29,48 @@
 	having product_idx &lt;= #{rowPerPage}
   </select>
   
-  
-  
+
 	<!-- 	
 	select
 	product_idx ,sum(likecheck) as likecheck 
 	from productlike 
 		group by product_idx , likecheck 
 		having product_idx <=20
-	
 	 -->
+  
+  <!-- member가 빈 하트에서 버튼을 누르면 속이 찬 하트로 바뀌면서 데이터값이 들어감. -->
+  <insert id = "createMemberLike" parameterType="likeVO">
+  	
+  	insert into 
+  		productlike(like_idx, user_id, product_idx, likecheck)
+  	values (null, #{user_id}, #{product_idx}, 1)
+  	
+  </insert>
+  
+  <!-- insert into 
+  			productlike(like_idx, user_id, product_idx, likecheck)
+  		values (null, 'aaabbb', 4, 1)
+   -->
+  
+  
+  <!-- could not find parameter map 에러 : mybatis에서 더 이상 지원하지 않는 parameterMap을 사용하면 나타나는 에러 -->
+  <!-- 상세보기에서 이전에 회원이 그 상품에 맞는 좋아요를 눌렀는지 안 눌렀는지 보여주는 것. -->
+  <select id = "selectOneLike" parameterType="likeVO" resultType="likeVO">
+	  select * from 
+	  		productlike 
+	  where 	
+	 		user_id = #{user_id} and 
+	  		product_idx = #{product_idx}
+  </select>
+  
+  <!--   select * from 
+  		productlike 
+   where 	
+ 		user_id = 'aaabbb' and 
+  		product_idx = 4
+   -->		
+  
+
 
 
 

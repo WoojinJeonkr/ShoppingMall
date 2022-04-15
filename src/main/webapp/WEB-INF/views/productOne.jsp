@@ -65,6 +65,30 @@ $('#deleteBtn').click(function() {
 		}
 	})
 	
+		/* $('#love').click(function() {
+		if () {
+			
+		} else {
+		$.ajax({
+			url:"selectMemberLikeOne",
+			data:{
+				user_idx: ,
+				product_idx : 
+			},
+			success: function(data) { 
+				if(data == 1) {
+					//
+				} else {
+					//
+				}
+			}
+		})
+		}
+	}) */
+	
+	
+	
+	
 })//$
 
 </script>
@@ -92,7 +116,7 @@ $('#deleteBtn').click(function() {
 	      	 <div>수정일:${one.product_mdfydate} </div>
 		      	 
 		      	 <button>바로구매</button> 
-		      	 <button>♥</button> 
+		      	 <button id = "love">♥</button> 
 		      	 <button id = "add">장바구니</button> 
 		      	 <button><a href="reviewList.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
 		     <!-- 카테고리, 좋아요, 작업 이후에  구현되도록 수정할 것. -->
