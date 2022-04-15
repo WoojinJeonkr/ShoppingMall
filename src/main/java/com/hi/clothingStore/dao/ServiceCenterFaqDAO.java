@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hi.clothingStore.vo.ServiceCenterFaqVO;
+import com.hi.clothingStore.vo.ServiceCenterVO;
 
 
 @Component
@@ -18,5 +19,27 @@ public class ServiceCenterFaqDAO {
 	public List<ServiceCenterFaqVO> all() {
 		return my.selectList("servicecenterfaq.list");
 	}
+	public int create (ServiceCenterFaqVO vo) {
+		return my.insert("servicecenterfaq.create",vo);
+	}
 	
+	public List<ServiceCenterFaqVO> all_notice() {
+		return my.selectList("servicecenterfaq.list_notice");
+	}
+	
+	public ServiceCenterFaqVO one (ServiceCenterFaqVO vo) {
+		return my.selectOne("servicecenterfaq.one",vo);
+	}
+	
+	public int delete (ServiceCenterFaqVO vo) {
+		return my.insert("servicecenterfaq.del",vo);
+	}
+	
+	public int create1 (ServiceCenterFaqVO vo) {
+		return my.insert("servicecenterfaq.create1",vo);
+	}
+	
+	public int update (ServiceCenterFaqVO vo) {
+		return my.insert("servicecenterfaq.up2",vo);
+	}
 }

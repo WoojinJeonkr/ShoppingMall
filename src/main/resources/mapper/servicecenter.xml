@@ -7,7 +7,8 @@
 		select * from servicecenter where service_idx = #{service_idx}
 	</select>
 	<select id="list" resultType="serviceVO">
-		select * from servicecenter order by service_id_origin desc, service_idx_re asc;
+		select * from servicecenter order by service_id_origin desc, service_idx_re asc
+	
 	</select>
 	<insert id="create" parameterType="serviceVO">
 		insert into servicecenter values (null, #{user_id},#{service_title},#{service_question}, null, #{service_idx_re}, #{service_id_origin},#{service_reply_group})

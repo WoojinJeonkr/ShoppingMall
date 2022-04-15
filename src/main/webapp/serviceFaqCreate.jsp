@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>고객센터:글쓰기</title>
+<title>Insert title here</title>
 <style>
 
 table {
@@ -29,22 +29,27 @@ th, td {
 			<jsp:include page="top2.jsp"></jsp:include>
 		</div>
 		<div id="center">
-			<div class="well"><h3>글쓰기</h3></div>
+			<div class="well"><h3>FAQ 등록</h3></div>
 
 			<div id="d1">
 				<hr>
-				<form action="serviceWrite">
-				<input type="hidden" name="user_id" style="width:300px;"
-								value="${user_id}" readonly="readonly">
+				<form action="serviceFaqCreate">
+					<select name="service_faq_category">
+			            <option value="주문결제" selected >주문결제</option>
+						<option value="배송안내">배송안내</option>
+					    <option value="교환/환불">교환/환불</option>
+						<option value="상품/회원관련">상품/회원관련</option>
+			        </select>
+
 					<table>
 						<tr>
 							<td class="left">제목</td>
-							<td class="right"><input type="text" name="service_title" style="width:300px;"></td>
+							<td class="right"><input type="text" name="service_faq_question" style="width:300px;"></td>
 						</tr>
 						
 						<tr>
 							<td class="left">내용</td>
-							<td class="right"><input type="text" name="service_question" style="width:300px; height:300px"></td>
+							<td class="right"><input type="text" name="service_faq_answer" style="width:300px; height:300px"></td>
 						</tr>
 
 					</table>
