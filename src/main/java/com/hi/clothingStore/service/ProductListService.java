@@ -6,15 +6,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Spliterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hi.clothingStore.dao.LikeDAO;
 import com.hi.clothingStore.dao.ProductListDAO;
-import com.hi.clothingStore.vo.LikeVO;
-import com.hi.clothingStore.vo.ProductListVO;
 import com.hi.clothingStore.vo.ProductPageVO;
 
 @Service

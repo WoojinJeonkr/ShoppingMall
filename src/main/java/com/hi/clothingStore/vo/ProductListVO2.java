@@ -1,7 +1,5 @@
 package com.hi.clothingStore.vo;
 
-import java.sql.Timestamp;
-
 public class ProductListVO2 {
 
 
