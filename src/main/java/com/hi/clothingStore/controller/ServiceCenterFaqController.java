@@ -2,6 +2,7 @@ package com.hi.clothingStore.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hi.clothingStore.dao.ServiceCenterFaqDAO;
 import com.hi.clothingStore.vo.ServiceCenterFaqVO;
+import com.hi.clothingStore.vo.ServiceCenterVO;
 
 @Controller
 public class ServiceCenterFaqController {
@@ -22,4 +24,60 @@ public class ServiceCenterFaqController {
 		model.addAttribute("list", list);
 	}
 	
+	@RequestMapping("serviceNoticeList")
+	public void list1(Model model) {
+		List<ServiceCenterFaqVO> list=dao.all_notice();
+		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping("serviceNoticeOne")
+	public void readone(ServiceCenterFaqVO vo, Model model) {
+		ServiceCenterFaqVO one= dao.one(vo);
+		model.addAttribute("one", one);
+	}
+	
+	@RequestMapping("serviceFaqCreate")
+	public String create(ServiceCenterFaqVO vo) {
+		System.out.println("게시글등록요청");
+		int result =dao.create(vo);
+		if(result==1) {
+			System.out.println("게시글등록");
+			
+			return "serviceFaqInsert";
+
+		}else {
+			System.out.println("실패");
+			return "er";
+		}
+	}
+	@RequestMapping("serviceNoticeCreate")
+	public String create1(ServiceCenterFaqVO vo) {
+		System.out.println("게시글등록요청");
+		int result =dao.create1(vo);
+		if(result==1) {
+			System.out.println("게시글등록");
+			
+			return "serviceNoticeInsert";
+
+		}else {
+			System.out.println("실패");
+			return "er";
+		}
+	}
+	@RequestMapping("serviceNoticeDelete")
+	public void delete(ServiceCenterFaqVO vo) {
+		dao.delete(vo);
+	}
+	
+	@RequestMapping("serviceNoticeUpdate1")
+	public void update(ServiceCenterFaqVO vo) {
+		dao.update(vo);
+	}
+	
+	@RequestMapping("serviceNoticeUpdate2")
+	public void preupdate(ServiceCenterFaqVO vo, Model model) {
+		ServiceCenterFaqVO one = dao.one(vo);
+		model.addAttribute("one", one);
+		System.out.println("update요청_");
+	}
 }

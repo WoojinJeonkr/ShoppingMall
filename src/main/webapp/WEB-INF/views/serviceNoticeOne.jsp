@@ -48,7 +48,7 @@ th, td {
 </style>
 
 <meta charset="UTF-8">
-<title>${one.service_title}</title>
+<title>${one.service_faq_question}</title>
 </head>
 <body>
 	<div id="total">
@@ -71,35 +71,27 @@ th, td {
 			<table>
 				<tr>
 					<td class="left">제목</td>
-					<td class="right">${one.service_title}</td>
+					<td class="right">${one.service_faq_question}</td>
 					<td class="left">글쓴이</td>
-					<td class="right">${one.user_id}</td>
+					<td class="right">관리자</td>
 				</tr>
 				<tr>
-					<td class="left">등록일</td>
-					<td class="right" colspan="3">${one.service_rgstday}</td>
 				</tr>
 				<tr>
 					<td class="left">내용</td>
-					<td class="right" colspan="3" height=300px>${one.service_question}</td>
+					<td class="right" colspan="3" height=300px>${one.service_faq_answer}</td>
 				</tr>
 
 
 
 				<tr>
-					<td colspan="4"><a href="serviceList"><button>목록</button></a>
+					<td colspan="4"><a href="serviceNoticeList"><button>목록</button></a>
 
 						<!--  자기 글일때만  삭제, 수정 버튼 활성화. --> 
-						<% if (session.getAttribute("user_id") != null) {%>
-						<c:if test="${user_id eq one.user_id}">
-							<a href="serviceDelete?service_idx=${one.service_idx}"><button>삭제</button></a>
-							<a href="serviceUpdate2?service_idx=${one.service_idx}"><button>수정</button></a>
-							<a href="serviceAnswer.jsp?service_idx=${one.service_idx}"><button>답변하기</button></a></td>
-						</c:if> <!-- 유저아이디가 admin..즉 관리자인경우 답변하기 버튼 활성화 --> 
-						<% if (session.getAttribute("user_id").equals("admin")) { %> 						
-							<a href="serviceDelete?service_idx=${one.service_idx}"><button>삭제</button></a>
-							<a href="serviceUpdate2?service_idx=${one.service_idx}"><button>수정</button></a>
-							<a href="serviceAnswer.jsp?service_idx=${one.service_idx}"><button>답변하기</button></a></td>	
+						<% if (session.getAttribute("userId") != null) {%>
+						<% if (session.getAttribute("userId").equals("admin")) { %> 						
+							<a href="serviceNoticeDelete?service_faq_idx=${one.service_faq_idx}"><button>삭제</button></a>
+							<a href="serviceNoticeUpdate2?service_faq_idx=${one.service_faq_idx}"><button>수정</button></a>
 					<%
 						}
 					%>

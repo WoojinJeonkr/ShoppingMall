@@ -51,28 +51,23 @@ th, td {
 	<div id="qnaBtn">
 		<a href="serviceList"><h4>QnA</h4></a>
 	</div>
-	<div id="noticeBtn">
-		<h4>공지사항</h4>
+		<div id="NoticeBtn"><a href="serviceNoticeList"><h4>Notice</h4></a></div>
 	</div>
 </div>
 <hr>
-<div class="form-group row justify-content-center">
-			<div class="w100" style="padding-right:10px; width:100px; float: left">
-				<select class="form-control form-control-sm" name="searchType" id="searchType">
-					<option value="title">제목</option>
-					<option value="reg_id">작성자</option>
-				</select>
-			</div>
 
-			<div class="w300" style="padding-right:10px; width:300px ; float: left">
-			<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
-			</div>
-			<div>
-				<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
-			</div>
-		</div>
+<!-- 검색  -->
 
 
+<form action="serviceList">
+	<select name="searchType" style="padding-right:10px; width:100px; float: left">
+		<option value="service_title" selected >제목</option>
+		<option value="user_id">작성자</option>
+	</select>
+	<input type="text" class="form-control form-control-sm" name="keyword" id="keyword" style="width:300px; float: left">
+	<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch" >검색</button>
+</form>
+	
 <table>
 	<tr>
 		<td class="left">index</td>
@@ -90,7 +85,7 @@ th, td {
 <!-- 로그인했을때만 글쓰기가 나타나도록 -->
 
 <%
-	if (session.getAttribute("userId") != null) {
+	if (session.getAttribute("user_id") != null) {
 %>
 <br>
 <a href="serviceWrite.jsp"><button>글쓰기</button></a>

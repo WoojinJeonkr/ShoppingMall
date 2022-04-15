@@ -35,11 +35,11 @@ th, td {
 				<hr>
 				<form action="serviceWrite">
 				<input type="hidden" name="user_id" style="width:300px;"
-								value="admin" readonly="readonly">
+								value="${user_id}" readonly="readonly">
 				<input type="hidden" name="service_id_origin" style="width:300px;"
 								value="<%= request.getParameter("service_idx") %>" readonly="readonly">
 				<input type="hidden" name="service_idx_re" style="width:300px;"
-								value="1" readonly="readonly">
+								value="${one.service_idx_re}+1" readonly="readonly">
 					<table>
 						<tr>
 							<td class="left">제목</td>
