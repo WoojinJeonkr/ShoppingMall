@@ -8,7 +8,7 @@ public class ReviewVO {
 	review_idx        int(11)             not null
 	product_idx      int(11)             not null
 	user_id             varchar(45)      not null
-	review_context   varchar(5000)   not null
+	review_content   varchar(5000)   not null
 	review_img        varchar(45)      null
 	review_score      float               not null
 	review_rgstdate  timestamp       current_timestamp
@@ -16,7 +16,7 @@ public class ReviewVO {
 	private int review_idx;
 	private int product_idx;
 	private String user_id;
-	private String review_context;
+	private String review_content;
 	private String review_img;
 	private float review_score;
 	private Timestamp review_rgstdate;
@@ -38,11 +38,11 @@ public class ReviewVO {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public String getReview_context() {
-		return review_context;
+	public String getReview_content() {
+		return review_content;
 	}
-	public void setReview_context(String review_context) {
-		this.review_context = review_context;
+	public void setReview_content(String review_content) {
+		this.review_content = review_content;
 	}
 	public String getReview_img() {
 		return review_img;
@@ -66,7 +66,7 @@ public class ReviewVO {
 	@Override
 	public String toString() {
 		return "ReviewVO [review_idx=" + review_idx + ", product_idx=" + product_idx + ", user_id=" + user_id
-				+ ", review_context=" + review_context + ", review_img=" + review_img + ", review_score=" + review_score
+				+ ", review_content=" + review_content + ", review_img=" + review_img + ", review_score=" + review_score
 				+ ", review_rgstdate=" + review_rgstdate + "]";
 	}
 }
