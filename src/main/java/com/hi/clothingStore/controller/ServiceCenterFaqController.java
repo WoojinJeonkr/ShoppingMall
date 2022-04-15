@@ -2,6 +2,7 @@ package com.hi.clothingStore.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -79,5 +80,39 @@ public class ServiceCenterFaqController {
 		ServiceCenterFaqVO one = dao.one(vo);
 		model.addAttribute("one", one);
 		System.out.println("update요청_");
+	}
+	
+	@RequestMapping("serviceFaqDelete")
+	public String deletefaq (ServiceCenterFaqVO vo, HttpServletRequest request) {
+		String[] msg =request.getParameterValues("service_faq_idx");
+
+		int size = msg.length;
+		for (int i=0; i<size; i++) {
+			System.out.println(msg[i]);
+			dao.delete(vo);
+		}
+		return "redirect:faqList";
+	}
+	
+	
+	@RequestMapping("serviceFaqUpdate1")
+	public void update_faq(ServiceCenterFaqVO vo) {
+		dao.update(vo);
+	}
+	
+	@RequestMapping("serviceFaqUpdate2")
+	public void preupdate_faq(ServiceCenterFaqVO vo, Model model, HttpServletRequest request) {
+		String[] msg =request.getParameterValues("service_faq_idx");
+		
+		int size = msg.length;
+		for (int i=0; i<size; i++) {
+			System.out.println(msg[i]);
+			ServiceCenterFaqVO one = dao.one(vo);
+			model.addAttribute("one", one);
+		}
+		
+		System.out.println("update요청_");
+		
+		
 	}
 }
