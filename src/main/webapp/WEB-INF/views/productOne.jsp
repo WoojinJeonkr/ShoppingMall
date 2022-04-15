@@ -90,6 +90,7 @@ $('#deleteBtn').click(function() {
 		     <div>상세 설명:${one.product_description}</div>
 	      	 <div>등록일:${one.product_rgstdate.substring(0,10)}</div> 
 	      	 <div>수정일:${one.product_mdfydate} </div>
+		      	 
 		      	 <button>바로구매</button> 
 		      	 <button>♥</button> 
 		      	 <button id = "add">장바구니</button> 

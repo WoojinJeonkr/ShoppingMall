@@ -169,7 +169,7 @@ public class ProductListService {
 		
 		
 		
-				List<Map<String, Object>> productLikeRenew = likeDAO.SumProductLike();
+				ArrayList<Map<String, Object>> productLikeRenew = (ArrayList<Map<String, Object>>) likeDAO.SumProductLike(page);
 				
 				System.out.println("***************ProductListService의 productLikeRenew"+productLikeRenew);
 				
@@ -271,7 +271,7 @@ public class ProductListService {
 		
 		//=====================================================좋아요 1차 가공================================================================
 		
-		List<Map<String,Object>> voListResult = new ArrayList<Map<String,Object>>();
+		ArrayList<Map<String,Object>> voListResult = new ArrayList<Map<String,Object>>();
 		
 		
 		//likecheck : 0으로 반복문을 통해서 각각의 map에 넣어준다.
@@ -288,12 +288,6 @@ public class ProductListService {
 				voListResult.add(voList); 
 				//이 반복문이 끝나면 사라지므로 따로 담아둘 객체를 선언해서 담아준다. 
 				
-				
-				
-				
-				
-				
-				
 				//System.out.println("");
 				//Map<String, Object> data = list.get(0); 
 				//data.put("likecheck", 0);
@@ -303,9 +297,35 @@ public class ProductListService {
 		//like check:0이 잘 들어간 것을 확인. 
 		System.out.println("========voListResult"+voListResult);
 		
+		//ArrayList<Map<String,Object>> voListResult
+		//ArrayList<Map<String,Object>> productLikeRenew
+		
+		
+		/*
+		 * IndexOutofRange에러.. 첫 페이지만 기준으로 상품이 들어온 20개의 정보에만 현재 likecheck가 들어오는 걸로 되어있어서 
+		 * 그거보다 큰 product_idx를 지금 현재 못 넣는 상태. 
+		 * 전체 정보를 가져온뒤 likecheck를 넣어주고 그것을 20개로 나누고.. 전체정보를 가져온 곳에다가 업데이트 시킬것...
+		 * 
+		 * 
+		 * 
+		 */
+		
+		
+		
+		for(int i=0;i<productLikeRenew.size();i++) {
+			System.out.println("================voListResult에서 likecheck변환될 개수:"+i);
+			Map<String,Object> map2 = productLikeRenew.get(i); 
+			int product_idx = Integer.parseInt(String.valueOf(map2.get("product_idx"))); 
+			int likecheck = Integer.parseInt(String.valueOf((map2.get("likecheck"))));
+			Map<String,Object> map = voListResult.get(product_idx-1); 
+			map.put("likecheck", likecheck); 
+			System.out.println("product_idx"+product_idx);
+			System.out.println("likecheck"+likecheck);
 			
 			
-			
+		} 
+		System.out.println("2차 가공한 결과 voListResult"+voListResult);
+	
 		
 		
 		//System.out.println("★★★★★★★★★★★★★★★★★★★★★★List<Map<String,Object> 가공 test"+data);

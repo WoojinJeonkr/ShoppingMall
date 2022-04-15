@@ -4,7 +4,7 @@
 <mapper namespace="productlist">
 
 	<!-- 상세보기 -->
-	<select id="one" parameterType="productlistVO" resultType="productlistVO">
+	<select id="one" parameterType="productlistVO2" resultType="productlistVO2">
 		select * from product where product_idx = #{product_idx}
 	</select>
 

@@ -16,6 +16,7 @@ import com.hi.clothingStore.service.LikeListService;
 import com.hi.clothingStore.service.ProductListService;
 import com.hi.clothingStore.vo.LikeVO;
 import com.hi.clothingStore.vo.ProductListVO;
+import com.hi.clothingStore.vo.ProductListVO2;
 
 @Controller
 public class ProductListController {
@@ -44,10 +45,10 @@ public class ProductListController {
 	
 	//상품 상세보기 페이지 
 	@RequestMapping("productOne")
-	public void one(ProductListVO vo, Model model) {
-		System.out.println("ProductlistController vo2:"+vo);
-		ProductListVO vo2 = dao.productOne(vo);
-		model.addAttribute("one", vo2);
+	public void one(ProductListVO2 vo2, Model model) {
+		System.out.println("ProductlistController vo2:"+vo2);
+		ProductListVO2 vo3 = dao.productOne(vo2);
+		model.addAttribute("one", vo3);
 	}
 
 	/*HTTP Request 파라미터를 Handler 메소드의 파라미터 타입에 전달받을 때 
@@ -172,10 +173,10 @@ public class ProductListController {
 
 	//상품 업데이트 잘 되었는지 확인. 
 	@RequestMapping("productUp")
-	public void update(ProductListVO vo, Model model) {
-		System.out.println("======Controller productUp vo========"+vo);
-		ProductListVO vo2 = dao.productOne(vo); 
-		model.addAttribute("one", vo2); 
+	public void update(ProductListVO2 vo2, Model model) {
+		System.out.println("======Controller productUp vo2========"+vo2);
+		ProductListVO2 vo3 = dao.productOne(vo2); 
+		model.addAttribute("one", vo3); 
 	}	
 	
 	//상품 업데이트 정보 넘어오는 곳. 

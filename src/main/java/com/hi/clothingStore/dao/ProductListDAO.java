@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hi.clothingStore.vo.ProductListVO;
+import com.hi.clothingStore.vo.ProductListVO2;
 
 
 
@@ -17,9 +18,9 @@ public class ProductListDAO {
 	@Autowired
 	SqlSessionTemplate my;
 
-	public ProductListVO productOne(ProductListVO vo) {
-		System.out.println("ProductlistVO vo:"+vo);
-		return my.selectOne("productlist.one", vo);
+	public ProductListVO2 productOne(ProductListVO2 vo2) {
+		System.out.println("ProductlistVO vo2:"+vo2);
+		return my.selectOne("productlist.one", vo2);
 	}
 
 	public List<Map<String,Object>> productList(Map<String,Object> map) {

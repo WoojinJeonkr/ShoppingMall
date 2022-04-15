@@ -20,17 +20,23 @@
   
   
   <!-- product_idx 상품마다 좋아요 총합. -->
-  <select id="SumProductLike" resultType="java.util.Map">
+  <!-- > &gt  < &lt 부등호 나타낼 때 바꿔서 나타내야 함. -->
+  <select id="SumProductLike" parameterType="productpageVO" resultType="java.util.Map">
   	select
 		product_idx , sum(likecheck) as likecheck 
-		from productlike 
+	from productlike 
 	group by product_idx , likecheck 
+	having product_idx &lt;= #{rowPerPage}
   </select>
-
-	<!-- 	select
-		product_idx ,sum(likecheck) 
-		from productlike 
+  
+  
+  
+	<!-- 	
+	select
+	product_idx ,sum(likecheck) as likecheck 
+	from productlike 
 		group by product_idx , likecheck 
+		having product_idx <=20
 	
 	 -->
 

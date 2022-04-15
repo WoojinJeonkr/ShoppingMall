@@ -1,5 +1,6 @@
 package com.hi.clothingStore.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hi.clothingStore.vo.LikeVO;
+import com.hi.clothingStore.vo.ProductPageVO;
 
 @Component
 public class LikeDAO {
@@ -23,8 +25,8 @@ public class LikeDAO {
 	}
 	
 	//상품별 좋아요 수 갱신 메서드. 
-	public List<Map<String, Object>> SumProductLike() {
-		return my.selectList("productlike.SumProductLike");
+	public List<Map<String, Object>> SumProductLike(ProductPageVO vo) {
+		return my.selectList("productlike.SumProductLike", vo);
 	}
 	
 	
