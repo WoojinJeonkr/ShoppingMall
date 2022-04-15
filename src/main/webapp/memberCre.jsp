@@ -30,14 +30,14 @@ $(document).ready(function(){
 		//이름
 		} else if($('#name').val() == ''){			
 			$('#nac').text('이름을 입력하세요.');
-		//번호
-		} else if($('#tel').val() == ''){			
-			$('#tec').text('번호를 입력하세요.');
-		} else if(isNaN($('#tel').val())){//핸드폰번호는 숫자만 가능isNaN		
+		//핸드폰 번호
+		} else if($('#tel').val().length <= 10 ){// 11보다 작으면 번호 다시 입력, 아래 input에 maxlength="11"을 지정해주어 11글자가 최대가 되도록 구현			
+			$('#tec').text('번호를  제대로 입력하세요.');
+		} else if(isNaN($('#tel').val())){//핸드폰번호는 숫자만 가능isNaN=not a number		
 				$('#tec').text('번호를 다시 입력하세요.');
 		//나이 조건 100살 이하.
-		} else if($('#age').val() == ''){
-			$('#agec').text('나이를 입력하세요.');
+		} else if(5 < $('#age').val().length < 120){
+			$('#agec').text('나이를 다시 입력하세요.');
 		} else if(isNaN($('#age').val())){//나이는 숫자만 가능isNaN		
 			$('#agec').text('나이를 다시 입력하세요.');
 		//주소
@@ -79,9 +79,13 @@ $(document).ready(function(){
 		} else {
 		$.ajax({
 			url:"memberIdCheck",
-			data:{'id':$('#user_id').val()},
+			data:{"user_id":$('#id').val()},
+			//$('#id').val()는 input에 있는 id="id"와 이름이 같아야한다.
+			//"user_id"는 컨트롤러의 idcheck멥핑에 값이 들어가기때문에 idcheck부분이랑 이름 맞춰주어야한다.
 			success: function(data) { //views아래에 있는 memberIdCheck.jsp의 실행결과가 data에 담김.
 				if(data == 1) {
+					//data=result(컨트롤러의 model의 result를 의미)
+					//result==1이면 db에 있는 아이디라는 의미이기 때문에 사용할 수 없는 아이디이다. 
 					alert("사용할 수 없는 아이디 입니다.")
 				} else {
 					alert("사용가능한 아이디 입니다.")
@@ -124,6 +128,7 @@ $(document).ready(function(){
 					<tr>
 						<td class="left">전화번호</td>
 						<td class="right"><input  class="form-control input-lg"  type="text" name="user_tel" id="tel" maxlength="11" placeholder="전화번호를 입력해주세요">
+						<!-- 아래 input에 maxlength="11"을 지정해주어 11글자가 최대가 되도록 구현 -->
 						<div id="tec" ></div>
 						</td>
 					</tr>

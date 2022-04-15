@@ -13,16 +13,18 @@
 	</insert>
 
 
-	<select id="idCheck" parameterType="memberVO"  resultType="memberVO">
+	<select id="idCheck" parameterType="String"  resultType="memberVO"><!-- 반환값은 memberVO이다. -->
 		select * from member where user_id = #{user_id} 
+		<!-- dao에서 가져온 user_id가  #{user_id}로 들어감.-->
+		<!-- resultType="memberVO"이므로,  리턴값 memberVO를 가지고 MemberDAO로 감 -->
 	</select>
 
 	<!-- 비밀번호변경설정 db의 user_id로 select해서 변경. -->
-	<select id="modyPw" parameterType="memberVO"  resultType="memberVO">
+	<select id="modyPw" parameterType="String"  resultType="memberVO">
 		select * from member where user_id = #{user_id} 
 	</select>	
 	
-	<update id="update" parameterType="memberVO">
+	<update id="update" parameterType="memberVO"><!-- resultType="memberVO"가 왜 없어도 되는지 선생님께 물어보기 -->
 		update member set user_pw=#{user_pw}, user_name= #{user_name} where user_id = #{user_id}
 	</update>
 	

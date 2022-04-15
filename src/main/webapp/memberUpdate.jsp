@@ -22,9 +22,10 @@ $(document).ready(function(){
 			$('#pwc2').text('password가 일치하지 않습니다.');
 		} else if($('#name').val() == ''){			
 			$('#nac').text('이름을 입력하세요.');
-		  else{
+		} else{
 			$('#form').submit();
 		}
+		 
 	})	
 	///* 다시 한 번 누르면 text 내용을 없애주도록 구현.  */
 	$('#pw2').click(function() {
@@ -40,23 +41,25 @@ $(document).ready(function(){
 //비밀번호가 이전 비번이랑 같은지 아닌지 확인.
 //비밀번호 변경 안할 시-> 그대로 변경 완료.
 //비밀번호 변경 시-> 기존 비밀번호와 다른 비밀번호만 입력 가능.
-$('#memberUp').click(function() {
-	alert('')
+$('#memberPwUp').click(function() {
+	if ($('#pw').val().length == 0) {
+		$('#pwc').text('비밀번호를 입력해주세요')
+	} else {
+	/* 	alert($('#pw').val()) */
 	$.ajax({
 		url:"memberModyPw",
-		data:{'pw':$('#user_pw').val()},
+		data:{'user_pw':$('#pw').val()},
 		success: function(data) { //views아래에 있는 memberModyPw.jsp의 실행결과가 data에 담김.
-			alert(data)
-			if(data == 0) {//이부분 수정해야함!!! 기존의 비번과 같은지 아닌지로 수정.
-				alert("사용할 수 없는 비밀번호 입니다.")
+			if(data == 1) {//이부분 수정해야함!!! 기존의 비번과 같은지 아닌지로 수정.
+				alert("기존과 다른 비밀번호를 입력해주세요.")
 			} else {
 				alert("사용가능한 비밀번호 입니다.")
 			}
 		}
 	})
-})//memberUp
-
-});//$
+	}
+})
+});
 </script>
 </head>
 <body>
@@ -66,7 +69,7 @@ $('#memberUp').click(function() {
 			
 				<tr>
 						<td class="left">아이디</td> 
-						<td class="right"><input  class="form-control input-lg"  type="text" name="user_id" id="id" value="${userId}" readonly="readonly">
+						<td class="right"><input  class="form-control input-lg"  type="text" name="user_id" id="id" value="${user_id}" readonly="readonly">
 						<div id="idc" ></div>
 						</td>
 					</tr>
@@ -84,7 +87,7 @@ $('#memberUp').click(function() {
 					</tr>
 					<tr>
 						<td class="left">이름</td>
-						<td class="right"><input  class="form-control input-lg"  type="text" name="user_name" id="name" value="${userName}" readonly="readonly">
+						<td class="right"><input  class="form-control input-lg"  type="text" name="user_name" id="name" value="${user_name}" readonly="readonly">
 						<div id="nac" ></div>
 						</td>
 					</tr>
@@ -106,10 +109,14 @@ $('#memberUp').click(function() {
 						<div id="addrc" ></div>
 						</td>
 					</tr> --%>
-				
 					<tr>
 						<td colspan="2">
-						<button type="submit" id="memberUp">회원수정</button>
+						<button type="button" id="memberPwUp">비밀번호중복체크</button>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<button type="button" id="memberUp">회원수정</button>
 						</td>
 					</tr>
 				</table>

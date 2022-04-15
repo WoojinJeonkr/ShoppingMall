@@ -22,8 +22,8 @@
 		<div id="center">
 			<br>
 			<p>수정에 문제가 있습니다.</p>
-			<br> <a href="bbs.jsp">
-				<button class="btn btn-info">목록으로</button>
+			<br> <a href="myPage.jsp">
+				<button>마이페이지</button>
 			</a>
 		</div>
 	</div>
