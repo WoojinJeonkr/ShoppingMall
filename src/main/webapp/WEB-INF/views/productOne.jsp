@@ -20,11 +20,14 @@
 <meta charset="UTF-8">
 <title>상품 상세 페이지</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel = "stylesheet" type = "text/css" href = "resources/css/project.css">
+
 
 <script type="text/javascript">
 $(function () {
 	$('#add').click(function(){
+	
 	$.ajax({
 		url: 'productAdd',
 		data : {
@@ -42,8 +45,8 @@ $(function () {
 		error: function(){
 			alert("ajax 에러 발생.")
 			}//error
-		})//ajax
-	})//click
+		});//ajax
+	});//click
 
 
 $('#deleteBtn').click(function() {
@@ -61,35 +64,130 @@ $('#deleteBtn').click(function() {
 			error:function(){
 				alert('삭제 실패')
 				}
-			})
+			});
 		}
-	})
+	});
 	
 		/* $('#love').click(function() {
-		if () {
-			
-		} else {
+		$.ajax({
+			url:"createMemberLike",
+			data:{
+				user_id: ${user_id}
+				product_idx : ${product_idx}
+			},
+			success: 
+
+			 }
+		   }
+		
+		})
+	})
+		
 		$.ajax({
 			url:"selectMemberLikeOne",
 			data:{
-				user_idx: ,
-				product_idx : 
+				user_id: ${user_id}
+				product_idx : ${product_idx}
 			},
 			success: function(data) { 
 				if(data == 1) {
-					//
+
 				} else {
-					//
-				}
-			}
-		})
+
+			 }
+		   }
+			
+		})//ajax  */
+		
+		//에러를 찾기 위함. 
+		 error: (error) => {
+             console.log(JSON.stringify(error));
 		}
-	}) */
+		 
+		 
+		$.ajax({
+			url:'getProductIdxByLike',
+			type:'get',
+			success:function(jsonData){
+				
+				
+				product_idx = []; 
+				likecheck = []; 
+				
+				$(jsonData).each(function(index,item){
+					product_idx.push(item.product_idx); 
+					likecheck.push(item.likecheck); 
+				});
+				
+				console.log('product_idx'+product_idx)
+				console.log('likecheck'+likecheck)
+				
+				
+				
+				
+				
+				
+				let data = {
+						
+						labels : product_idx,
+						datasets : [{
+							
+							label : 'ProductIdx by Like number',
+							data: likecheck,
+							backgroundColor : [
+								
+								  'rgba(255, 99, 132, 0.2)',
+							      'rgba(255, 159, 64, 0.2)',
+							      'rgba(255, 205, 86, 0.2)',
+							      'rgba(75, 192, 192, 0.2)',
+							      'rgba(54, 162, 235, 0.2)',
+							      'rgba(153, 102, 255, 0.2)',
+							      'rgba(201, 203, 207, 0.2)'
+								
+							],
+							borderColor: [
+								
+								 'rgb(255, 99, 132)',
+							      'rgb(255, 159, 64)',
+							      'rgb(255, 205, 86)',
+							      'rgb(75, 192, 192)',
+							      'rgb(54, 162, 235)',
+							      'rgb(153, 102, 255)',
+							      'rgb(201, 203, 207)'
+							
+							],
+							
+							borderWidth: 1
+							
+							}]	
+						
+					}; //let data
+					
+					let config = {
+										type: 'bar', 
+										data : data, 
+										options : {
+											scales:{
+												y:{
+													beginAtZero:true
+												}
+											}
+										},
+								};
+					
+							var myChart = new Chart(document.getElementById('myChart'), config); 
+				
+						}
+			
+			
+				});
+		
+
 	
 	
 	
 	
-})//$
+}); //$
 
 </script>
 </head>
@@ -116,7 +214,34 @@ $('#deleteBtn').click(function() {
 	      	 <div>수정일:${one.product_mdfydate} </div>
 		      	 
 		      	 <button>바로구매</button> 
-		      	 <button id = "love">♥</button> 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 <button id = "love">♡
+		      	 		<c:choose>
+							<c:when test = "${likecheck}==null">
+								♡
+							
+							</c:when>
+							
+							<c:when test="${likecheck}==1">
+								❤
+							</c:when>	      	 		
+		      	 		</c:choose>
+		      	 </button> 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
 		      	 <button id = "add">장바구니</button> 
 		      	 <button><a href="reviewList.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
 		     <!-- 카테고리, 좋아요, 작업 이후에  구현되도록 수정할 것. -->
@@ -128,6 +253,11 @@ $('#deleteBtn').click(function() {
 
 			 <button id="deleteBtn">상품 삭제</button>
       	 </div>
+      	 
+      	 <!-- 차트를 생성하려면 Chart 클래스를 인스턴스화 차트를 그리고 싶은 캔버스의 노드, jQuery 인스턴스 또는 2D 컨텍스트를 전달 -->
+      	 <canvas id="myChart" width = "400" height = "400"></canvas>
+      	 
+      	 
       	 	<!-- -------------------------------------------- -->
 	 	<!-- <img src="resources/img/buy.PNG" style = width:30%;> 
 		 <img src="resources/img/love2.PNG" style = width:30%;> 
@@ -140,7 +270,7 @@ $('#deleteBtn').click(function() {
    	
 <div id = "total">
 <!-- 유저아이디가 admin 관리자인경우 S버튼 활성화 -->
-	<!-- <%--  <% if (session.getAttribute("userId").equals("admin")) {    %> --%>-->
+	<!-- <%--  <% if (session.getAttribute("user_id").equals("admin")) {    %> --%>-->
 	<!--	<a href="productInsert"><button>생성</button></a>-->
 	<!--	<a href="productUp?p_idx=${one.product_idx}"><button id="updateBtn" style="width: 50px;">수정</button></a>-->
 	<!--	<button id="deleteBtn" style="width: 50px;">삭제</button>-->

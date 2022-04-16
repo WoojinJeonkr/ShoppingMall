@@ -29,13 +29,13 @@
 	having product_idx &lt;= #{rowPerPage}
   </select>
   
-
-	<!-- 	
+  	<!-- 	
 	select
 	product_idx ,sum(likecheck) as likecheck 
 	from productlike 
 		group by product_idx , likecheck 
 		having product_idx <=20
+	
 	 -->
   
   <!-- member가 빈 하트에서 버튼을 누르면 속이 찬 하트로 바뀌면서 데이터값이 들어감. -->
@@ -68,7 +68,34 @@
    where 	
  		user_id = 'aaabbb' and 
   		product_idx = 4
-   -->		
+   -->	
+  
+  <delete id = "deleteMemberLike" parameterType="likeVO">
+  	
+  delete from 
+  			productlike 
+  where user_id = #{user_id} and product_idx = #{product_idx}
+  
+  </delete>
+  
+  <!-- 
+   delete from 
+   		productlike 
+   where user_id = 'aaabbb' and product_idx = 4
+   -->
+  
+  <select id="productIdxByLike" resultType="java.util.Map">
+    select
+		product_idx , sum(likecheck) as likecheck 
+	from productlike 
+	group by product_idx , likecheck 
+	limit 0, 10
+  </select>
+  
+  
+  
+  
+  	
   
 
 

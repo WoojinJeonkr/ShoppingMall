@@ -50,6 +50,14 @@ public class LikeController {
 		
 	}
 	
+	@RequestMapping("deleteMemberLike")
+	public int memberLikeCancel(Model model,LikeVO vo) {
+		
+		
+		
+		return 0; 
+	}
+	
 	
 	
 }
