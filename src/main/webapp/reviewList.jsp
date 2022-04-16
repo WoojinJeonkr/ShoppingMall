@@ -44,8 +44,18 @@
 				$.each(data, function(idx, one){
 					console.log(one); // 콘솔에서 data 확인
 					
+					/*
+					날짜/시간 변환 함수의 3가지 표현법의 차이점
+					
+					1. toLocaleTimeString(): 지정하지 않으면 기본 시간 형식을 사용하여 항상 시간을 입력
+					2. toLocaleDateString(): 위와 동일한 작업을 수행하지만 시간 대신 날짜에 대해 수생
+					3. toLocaleString(): 원하는 방식으로 날짜 형식을 지정할 수 있으며 추가로 아무것도 넣지 않음
+					
+					// https://stackoverflow.com/questions/61870462/
+					// what-is-the-difference-between-tolocalestring-tolocaledatestring-and-tolocalet
+					*/
 					var review_rgstdate = new Date(this.review_rgstdate);
-					review_rgstdate = review_rgstdate.toLocaleDateString("ko-US")
+					review_rgstdate = review_rgstdate.toLocaleString()
 					
 					// HTML 코드 조립
 					str += "<li data-review_idx='" + this.review_idx + "'>"
