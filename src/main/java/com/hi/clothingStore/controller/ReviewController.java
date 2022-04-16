@@ -72,15 +72,21 @@ public class ReviewController {
 	public int getReviewList(ReviewVO review, HttpSession session) throws Exception {
 		System.out.println("후기 삭제가 호출되었습니다.");
 		int result = 0;
+		/*
+		삭제 진행 과정
 		
-		MemberVO member = (MemberVO)session.getAttribute("user_id");
+		1. 현재 세션에서 user_id를 가져와서 userId에 저장
+		2. 아이디 체크용 쿼리의 결과를 가져와서 변수 user_id에 저장
+		3. 두 아이디를 비교했을 때 결과가 
+		      참이라면 변수 result에 1을 저장 --> 아이디가 같아서  삭제 작업 진행 o
+		      거짓이라면 변수 result에 0을 저장 --> 아이다가 달라서 삭제 작업 진행 x
+		*/
+		String userId = (String)session.getAttribute("user_id");
 		String user_id = reviewServiceImpl.idCheck(review.getReview_idx());
 		
-		if(member.getUser_id().contentEquals(user_id)) {
-			review.setUser_id(member.getUser_id());
+		if(userId.contentEquals(user_id)) {
+			review.setUser_id(userId);
 			reviewServiceImpl.reviewDelete(review);
-			/*if 결과가 참이라면 삭제 작업을 진행한 뒤 변수 result에 1을 저장하고,
-			    거짓이면 아무 작업도 하지 않고 종료함*/
 			result = 1;
 		}
 		return result;
