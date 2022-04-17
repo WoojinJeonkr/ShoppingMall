@@ -31,7 +31,7 @@ $(document).ready(function(){
 <body>
 	<div id="total">
 		<div id="top">
-			<jsp:include page="memberTop.jsp"></jsp:include>
+			<jsp:include page="top.jsp?user_id=${user_id}"></jsp:include>
 		</div>
 		<div id="center">
 		<% if(session.getAttribute("user_id") == null) { %><h3 class="active">회원 로그인</h3>
