@@ -55,7 +55,7 @@
   
   <!-- could not find parameter map 에러 : mybatis에서 더 이상 지원하지 않는 parameterMap을 사용하면 나타나는 에러 -->
   <!-- 상세보기에서 이전에 회원이 그 상품에 맞는 좋아요를 눌렀는지 안 눌렀는지 보여주는 것. -->
-  <select id = "selectOneLike" parameterType="likeVO" resultType="likeVO">
+  <select id = "selectOneLike" parameterType="java.util.Map" resultType="likeVO">
 	  select * from 
 	  		productlike 
 	  where 	
@@ -69,6 +69,21 @@
  		user_id = 'aaabbb' and 
   		product_idx = 4
    -->	
+   <select id = "selectOneLikeCount" parameterType="java.util.Map" resultType="int">
+	  select count(*) as likecheck from 
+	  		productlike 
+	  where 	
+	 		user_id = #{user_id} and 
+	  		product_idx = #{product_idx}
+  </select>
+  
+  <!-- 	  select count(*) from 
+	  		productlike 
+	  where 	
+	 		user_id = 'aaabbb' and 
+	  		product_idx = 3
+    -->
+   
   
   <delete id = "deleteMemberLike" parameterType="likeVO">
   	

@@ -34,9 +34,10 @@ public class LikeDAO {
 	}
 	
 	//회원이 이전에 하트를 눌렀는지 안 눌렀는지 알게 해주는 메서드 
-	public LikeVO selectOneLike(LikeVO vo) {
-		System.out.println("selectOneLike vo"+vo);
-		return my.selectOne("productlike.selectOneLike", vo); 
+	public LikeVO selectOneLike(Map<String, Object> paramMap) {
+		
+		System.out.println("selectOneLike paramMap"+paramMap);
+		return my.selectOne("productlike.selectOneLike", paramMap); 
 	}
 	
 	
@@ -51,8 +52,10 @@ public class LikeDAO {
 		return my.selectList("productlike.productIdxByLike"); 
 	}
 	
-	
-	
+    public int selectOneLikeCount(Map<String, Object> paramMap) {
+    	System.out.println("selectOneLike paramMap"+paramMap);
+		return my.selectOne("productlike.selectOneLikeCount", paramMap); 
+    }
 	
 	
 	

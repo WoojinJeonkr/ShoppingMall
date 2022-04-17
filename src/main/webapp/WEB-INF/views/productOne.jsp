@@ -19,12 +19,18 @@
 </style>
 <meta charset="UTF-8">
 <title>상품 상세 페이지</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <link rel = "stylesheet" type = "text/css" href = "resources/css/project.css">
 
 
 <script type="text/javascript">
+
+
+
 $(function () {
 	$('#add').click(function(){
 	
@@ -83,21 +89,80 @@ $('#deleteBtn').click(function() {
 		})
 	})
 		
+	*/
+	
+	    let likecheck = []; 
+		let user_id = []; 
+		let product_idx = []; 
+	
+	
 		$.ajax({
 			url:"selectMemberLikeOne",
+			type:'get', 
 			data:{
-				user_id: ${user_id}
-				product_idx : ${product_idx}
+				user_id: '${user_id}',
+				product_idx : ${one.product_idx}
 			},
-			success: function(data) { 
-				if(data == 1) {
-
-				} else {
-
+			success: function(jsonData) { 
+				
+				console.log(jsonData)
+				
+				$(jsonData).each(function(index, item){
+					
+					likecheck.push(item.likecheck);
+					
+					console.log('LikeOne likecheck:'+likecheck);
+					
+					
+				});
+				
+				if(likecheck == 1){
+					console.log('이전에 좋아요 클릭한 상태')
+					$('#likecheck').val(1); 
+					$('#likebtn').attr('class', 'btn btn-danger'); 
+				}else{
+					console.log('이전에 좋아요를 누르지 않았음.')
+					$('#likecheck').val(0); 
+					$('#likebtn').attr('class', 'btn btn-light'); 
+				}
+				
+				
+			 }, error:function(jsonData){
+				 console.log('에러')
 			 }
-		   }
 			
-		})//ajax  */
+			
+		   });//ajax
+			
+		
+		   $(function(){
+				//alert('test..')
+				$.ajax({
+					url : "likeCheck", 
+					data:{
+						user_id: '${user_id}',
+						product_idx : ${one.product_idx}
+					},
+					success: function(result){
+						console.log('likecheck 성공')
+					},
+					error: function() {
+						console.log('likecheck 실패')
+					}
+				
+				})
+			}) 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		//에러를 찾기 위함. 
 		 error: (error) => {
@@ -192,6 +257,8 @@ $('#deleteBtn').click(function() {
 </script>
 </head>
 <body>
+<button>${user_id}</button>
+
 
 <%-- <span style="color: blue; float: right;">${userId}님 로그인되었습니다. 좋은 하루 되세요.</span><br> --%>
 	<div id = "top">
@@ -213,35 +280,35 @@ $('#deleteBtn').click(function() {
 	      	 <div>등록일:${one.product_rgstdate.substring(0,10)}</div> 
 	      	 <div>수정일:${one.product_mdfydate} </div>
 		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 <div id = "love">
+					<%
+						if("${result}"==null){
+					%>
+								<button type = "button" id="likebtn" class="btn btn-light">♡</button>
+								<input type = "hidden" id="likecheck" value="${result}">  
+					<%}else{ %>
+								<button type = "button" id="likebtn" class="btn btn-danger">❤</button>
+								<input type = "hidden" id="likecheck" value="${result}">
+		      	 	<%}%>
+		      	 
+		      	 </div> 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
 		      	 <button>바로구매</button> 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 <button id = "love">♡
-		      	 		<c:choose>
-							<c:when test = "${likecheck}==null">
-								♡
-							
-							</c:when>
-							
-							<c:when test="${likecheck}==1">
-								❤
-							</c:when>	      	 		
-		      	 		</c:choose>
-		      	 </button> 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
 		      	 <button id = "add">장바구니</button> 
 		      	 <button><a href="reviewList.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
 		     <!-- 카테고리, 좋아요, 작업 이후에  구현되도록 수정할 것. -->
