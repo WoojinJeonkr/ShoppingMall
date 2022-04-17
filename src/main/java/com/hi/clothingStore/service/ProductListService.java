@@ -260,6 +260,7 @@ public class ProductListService {
 		//이렇게 해결해도 됌. 
 		
 		for(int i=0;i<productLikeRenew.size();i++) {
+			try {
 			//System.out.println("================voListResult에서 likecheck변환될 개수:"+i);
 			Map<String,Object> map2 = productLikeRenew.get(i); 
 			int product_idx = Integer.parseInt(String.valueOf(map2.get("product_idx"))); 
@@ -268,7 +269,9 @@ public class ProductListService {
 			map.put("likecheck", likecheck); 
 			System.out.println("product_idx"+product_idx);
 			System.out.println("likecheck"+likecheck);
-			
+			}catch(IndexOutOfBoundsException e) {
+				e.printStackTrace();
+			}
 			
 		} 
 		System.out.println("2차 가공한 결과 voListResult"+voListResult);

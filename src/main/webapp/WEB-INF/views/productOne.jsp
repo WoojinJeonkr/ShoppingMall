@@ -342,14 +342,6 @@ $('#deleteBtn').click(function() {
 	      	 <div>수정일:${one.product_mdfydate} </div>
 		      	 
 		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
 		      	 <div id = "love">
 					<%
 						if("${result}"==null){
@@ -362,11 +354,6 @@ $('#deleteBtn').click(function() {
 		      	 	<%}%>
 		      	 
 		      	 </div> 
-
-		      	 
-		      	 </div> 
-		      	 
-		      	 
 	    
 		      	 <button>바로구매</button> 
 		      	 <button id = "add">장바구니</button> 
