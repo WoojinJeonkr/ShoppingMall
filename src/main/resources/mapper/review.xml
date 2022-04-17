@@ -8,10 +8,25 @@
 		insert into review values (null, #{product_idx}, #{user_id}, #{review_content}, #{review_img}, #{review_score}, now())
 	</insert>
 	
+	<!--
+	**무분별한 select * from 사용을 지양해야 하는 이유**
+	
+	1. 동작하는데 불필요한 컬럼까지 조회되기 쉽다 >> DB 서버에서 크라이언트로 이동하는 데이터의 양이 많아질수록 네트워크 부하가 심해진다
+	2. 인덱스가 없는 불필요한 컬럼까지 조회되기 쉽다 >> 모든 필드가 인덱스되어 있지 않다면 테이블 전체를 스캔하게 된다
+	3. 여러 테이블들을 조인하는 과정에서 select * from을 사용하면 중복되는 이름의 컬럼(ex.id)들이 충돌할 수 있다
+	
+	**select * from은 어떨 때 사용되어야 하는가?**
+	1. 테이블의 모든 컬럼들을 조회하는 명백한 이유가 있는 경우
+	2. select count(*)와 같이 *가 행을 의미하는 경우
+	>> 정확한 행의 개수를 조회하는 경우
+	
+	출처: https://stackoverflow.com/questions/3639861/why-is-select-considered-harmful
+	-->
+	
 	<!-- 후기 보기 -->
 	<select id="reviewList" parameterType="reviewVO" resultType="reviewlistVO">
 		select r.review_idx, r.product_idx, r.user_id, r.review_content, r.review_img, r.review_score, r.review_rgstdate, m.user_name from review r 
-		inner join member m on r.user_id = m.user_id where product_idx = #{product_idx}
+		inner join member m on r.user_id = m.user_id where product_idx = #{product_idx} order by review_rgstdate desc
 	</select>
 	
 	<!-- 후기 수정 -->

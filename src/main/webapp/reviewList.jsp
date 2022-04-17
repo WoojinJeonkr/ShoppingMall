@@ -12,11 +12,14 @@
 %>
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
 <style>
+
+	/* reviewForm 관련 style */
  	section.reviewForm {padding:30px 0;}
 	section.reviewForm div.input_area {margin:10px 0;}
 	section.reviewForm textarea {font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:500px;; height:150px;}
 	section.reviewForm button {font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc;}
 
+	/* reviewList 관련 style */
 	section.reviewList {padding:30px 0;}
 	section.reviewList ol { padding:0; margin:0;}
 	section.reviewList ol li {padding:10px 0; border-bottom:2px solid #eee;}
@@ -26,10 +29,11 @@
 	section.reviewList div.reviewContent {padding:10px; margin:20px 0;}
 	section.reviewList div.reviewFooter button { font-size:14px; border: 1px solid #999; background:none; margin-right:10px;}
 	
+	/* review 수정 관련 style */
 	div.reviewModal { position:relative; z-index:1; display:none;}
 	div.modalBackground { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.8); z-index:-1; }
 	div.modalContent { position:fixed; top:20%; left:calc(50% - 250px); width:500px; height:250px; padding:20px 10px; background:#fff; border:2px solid #666; }
-	div.modalContent textarea { font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:500px; height:200px; }
+	div.modalContent textarea { font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:480px; height:180px; }
 	div.modalContent button { font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc; }
 	div.modalContent button.modal_cancel { margin-left:20px;}
 </style>
@@ -48,7 +52,7 @@
 					날짜/시간 변환 함수의 3가지 표현법의 차이점
 					
 					1. toLocaleTimeString(): 지정하지 않으면 기본 시간 형식을 사용하여 항상 시간을 입력
-					2. toLocaleDateString(): 위와 동일한 작업을 수행하지만 시간 대신 날짜에 대해 수생
+					2. toLocaleDateString(): 위와 동일한 작업을 수행하지만 시간 대신 날짜에 대해 작동
 					3. toLocaleString(): 원하는 방식으로 날짜 형식을 지정할 수 있으며 추가로 아무것도 넣지 않음
 					
 					// https://stackoverflow.com/questions/61870462/
@@ -131,6 +135,7 @@
 						// result 값에 따라 동작
 						if(result == 1) {
 							reviewList();
+							$(".reviewModal").fadeOut(200);
 						} else {
 							alert("작성자 본인만 후기 수정이 가능합니다")
 						}
@@ -144,17 +149,19 @@
 		
 		/* 후기 수정 버튼 클릭 시 */
 		$(document).on("click", ".update", function(){
+			/* $(".reviewModal").attr("style", "display:block;"); */
 			$(".reviewModal").fadeIn(200);
 			
 			var review_idx = $(this).attr("data-review_idx"); // 변수 review_idx에 버튼에 부여된 review_idx 저장
 			var review_content = $(this).parent().parent().children(".review_content").text(); // 변수 review_content에 버튼의 부모의 부모에서 자식 클래스가 review_content인 요소 값 저장
 			
 			$(".modal_review_content").val(review_content);
-			$(".modal_update_btn").attr("data-review_idx", review_idx);
+			$("#modal_update_btn").attr("data-review_idx", review_idx);
 		});
 		
 		/* 후기 수정 취소 버튼 클릭 시 */
-		$(".modal_cancel").click(function(){
+		$("#modal_cancel").click(function(){
+			/* $(".reviewModal").attr("style", "display:none;"); */
 			$(".reviewModal").fadeOut(200);
 		});
 		
@@ -186,11 +193,6 @@
 				});
 			}
 		});
-		
-		/* 수정 창  */
-		$(".modal_cancel").click(function(){
-			$(".reviewModal").attr("style", "display:none");
-		});
 	</script>
 </head>
 <body>
@@ -208,10 +210,17 @@
 			<form role="form" method="post" autocomplete="off">
 				<input type="hidden" id="product_idx" name="product_idx" value='<%= request.getParameter("product_idx")%>'>
 				
+				<!-- 별점 보여줄 부분 시작-->
+				
+				<!-- 별점 보여줄 부분 끝-->
+				
 				<!-- 후기 내용 작성 -->
 				<div class="input_area">
 					<textarea name="review_Content" id="review_content2" placeholder="바르고 고운 말이 세상을 아름답게 합니다"></textarea>
 				</div>
+				
+				<!-- 이미지 파일 첨부하기 시작 -->
+				<!-- 이미지 파일 첨부하기 끝-->
 				
 				<!-- 후기 작성 버튼 -->
 				<div class="input_area">
@@ -231,10 +240,12 @@
 						<div>
 							<textarea class="modal_review_Content" name="modal_review_Content"></textarea>
 						</div>
-					</div>
-					<div>
-						<button type="button" class="modal_update_btn">후기 수정</button>
-						<button type="button" class="madal_cancel">수정 취소</button>
+						
+						<div>
+							<button type="button" id="modal_update_btn">후기 수정</button>
+							<button type="button" id="modal_cancel">수정 취소</button>
+						</div>
+						
 					</div>
 					<div class="modalBackground"></div>
 				</div>
