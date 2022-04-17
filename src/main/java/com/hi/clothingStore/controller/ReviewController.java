@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hi.clothingStore.dao.ReviewDAOImpl;
 import com.hi.clothingStore.service.ReviewServiceImpl;
-import com.hi.clothingStore.vo.MemberVO;
 import com.hi.clothingStore.vo.ReviewListVO;
 import com.hi.clothingStore.vo.ReviewVO;
 
@@ -29,6 +28,11 @@ public class ReviewController {
 	@RequestBody를 넣어 주는 이유
 	뷰에서 컨트롤러에 전달한 데이터와, 컨트롤러가 받으려는 매개변수 데이터형이 일치하지 않는 경우
 	또는 다수인 경우 @RequestBody를 넣어준다
+	
+	접근제한 함수에 대해
+	1. public : 모든 곳에서 접근 가능
+	2. private : 자기 자신 클래스에서만 접근 가능
+	3. protected : 자기 자신 클래스와 상속된 클래스에서 접근 가능
 	*/
 	
 	// 구매 후기 목록
@@ -99,11 +103,11 @@ public class ReviewController {
 		System.out.println("후기 수정이 호출되었습니다.");
 		int result = 0;
 		
-		MemberVO member = (MemberVO)session.getAttribute("user_id");
+		String userId = (String)session.getAttribute("user_id");
 		String user_id = reviewServiceImpl.idCheck(review.getReview_idx());
 		
-		if(member.getUser_id().equals(user_id)){
-			review.setUser_id(member.getUser_id());
+		if(userId.equals(user_id)){
+			review.setUser_id(userId);
 			reviewServiceImpl.reviewUpdate(review);
 			result = 1;
 		}
