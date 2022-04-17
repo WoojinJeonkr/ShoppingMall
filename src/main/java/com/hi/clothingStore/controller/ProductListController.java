@@ -65,16 +65,11 @@ public class ProductListController {
 	 */
 	@RequestMapping("productList")
 	public String list(Model model, LikeVO vo,
-			
-			
 									@RequestParam(value="currentPage",defaultValue = "1",required = false)int currentPage,
 								  @RequestParam(value = "rowPerPage", defaultValue = "20",required = false) int rowPerPage,
 								  @RequestParam(value="categoryName", required = false)String categoryName,
 								  @RequestParam(value="searchWord", required = false) String searchWord
-
-			
 																														) {
-		
 		
 		//카테고리나 검색 이동 후 전체 상품목록으로 이동하는데 필요한 코드. 
 		
@@ -191,20 +186,5 @@ public class ProductListController {
 			return "productNo"; 
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

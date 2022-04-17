@@ -35,30 +35,6 @@ public class ProductListService {
 	    //상품 총 리스트 토탈 카운트 
 		int productListTotal = productlistDAO.productListCount();
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		//=========================================================페이징 가공===============================================
 		
 		System.out.println("========productListTotal:"+productListTotal);
@@ -166,88 +142,61 @@ public class ProductListService {
 		//단순한 포지션(인덱스)보다, 저장하고 싶은 데이터가 특별한 Key일 때 map을 사용하는 것이 좋다. 
 		
 		
+		ArrayList<Map<String, Object>> productLikeRenew = (ArrayList<Map<String, Object>>) likeDAO.SumProductLike(page);
 		
+		System.out.println("***************ProductListService의 productLikeRenew"+productLikeRenew);
 		
-		
-				ArrayList<Map<String, Object>> productLikeRenew = (ArrayList<Map<String, Object>>) likeDAO.SumProductLike(page);
-				
-				System.out.println("***************ProductListService의 productLikeRenew"+productLikeRenew);
-				
-				/*
-				 * [{product_idx=3, likecheck=2}, {product_idx=10, likecheck=2},
-				 * {product_idx=12, likecheck=1}, {product_idx=5, likecheck=1}, {product_idx=7,
-				 * likecheck=1}, {product_idx=11, likecheck=1}, {product_idx=13, likecheck=1},
-				 * {product_idx=20, likecheck=1}, {product_idx=30, likecheck=1},{product_idx=40,
-				 * likecheck=1}, {product_idx=59, likecheck=1}]
-				 */
+		/*
+		 * [{product_idx=3, likecheck=2}, {product_idx=10, likecheck=2},
+		 * {product_idx=12, likecheck=1}, {product_idx=5, likecheck=1}, {product_idx=7,
+		 * likecheck=1}, {product_idx=11, likecheck=1}, {product_idx=13, likecheck=1},
+		 * {product_idx=20, likecheck=1}, {product_idx=30, likecheck=1},{product_idx=40,
+		 * likecheck=1}, {product_idx=59, likecheck=1}]
+		 */
 
 				
-				//java.lang.ClassCastException: java.util.ArrayList cannot be cast to java.util.HashMap 에러 발생하므로 분리시키겠음. 
+		//java.lang.ClassCastException: java.util.ArrayList cannot be cast to java.util.HashMap 에러 발생하므로 분리시키겠음. 
+		
+		
+		//규칙 체크. 
+		//HashMap<String, Object> test = (HashMap<String, Object>) productLikeRenew.get(0).entrySet();
+		//test = (HashMap<String, Object>) productLikeRenew.get(1).entrySet();
+		//test = (HashMap<String, Object>) productLikeRenew.get(2).entrySet();
+		
+		
+		//System.out.println("*************************ProductListService의 test"+test);
+		//*************************ProductListService의 test{product_idx=3, likecheck=2}
+		
+		/*
+		 * int hashIndex = -1; HashMap<String, Object> reNew2 = new HashMap<String,
+		 * Object>();
+		 * 
+		 * 
+		 * 
+		 * for(Map<String, Object> reNew : productLikeRenew) { hashIndex++;
+		 * System.out.println("hashIndex"+hashIndex);
+		 * 
+		 * //HashMap<String, Object> hashTest // (HashMap<String, Object>)
+		 * reNew.get(hashIndex); //System.out.println("reNew"+reNew);
+		 * //reNew2.putAll(reNew);
+		 * 
+		 * //reNew2.put()
+		 * 
+		 * Iterator<Entry<String,Object>> entries = reNew.entrySet().iterator();
+		 * 
+		 * //System.out.println("entries입니다."+entries); while(entries.hasNext()) {
+		 * Map.Entry<String, Object> entry = entries.next();
+		 * 
+		 * System.out.println("entry"+entry);
+		 * //System.out.println("[Key]"+entry.getKey()+"[Value]"+entry.getValue());
+		 * //reNew2.putAll((Map<? extends String, ? extends Object>) entry);
+		 * 
+		 * }
+		 * 
+		 * }
+		 */
 				
-				
-				//규칙 체크. 
-//				HashMap<String, Object> test = (HashMap<String, Object>) productLikeRenew.get(0).entrySet();
-//				 test = (HashMap<String, Object>) productLikeRenew.get(1).entrySet();
-//				 test = (HashMap<String, Object>) productLikeRenew.get(2).entrySet();
-				
-				
-				//System.out.println("*************************ProductListService의 test"+test);
-				//*************************ProductListService의 test{product_idx=3, likecheck=2}
-				
-				int hashIndex = -1; 
-				HashMap<String, Object> reNew2 = new HashMap<String, Object>();
-				
-				
-				
-				for(Map<String, Object> reNew : productLikeRenew) {
-					hashIndex++; 
-					System.out.println("hashIndex"+hashIndex);
-					
-					
-					
-					
-					//HashMap<String, Object> hashTest
-					//	(HashMap<String, Object>) reNew.get(hashIndex);
-					//System.out.println("reNew"+reNew);	
-					//reNew2.putAll(reNew); 
-					
-					 //reNew2.put()
-					
-					Iterator<Entry<String,Object>> entries = reNew.entrySet().iterator();
-					
-					
-					
-					
-					//System.out.println("entries입니다."+entries);
-					while(entries.hasNext()) {
-						Map.Entry<String, Object> entry = entries.next();
-						
-						System.out.println("entry"+entry);
-						//System.out.println("[Key]"+entry.getKey()+"[Value]"+entry.getValue());
-						//reNew2.putAll((Map<? extends String, ? extends Object>) entry); 
-						
-					}
-					
-					
-					
-					
-				}
-				
-				//System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■like reNew2:"+reNew2);
-				
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		//System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■like reNew2:"+reNew2);
 		
 		//=========================================================좋아요 전체 리스트 업데이트 ==============================================================
 		
@@ -265,14 +214,9 @@ public class ProductListService {
 		//String data = list.get(0).get("product_idx").toString();
 		//System.out.println("★★★★★★★★★★★★★★★★★★★★★★List<Map<String,Object> 가공 test :"+data);
 		
-		
-		
-		
-		
 		//=====================================================좋아요 1차 가공================================================================
 		
 		ArrayList<Map<String,Object>> voListResult = new ArrayList<Map<String,Object>>();
-		
 		
 		//likecheck : 0으로 반복문을 통해서 각각의 map에 넣어준다.
 		//전체의 상품리스트들의 좋아요를 보여주기 위함. 
@@ -308,16 +252,12 @@ public class ProductListService {
 		 * 전체 정보를 가져온뒤 likecheck를 넣어주고 그것을 20개로 나누고.. 전체정보를 가져온 곳에다가 업데이트 시킬것...
 		 */
 		
-		
-		
-
 		//ArrayList 두 개를 가져와서 product_idx를 기준으로 likehceck만 갱신할 수 있도록 넣어준다. 
 		//MySQL 의 INT형 컬럼 데이터를 HashMap 타입으로 받아 java에서 사용하려고 할때 오류 발생 String.valueOf로 해결. 
 		//Mybatis에서 int형 컬럼 데이터를 map으로 받을 때 자동으로 BigDecimal로 변환 시킴. 
 		//BigDecimal은 Integer의 자식임. 그래서 오토박싱과 오토언박싱이 일어남.  
 		//ex) int index = ((BigDecimal)dataMap.put("number")).intValue(); 
 		//이렇게 해결해도 됌. 
-		
 		
 		for(int i=0;i<productLikeRenew.size();i++) {
 			//System.out.println("================voListResult에서 likecheck변환될 개수:"+i);
@@ -332,24 +272,10 @@ public class ProductListService {
 			
 		} 
 		System.out.println("2차 가공한 결과 voListResult"+voListResult);
-	
-		
 		
 		//System.out.println("★★★★★★★★★★★★★★★★★★★★★★List<Map<String,Object> 가공 test"+data);
 		
-		
-		
 		//map 데이터를 바꾸려면 반복문 또는 스트림을 활용 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		//		for(Map<String,Object> l : list) {
 		//			System.out.println("============리스트에 담겨있는 map =======================");
@@ -362,20 +288,10 @@ public class ProductListService {
 		//			System.out.println("product_rgstdate"+l.get("product_rgstdate"));
 		//		}
 		
-		
-		
-		
-		
-		
-		
 		//		Spliterator<Map<String, Object>>list2 = list.spliterator();
 		//		
 		//		System.out.println("***************ProductListService list ***************** "+list);
 		//		System.out.println("***************ProductListService list ***************** "+List(list2));
-		
-		
-		
-		
 		
 		/*
 		 *[{product_rgstdate=2022-04-05 11:20:12.0, product_idx=1, product_price=49900, product_description=크롭트 가디건, 
@@ -387,32 +303,13 @@ public class ProductListService {
 		 * 
 		 */
 		
-		
 		//=====================================================좋아요 1차 가공================================================================
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		//map 
 		//Map<String,Object> map = new HashMap<String, Object>();
 		
-		
-		
 		//map.put("", value)
 		//list.add(map); 
-		
 		
 		//================================================숫자리스트 가공====================================================
 		List<String> categoryList = productlistDAO.selectCategoryList();

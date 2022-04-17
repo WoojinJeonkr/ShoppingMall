@@ -40,22 +40,38 @@ public class LikeDAO {
 		return my.selectOne("productlike.selectOneLike", paramMap); 
 	}
 	
-	
+	/*
 	//좋아요 누른 정보 삭제 
 	public int deleteMemberLike(LikeVO vo) {
 		System.out.println("deleteMemberLike vo"+vo);
 		return my.delete("productlike.deleteMemberLike", vo); 
-	}
+	}*/
 	
 	//상품인덱스에 따른 좋아요 
 	public List<Map<String, Object>> ProductIdxByLike() {
 		return my.selectList("productlike.productIdxByLike"); 
 	}
 	
+
+	//좋아요 숫자 1 count 
     public int selectOneLikeCount(Map<String, Object> paramMap) {
     	System.out.println("selectOneLike paramMap"+paramMap);
 		return my.selectOne("productlike.selectOneLikeCount", paramMap); 
     }
+
+    
+    //좋아요 되돌리기 
+    public int memberLikeRevert(Map<String,Object> paramMap) {
+    	System.out.println("memberLikeRevert paramMap"+paramMap);
+    	return my.selectOne("productlike.revertMemberLike", paramMap); 
+    }
+    
+   //좋아요 데이터 생성 
+    public int memberLikeInsert(Map<String,Object> paramMap) {
+    	System.out.println("memberLikeRevert paramMap"+paramMap);
+    	return my.selectOne("productlike.insertMemberLike", paramMap); 
+    }
+
 	
 	
 	

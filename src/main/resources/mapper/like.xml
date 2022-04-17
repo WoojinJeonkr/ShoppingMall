@@ -85,7 +85,7 @@
     -->
    
   
-  <delete id = "deleteMemberLike" parameterType="likeVO">
+  <delete id = "revertMemberLike" parameterType="java.util.Map">
   	
   delete from 
   			productlike 
@@ -98,27 +98,30 @@
    		productlike 
    where user_id = 'aaabbb' and product_idx = 4
    -->
-  
+   
+   <insert id = "insertMemberLike" parameterType="java.util.Map">
+   	insert ignore into 
+  		productlike(user_id, product_idx, likecheck)
+  	values (#{user_id}, #{product_idx}, 1)
+   </insert>
+
+   
+   <!-- insert into 
+  		productlike(like_idx, user_id, product_idx, likecheck)
+  	values (null, #{user_id}, #{product_idx}, 1)
+  	 -->
+
+
+	<!-- insert ignore into 
+  		productlike(user_id, product_idx, likecheck)
+  	values ('jack', 4, 1)   
+   -->
   <select id="productIdxByLike" resultType="java.util.Map">
     select
 		product_idx , sum(likecheck) as likecheck 
 	from productlike 
-	group by product_idx , likecheck 
+	group by product_idx , likecheck order by likecheck desc
 	limit 0, 10
   </select>
-  
-  
-  
-  
-  	
-  
-
-
-
-
-
-
-
-
 
 </mapper>
