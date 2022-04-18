@@ -35,7 +35,7 @@ public class MemberController {
 			session.setAttribute("user_id", vo2.getUser_id());
 			session.setAttribute("user_name", vo2.getUser_name());
 			
-			return "redirect:member.jsp";
+			return "member";
 		} else { //로그인에 실패했을 때 
 			return "memberCheck";
 		}
@@ -56,7 +56,7 @@ public class MemberController {
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:member.jsp";
+		return "member";
 	}
 	//아이디중복체크
 	@RequestMapping("memberIdCheck")//memberCre.jsp에 ajax의 url의 주소로 들어가 있다.

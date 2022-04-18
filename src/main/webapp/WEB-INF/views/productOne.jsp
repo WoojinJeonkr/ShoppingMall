@@ -23,6 +23,7 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript" src="resources/js/basket.js"></script>
 
 <link rel = "stylesheet" type = "text/css" href = "resources/css/project.css">
 
@@ -37,11 +38,9 @@ $(function () {
 	$.ajax({
 		url: 'productAdd',
 		data : {
-			//ISDN, 이름, 가격, 
 			product_idx: '${one.product_idx}', //string 
 			product_title:'${one.product_title}', //string
-			product_price: ${one.product_price} //int
-			
+			product_price: ${one.product_price}, //int
 			
 		},
 		success: function(result){
@@ -320,7 +319,6 @@ $('#deleteBtn').click(function() {
 </script>
 </head>
 <body>
-<button>${user_id}</button>
 
 
 <%-- <span style="color: blue; float: right;">${userId}님 로그인되었습니다. 좋은 하루 되세요.</span><br> --%>
@@ -336,12 +334,27 @@ $('#deleteBtn').click(function() {
      	 <div class="product_right"> 
 		     <div style="display: none;">${one.product_idx}</div> <!-- one.getId() -->
 		     <div>이름:${one.product_title}</div> 
-		     <div>가격:${one.product_price}</div>
+		     <%-- <div>가격:${one.product_price}</div> --%>
 		     <div>카테고리:${one.product_category}</div>
 		    <%--  <div>좋아요 수:${one.product_like}</div>  --%>
 		     <div>상세 설명:${one.product_description}</div>
 	      	 <div>등록일:${one.product_rgstdate.substring(0,10)}</div> 
 	      	 <div>수정일:${one.product_mdfydate} </div>
+		     <div class="subdiv">
+                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="${one.product_price}">${one.product_price}원</div>
+                        <div class="num">
+                            <div class="updown">
+                                수량 입력: <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(1);">
+                            </div>
+                        </div>
+                        <div class="sum">0원</div>
+                        <input type= "hidden" name = "total" value = "${one.product_price}*">
+                    </div> 	 
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
 		      	 
 		      	 
 		      	 <div id = "love">
@@ -356,18 +369,26 @@ $('#deleteBtn').click(function() {
 		      	 	<%}%>
 		      	 
 		      	 </div> 
+	    		 
+	    		
+	    		
 	    			
 	    			<!-- jsp는 값 넘길때 붙일 것. -->
 		      	 <button><a href="purchaseList">바로구매</a></button> 
 		      	 <button id = "add">장바구니</button> 
 		      	 <button><a href="reviewList.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
 		     <!-- 카테고리, 좋아요, 작업 이후에  구현되도록 수정할 것. -->
+		    
+		    
+		    
+		    
+		    
+		    
+		    
 		    </div>
      	 <div>
 	      	 <a href="productInsert"><button>상품 생성</button></a>
-
 			 <a href="productUp?product_idx=${one.product_idx}"><button>상품 내용 수정</button></a>
-
 			 <button id="deleteBtn">상품 삭제</button>
       	 </div>
       	 
