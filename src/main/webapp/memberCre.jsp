@@ -121,6 +121,7 @@
 </script>
 </head>
 <body>
+<div id="top"><jsp:include page="top.jsp"></jsp:include></div>
 	<h3 class="active">회원가입</h3>
 	<form action="memberCreate1" id="form">
 		<table>

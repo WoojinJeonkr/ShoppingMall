@@ -80,10 +80,16 @@
 </script>
 </head>
 <body>
-	<h3 class="active">회원수정</h3>
-	<form action="memberUpdate" id="form">
-		<table>
 
+<div id="top">
+	<jsp:include page="myPage.jsp"></jsp:include>
+</div>	
+
+	<h3 class="active">회원수정</h3>
+
+	<form action="memberUpdate" id="form">
+	
+		<table>
 			<tr>
 				<td class="left">아이디</td>
 				<td class="right"><input class="form-control input-lg"
@@ -144,7 +150,6 @@
 	<button type="button" id="cancel">회원수정취소</button>
 	<hr>
 	<div id="result"></div>
-
 
 </body>
 </html>

@@ -27,6 +27,9 @@
 
 </head>
 <body>
+<div id="top">
+<jsp:include page="myPage.jsp"></jsp:include>
+</div>
 	<hr>
 	<form action="memberDelete">
 	 <input type="hidden" name="user_id" value="${userId}"><br>

@@ -41,6 +41,8 @@ $(function () {
 			product_idx: '${one.product_idx}', //string 
 			product_title:'${one.product_title}', //string
 			product_price: ${one.product_price} //int
+			
+			
 		},
 		success: function(result){
 			alert(result)
@@ -354,8 +356,9 @@ $('#deleteBtn').click(function() {
 		      	 	<%}%>
 		      	 
 		      	 </div> 
-	    
-		      	 <button>바로구매</button> 
+	    			
+	    			<!-- jsp는 값 넘길때 붙일 것. -->
+		      	 <button><a href="purchaseList">바로구매</a></button> 
 		      	 <button id = "add">장바구니</button> 
 		      	 <button><a href="reviewList.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
 		     <!-- 카테고리, 좋아요, 작업 이후에  구현되도록 수정할 것. -->
