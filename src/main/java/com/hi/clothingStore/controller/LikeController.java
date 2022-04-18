@@ -110,7 +110,7 @@ public class LikeController {
 		paramMap.put("product_idx", product_idx); 
 		
 		int result = likeDAO.memberLikeInsert(paramMap);
-		
+		//if(result==null) { result=1; }
 		System.out.println("===============likeCheckInsert result"+result); //1이면 삭제 성공 0이면 삭제 실패 
 		
 		model.addAttribute("result",result); //성공시 1 실패시 0 

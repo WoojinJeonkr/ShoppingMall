@@ -156,7 +156,7 @@ $('#deleteBtn').click(function() {
 			}) 
 		
 
-			  $(function(){
+			 /*  $(function(){
 				 $("#likebtn").on("click",function(){ 
 					//alert('test..')
 					$.ajax({
@@ -189,7 +189,7 @@ $('#deleteBtn').click(function() {
 					
 					})
 				 })
-			})  
+			})   */
 				
 			
 			
@@ -204,19 +204,19 @@ $('#deleteBtn').click(function() {
 					},
 					success: function(result){
 						console.log('likeInsert 성공')
-						 /* if (self.name != 'reload') {
+						   if (self.name != 'reload') {
 					         self.name = 'reload';
 					         self.location.reload(true);
 					     }
-					     else self.name = '';  */
+					     else self.name = '';   
 					},
 					error: function() {
 						console.log('likeInsert 실패')
-						/*  if (self.name != 'reload') {
+						   if (self.name != 'reload') {
 					         self.name = 'reload';
 					         self.location.reload(true);
 					     }
-					     else self.name = '';  */
+					     else self.name = '';  
 					}
 				
 				})
