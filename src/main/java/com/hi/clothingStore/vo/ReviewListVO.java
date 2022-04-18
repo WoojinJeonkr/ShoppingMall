@@ -10,7 +10,7 @@ public class ReviewListVO {
 	user_id             varchar(45)      not null
 	review_content   varchar(5000)   not null
 	review_img        varchar(45)      null
-	review_score      float               not null
+	review_score      decimal(2,1)               not null
 	review_rgstdate  timestamp       current_timestamp
 	
 	member table의 user_name으로 review 목록에서 보여주기 위해 추가
@@ -20,7 +20,7 @@ public class ReviewListVO {
 	private String user_id;
 	private String review_content;
 	private String review_img;
-	private float review_score;
+	private double review_score;
 	private Timestamp review_rgstdate;
 	
 	private String user_name;
@@ -64,11 +64,7 @@ public class ReviewListVO {
 	public void setReview_img(String review_img) {
 		this.review_img = review_img;
 	}
-
-	public float getReview_score() {
-		return review_score;
-	}
-
+	
 	public void setReview_score(float review_score) {
 		this.review_score = review_score;
 	}
@@ -87,6 +83,14 @@ public class ReviewListVO {
 
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
+	}
+
+	public double getReview_score() {
+		return review_score;
+	}
+
+	public void setReview_score(double review_score) {
+		this.review_score = review_score;
 	}
 
 	@Override

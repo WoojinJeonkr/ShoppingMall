@@ -10,7 +10,7 @@ public class ReviewVO {
 	user_id             varchar(45)      not null
 	review_content   varchar(5000)   not null
 	review_img        varchar(45)      null
-	review_score      float               not null
+	review_score      decimal(2,1)              not null
 	review_rgstdate  timestamp       current_timestamp
 */
 	private int review_idx;
@@ -18,7 +18,7 @@ public class ReviewVO {
 	private String user_id;
 	private String review_content;
 	private String review_img;
-	private float review_score;
+	private double review_score;
 	private Timestamp review_rgstdate;
 	public int getReview_idx() {
 		return review_idx;
@@ -50,9 +50,6 @@ public class ReviewVO {
 	public void setReview_img(String review_img) {
 		this.review_img = review_img;
 	}
-	public float getReview_score() {
-		return review_score;
-	}
 	public void setReview_score(float review_score) {
 		this.review_score = review_score;
 	}
@@ -61,6 +58,12 @@ public class ReviewVO {
 	}
 	public void setReview_rgstdate(Timestamp review_rgstdate) {
 		this.review_rgstdate = review_rgstdate;
+	}
+	public double getReview_score() {
+		return review_score;
+	}
+	public void setReview_score(double review_score) {
+		this.review_score = review_score;
 	}
 	
 	@Override
