@@ -32,7 +32,7 @@ $(document).ready(function(){
 	<div id="total">
 		<div id="top">
 
-			<jsp:include page="top.jsp"></jsp:include>
+			<jsp:include page="../../top.jsp"></jsp:include>
 
 		</div>
 		<div id="center">
@@ -72,12 +72,12 @@ $(document).ready(function(){
 			<button style="width:200px; height:50px;" class="btn btn-success" >로그아웃</button>
 			</a>
 			<!-- 회원수정,회원탈퇴 버튼 myPage.jsp로 이동 -->
-			<a href="memberUpdate.jsp">
+<!-- 			<a href="memberUpdate.jsp">
 			<button style="width:200px; height:50px;" class="btn btn-success" >회원수정</button>
 			</a>
 			<a href="memberDelete.jsp">
 			<button style="width:200px; height:50px;" class="btn btn-success" >회원탈퇴</button>
-			</a> 
+			</a>  -->
 			<% } %>
 		</div>
 	</div>

@@ -128,5 +128,10 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:member.jsp";
 	}
+	
+	@RequestMapping("member")//member와 같은 이름이 views아래에 있어야 한다. views호출하려면 컨트롤러 꼭 거쳐가기때문에 컨트롤러에 해당 코드가 있어야함
+	public void member() {
+		
+	}
 }
 
