@@ -31,7 +31,7 @@ $(document).ready(function(){
 <body>
 	<div id="total">
 		<div id="top">
-			<jsp:include page="top.jsp?user_id=${user_id}"></jsp:include>
+			<jsp:include page="memberTop.jsp"></jsp:include>
 		</div>
 		<div id="center">
 		<% if(session.getAttribute("user_id") == null) { %><h3 class="active">회원 로그인</h3>
@@ -42,7 +42,6 @@ $(document).ready(function(){
 						<td class="left">아이디</td>
 						<td class="right"><input  class="form-control input-lg"  
 						type="text" name="user_id" id="id"
-						value="123456"
 						>
 						<div id="idc"></div>
 						</td>
@@ -51,7 +50,6 @@ $(document).ready(function(){
 						<td class="left">패스워드</td>
 						<td class="right"><input  class="form-control input-lg"  
 						type="password" name="user_pw" 
-						value="1234"
 						id="pw">
 						<div id="pwc"></div>
 						</td>

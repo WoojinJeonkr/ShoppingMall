@@ -33,7 +33,7 @@
 <body>
 	<div id="total">
 		<div id="top">
-			<jsp:include page="../../top.jsp"></jsp:include>
+			<jsp:include page="../../memberTop.jsp"></jsp:include>
 		</div>
 
 		<div id="center">

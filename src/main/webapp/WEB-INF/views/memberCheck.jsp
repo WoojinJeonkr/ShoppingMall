@@ -13,7 +13,7 @@
 <body>
 <div id="total">
 	<div id="top">
-		<jsp:include page="../../top.jsp"></jsp:include>
+		<jsp:include page="../../memberTop.jsp"></jsp:include>
 	</div>
 	<div id="center">
 	<h3>로그인 실패입니다. 다시 시작해주세요.</h3>
