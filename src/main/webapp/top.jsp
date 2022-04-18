@@ -24,7 +24,7 @@
 					<div class="nav-box navbar-collapse">
 						<!-- 메뉴 구성(수정 부분) : 로그인, 마이페이지, 장바구니, 상품 목록, 고객센터 -->
 						<ul class="navigation-menu nav navbar-nav navbars" id="nav">
-							<li style = "font-size:large;"><a href="member.jsp">회원가입</a></li>
+							<li style = "font-size:large;"><a href="member.jsp">로그인</a></li>
 							<li style = "font-size:large;"><a href="productList.jsp?user_id=${user_id}">상품정보</a></li>
 							<li style = "font-size:large;"><a href="basket.jsp?user_id=${user_id}">장바구니</a></li>
 							<li style = "font-size:large;"><a href="serviceMain.jsp">고객센터</a></li>
