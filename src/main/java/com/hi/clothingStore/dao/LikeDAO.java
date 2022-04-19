@@ -1,5 +1,6 @@
 package com.hi.clothingStore.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -70,6 +71,13 @@ public class LikeDAO {
     public int memberLikeInsert(Map<String,Object> paramMap) {
     	System.out.println("memberLikeRevert paramMap"+paramMap);
     	return my.selectOne("productlike.insertMemberLike", paramMap); 
+    }
+    
+    
+    
+    public List<Map<String,Object>> myProductLike(String user_id){
+    	System.out.println("LikeDAO의 user_id"+user_id);
+    	return  my.selectList("productlike.myProductLike", user_id); 
     }
 
 	
