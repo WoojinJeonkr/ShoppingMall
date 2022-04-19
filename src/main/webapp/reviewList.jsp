@@ -33,7 +33,7 @@
 	div.reviewModal { position:relative; z-index:1; display:none;}
 	div.modalBackground { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.8); z-index:-1; }
 	div.modalContent { position:fixed; top:20%; left:calc(50% - 250px); width:500px; height:250px; padding:20px 10px; background:#fff; border:2px solid #666; }
-	div.modalContent textarea { font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:480px; height:180px; }
+	div.modalContent textarea { font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:480px; height:160px; }
 	div.modalContent button { font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc; }
 	div.modalContent button.modal_cancel { margin-left:20px;}
 </style>
@@ -63,12 +63,12 @@
 					review_rgstdate = review_rgstdate.toLocaleString()
 					
 					// HTML 코드 조립
-					str += "<li data-review_idx='" + this.review_idx + "'>"
+					str += "<li>"
 						+ "<div class='userInfo'>"
 						+ "<span class='userName'>" + this.user_name + "</span>"
 						+ "<span class='date'>" + review_rgstdate + "</span>" 
 						+ "</div>"
-						+ "<div class='review_content'>" + this.review_content + "</div>"
+						+ "<span class='review_score' readonly>" + "[" + this.review_score + "점]" + "&nbsp;" + "</span>" + "<span class='review_content'>" + this.review_content + "</span>"
 						+ "<c:if test='${user_id != null}'>"
 						+ "<div class='reviewFooter'>"
 						+ "<button type='button' class='update' data-review_idx='" + this.review_idx + "'>수정</button>"
@@ -81,20 +81,20 @@
 				$("section.reviewList ol").html(str);
 			});
 		}
-	</script>
 	
-	<!-- 버튼 관련 스크립트 -->
-	<script>
+		<!-- 버튼 관련 스크립트 -->
 		$(function(){
 			/* 후기 작성  */
 			$("#review_btn").click(function(){
 				var formObj = $(".reviewForm form[role='form']");
 				var product_idx2 = $("#product_idx").val(); // 상품 번호 변수 선언
 				var review_content2 = $("textarea#review_content2").val(); // 후기 내용 변수 선언
+				var review_score = $("select").val();
 				
 				var data = {
 					product_idx : product_idx2,
-					review_content : review_content2
+					review_content : review_content2,
+					review_score : review_score
 				};
 				
 				/* alert(product_idx2)
@@ -106,7 +106,7 @@
 					data : data, // 전송될 데이터
 					success : function(){ // 데이터 전송이 성공되었을 경우 실행할 함수부
 						reviewList();
-						$("#textarea#review_content2").val("")
+						$("textarea#review_content2").val("") // 입력창 초기화
 					},
 					error: function() {
 						alert('실패')
@@ -123,9 +123,8 @@
 			//review_idx : $(this).attr("data-review_idx"),
 			if(updateConfirm){
 				var data = {
-					
 					review_idx : review_idx2,
-					review_content: $('.modal_review_content').val()
+					review_content : $('.modal_review_content').val()
 				}; //reviewVO 형태로 데이터 생성
 								
 				$.ajax({ // 후기 수정 관련 ajax
@@ -196,16 +195,34 @@
 				});
 			}
 		});
+		
+		function avgScore(){
+			var data = {product_idx : <%=product_idx%>}
+			
+			$.ajax({ // 평균 평점 관련 ajax
+				url : "scoreAvg",
+				type : "post",
+				data : data,
+				success : function(result) {
+					alert(result)
+				},
+				error : function() {
+					alert("잘못된 요청입니다")
+				}
+			});
+			
+		}
 	</script>
 </head>
 <body>
-<div id="center">
+<div id="top"><jsp:include page="top.jsp"></jsp:include></div>
+<div id="center" style="padding:30px;">
 <!-- 후기 시작 -->
 	<div id="review">
 		<!-- 비회원의 경우 -->
 		<% if(session.getAttribute("user_id") == null) { %>
 		<p>
-			후기를 남기시려면 <a href="member.jsp">로그인</a>해주세요
+			후기를 남기시려면 <a href="member">로그인</a>해주세요
 		</p>
 		<% }else{ %>
 		<!-- 회원의 경우 -->
@@ -213,13 +230,30 @@
 			<form role="form" method="post" autocomplete="off">
 				<input type="hidden" id="product_idx" name="product_idx" value='<%= request.getParameter("product_idx")%>'>
 				
-				<!-- 별점 보여줄 부분 시작-->
-				
-				<!-- 별점 보여줄 부분 끝-->
+				<!-- 평점 선택 부분 시작-->
+				<div class="score_div">
+				<h4>총 평점:<script>avgScore();</script></h4>
+					
+					<select name="review_score">
+						<option value="0.5">0.5</option>
+						<option value="1.0">1.0</option>
+						<option value="1.5">1.5</option>
+						<option value="2.0">2.0</option>
+						<option value="2.5">2.5</option>
+						<option value="3.0">3.0</option>
+						<option value="3.5">3.5</option>
+						<option value="4.0">4.0</option>
+						<option value="4.5">4.5</option>
+						<option value="5.0">5.0</option>
+					</select>
+					<p>평점은 수정이 불가능하니 정확히 선택해주세요!!</p>
+				</div>
+				<!-- 평점 선택 부분 끝-->
 				
 				<!-- 후기 내용 작성 -->
+				<h4>구매 후기</h4>
 				<div class="input_area">
-					<textarea name="review_Content" id="review_content2" placeholder="바르고 고운 말이 세상을 아름답게 합니다"></textarea>
+					<textarea name="review_content" id="review_content2" placeholder="바르고 고운 말이 세상을 아름답게 합니다"></textarea>
 				</div>
 				
 				<!-- 이미지 파일 첨부하기 시작 -->
@@ -233,7 +267,7 @@
 				<!-- 작성한 후기 목록 보여주기 -->
 				<section class="reviewList">
 					<!-- 헤더 내부에 선언한 함수 호출 > 목록 보여주기 -->
-					<ol></ol>
+					<ol reversed></ol>
 					<script> reviewList();</script>
 				</section>
 				

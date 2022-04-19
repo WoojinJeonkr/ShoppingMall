@@ -22,4 +22,7 @@ public interface ReviewService {
 
 	// 후기 수정
 	public void reviewUpdate(ReviewVO review) throws Exception;
+	
+	// 평균 평점
+	public Double scoreAvg(int product_idx) throws Exception;
 }
