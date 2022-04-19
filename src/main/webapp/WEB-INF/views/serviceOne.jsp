@@ -31,17 +31,6 @@ th, td {
 	padding: 10px;
 }
 
-#navii {
-	width: 10%;
-	float: left;
-	background: gray;
-}
-
-#result {
-	width: 90%;
-	float: right;
-}
-
 .left {
 	background: #dbdad5;
 }
@@ -61,12 +50,6 @@ th, td {
 		<div id="center">
 
 			<h3>글 상세 페이지</h3>
-			<hr>
-			<div id="navii">
-				<a href="serviceMain.jsp"><div>FAQ</div></a> 
-				<a href="serviceMain.jsp"><div>QnA</div></a>
-
-			</div>
 			<hr>
 			<table>
 				<tr>

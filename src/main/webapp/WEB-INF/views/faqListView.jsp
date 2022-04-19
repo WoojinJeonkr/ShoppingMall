@@ -46,9 +46,6 @@ FAQ를 보여주는 jsp
 				<td id="answer" class="sub" colspan="2">${one.service_faq_answer}</td><!-- 그에대한 답변 -->
 			</div> 
 		</c:forEach>
-		
-		
-		<p> 나오고있는거임<p>
 	</table>
 </body>
 </html>
