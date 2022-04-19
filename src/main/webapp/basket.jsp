@@ -9,7 +9,6 @@
 <title>basket</title>
 <link rel = "stylesheet" type = "text/css" href = "resources/css/project.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	<link rel="stylesheet" href="resources/css/basket.css" />
 <style>
 	.text_over{
 	overflow: hidden;
@@ -49,68 +48,44 @@
 	<div id = "center">
 		<h3>장바구니 목록</h3>
 		<hr>
-		
 		<%
 			ArrayList<ProductListVO> list = (ArrayList<ProductListVO>) session.getAttribute("basket");
 			if(list != null){
 		%>
 		
-		
-		
-		
-		<%-- <span><%=list.size()%></span>개의 물건이 장바구니에 들어있습니다. --%>
+		<span><%=list.size()%></span>개의 물건이 장바구니에 들어있습니다.
+		 <table border="1">
 		 
 		 <%int i=0; %>
-            <div class="basketdiv" id="basket">
-                <div class="row head">
-                    <div class="subdiv">
-                        <div class="pname" align="center">상품명</div>
-                    </div>
-                    <div class="subdiv">
-                          <div class="basketprice" align="center">상품번호</div>
-                    	<div></div>
-                    	<div></div>
-                    </div>
-                    <div class="subdiv">
-                        <div class="pname">가격</div>
-                    </div>
-                    <div class="split"></div>
-                </div>
+			   <tr>
+			   	  <td>순서</td>
+			      <td>상품 이름</td>
+			      <td>상품 번호</td>
+			      <td>상품 가격</td>
+			   </tr>
+			   
    <%
    		for(ProductListVO one: list) {
   		i++;
    %>
-    		<div class="row data">
-                    <div class="subdiv">
-                        <div class="pname">
-                            <div align="center"><%=one.getProduct_title()%></div>
-                        </div>
-                    </div>
-                    <div class="subdiv">
-                        	<div class="basketprice" align="center"><%=one.getProduct_idx()%></div>
-                    	<div></div>
-                    	<div></div>
-                    </div>
-                    <div class="subdiv">
-                        <div class="basketcmd" align="center"><%=one.getProduct_price()%></div> 
-                    </div>
-                     <div class="split"></div>
-                </div>
+   
+   <tr>
+   	  <td><%=i%></td>
+      <td class="text_over"><%=one.getProduct_title()%></td> <!-- one.getId() -->
+      <td class="text_over"><%=one.getProduct_idx()%></td>
+      <td class="text_over"><%=one.getProduct_price()%></td>
+   </tr>
    
    <%
    } 
    %>
    
-    		<!-- <div class="right-align basketrowcmd">
-                <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">장바구니비우기</a>
-            </div> -->
-
    
+   </table>
    <%}else { %>
    	<span>0개의 물건이 장바구니에 들어 있습니다.</span>
    <%} %>
 	</div>
-	
 </div>
 </body>
 </html>

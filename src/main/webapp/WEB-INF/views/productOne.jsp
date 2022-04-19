@@ -26,7 +26,8 @@
 <script type="text/javascript" src="resources/js/basket.js"></script>
 
 <link rel = "stylesheet" type = "text/css" href = "resources/css/project.css">
-
+<link rel = "stylesheet" type = "text/css" href = "resources/css/basket.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 <script type="text/javascript">
 
@@ -40,7 +41,8 @@ $(function () {
 		data : {
 			product_idx: '${one.product_idx}', //string 
 			product_title:'${one.product_title}', //string
-			product_price: ${one.product_price}, //int
+			product_idx : '${one.product_idx}',
+			product_price: ${one.product_price} //int
 			
 		},
 		success: function(result){
@@ -340,11 +342,13 @@ $('#deleteBtn').click(function() {
 		     <div>상세 설명:${one.product_description}</div>
 	      	 <div>등록일:${one.product_rgstdate.substring(0,10)}</div> 
 	      	 <div>수정일:${one.product_mdfydate} </div>
+		     
 		     <div class="subdiv">
                         <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="${one.product_price}">${one.product_price}원</div>
                         <div class="num">
                             <div class="updown">
-                                수량 입력: <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(1);">
+                                수량 입력[최대 99]: <br>
+                             <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(1);">
                             </div>
                         </div>
                         <div class="sum">0원</div>
