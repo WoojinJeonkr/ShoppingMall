@@ -25,9 +25,9 @@
 						<ul class="navigation-menu nav navbar-nav navbars" id="nav">
 							<li style = "font-size:medium;"><a href="member">로그인</a></li>
 							<li style = "font-size:medium;"><a href="myPage.jsp">마이페이지</a></li>
-							<li style = "font-size:medium;"><a href="">공공데이터</a></li>
+							<li style = "font-size:medium;"><a href="publicData">공공데이터</a></li>
 							<li style = "font-size:medium;"><a href="productList.jsp?user_id=${user_id}">상품정보</a></li>
-							<li style = "font-size:medium;"><a href="">좋아요</a></li>
+							<li style = "font-size:medium;"><a href="myLike.jsp?user_id=${user_id}">좋아요</a></li>
 							<li style = "font-size:medium;"><a href="basket.jsp?user_id=${user_id}">장바구니</a></li>
 							<li style = "font-size:medium;"><a href="serviceMain.jsp">고객센터</a></li>
 						</ul>

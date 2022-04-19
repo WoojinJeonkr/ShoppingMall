@@ -318,6 +318,64 @@ $('#deleteBtn').click(function() {
 	
 }); //$
 
+
+/* $(function(){
+	
+	var sum = $("#sum").hasClass("sum")
+	console.log(sum);
+});
+ */
+
+
+		 var p_price1 =  document.getElementById("p_price1").value; 
+		 var p_num1 = document.getElementById("p_num1").value;
+		 var total = p_price1 * p_num1 
+		 console.log(total); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </head>
 <body>
@@ -328,7 +386,6 @@ $('#deleteBtn').click(function() {
 		<jsp:include page="../../top.jsp"></jsp:include>
 	   <a href="productList.jsp">리스트 목록으로 </a>
 	</div> 
-	
 	
 	<!-- 상품 정보 -->
     <div class="product_left"> 
@@ -344,15 +401,16 @@ $('#deleteBtn').click(function() {
 	      	 <div>수정일:${one.product_mdfydate} </div>
 		     
 		     <div class="subdiv">
-                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="${one.product_price}">${one.product_price}원</div>
+                        <div class="basketprice">
+                        	<input type="hidden" name="p_price" id="p_price1" class="p_price" value="${one.product_price}">${one.product_price}원
+                       	</div>
                         <div class="num">
                             <div class="updown">
                                 수량 입력[최대 99]: <br>
                              <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(1);">
                             </div>
                         </div>
-                        <div class="sum">0원</div>
-                        <input type= "hidden" name = "total" value = "${one.product_price}*">
+                       <div id = "sum" class="sum"></div>
                     </div> 	 
 		      	 
 		      	 

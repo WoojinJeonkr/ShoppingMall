@@ -138,6 +138,10 @@ public class LikeController {
 		return 0; 
 	}
 	
+	@RequestMapping("myLike")
+	public void myLike() {
+		
+	}
 	
 	
 }

@@ -56,11 +56,13 @@ let basket = {
 
         var price = item.parentElement.parentElement.previousElementSibling.firstElementChild.getAttribute('value');
         item.parentElement.parentElement.nextElementSibling.textContent = (newval * price).formatNumber()+"원";
+        
         //AJAX 업데이트 전송
 
         //전송 처리 결과가 성공이면    
         this.reCalc();
         this.updateUI();
+        
     },
     checkItem: function () {
         this.reCalc();

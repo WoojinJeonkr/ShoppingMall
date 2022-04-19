@@ -187,4 +187,10 @@ public class ProductListController {
 		}
 	}
 	
+	@RequestMapping("publicData")
+	public void publicData() {
+		
+	}
+	
+	
 }
