@@ -48,4 +48,10 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public void reviewUpdate(ReviewVO review) throws Exception {
 		sql.update(namespace + ".reviewUpdate", review);
 	}
+	
+	// 평균 평점
+	@Override
+	public Double scoreAvg(int product_idx) throws Exception {
+		return sql.selectOne(namespace + ".scoreAvg", product_idx);
+	}
 }

@@ -111,12 +111,23 @@ public class ReviewController {
 		 System.out.println(user_id);
 		 */
 		
-		
 		if(userId.equals(user_id)){
 			review.setUser_id(userId);
 			reviewServiceImpl.reviewUpdate(review);
 			result = 1;
 		}
 		return result;
+	}
+	
+	// 평균 평점 출력
+	@ResponseBody
+	@RequestMapping(value = "scoreAvg")
+	public double scoreAvg(int product_idx) throws Exception {
+		System.out.println("평균 평점이 출력되었습니다 ");
+		System.out.println(product_idx);
+		double scoreTotal = reviewServiceImpl.scoreAvg(product_idx);
+		System.out.println(scoreTotal);
+		return scoreTotal;
+		
 	}
 }

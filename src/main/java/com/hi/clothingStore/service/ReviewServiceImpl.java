@@ -46,4 +46,10 @@ public class ReviewServiceImpl implements ReviewService {
 	public void reviewUpdate(ReviewVO review) throws Exception {
 		dao.reviewUpdate(review);
 	}
+	
+	//평균 평점
+	@Override
+	public Double scoreAvg(int product_idx) throws Exception {
+		return dao.scoreAvg(product_idx);
+	}
 }
