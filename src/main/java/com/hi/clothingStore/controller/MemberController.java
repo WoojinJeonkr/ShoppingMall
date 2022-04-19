@@ -49,10 +49,10 @@ public class MemberController {
 		if(result == 1) {
 			return "memberOk";//회원가입성공
 		}else {                     // int result = dao.idCheck(vo);가 1이면 아이디 중복이고 0이면 중복아님으로 하고싶음. 
-			return "memberCreate";//회원가입 실패
+			return "memberUnCreate";//회원가입 실패
 		}
 	}
-
+	//로그아웃
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
@@ -82,6 +82,7 @@ public class MemberController {
 		model.addAttribute("result", result);
 		//컨트롤러에서 jsp로 넘겨주는 값을 담아주기 위해 model메서드 사용. result가 memberCre.jsp의 ajax로 감
 	}
+	
 	//비밀번호 변경, 이전과 같은 비밀번호일 경우 쓸 수 없는 비밀번호로 구현
 	@RequestMapping("memberModyPw")
 	public void modyPw(MemberVO vo, Model model, HttpSession session) {
@@ -99,6 +100,7 @@ public class MemberController {
 		}
 		model.addAttribute("result", result);
 	}
+	
 	//회원 수정 컨트롤러
 	@RequestMapping("memberUp")
 	public void up(MemberVO vo, Model model) {
@@ -126,12 +128,26 @@ public class MemberController {
 		int result = dao.delete(vo);
 		model.addAttribute("result", result);
 		session.invalidate();
-		return "redirect:member.jsp";
+		return "member";
 	}
 	
 	@RequestMapping("member")//member와 같은 이름이 views아래에 있어야 한다. views호출하려면 컨트롤러 꼭 거쳐가기때문에 컨트롤러에 해당 코드가 있어야함
 	public void member() {
 		
 	}
+	
+	//마이페이지(views 아래에 myPage.jsp 호출)
+	@RequestMapping("myPage")//myPage와 같은 이름이 views아래에 있어야 한다. views호출하려면 컨트롤러 꼭 거쳐가기때문에 컨트롤러에 해당 코드가 있어야함
+	public String myPage(MemberVO vo, Model model, HttpSession session) throws Exception {
+
+			//vo2가 로그인에 실패한 경우 null
+			//vo2가 로그인에 성공한 경우 주소가 들어있음.
+			if((String)(session.getAttribute("user_id")) != null) { //세션이 있으면 mypage호출
+				//세션을 잡자!//세션을 너무 많이 잡으면 용량 차지를 많이해서 안좋다.
+				return "myPage";
+			} else { //로그인에 실패했을 때 
+				return "memberUnlogin";
+			}
+		}
 }
 

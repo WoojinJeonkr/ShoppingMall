@@ -1,6 +1,7 @@
 <!-- 마이페이지구현할 부분 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,10 +17,12 @@
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
 </head>
 <body>
-<div id="top"><jsp:include page="top.jsp"></jsp:include></div>
+<div id="top"><jsp:include page="../../top.jsp"></jsp:include></div>
+	 
 	<a href=""><button style="width: 200px; height: 50px;" class="btn btn-success">주문내역조회</button></a><br>
 	<a href="memberUpdate.jsp"><button style="width: 200px; height: 50px;" class="btn btn-success">회원수정</button></a><br>
 	<a href="memberDelete.jsp"><button style="width: 200px; height: 50px;" class="btn btn-success">회원탈퇴</button></a>
+	<a href="logout"><button style="width:200px; height:50px;" class="btn btn-success" >로그아웃</button></a>
 	
 	
 </body>

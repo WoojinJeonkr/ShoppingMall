@@ -82,7 +82,7 @@
 <body>
 
 <div id="top">
-	<jsp:include page="myPage.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/myPage.jsp"></jsp:include>
 </div>	
 
 	<h3 class="active">회원수정</h3>

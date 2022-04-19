@@ -41,7 +41,7 @@ public class MemberDAO {
 	//비밀번호 수정시 기존 비밀번호와 다른지 체크
 	public MemberVO  modyPw(String user_id) {
 		//컨트롤러에 user_id의 값이 들어오므로 (String user_id)가 있어야 값을 받을 수 있다.
-		MemberVO  vo2  = my.selectOne("member.modyPw", user_id);
+		MemberVO  vo2 = my.selectOne("member.modyPw", user_id);
 		//my.selectOne("member.modyPw", user_id);이 xml에 들어가서 
 		//member.xml의 select * from member where user_id = #{user_id}가 실행되고  
 		//해당 아이디 행 한 줄을 받아와 vo2에 넣어준다. 
@@ -56,9 +56,13 @@ public class MemberDAO {
 	public int update(MemberVO vo) {
 		return my.update("member.update", vo);
 	}
+	
 	public int delete(MemberVO vo) {
 		return my.delete("book.delete1", vo);
 	}
-	
+	//mypage구현 
+	public MemberVO myPage(MemberVO vo) {
+		return my.selectOne("member.myPage", vo);
+	}
 	
 }

@@ -27,7 +27,7 @@
 	//alert("회원가입 성공!!!")
 	$(function() {
 		alert('회원가입 성공! 로그인해주세요.~!')
-		location.href="member.jsp";
+		location.href="member";
 	})
 </script>
 </head>

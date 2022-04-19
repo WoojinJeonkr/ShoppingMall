@@ -66,18 +66,12 @@ $(document).ready(function(){
 						<a href="memberCre.jsp"><button  style="width:200px; height:50px;" class="btn btn-danger">회원가입하기</button></a>
 			
 			
-			<% }else{ %>
-			<span style="color:red; font-size: 20px; font-weight: bold;">${user_name}님!! 환영합니다. 아이디가 ${user_id}로 로그인되었습니다.</span>
-			<a href="logout">
-			<button style="width:200px; height:50px;" class="btn btn-success" >로그아웃</button>
-			</a>
-			<!-- 회원수정,회원탈퇴 버튼 myPage.jsp로 이동 -->
-<!-- 			<a href="memberUpdate.jsp">
-			<button style="width:200px; height:50px;" class="btn btn-success" >회원수정</button>
-			</a>
-			<a href="memberDelete.jsp">
-			<button style="width:200px; height:50px;" class="btn btn-success" >회원탈퇴</button>
-			</a>  -->
+			<% } else {%>
+			<script>
+			alert("${user_name}님!! 환영합니다~ 아이디가 ${user_id}로 로그인되었습니다.")
+			location.href="productList.jsp";
+			</script>
+
 			<% } %>
 		</div>
 	</div>

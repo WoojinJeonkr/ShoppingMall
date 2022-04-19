@@ -22,12 +22,18 @@
 						<i class="fa fa-bars"></i>
 					</button>
 					<div class="nav-box navbar-collapse">
+						<!-- 메뉴 구성(수정 부분) : 로그인, 마이페이지, 장바구니, 상품 목록, 고객센터 -->
 						<ul class="navigation-menu nav navbar-nav navbars" id="nav">
-							<li style = "font-size:medium;"><a href="member">로그인</a></li>
-							<li style = "font-size:medium;"><a href="myPage.jsp">마이페이지</a></li>
-							<li style = "font-size:medium;"><a href="publicData">공공데이터</a></li>
+							<li style = "font-size:medium;">
+							<% if(session.getAttribute("user_id") == null) { %><a href="member?user_id=${user_id}">로그인</a>
+							<% } else { %>
+								<a href="logout">로그아웃</a><!-- 컨트롤러의RequestMapping이 logout인 곳으로 감. -->
+							<%} %>
+							</li>
+							<li style = "font-size:medium;"><a href="myPage">마이페이지</a></li>
+							<li style = "font-size:medium;"><a href="">공공데이터</a></li>
 							<li style = "font-size:medium;"><a href="productList.jsp?user_id=${user_id}">상품정보</a></li>
-							<li style = "font-size:medium;"><a href="myLike.jsp?user_id=${user_id}">좋아요</a></li>
+							<li style = "font-size:medium;"><a href="">좋아요</a></li>
 							<li style = "font-size:medium;"><a href="basket.jsp?user_id=${user_id}">장바구니</a></li>
 							<li style = "font-size:medium;"><a href="serviceMain.jsp">고객센터</a></li>
 						</ul>

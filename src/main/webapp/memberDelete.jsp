@@ -28,7 +28,7 @@
 </head>
 <body>
 <div id="top">
-<jsp:include page="myPage.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/myPage.jsp"></jsp:include>
 </div>
 	<hr>
 	<form action="memberDelete">
