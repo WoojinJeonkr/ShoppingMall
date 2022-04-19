@@ -18,6 +18,7 @@ import com.hi.clothingStore.service.ProductListService;
 import com.hi.clothingStore.vo.LikeVO;
 import com.hi.clothingStore.vo.ProductListVO;
 import com.hi.clothingStore.vo.ProductListVO2;
+import com.hi.clothingStore.vo.ProductListVO4;
 
 @Controller
 public class ProductListController {
@@ -189,6 +190,11 @@ public class ProductListController {
 	
 	@RequestMapping("publicData")
 	public void publicData() {
+		
+	}
+	
+	@RequestMapping("orderHistory")
+	public void orderData() {
 		
 	}
 	

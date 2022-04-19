@@ -4,6 +4,8 @@
 	<typeAliases>
 		<typeAlias type="com.hi.clothingStore.vo.ProductListVO" alias="productlistVO"/>
 		<typeAlias type="com.hi.clothingStore.vo.ProductListVO2" alias="productlistVO2"/>
+		<typeAlias type="com.hi.clothingStore.vo.ProductListVO3" alias="productlistVO3"/>
+		<typeAlias type="com.hi.clothingStore.vo.ProductListVO4" alias="productlistVO4"/>
 		<typeAlias type="com.hi.clothingStore.vo.ProductPageVO" alias="productpageVO"/>
 		<typeAlias type="com.hi.clothingStore.vo.MemberVO" alias="memberVO"/>
 		<typeAlias type="com.hi.clothingStore.vo.ServiceCenterVO" alias="serviceVO"/>

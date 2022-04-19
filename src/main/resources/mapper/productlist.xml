@@ -84,6 +84,18 @@
 	
 	</insert>
 	
+	<!-- 통신은 이상없으나 왜 안들어가는지 의문 -->
+	<insert id="purchaseInfo" parameterType="productlistVO4">
+		insert into 
+				purchaseinfo(product_idx , payment_method, user_id, payment_total, 
+							recipient_info, recipient_addr, purchase_product,
+					 		purchase_quantity, payment_date)
+		 values (#{product_idx}, #{payment_method}, #{user_id}, #{payment_total}, 
+		 		#{recipient_info}, #{recipient_addr}, #{purchase_product}, 
+		 		#{purchase_quantity}, now())
+	</insert>
+	
+	
 	
 	
 	

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.hi.clothingStore.vo.ProductListVO;
 import com.hi.clothingStore.vo.ProductListVO2;
+import com.hi.clothingStore.vo.ProductListVO4;
 
 
 
@@ -55,5 +56,9 @@ public class ProductListDAO {
 		return my.delete("productlist.deleteProduct", vo);
 	}
 	
+	public int purchaseInsertInfo(ProductListVO4 vo) {
+			System.out.println("purchaseInfo map:"+vo);
+			return my.insert("productlist.purchaseInfo", vo); 
+	}
 	
 }

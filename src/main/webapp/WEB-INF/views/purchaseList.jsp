@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 </head>
+
 <body>
 
 	<div id = "top">
@@ -24,7 +25,7 @@
 		   <a href="productList.jsp">리스트 목록으로 </a>
 	</div> 
 	
-	<form>
+	<form action = "orderHistory">
 		<div>
 			<div>
 				<h1>주문 정보</h1>
@@ -46,19 +47,19 @@
 		</div>
 		<div>
 			<div>
-				상품 이름: <input type="text" name="purchase_product" value = "${param.product_title}" disabled/><br>
-				 상품 가격:<input type="text" name="payment_total" value = "${param.payment_total}" disabled/><br>
+				상품 이름: <input type="text" name="purchase_product" value = "${param.product_title}"><br>
+				 상품 가격:<input type="text" name="payment_total" value = "${param.payment_total}"><br>
 			 	 <img src="resources/img/${param.product_img}" style = width:12%; ><br>
-			 	 상품 수량:	<input type="text" name="purchase_quantity"  value = "${param.p_num1}"  disabled/><br>
-			 	 상품 번호: <input type="text" name="product_idx"  value = "${param.product_idx}"  disabled/>
+			 	 상품 수량:	<input type="text" name="purchase_quantity"  value = "${param.p_num1}"><br>
+			 	 상품 번호: <input type="text" name="product_idx"  value = "${param.product_idx}">
 			</div>
 			
 		</div>
 		<div>
 			<div>상품 결제</div>
-			<select name = "payment_idx">
-				<option value="1">신용카드 결제</option>
-    			<option value="2">무통장 입금</option> <!-- ajax로 확인 -->
+			<select name = "payment_method">
+				<option value="신용카드">신용카드</option>
+    			<option value="무통장입금">무통장입금</option> <!-- ajax로 확인 -->
 			</select>
 		</div>
 	</div>

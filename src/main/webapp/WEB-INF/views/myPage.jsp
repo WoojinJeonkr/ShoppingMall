@@ -21,7 +21,7 @@
 	 
 	<a href=""><button style="width: 200px; height: 50px;" class="btn btn-success">주문내역조회</button></a><br>
 	<a href="memberUpdate.jsp"><button style="width: 200px; height: 50px;" class="btn btn-success">회원수정</button></a><br>
-	<a href="memberDelete.jsp"><button style="width: 200px; height: 50px;" class="btn btn-success">회원탈퇴</button></a>
+	<a href="memberDelete.jsp"><button style="width: 200px; height: 50px;" class="btn btn-success">회원탈퇴</button></a><br>
 	<a href="logout"><button style="width:200px; height:50px;" class="btn btn-success" >로그아웃</button></a>
 	
 	

@@ -1,5 +1,6 @@
 package com.hi.clothingStore.vo;
 
+//likecheck 합쳐진 vo 
 public class ProductListVO2 {
 
 
