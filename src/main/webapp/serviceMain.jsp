@@ -87,18 +87,26 @@
 				alert('실패');
 			}
 		});
-	
-		var myClass;
-		$(".cate").click(function() {
-			myClass = $(this).attr("id");
+		$(".tot").mouseenter(function() {
 			$.ajax({
-
-				url : "faqListView",
+				url : "faqList",
+				success : function(list1) {
+					$("#result").html(list1);
+				},
+				error : function() {
+					alert('실패');
+				}
+			});
+		});
+		var myClass;
+		$(".cate").mouseenter(function() {
+			myClass = $(this).attr("id");
+			 $(this).addClass("active");
+			$.ajax({
+				url : "faqListView?service_faq_category="+myClass,
 				type : 'POST',
 				traditional : true,
-				data : {
-					service_faq_category : myClass
-				},
+
 				success : function(list1) {
 					$("#result").html(list1);
 				},
@@ -142,7 +150,7 @@
 			<hr>
 
 			<ul class="nav nav-tabs" name="service_faq_category">
-				<li class="active"><a href="#" id="전체" value="*">전체</a></li>
+				<li ><a href="#" class="tot" id="전체" value="*">전체</a></li>
 				<li><a href="" class="cate" id="교환/환불" value="교환/환불">교환/환불</a></li>
 				<li><a href="" class="cate" id="주문결제" value="주문결제">주문결제</a></li>
 				<li><a href="" class="cate" id="배송안내" value="배송안내">배송안내</a></li>
