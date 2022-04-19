@@ -19,7 +19,7 @@
 		<div id="center">
 			<h3>FaQ 등록완료</h3>
 			<hr>
-				<a href="faqList"><button>목록보기.</button></a>
+				<a href="serviceMain.jsp"><button>목록보기.</button></a>
 				<a href="serviceFaqCreate.jsp"><button>글쓰기.</button></a>
 </div></div>
 </body>

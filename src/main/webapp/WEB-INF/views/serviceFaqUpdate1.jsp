@@ -20,7 +20,7 @@
 		<div id="center">
 			<h3>업데이트완료</h3>
 			<hr>
-				<a href="faqList"><button>목록보기.</button></a>
+				<a href="serviceMain.jsp"><button>목록보기.</button></a>
 </div></div>
 
 </body>

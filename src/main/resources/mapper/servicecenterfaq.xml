@@ -10,18 +10,23 @@
 	<select id="list_notice" resultType="faqVO">
 		select * from servicecenterfaq where service_notice = 1
 	</select>
+	<select id="list_cate" resultType="faqVO">
+		select * from servicecenterfaq where service_notice IS NULL and service_faq_category = #{service_faq_category}
+	</select>
 	
 	<insert id="create" parameterType="faqVO">
 		insert into servicecenterfaq values (null, #{service_faq_category},#{service_faq_question}, #{service_faq_answer}, null)
 		<!-- read 빼고 //return은 무조건 int -->
 	</insert>
-	
+	<update id="up" parameterType="faqVO">
+		update servicecenterfaq set service_faq_category=#{service_faq_category}, service_faq_question = #{service_faq_question}, service_faq_answer = #{service_faq_answer} where service_faq_idx=#{service_faq_idx}
+	</update>
 	<select id="one" parameterType="faqVO" resultType="faqVO">
 		select * from servicecenterfaq where service_faq_idx = #{service_faq_idx}
 	</select>
 	
 	<delete id="del" parameterType="faqVO">
-		delete from servicecenterfaq where service_faq_idx = #{service_faq_idx}
+		delete from servicecenterfaq where service_faq_idx = #{service_faq_idx} 
 	</delete>
 	
 	<insert id="create1" parameterType="faqVO">
