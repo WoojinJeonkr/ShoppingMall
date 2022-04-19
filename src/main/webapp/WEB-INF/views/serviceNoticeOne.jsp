@@ -88,12 +88,12 @@ th, td {
 					<td colspan="4"><a href="serviceNoticeList"><button>목록</button></a>
 
 						<!--  자기 글일때만  삭제, 수정 버튼 활성화. --> 
-						<% if (session.getAttribute("userId") != null) {%>
-						<% if (session.getAttribute("userId").equals("admin")) { %> 						
-							<a href="serviceNoticeDelete?service_faq_idx=${one.service_faq_idx}"><button>삭제</button></a>
-							<a href="serviceNoticeUpdate2?service_faq_idx=${one.service_faq_idx}"><button>수정</button></a>
-					<%
-						}
+						<% if (session.getAttribute("user_id") != null) {%>
+							<% if (session.getAttribute("user_id").equals("admin")) { %> 						
+								<a href="serviceNoticeDelete?service_faq_idx=${one.service_faq_idx}"><button>삭제</button></a>
+								<a href="serviceNoticeUpdate2?service_faq_idx=${one.service_faq_idx}"><button>수정</button></a>
+						<%
+							}
 					%>
 					<%
 						}

@@ -37,7 +37,7 @@ th, td {
 			<jsp:include page="../../top2.jsp"></jsp:include>
 		</div>
 		<div id="center">
-			<div class="well"><h3>FaQ 수정하기</h3></div>
+			<div class="well"><h3>공지사항 수정하기</h3></div>
 			
 				<hr>
 				<form action="serviceNoticeUpdate1">

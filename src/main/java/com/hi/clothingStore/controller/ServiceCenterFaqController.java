@@ -25,6 +25,18 @@ public class ServiceCenterFaqController {
 		model.addAttribute("list", list);
 	}
 	
+	@RequestMapping("faqListView")
+	public void list_cate(ServiceCenterFaqVO vo, Model model, HttpServletRequest request) {
+		String msg =request.getParameter("service_faq_category");
+		System.out.println(msg);
+		List<ServiceCenterFaqVO>list=dao.cateList(vo, msg);
+		System.out.println("--------------------");
+		model.addAttribute("list", list);
+		System.out.println("----------3----------");
+		System.out.println(list);
+		System.out.println(vo);
+	}
+	
 	@RequestMapping("serviceNoticeList")
 	public void list1(Model model) {
 		List<ServiceCenterFaqVO> list=dao.all_notice();
@@ -35,6 +47,7 @@ public class ServiceCenterFaqController {
 	public void readone(ServiceCenterFaqVO vo, Model model) {
 		ServiceCenterFaqVO one= dao.one(vo);
 		model.addAttribute("one", one);
+
 	}
 	
 	@RequestMapping("serviceFaqCreate")
@@ -67,7 +80,7 @@ public class ServiceCenterFaqController {
 	}
 	@RequestMapping("serviceNoticeDelete")
 	public void delete(ServiceCenterFaqVO vo) {
-		dao.delete(vo);
+		dao.delete1(vo);
 	}
 	
 	@RequestMapping("serviceNoticeUpdate1")
@@ -85,31 +98,29 @@ public class ServiceCenterFaqController {
 	@RequestMapping("serviceFaqDelete")
 	public String deletefaq (ServiceCenterFaqVO vo, HttpServletRequest request) {
 		String[] msg =request.getParameterValues("service_faq_idx");
-
+		System.out.println(msg);
 		int size = msg.length;
+		System.out.println(size);
 		for (int i=0; i<size; i++) {
 			System.out.println(msg[i]);
-			dao.delete(vo);
+			int s=Integer.parseInt(msg[i]);
+			System.out.println(vo);
+			dao.delete(vo, s);
 		}
-		return "redirect:faqList";
+		return "redirect:serviceMain.jsp";
 	}
 	
 	
 	@RequestMapping("serviceFaqUpdate1")
 	public void update_faq(ServiceCenterFaqVO vo) {
-		dao.update(vo);
+		dao.update2(vo);
 	}
 	
 	@RequestMapping("serviceFaqUpdate2")
 	public void preupdate_faq(ServiceCenterFaqVO vo, Model model, HttpServletRequest request) {
 		String[] msg =request.getParameterValues("service_faq_idx");
-		
-		int size = msg.length;
-		for (int i=0; i<size; i++) {
-			System.out.println(msg[i]);
-			ServiceCenterFaqVO one = dao.one(vo);
-			model.addAttribute("one", one);
-		}
+		ServiceCenterFaqVO one = dao.one(vo);
+		model.addAttribute("one", one);
 		
 		System.out.println("update요청_");
 		

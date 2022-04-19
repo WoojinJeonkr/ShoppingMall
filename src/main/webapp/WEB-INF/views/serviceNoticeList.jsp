@@ -30,38 +30,48 @@
 </style>
 </head>
 <body>
-
-	<div class="well", style="width:30%; height:150px; float:left;"><h1>Notice</h1>	<p>공지사항</p></div>
-	<div class="well", style="width:70%; height:150px; float:left;">
-		<div id="faqBtn"><a href="faqList"><h4>FAQ</h4></a></div>
-		<div id="qnaBtn"><a href="serviceList"><h4>QnA</h4></a></div>
-			<div id="NoticeBtn"><a href="serviceNoticeList"><h4>Notice</h4></a></div>
-	</div>
-
-	<hr>
-	<table>
-		<tr>
-			<td class="left">index</td>
-			<td class="left">title</td>
-			<td class="left">writer</td>
-		</tr>
-		<c:forEach items="${list}" var="one">
-		<tr>
-			<td class="right">${one.service_faq_idx}</td>
-			<td class="right"><a href="serviceNoticeOne?service_faq_idx=${one.service_faq_idx}">${one.service_faq_question}</a></td>
-			<td class="right">관리자</td>
+<div id="total">
+		<div id="top">
+			<jsp:include page="../../top.jsp"></jsp:include>
+		</div>
+		<div id="top2">
+			<jsp:include page="../../top2.jsp"></jsp:include>
+		</div>
+		<h3>고객센터</h3>
+		<div id="center">
+		<div class="well", style="width:30%; height:150px; float:left;"><h1>Notice</h1>	<p>공지사항</p></div>
+		<div class="well", style="width:70%; height:150px; float:left;">
+			<div id="faqBtn"><a href="serviceMain.jsp"><h4>FAQ</h4></a></div>
+			<div id="qnaBtn"><a href="serviceList"><h4>QnA</h4></a></div>
+				<div id="NoticeBtn"><a href="serviceNoticeList"><h4>Notice</h4></a></div>
+		</div>
+	
+		<hr>
+		<table>
+			<tr>
+				<td class="left">index</td>
+				<td class="left">title</td>
+				<td class="left">writer</td>
+			</tr>
+			<c:forEach items="${list}" var="one">
+			<tr>
+				<td class="right">${one.service_faq_idx}</td>
+				<td class="right"><a href="serviceNoticeOne?service_faq_idx=${one.service_faq_idx}">${one.service_faq_question}</a></td>
+				<td class="right">관리자</td>
+				
+	
+			</c:forEach>	
+			</table>
+			<% if (session.getAttribute("user_id") != null) {%>
+			<% if (session.getAttribute("user_id").equals("admin")) { %> 						
+				<a href="servicecenterNoticeCreate.jsp"><button>공지사항 쓰기</button></a></td>
+			<%
+			}
+			%>
+			<%
+			}
+			%>
 			
-
-		</c:forEach>	
-		</table>
-		<% if (session.getAttribute("user_id") != null) {%>
-		<% if (session.getAttribute("user_id").equals("admin")) { %> 						
-			<a href="servicecenterNoticeCreate.jsp"><button>공지사항 쓰기</button></a></td>
-		<%
-		}
-		%>
-		<%
-		}
-		%>
+		</div>
 </body>
 </html>

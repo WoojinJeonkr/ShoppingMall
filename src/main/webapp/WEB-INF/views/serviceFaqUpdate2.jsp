@@ -37,11 +37,17 @@ th, td {
 			<jsp:include page="../../top2.jsp"></jsp:include>
 		</div>
 		<div id="center">
-			<div class="well"><h3>공지사항 수정하기</h3></div>
+			<div class="well"><h3>FaQ 수정하기</h3></div>
 			
 				<hr>
-				<form action="serviceNoticeUpdate1">
+				<form action="serviceFaqUpdate1">
 					<input type="hidden" name="service_faq_idx" style="width: 300px;" value="${one.service_faq_idx}">
+						<select name="service_faq_category">
+				            <option value="주문결제" selected >주문결제</option>
+							<option value="배송안내">배송안내</option>
+						    <option value="교환/환불">교환/환불</option>
+							<option value="상품/회원관련">상품/회원관련</option>
+			        	</select>
 					<table>
 						<tr>
 							<td class="left">제목</td>
