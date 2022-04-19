@@ -99,12 +99,18 @@ public class ReviewController {
 	// 구매 후기 수정
 	@ResponseBody
 	@RequestMapping(value = "reviewUpdate", method = RequestMethod.POST)
-	public int reviewUpdate(ReviewVO review, HttpSession session) throws Exception {
+	public int getReviewList1(ReviewVO review, HttpSession session) throws Exception {
 		System.out.println("후기 수정이 호출되었습니다.");
 		int result = 0;
 		
 		String userId = (String)session.getAttribute("user_id");
 		String user_id = reviewServiceImpl.idCheck(review.getReview_idx());
+		/*
+		 System.out.println("----" + review.getReview_content());
+		 System.out.println(review.getReview_idx()); System.out.println(userId);
+		 System.out.println(user_id);
+		 */
+		
 		
 		if(userId.equals(user_id)){
 			review.setUser_id(userId);

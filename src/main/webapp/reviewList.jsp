@@ -39,6 +39,7 @@
 </style>
 	<!-- 함수로 사용할 스크립트들은 특별한 이유가 있지 않은 한 헤드 내부에 위치시킨다 -->
 	<script>
+	review_idx2 = 0
 		// 구매 후기 불러오기
 		function reviewList(){ // reviewList()라는 함수로 생성
 			console.log("-----------------------");
@@ -96,8 +97,8 @@
 					review_content : review_content2
 				};
 				
-				alert(product_idx2)
-				alert(review_content2)
+				/* alert(product_idx2)
+				alert(review_content2) */
 				
 				$.ajax({
 					url : "reviewCreate", // 데이터가 전송될 주소
@@ -117,15 +118,16 @@
 		});
 		
 		/* 후기 수정  */
-		$("#modal_update_btn").click(function(){
-			var updateConfirm = confirm("정말로 수정하시겠습니까? 수정 후 복구가 불가능합니다.");
-			
+		function update(){
+			var updateConfirm = confirm("정말로 수정하시겠습니까?");
+			//review_idx : $(this).attr("data-review_idx"),
 			if(updateConfirm){
 				var data = {
-					review_idx : $(this).attr("data-review_idx"),
-					review_Content: $('.modal_review_content').val()
+					
+					review_idx : review_idx2,
+					review_content: $('.modal_review_content').val()
 				}; //reviewVO 형태로 데이터 생성
-				
+								
 				$.ajax({ // 후기 수정 관련 ajax
 					url : "reviewUpdate",
 					type : "post",
@@ -144,26 +146,27 @@
 						alert("로그인해주세요.")
 					}
 				});
-			}	
-		});
+			}
+		}
 		
-		/* 후기 수정 버튼 클릭 시 */
+
+		/* 목록에서 후기 수정 버튼 클릭 시 */
 		$(document).on("click", ".update", function(){
 			/* $(".reviewModal").attr("style", "display:block;"); */
 			$(".reviewModal").fadeIn(200);
 			
 			var review_idx = $(this).attr("data-review_idx"); // 변수 review_idx에 버튼에 부여된 review_idx 저장
 			var review_content = $(this).parent().parent().children(".review_content").text(); // 변수 review_content에 버튼의 부모의 부모에서 자식 클래스가 review_content인 요소 값 저장
-			
+			review_idx2 = review_idx
 			$(".modal_review_content").val(review_content);
 			$("#modal_update_btn").attr("data-review_idx", review_idx);
 		});
 		
 		/* 후기 수정 취소 버튼 클릭 시 */
-		$("#modal_cancel").click(function(){
+		function cancel2(){
 			/* $(".reviewModal").attr("style", "display:none;"); */
 			$(".reviewModal").fadeOut(200);
-		});
+		}
 		
 		/* 후기 삭제  */
 		$(document).on("click", ".delete", function() { // .on() 메서드 : 클릭 메서드
@@ -202,7 +205,7 @@
 		<!-- 비회원의 경우 -->
 		<% if(session.getAttribute("user_id") == null) { %>
 		<p>
-			후기를 남기시려면 <a href="member">로그인</a>해주세요
+			후기를 남기시려면 <a href="member.jsp">로그인</a>해주세요
 		</p>
 		<% }else{ %>
 		<!-- 회원의 경우 -->
@@ -238,12 +241,12 @@
 				<div class="reviewModal">
 					<div class="modalContent">
 						<div>
-							<textarea class="modal_review_Content" name="modal_review_Content"></textarea>
+							<textarea class="modal_review_content" name="modal_review_content"></textarea>
 						</div>
 						
 						<div>
-							<button type="button" id="modal_update_btn">후기 수정</button>
-							<button type="button" id="modal_cancel">수정 취소</button>
+							<button type="button" id="modal_update_btn" onclick="update()">후기 수정</button>
+							<button type="button" id="modal_cancel" onclick="cancel2()">수정 취소</button>
 						</div>
 						
 					</div>
