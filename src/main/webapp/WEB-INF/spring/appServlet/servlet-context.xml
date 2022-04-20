@@ -21,8 +21,10 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 파일 업로드 설정 -->
+	<beans:bean id ="mr" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<beans:property name="maxInMemorySize" value="52428800"/> <beans:property name="defaultEncoding" value="utf-8"/> </beans:bean>
+	
 	<context:component-scan base-package="com.hi"/>
-	
-	
-	
+
 </beans:beans>

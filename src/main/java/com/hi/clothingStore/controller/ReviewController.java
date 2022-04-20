@@ -23,7 +23,7 @@ public class ReviewController {
 	
 	@Autowired
 	ReviewDAOImpl dao;
-	
+
 	/*
 	@RequestBody를 넣어 주는 이유
 	뷰에서 컨트롤러에 전달한 데이터와, 컨트롤러가 받으려는 매개변수 데이터형이 일치하지 않는 경우
@@ -126,8 +126,22 @@ public class ReviewController {
 		System.out.println("평균 평점이 출력되었습니다 ");
 		System.out.println(product_idx);
 		double scoreTotal = reviewServiceImpl.scoreAvg(product_idx);
-		System.out.println(scoreTotal);
 		return scoreTotal;
-		
 	}
+	/*
+	// 파일 업로드
+	@RequestMapping(value="uploadForm", method = RequestMethod.POST)
+	public void uploadForm(HttpServletRequest request, MultipartFile file, Model model) throws Exception {
+		String s1 = request.getContextPath();
+		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
+		String savedName = file.getOriginalFilename();
+		File target = new File(uploadPath + "/" + savedName);
+		
+		if (!target.isDirectory()) {
+			target.mkdir();
+		}
+		
+		file.transferTo(target);
+	}
+	*/
 }
