@@ -17,7 +17,40 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 </head>
+<script type = "text/javascript">
+$(document).ready(function(){
+	$('#addButton').click(function(){
+		console.log('button click!');
+		if($('#user_name').val() == ''){				
+			alert('이름을 입력하세요.');
+		} else if($('#user_tel').val() == ''){		
+			alert('전화번호를 입력하세요.');
+		} else if($('#recipient_info').val() == ''){		
+			alert('수신인을 입력하세요.');
+		} else if($('#recipient_addr').val() == ''){		
+			alert('주소를 입력하세요.');
+		} else if($('#payment_method').val() == ''){		
+			alert('결제 방법을 입력하세요.');
+		}else{
+			$('#addButton').submit();
+		}
+	})	
+});
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
 <body>
 
 	<div id = "top">
@@ -35,15 +68,15 @@
 		<div>
 			<input type = "hidden" name = "user_id" value = "${user_id}" >
 			이름: <br>
-				<input type = "text" name = "user_name" value = "이름 입력" ><br/>
+				<input type = "text" id = "user_name" name = "user_name" value = "이름 입력" ><br/>
 			휴대전화:  <br>
-				<input type = "text" name = "user_tel" value = "전화번호 입력"><br/>
+				<input type = "text" id = "user_tel" name = "user_tel" value = "전화번호 입력"><br/>
 		</div>
 		<div>
 			수신인: <br>
-			<input type = "text" name = "recipient_info" value = "수신인"><br/>
+			<input type = "text" id = "recipient_info" name = "recipient_info" value = "수신인"><br/>
 			주소: <br>
-			<input type = "text" name = "recipient_addr" value = "주소"><br/>
+			<input type = "text" id = "recipient_addr" name = "recipient_addr" value = "주소"><br/>
 		</div>
 		<div>
 			<div>
@@ -57,13 +90,13 @@
 		</div>
 		<div>
 			<div>상품 결제</div>
-			<select name = "payment_method">
+			<select id = "payment_method" name = "payment_method">
 				<option value="신용카드">신용카드</option>
     			<option value="무통장입금">무통장입금</option> <!-- ajax로 확인 -->
 			</select>
 		</div>
 	</div>
-		<button type = "submit">완료</button>
+		<button id = "addButton">완료</button>
 	</form>
 </body>
 </html>

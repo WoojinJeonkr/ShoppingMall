@@ -66,6 +66,7 @@ public class ReviewController {
 		System.out.println("후기 작성이 호출되었습니다.");
 		String user_id = (String)session.getAttribute("user_id");
 		review.setUser_id(user_id);
+		
 		reviewServiceImpl.reviewCreate(review);
 	}
 	
@@ -125,6 +126,8 @@ public class ReviewController {
 		System.out.println("평균 평점이 출력되었습니다 ");
 		System.out.println(product_idx);
 		double scoreTotal = reviewServiceImpl.scoreAvg(product_idx);
+		System.out.println(scoreTotal);
 		return scoreTotal;
+		
 	}
 }

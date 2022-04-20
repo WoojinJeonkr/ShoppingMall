@@ -251,11 +251,6 @@ $('#deleteBtn').click(function() {
 				console.log('product_idx'+product_idx)
 				console.log('likecheck'+likecheck)
 				
-				
-				
-				
-				
-				
 				let data = {
 						
 						labels : product_idx,
@@ -311,12 +306,7 @@ $('#deleteBtn').click(function() {
 			
 				});
 		
-
-	
-	
-	
-	
-}); //$
+	}); //$
 
 
 /* $(function(){
@@ -351,49 +341,6 @@ $('#deleteBtn').click(function() {
 				 +"&product_title="+'<c:out value="${one.product_title}"/>'
 				 +"&product_idx="+'<c:out value="${one.product_idx}"/>'+"&p_num1="+p_num1+"&product_img="+'<c:out value="${one.product_img}"/>'; 
     	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
 </head>

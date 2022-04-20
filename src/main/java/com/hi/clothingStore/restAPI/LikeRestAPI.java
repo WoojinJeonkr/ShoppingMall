@@ -56,26 +56,5 @@ public class LikeRestAPI {
 		return LikeOne;
 		
 	}
-	
-
-	@GetMapping("myProductLike")
-	@ResponseBody
-	public List<Map<String,Object>> selectProductMyLike(Model model,String user_id) {
-		
-		System.out.println("selectProductMyLike user_id"+user_id);
-		
-		/*
-		 * //user_id null값인 경우 처리. if(user_id==null && user_id.isEmpty()) { user_id =
-		 * ""; }
-		 */
-		List<Map<String,Object>> myLikeInfo  = likeDAO.myProductLike(user_id);
-		System.out.println("===============restAPI myLikeInfo"+myLikeInfo);
-		
-		model.addAttribute("myLikeInfo",myLikeInfo);
-		
-		return myLikeInfo; //json 변수 값 리턴 
-		
-	}
-	
 
 }
