@@ -49,41 +49,13 @@ th, td {
 	border-bottom: 1px solid #444444;
 	padding: 10px;
 }
+
+
 </style>
 
-<div id="total">
-	<div id="top">
-		<jsp:include page="top.jsp"></jsp:include>
-	</div>
-	<div id="top2">
-		<jsp:include page="top2.jsp"></jsp:include>
-	</div>
-	<h3>고객센터</h3>
-	<div id="center">
-		<div class="well" , style="width: 30%; height: 150px; float: left;">
-			<h1>QnA</h1>
-			<p>1:1 고객상담</p>
-		</div>
-		<div class="well" , style="width: 70%; height: 150px; float: left;">
-			<div id="faqBtn">
-				<a href="serviceMain.jsp"><h4>FAQ</h4></a>
-			</div>
-			<div id="qnaBtn">
-				<a href="serviceList.jsp"><h4>QnA</h4></a>
-			</div>
-			<div id="NoticeBtn">
-				<a href="serviceNoticeList"><h4>Notice</h4></a>
-			</div>
-			<% if( session.getAttribute("user_id") != null) { %>
-			<div id="myBtn">
-				<a href="serviceMyQuestion.jsp"><h4>내 문의사항</h4></a>
-			</div>
-			<% } %>
-		</div>
-</div>
-<hr>
-
-<!-- 검색  -->
+</style><div id="top">
+	<jsp:include page="/WEB-INF/views/myPage.jsp"></jsp:include>
+</div>	
 
 <div id="result"></div>
 

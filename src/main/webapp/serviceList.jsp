@@ -101,12 +101,13 @@ th, td {
 
 	<form action="serviceSearch" onsubmit="return false">
 		<select name="searchType"
-			style="padding-right: 10px; width: 100px; float: left">
+			style="padding-right: 10px; width: 100px; float: left; width:80px;height:30px;">
 			<option value="service_title">제목</option>
 			<option value="user_id">작성자</option>
-		</select> <input type="text" class="form-control form-control-sm"
-			name="keyword" id="keyword" style="width: 300px; float: left">
-		<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+		</select> 
+		<input type="text" class="form-control form-control-sm"
+			name="keyword" id="keyword" style="width: 300px; height:30px;float: left">
+		<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch" style="width: 50px; height:30px;">검색</button>
 	</form>
 
 	<div id="result"></div>
