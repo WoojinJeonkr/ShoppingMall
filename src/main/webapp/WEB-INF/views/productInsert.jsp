@@ -91,7 +91,7 @@ $(document).ready(function(){
 				<!-- product_category :<input type="text" class="form-control" name="product_category" id="product_category" /><br> -->
 				
 				product_category : 
-							<select name = "product_category">
+							<select id = "product_category" name = "product_category">
 								<option value ="">카테고리 선택</option>
 								<option value = "가디건">가디건</option>
 								<option value = "진">진</option>
@@ -112,8 +112,9 @@ $(document).ready(function(){
 				<!-- product_like:<input type="text" class="form-control" name="product_like"id="product_like" pattern="[0-9]+" value=0/><p>숫자로 입력</p><br> -->
 				product_description:<input type="text" class="form-control"name="product_description" id="product_description"/><br>
 				
-			<button id="button" type="button" class="btn btn-success">Submit</button>
+			
 		 </form>
+		 <button id="button" type="button" class="btn btn-success">Submit</button>
 		</div>
 	</div>
 </body>

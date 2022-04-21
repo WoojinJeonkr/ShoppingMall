@@ -26,7 +26,9 @@
 		product_idx , sum(likecheck) as likecheck 
 	from productlike 
 	group by product_idx , likecheck 
-	having product_idx &lt;= #{rowPerPage}
+	<![CDATA[ 
+	having product_idx <= #{rowPerPage}
+	]]>
   </select>
   
   	<!-- 	

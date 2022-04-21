@@ -234,9 +234,9 @@ public class ProductListController {
 		}
 	}
 	
-//	@RequestMapping("purchaseList")
-//	public void purchaseListMove() {
-//		
-//	}
+	@RequestMapping("purchaseList")
+	public void purchaseListMove() {
+		
+	}
 	
 }
