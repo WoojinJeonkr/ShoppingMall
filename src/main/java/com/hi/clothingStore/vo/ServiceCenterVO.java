@@ -13,8 +13,24 @@ public class ServiceCenterVO {
 	private int service_idx_re ;
 	private int service_id_origin ;
 	private int service_reply_group;
-
 	
+	
+
+	private String searchType; 
+	private String keyword;
+	
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	public int getService_idx() {
 		return service_idx;
 	}
@@ -69,8 +85,10 @@ public class ServiceCenterVO {
 		return "ServiceCenterVO [service_idx=" + service_idx + ", user_id=" + user_id + ", service_title="
 				+ service_title + ", service_question=" + service_question + ", service_rgstday=" + service_rgstday
 				+ ", service_idx_re=" + service_idx_re + ", service_id_origin=" + service_id_origin
-				+ ", service_reply_group=" + service_reply_group + "]";
+				+ ", service_reply_group=" + service_reply_group + ", searchType=" + searchType + ", keyword=" + keyword
+				+ "]";
 	}
+	
 	
 	
 	

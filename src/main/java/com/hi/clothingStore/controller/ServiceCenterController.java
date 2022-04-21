@@ -2,10 +2,13 @@ package com.hi.clothingStore.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hi.clothingStore.dao.ServiceCenterDAO;
 import com.hi.clothingStore.vo.ServiceCenterVO;
@@ -57,9 +60,25 @@ public class ServiceCenterController {
 	}
 	
 	@RequestMapping("serviceList")
-	public void readlist(Model model) {
+	public void readlist(Model model,HttpServletRequest request) {
+		String searchType =request.getParameter("searchType");
+		String keyword =request.getParameter("keyword");
+		System.out.println(searchType);
+		System.out.println(keyword);
 		List<ServiceCenterVO> list=dao.all();
 		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping("serviceSearch")
+	public void readlist2(Model model,ServiceCenterVO vo) {
+	
+		System.out.println(vo.getSearchType());
+		System.out.println(vo.getKeyword());
+		List<ServiceCenterVO> list=dao.all2(vo);
+		System.out.println(list);
+		model.addAttribute("list", list);
+		
+	
 	}
 	
 }
