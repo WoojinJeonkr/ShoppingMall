@@ -140,7 +140,7 @@
 					<a href="serviceMain.jsp"><h4>FAQ</h4></a>
 				</div>
 				<div id="qnaBtn">
-					<a href="serviceList"><h4>QnA</h4></a>
+					<a href="serviceList.jsp"><h4>QnA</h4></a>
 				</div>
 				<div id="NoticeBtn">
 					<a href="serviceNoticeList"><h4>Notice</h4></a>

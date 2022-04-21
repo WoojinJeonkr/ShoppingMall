@@ -37,4 +37,15 @@ public class ServiceCenterDAO {
 	public int number (ServiceCenterVO vo) {
 		return my.update("servicecenter.number",vo);
 	}
+
+
+	public List<ServiceCenterVO> all2(ServiceCenterVO vo) {
+		if(vo.getSearchType().equals("service_title")) {
+			return my.selectList("servicecenter.list1",vo);
+		}else {
+			return my.selectList("servicecenter.list2",vo);
+		}
+	}
+
+
 }
