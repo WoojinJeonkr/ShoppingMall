@@ -3,15 +3,15 @@ package com.hi.clothingStore.vo;
 import java.sql.Timestamp;
 
 public class ReviewVO {
-	
-/*
-	review_idx        int(11)             not null
-	product_idx      int(11)             not null
-	user_id             varchar(45)      not null
-	review_content   varchar(5000)   not null
-	review_img        varchar(45)      null
-	review_score      decimal(2,1)              not null
-	review_rgstdate  timestamp       current_timestamp
+/*  DB 정보
+
+	review_idx          int(11)           not null
+	product_idx         int(11)           not null
+	user_id             varchar(45)       not null
+	review_content      varchar(5000)     not null
+	review_img          varchar(200)      not null
+	review_score        decimal(2,1)      not null
+	review_rgstdate     timestamp         current_timestamp
 */
 	private int review_idx;
 	private int product_idx;
@@ -20,6 +20,7 @@ public class ReviewVO {
 	private String review_img;
 	private double review_score;
 	private Timestamp review_rgstdate;
+	
 	public int getReview_idx() {
 		return review_idx;
 	}
@@ -50,7 +51,10 @@ public class ReviewVO {
 	public void setReview_img(String review_img) {
 		this.review_img = review_img;
 	}
-	public void setReview_score(float review_score) {
+	public double getReview_score() {
+		return review_score;
+	}
+	public void setReview_score(double review_score) {
 		this.review_score = review_score;
 	}
 	public Timestamp getReview_rgstdate() {
@@ -58,12 +62,6 @@ public class ReviewVO {
 	}
 	public void setReview_rgstdate(Timestamp review_rgstdate) {
 		this.review_rgstdate = review_rgstdate;
-	}
-	public double getReview_score() {
-		return review_score;
-	}
-	public void setReview_score(double review_score) {
-		this.review_score = review_score;
 	}
 	
 	@Override
