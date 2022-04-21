@@ -118,6 +118,14 @@
 			return false;
 		}//if
 	}//function checkPassword(pw)
+	
+	//취소버튼 눌렀을 때 productList.jsp호출
+	$(document).ready(function() {
+		$('#cancel').click(function() {
+			alert("회원가입 취소 하시겠습니까?");
+			location.href = "productList.jsp";
+		})
+	});
 </script>
 </head>
 <body>

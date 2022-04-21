@@ -18,7 +18,7 @@
 	<div id="center">
 	<h3>로그인 실패입니다. 다시 시작해주세요.</h3>
 	<hr>
-	<a href="member.jsp">
+	<a href="member">
 		<button>로그인 페이지로.</button>
 	</a>
 	</div>

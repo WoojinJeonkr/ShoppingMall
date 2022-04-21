@@ -20,21 +20,22 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#delete').click(function() {
-			alert('아이디를 정말로 삭제하시겠습니까?')//
+			alert('정말로 회원탈퇴 하시겠습니까?')
 		})
 	});
 </script>
-
 </head>
 <body>
-<div id="top">
-<jsp:include page="/WEB-INF/views/myPage.jsp"></jsp:include>
-</div>
 	<hr>
-	<form action="memberDelete">
-	 <input type="hidden" name="user_id" value="${userId}"><br>
-		<button type="submit" id="delete">회원탈퇴</button>
+	<% if(session.getAttribute("user_id") != null) { %>
+	<form action="memberDelete"> <!-- 컨트롤러의 memberDelete 로 간다.-->
+		<input type="hidden" name="user_id" value="${user_id}"><br>
+		<hr>정말로 회원을 탈퇴하시겠습니까?</hr>
+		<button>탈퇴하기</button>
 	</form>
-
+	<%}else{ %>
+		로그인을 먼저 해주세요.
+		<%}%>
+	
 </body>
 </html>

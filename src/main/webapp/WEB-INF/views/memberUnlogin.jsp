@@ -1,4 +1,4 @@
-<!-- 회원가입 실패 구현 -->
+<!--top.jsp의 마이페이지를 클릭했을시 비회원은 로그인페이지로 가도록 구현 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 	//alert("회원만 이용가능합니다!!!")구현
 	$(function() {
 		alert('회원만 이용가능합니다')
-		location.href="productList.jsp";//로그인페이지로 이동
+		location.href="productList.jsp";//상품리스트페이지로 이동
 	})
 	</script>
 	</head>

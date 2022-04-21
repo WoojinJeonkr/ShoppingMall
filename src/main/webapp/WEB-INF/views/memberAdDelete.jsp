@@ -23,10 +23,9 @@
 <link rel="stylesheet" type="text/css" href="resources/css/project.css">
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	//alert("회원수정 성공!!!")구현
 	$(function() {
-		alert('회원수정 되었습니다')
-		location.href="productList";//회원수정 완료시 로그인 페이지로 이동
+		alert('회원탈퇴 되었습니다')
+		location.href="myPage";
 	})
 </script>
 </head>

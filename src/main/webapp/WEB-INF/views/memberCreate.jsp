@@ -29,7 +29,7 @@
  	 <strong>오류!</strong> 회원가입에 문제가 생겼습니다. 다시 시작해주세요.
 	</div>
 	<hr><span class="glyphicon glyphicon-search"></span>
-	<a href="member.jsp">
+	<a href="member">
 		<button class="btn btn-info">로그인 페이지로.</button>
 	</a>
 	</div>

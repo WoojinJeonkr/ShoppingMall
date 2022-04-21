@@ -1,5 +1,7 @@
 package com.hi.clothingStore.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +41,9 @@ public class MemberDAO {
 		return vo2;
 	}
 	//비밀번호 수정시 기존 비밀번호와 다른지 체크
-	public MemberVO  modyPw(String user_id) {
+	public MemberVO  modyPw(String user_id, String user_pw) {
 		//컨트롤러에 user_id의 값이 들어오므로 (String user_id)가 있어야 값을 받을 수 있다.
-		MemberVO  vo2 = my.selectOne("member.modyPw", user_id);
+		MemberVO  vo2  = my.selectOne("member.modyPw", user_id);
 		//my.selectOne("member.modyPw", user_id);이 xml에 들어가서 
 		//member.xml의 select * from member where user_id = #{user_id}가 실행되고  
 		//해당 아이디 행 한 줄을 받아와 vo2에 넣어준다. 
@@ -49,20 +51,23 @@ public class MemberDAO {
 		return vo2;
 	}
 	
-	public MemberVO one(MemberVO vo) {
-		return my.selectOne("member.one", vo);
-	}
 	//회원수정 update는 리턴값이 int
 	public int update(MemberVO vo) {
 		return my.update("member.update", vo);
 	}
-	
+	//회원탈퇴
 	public int delete(MemberVO vo) {
-		return my.delete("book.delete1", vo);
+		return my.delete("member.delete", vo);
 	}
 	//mypage구현 
 	public MemberVO myPage(MemberVO vo) {
 		return my.selectOne("member.myPage", vo);
+	}
+	public List<MemberVO> readAll(MemberVO vo) {
+	  return my.selectList("member.readAll");//왜 ("member.readAll", vo)이 코드가 아닌지 모르겠지만 ...일단해봄.
+	}
+	public MemberVO readOne(MemberVO vo) {
+		return my.selectOne("member.readOne", vo);
 	}
 	
 }
