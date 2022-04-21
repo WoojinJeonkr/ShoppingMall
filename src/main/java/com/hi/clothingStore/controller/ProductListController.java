@@ -97,6 +97,8 @@ public class ProductListController {
 		Map<String,Object> map = productListService.getProductList(currentPage, rowPerPage, categoryName,searchWord);
 		//List<Integer> productLikeList = likeListService.getProductLikeList(vo);
 		
+		System.out.println("PLC map"+map);
+		
 		model.addAttribute("currentPage", currentPage); 
 		model.addAttribute("productListTotal",map.get("productListTotal")); 
 		model.addAttribute("lastPage", map.get("lastPage")); 

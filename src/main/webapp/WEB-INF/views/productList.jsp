@@ -95,10 +95,9 @@ product_category:
 	      <div class="box01">
 	      	<img src="resources/img/${one.product_img}" width="210px" height="200px" >
 	      </div>
-		      <div style="display: none;">${one.product_idx}</div><!-- one.getId() -->
-		      <div><a href="productOne?product_idx=${one.product_idx}&product_img=${one.product_img}&likecheck=${one.likecheck}&user_id=${user_id}">${one.product_title}</a></div>
-		       <div>￦${one.product_price}❤${one.likecheck}</div>
-		        
+		      <div><a href="productOne?product_idx=${one.product_idx}&product_img=${one.product_img}&likecheck=${one.likecheck}&user_id=${user_id}">${one.product_title} [${one.product_idx}]</a></div>
+		       <div>￦${one.product_price}❤${one.likecheck}</div> 
+		        <!-- style="display: none;" -->
 	  </div>
 	</td> 
 	<%

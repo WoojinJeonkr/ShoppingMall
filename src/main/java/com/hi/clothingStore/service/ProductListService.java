@@ -260,19 +260,47 @@ public class ProductListService {
 		//이렇게 해결해도 됌. 
 		
 		for(int i=0;i<productLikeRenew.size();i++) {
-			try {
-			//System.out.println("================voListResult에서 likecheck변환될 개수:"+i);
+			 try { 
+			System.out.println("================voListResult에서 likecheck변환될 개수:"+i);
+			
+			
 			Map<String,Object> map2 = productLikeRenew.get(i); 
+			
+			
+			System.out.println("map2========================"+map2);
 			int product_idx = Integer.parseInt(String.valueOf(map2.get("product_idx"))); 
 			int likecheck = Integer.parseInt(String.valueOf((map2.get("likecheck"))));
+			
+			
+			
+			
 			Map<String,Object> map = voListResult.get(product_idx-1); 
-			map.put("likecheck", likecheck); 
+			//원래는 자리에 맞춰서 likecheck를 변환해서 넣을 생각이었으나 
+			//페이지가 넘어갈 때마다 중복해서 likecheck의 총 하트 개수가 중복되서 들어가기 떄문에 
+			//ArrayList 두 개의 product_idx 가 일치하는 순간에만 넣을 수 있도록 if 조건문 작성 
+			int comp_idx = Integer.parseInt(String.valueOf(map.get("product_idx"))); 
+			 
+			System.out.println("map=========================="+map);
+			
+			
+			if(comp_idx==product_idx) { //if조건문을 추가해주니 해당 부분에만 잘 입력되는 것을 확인했음. 
+			
+				map.put("likecheck", likecheck); 
+			}
+			
+			
 			System.out.println("product_idx"+product_idx);
 			System.out.println("likecheck"+likecheck);
-			}catch(IndexOutOfBoundsException e) {
+			
+			 }catch(IndexOutOfBoundsException e) {//여러가지 기능들이 복합적으로 한 페이지에 들어있기 때문에 
+				 								//잘 되던 기능들도 새로운 기능들이 추가됨에 따라 에러가 날 수 있는 상황의 여지가 있으므로 
+				 								//예외처리를 넣어줬음. 
 				e.printStackTrace();
 			}
 			
+			 
+			 
+			 
 		} 
 		System.out.println("2차 가공한 결과 voListResult"+voListResult);
 		

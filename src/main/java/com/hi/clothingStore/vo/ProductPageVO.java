@@ -5,6 +5,7 @@ public class ProductPageVO {
 
 	private int rowPerPage;
 	private int beginRow; 
+	
 	private String product_category; 
 	private String searchWord;
 	
