@@ -94,4 +94,13 @@
 		 		#{purchase_quantity}, now())
 	</insert>
 	
+	<select id="myOrderHistory" resultType = "java.util.Map" parameterType="String">
+	 select *
+	 from product p inner join purchaseinfo p2 
+	 on p.product_idx = p2.product_idx 
+	 where user_id = #{user_id}
+ </select>
+	
+	
+	
 </mapper>

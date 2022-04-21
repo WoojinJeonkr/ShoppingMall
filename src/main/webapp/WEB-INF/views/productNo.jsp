@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>문제가 발생하였습니다.</p>
+	<p>문제가 발생했습니다.</p>
 		<br><a href="productList.jsp">
 			<button>상품 목록으로</button>
 		</a>

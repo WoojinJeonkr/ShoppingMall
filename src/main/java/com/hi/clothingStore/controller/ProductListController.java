@@ -1,6 +1,7 @@
 package com.hi.clothingStore.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -142,7 +143,7 @@ public class ProductListController {
 		System.out.println("productInsert의 result 값 1이면 성공 0이면 실패 "+result);
 		//model.addAttribute("result",result);
 		if(result == 1) {
-			return "productIn";
+			return "productSuccess";
 		}else {
 			return "productNo"; 
 		}
@@ -182,7 +183,7 @@ public class ProductListController {
 		System.out.println("======Controller productUpdate vo========"+vo);
 		int result = dao.productUpdate(vo); 
 		if(result == 1) {
-			return "productUpdate";
+			return "productSuccess";
 		}else {
 			return "productNo"; 
 		}
@@ -192,11 +193,50 @@ public class ProductListController {
 	public void publicData() {
 		
 	}
+
 	
 	@RequestMapping("orderHistory")
-	public void orderData() {
+	public void orderHistory(Model model,String user_id) {
+		
+		System.out.println("selectProductMyLike user_id"+user_id);
+		
+		/*
+		 * //user_id null값인 경우 처리. if(user_id==null && user_id.isEmpty()) { user_id =
+		 * ""; }
+		 */
+		List<Map<String,Object>> myOrder  = dao.myOrderHistory(user_id);
+		System.out.println("===============restAPI myOrderHistory"+myOrder);
+		
+		
+		/*
+		 * for(Map<String, Object> result : myLikeInfo) {
+		 * System.out.println("myLikeInfo result:"+result);
+		 * 
+		 * }
+		 */
+		
+		model.addAttribute("myOrder", myOrder);
+		
+		
+		//return myProductLike; //json 변수 값 리턴 
 		
 	}
 	
+	@RequestMapping("ProductpurchaseList")
+	public String purchaseList(ProductListVO4 vo, Model model)  {
+		int result = dao.purchaseInsertInfo(vo); 
+		System.out.println("purchaseInsertInfo의 result 값 1이면 성공 0이면 실패 "+result);
+		//model.addAttribute("result",result);
+		if(result == 1) {
+			return "productSuccess";
+		}else {
+			return "productNo"; 
+		}
+	}
+	
+	@RequestMapping("purchaseList")
+	public void purchaseListMove() {
+		
+	}
 	
 }

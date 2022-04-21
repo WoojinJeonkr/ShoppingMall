@@ -58,7 +58,7 @@ $(function () {
 	});//click
 
 
-$('#deleteBtn').click(function() {
+/* $('#deleteBtn').click(function() {
 	if(confirm("정말로 삭제하시겠습니까?")){
 		$.ajax({
 			url: "productDel",
@@ -75,7 +75,7 @@ $('#deleteBtn').click(function() {
 				}
 			});
 		}
-	});
+	}); */
 	
 		/* $('#love').click(function() {
 		$.ajax({
@@ -149,22 +149,34 @@ $('#deleteBtn').click(function() {
 						product_idx : ${one.product_idx}
 					},
 					success: function(result){
+						console.log('likecheck 값'+result)
 						console.log('likecheck 성공')
+						
+						if(result==1){
+							console.log('이전에 좋아요 클릭한 상태')
+							$('#likeck').val(1); 
+							$('#likebtn').attr('class', 'btn btn-danger'); 
+						}else{
+							console.log('이전에 좋아요를 누르지 않았음.')
+							$('#likeck').val(''); 
+							$('#likebtn').attr('class', 'btn btn-light'); 
+						}
 					},
 					error: function() {
 						console.log('likecheck 실패')
+					
 					}
 				
 				})
 			}) 
 		
 
-			 /*  $(function(){
-				 $("#likebtn").on("click",function(){ 
+			    $(function(){
+				 $("#likeDelbtn").on("click",function(){ 
 					//alert('test..')
 					$.ajax({
 						url : "likeCheckRevert", 
-						type:'put', 
+						type:'post', 
 						data:{
 							user_id: '${user_id}',
 							product_idx : ${one.product_idx}
@@ -192,7 +204,7 @@ $('#deleteBtn').click(function() {
 					
 					})
 				 })
-			})   */
+			})    
 				
 			
 			
@@ -381,13 +393,7 @@ $('#deleteBtn').click(function() {
 
                     </div> 	 
 		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 
-		      	 <div id = "love">
+		      	 <%-- <div id = "love">
 					<%
 						if("${result}"==null){
 					%>
@@ -398,22 +404,20 @@ $('#deleteBtn').click(function() {
 								<input type = "hidden" id="likeck" value="${result}">
 		      	 	<%}%>
 		      	 
-		      	 </div> 
+		      	 </div>  --%>
 	    		 
-	    		
-	    		
-	    			
+	    		 			<div>
+								<button type = "button" id="likebtn" class="btn btn-light">❤</button>
+	    		  					<button type = "button" id="likeDelbtn" >like cancel</button>
+	    		  			</div>
+	    		 
+	    		 
+	
 	    			<!-- jsp는 값 넘길때 붙일 것. -->
 		      	 <!-- <button><a href="purchaseList">바로구매</a></button>  -->
 		      	 <button id = "add">장바구니</button> 
 		      	 <button><a href="reviewList.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
 		     <!-- 카테고리, 좋아요, 작업 이후에  구현되도록 수정할 것. -->
-		    
-		    
-		    
-		    
-		    
-		    
 		    
 		    </div>
      	 <div>
@@ -453,13 +457,7 @@ $('#deleteBtn').click(function() {
 		<a href="productUp?p_idx=${one.product_idx}"><button style="display:none;">수정</button></a>
 		<button id="deleteBtn" style="display:none;">삭제</button>
 	
-
-	
 	<!-- ========================================================================= -->
-	
-	
-	
-	
 	
 	<!--<%-- <%}%> --%>-->
 </div>

@@ -15,7 +15,15 @@
 <link rel = "stylesheet" type = "text/css" href = "resources/css/project.css">
 <link rel = "stylesheet" type = "text/css" href = "resources/css/basket.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
 </head>
+	
+	
+		
+
+		<!-- product_idx, payment_idx, user_id, payment_total, recipient_info, recipient_addr, 
+		purchase_product, purchase_quantity -->
+
 <script type="text/javascript">
 /* $.ajax({
 	url: 'orderInsert',
@@ -41,55 +49,53 @@
 
 //select ajax restapi 하나 더 추가. 
 
+
+ $(function(){
+	//alert('test..')
+	$.ajax({
+		url : "orderHistory",
+		type: "get", 
+		data:{
+			user_id: '${user_id}'
+		},
+		success: function(result){
+			
+			console.log('result:'+result)
+			$('#d1').html(result)
+			
+		},
+		error: function() {
+			console.log('orderHistory error')
+		}
+	
+	})
+})  
+
+
+
+
+
+
+
+
+
+
+
 </script> 
 
 <body>
 <div id = "total">
-	<div id = "top">
-		<jsp:include page="/WEB-INF/views/myPage.jsp"></jsp:include>
+	<%-- <div id = "top">
+		<jsp:include page="top.jsp"></jsp:include>
+	</div> --%>
+	<div>
+		<div id="d1"></div>
 	</div>
-	
-	<div id = "center">
-		<h3>구매 이력 조회</h3>
-		<hr>
-		 <table border="1">
-		 
-			   <tr>
-			   	  <td>수신자</td>
-			      <td>수신자 주소</td>
-			      <td>상품 이름</td>
-			      <td>상품 수량</td>
-			      <td>구매 가격</td>
-			      <td>구매 일자</td>
-			   </tr>
-    
-    <!-- user_id와 일치하는 정보들만 가져와서 보여주기. -->
-    <c:forEach items="${myOrder}" var="one"> 
-    <tr>
-    
-   
-	      <td class="text_over">${one.recipient_info}</td> 
-	      <td class="text_over">${one.recipient_addr}</td>
-	      <td class="text_over">${one.product_title}</td>
-	      <td class="text_over">${one.purchase_quantity}</td>
-	      <td class="text_over">${one.payment_total}</td>
-      	  <td class="text_over">${one.payment_date}</td>
-   
-   </tr> 
-	</c:forEach>   
-   
-   
-  <%--  <tr>
-      <td class="text_over">${param.recipient_info}</td> <!-- one.getId() -->
-      <td class="text_over">${param.recipient_addr}</td>
-      <td class="text_over">${param.purchase_product}</td>
-      <td class="text_over">${param.purchase_quantity}</td>
-      <td class="text_over">${param.payment_total}</td>
-      <td></td>
-   </tr> --%>
-   
-   </table>
-	</div>
-</div> 
+
+
+
+
+
+
 </body>
 </html>

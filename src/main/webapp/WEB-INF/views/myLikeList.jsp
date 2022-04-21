@@ -11,6 +11,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/project.css">
+<script>
+ 
+</script>
  <style>
     .box01{
        border-width:5px; 
@@ -58,9 +61,7 @@
 						<div>${one.product_title}</div>
 						<div>${one.product_category}</div>
 						<div>￦${one.product_price}</div>
-						<button id>지우기</button>
 					</div>
-					
 					
 					
 	</td>

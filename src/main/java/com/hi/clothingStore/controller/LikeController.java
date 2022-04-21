@@ -70,7 +70,7 @@ public class LikeController {
 	
 
 	@SuppressWarnings("null")
-	@PutMapping("likeCheckRevert")
+	@PostMapping("likeCheckRevert")
 	public int memberLikeRevert(Model model,String user_id, Integer product_idx) {
 		
 		

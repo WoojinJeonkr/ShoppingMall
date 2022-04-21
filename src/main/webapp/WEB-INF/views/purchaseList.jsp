@@ -18,37 +18,32 @@
 
 </head>
 <script type = "text/javascript">
+
+//form내부에 버튼이 있으면 바로 제출 되므로 form 외부로 버튼을 빼 준다. 
+
 $(document).ready(function(){
 	$('#addButton').click(function(){
 		console.log('button click!');
 		if($('#user_name').val() == ''){				
 			alert('이름을 입력하세요.');
+			$('#user_name').focus();
 		} else if($('#user_tel').val() == ''){		
 			alert('전화번호를 입력하세요.');
+			$('#user_tel').focus();
 		} else if($('#recipient_info').val() == ''){		
 			alert('수신인을 입력하세요.');
+			$('#recipient_info').focus();
 		} else if($('#recipient_addr').val() == ''){		
 			alert('주소를 입력하세요.');
+			$('#recipient_addr').focus();
 		} else if($('#payment_method').val() == ''){		
 			alert('결제 방법을 입력하세요.');
+			$('#payment_method').focus(); 
 		}else{
-			$('#addButton').submit();
+			$('#Form').submit();
 		}
 	})	
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
 <body>
@@ -58,7 +53,7 @@ $(document).ready(function(){
 		   <a href="productList.jsp">리스트 목록으로 </a>
 	</div> 
 	
-	<form action = "orderHistory">
+	<form id = "Form" action = "ProductpurchaseList">
 		<div>
 			<div>
 				<h1>주문 정보</h1>
@@ -73,30 +68,32 @@ $(document).ready(function(){
 				<input type = "text" id = "user_tel" name = "user_tel" value = "전화번호 입력"><br/>
 		</div>
 		<div>
-			수신인: <br>
-			<input type = "text" id = "recipient_info" name = "recipient_info" value = "수신인"><br/>
+			받는 사람: <br>
+			<input type = "text" id = "recipient_info" name = "recipient_info" value = "받는 사람 입력"><br/>
 			주소: <br>
-			<input type = "text" id = "recipient_addr" name = "recipient_addr" value = "주소"><br/>
+			<input type = "text" id = "recipient_addr" name = "recipient_addr" value = "주소 입력"><br/>
 		</div>
 		<div>
 			<div>
-				상품 이름: <input type="text" name="purchase_product" value = "${param.product_title}"><br>
-				 상품 가격:<input type="text" name="payment_total" value = "${param.payment_total}"><br>
+			<!-- disabled를 해버리면 값이 아예 안넘어가버린다. -->
+				상품 이름: <input type="text" name="purchase_product" value = "${param.product_title}" readonly="readonly"><br>
+				 상품 가격:<input type="text" name="payment_total" value = "${param.payment_total}" readonly="readonly"><br>
 			 	 <img src="resources/img/${param.product_img}" style = width:12%; ><br>
-			 	 상품 수량:	<input type="text" name="purchase_quantity"  value = "${param.p_num1}"><br>
-			 	 상품 번호: <input type="text" name="product_idx"  value = "${param.product_idx}">
+			 	 상품 수량:	<input type="text" name="purchase_quantity"  value = "${param.p_num1}" readonly="readonly"><br>
+			 	 상품 번호: <input type="text" name="product_idx"  value = "${param.product_idx}" readonly="readonly">
 			</div>
 			
 		</div>
 		<div>
 			<div>상품 결제</div>
 			<select id = "payment_method" name = "payment_method">
+				<option value=''>선택</option>
 				<option value="신용카드">신용카드</option>
     			<option value="무통장입금">무통장입금</option> <!-- ajax로 확인 -->
 			</select>
 		</div>
 	</div>
-		<button id = "addButton">완료</button>
 	</form>
+	<button id = "addButton">완료</button>
 </body>
 </html>

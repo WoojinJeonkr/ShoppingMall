@@ -61,4 +61,9 @@ public class ProductListDAO {
 			return my.insert("productlist.purchaseInfo", vo); 
 	}
 	
+    public List<Map<String,Object>> myOrderHistory(String user_id){
+    	System.out.println("myOrderHistory의 user_id"+user_id);
+    	return  my.selectList("productlist.myOrderHistory", user_id); 
+    }
+	
 }

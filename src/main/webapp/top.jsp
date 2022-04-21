@@ -30,7 +30,7 @@
 								<a href="logout">로그아웃</a><!-- 컨트롤러의RequestMapping이 logout인 곳으로 감. -->
 							<%} %>
 							</li>
-							<li style = "font-size:medium;"><a href="myPage">마이페이지</a></li>
+							<li style = "font-size:medium;"><a href="myPage?user_id=${user_id}">마이페이지</a></li>
 							<li style = "font-size:medium;"><a href="">공공데이터</a></li>
 							<li style = "font-size:medium;"><a href="productList.jsp?user_id=${user_id}">상품정보</a></li>
 							<li style = "font-size:medium;"><a href="myLikeList.jsp?user_id=${user_id}">좋아요</a></li>
