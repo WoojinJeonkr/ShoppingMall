@@ -70,7 +70,7 @@ th, td {
 
 
 				<tr>
-					<td colspan="4"><a href="serviceList"><button>목록</button></a>
+					<td colspan="4"><a href="serviceList.jsp"><button>목록</button></a>
 
 						<!--  자기 글일때만  삭제, 수정 버튼 활성화. --> 
 						<% if (session.getAttribute("user_id") != null) {%>

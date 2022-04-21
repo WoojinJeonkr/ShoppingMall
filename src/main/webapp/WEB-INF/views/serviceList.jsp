@@ -31,19 +31,16 @@ th, td {
 			<td class="right">${one.service_idx}</td>
 			<td class="right"><a
 				href="serviceOne?service_idx=${one.service_idx}">${one.service_title}</a></td>
-			<td class="right">${one.user_id}</td>
+			<td class="right">
+			
+			<% if (session.getAttribute("user_id") != null) {%>
+				<% if (session.getAttribute("user_id").equals("admin")) { %> 		
+					<a href="memberOne?user_id=${one.user_id}">
+			<% }%>
+			<% }%>
+			${one.user_id}</td>
 	</c:forEach>
 </table>
-<!-- 로그인했을때만 글쓰기가 나타나도록 -->
-
-<%
-	if (session.getAttribute("user_id") != null) {
-%>
-<br>
-<a href="serviceWrite.jsp"><button>글쓰기</button></a>
-<%
-	}
-%>
 
 
 </div>

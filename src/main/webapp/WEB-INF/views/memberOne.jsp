@@ -71,5 +71,6 @@
 <button type="submit">회원수정</button>
 </form>
 <hr color=pink>
+<a href="serviceList.jsp"><button>돌아가기</button></a>
 </body>
 </html> 
