@@ -1,7 +1,9 @@
 package com.hi.clothingStore.controller;
 
+import java.io.File;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hi.clothingStore.dao.ReviewDAOImpl;
 import com.hi.clothingStore.service.ReviewServiceImpl;
@@ -23,6 +26,7 @@ public class ReviewController {
 	
 	@Autowired
 	ReviewDAOImpl dao;
+	
 
 	/*
 	@RequestBody를 넣어 주는 이유
@@ -46,26 +50,31 @@ public class ReviewController {
 		return review;
 	}
 	
-	/*
-	// 상품 조회 - 후기 작성
-	@RequestMapping(value = "/views/reviewCreate", method = RequestMethod.POST)
-	public String reviewCreate(ReviewVO review, HttpSession session) throws Exception {
-		 MemberVO member = (MemberVO)session.getAttribute("member");
-		 review.setUser_id(member.getUser_id());
-		 
-		 service.reviewCreate(review);
-		 
-		 return "redirect:/shop/view?n=" + review.getProduct_idx();
-	}
-	*/
-	
 	// 구매 후기 작성
 	@ResponseBody
-	@RequestMapping(value = "reviewCreate", method = RequestMethod.POST)
-	public void reviewCreate(ReviewVO review, HttpSession session) throws Exception {
+	@RequestMapping("reviewCreate")
+	public void reviewCreate(HttpServletRequest request, ReviewVO review, MultipartFile file, HttpSession session) throws Exception {
+		System.out.println(file);
 		System.out.println("후기 작성이 호출되었습니다.");
+		
 		String user_id = (String)session.getAttribute("user_id");
 		review.setUser_id(user_id);
+		
+		String s1 = request.getContextPath();
+		System.out.println(s1);
+		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
+		System.out.println("업로드 경로는 " + uploadPath); 
+		/* System.out.println(file.getName()); */
+		/* System.out.println(file.getOriginalFilename()); */
+		String savedName = file.getOriginalFilename();
+		System.out.println(uploadPath + "/" + savedName);
+		File target = new File(uploadPath + "/" + savedName);
+		System.out.println(target.exists());
+		
+		if (!target.isDirectory()) {
+			target.mkdir();
+		}
+		file.transferTo(target);
 		
 		reviewServiceImpl.reviewCreate(review);
 	}
@@ -128,20 +137,4 @@ public class ReviewController {
 		double scoreTotal = reviewServiceImpl.scoreAvg(product_idx);
 		return scoreTotal;
 	}
-	/*
-	// 파일 업로드
-	@RequestMapping(value="uploadForm", method = RequestMethod.POST)
-	public void uploadForm(HttpServletRequest request, MultipartFile file, Model model) throws Exception {
-		String s1 = request.getContextPath();
-		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
-		String savedName = file.getOriginalFilename();
-		File target = new File(uploadPath + "/" + savedName);
-		
-		if (!target.isDirectory()) {
-			target.mkdir();
-		}
-		
-		file.transferTo(target);
-	}
-	*/
 }

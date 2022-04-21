@@ -7,10 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Review Page</title>
+
 <%
 	int product_idx = Integer.parseInt(request.getParameter("product_idx"));	
 %>
-<script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <link rel = "stylesheet" type = "text/css" href = "resources/css/reviewStyle.css">
 	<!-- 함수로 사용할 스크립트들은 특별한 이유가 있지 않은 한 헤드 내부에 위치시킨다 -->
 	<script>
@@ -42,7 +43,7 @@
 						+ "<span class='date'>" + review_rgstdate + "</span>" 
 						+ "</div>"
 						+ "<span class='review_score' readonly>" + "[" + this.review_score + "점]" + "&nbsp;" + "</span>" + "<span class='review_content'>" + this.review_content + "</span>"
-						/* + "<span class='review_img' readonly>" + "<img src=" + "resources/img/upload/" + ${savedName} +">" + "</span>" */
+						+ "<span class='review_img' readonly>" + "<img src=resources/upload/" + ${savedName} + ">" + "</span>"
 						+ "<c:if test='${user_id != null}'>"
 						+ "<div class='reviewFooter'>"
 						+ "<button type='button' class='update' data-review_idx='" + this.review_idx + "'>수정</button>"
@@ -55,30 +56,38 @@
 				$("section.reviewList ol").html(str);
 			});
 		}
-	
 		/* 버튼 관련 스크립트 */
 		$(function(){
 			/* 후기 작성  */
 			$("#review_btn").click(function(){
-				var formObj = $(".reviewForm form[role='form']");
-				var product_idx2 = $("#product_idx").val(); // 상품 번호 변수 선언
-				var review_content2 = $("textarea#review_content2").val(); // 후기 내용 변수 선언
-				/* var review_img = ${savedName}; */
-				var review_score = $("input:radio[name=star]:checked").val();
+				const imageInput = $("#file")[0]; // 파일을 여러 개 선택할 수 있으므로 files라는 객체에 담긴다.
+				console.log("imageInput:", imageInput.files)
 				
-				var data = {
-					product_idx : product_idx2,
-					review_content : review_content2,
-					review_score : review_score
-				};
+				if(imageInput.files.length == 0){
+					alert('파일을 선택해주세요!!')
+					return;
+				}
 				
-				/* alert(product_idx2)
-				alert(review_content2) */
+				const formData = new FormData();
+				formData.append("product_idx", $("#product_idx").val());
+				formData.append("review_content", $("textarea#review_content2").val());
+				formData.append("review_img", imageInput.files[0]);
+				formData.append("review_score", $("input:radio[name=star]:checked").val());
+				
+				// XXX 들어가는 키 값 확인
+				for (var key of formData.keys()) {
+					console.log(key);
+				}
+				for (var value of formData.values()) {
+					console.log(value);
+				}
 				
 				$.ajax({
 					url : "reviewCreate", // 데이터가 전송될 주소
 					type : "post", // 타입
-					data : data, // 전송될 데이터
+					processData: false,
+			        contentType: false,
+					data : formData, // 전송될 데이터
 					success : function(){ // 데이터 전송이 성공되었을 경우 실행할 함수부
 						reviewList();
 						$("textarea#review_content2").val("") // 입력창 초기화
@@ -86,9 +95,7 @@
 					error: function() {
 						alert('실패')
 					}
-				
 				});
-				console.log(data)
 			});
 		});
 		
@@ -169,10 +176,10 @@
 					}
 				});
 			}
-		});
+//		});
 		
 		/* 평균 평점 반영 */
-		$(function(){
+		
 			var data = {product_idx : <%=product_idx%>}
 			
 			$.ajax({ // 평균 평점 관련 ajax
@@ -189,7 +196,18 @@
 					$('#scoreTotal').html(str2);
 				}
 			});
+
+		
+		$("#review_img").change(function(){
+			if(this.files && this.files[0]) {
+				var reader = new FileReader;
+				reader.onload = function(data) {
+					$(".select_img img").attr("src", data.target.result).width(500);        
+				}
+				reader.readAsDataURL(this.files[0]);
+			}
 		});
+	});
 	</script>
 </head>
 <body>
@@ -205,7 +223,7 @@
 		<% }else{ %>
 		<!-- 회원의 경우 -->
 		<section class="reviewForm">
-			<form role="form" method="post" autocomplete="off">
+			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
 				<input type="hidden" id="product_idx" name="product_idx" value='<%= request.getParameter("product_idx")%>'>
 				
 				<!-- 평점 선택 부분-->
@@ -270,12 +288,7 @@
 					<div class="input_area">
 						<textarea name="review_content" id="review_content2" placeholder="바르고 고운 말이 세상을 아름답게 합니다"></textarea>
 					</div>
-				
-					<!-- 
-					<form action="uploadForm" method="post" enctype="multipart/form-data">
-						<input type="file" name="file">
-					</form> -->
-					
+					<input type="file" name="file" id="file">
 					<!-- 후기 작성 버튼 -->
 					<div class="input_area">
 						<button type="button" id="review_btn">후기  작성</button>

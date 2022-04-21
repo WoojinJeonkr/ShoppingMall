@@ -3,17 +3,15 @@ package com.hi.clothingStore.vo;
 import java.sql.Timestamp;
 
 public class ReviewListVO {
-	
-/*
-	review_idx        int(11)             not null
-	product_idx      int(11)             not null
-	user_id             varchar(45)      not null
-	review_content   varchar(5000)   not null
-	review_img        varchar(45)      null
-	review_score      decimal(2,1)               not null
-	review_rgstdate  timestamp       current_timestamp
-	
-	member table의 user_name으로 review 목록에서 보여주기 위해 추가
+/*  DB 정보
+
+	review_idx          int(11)           not null
+	product_idx         int(11)           not null
+	user_id             varchar(45)       not null
+	review_content      varchar(5000)     not null
+	review_img          varchar(200)      not null
+	review_score        decimal(2,1)      not null
+	review_rgstdate     timestamp         current_timestamp
 */
 	private int review_idx;
 	private int product_idx;
@@ -23,7 +21,7 @@ public class ReviewListVO {
 	private double review_score;
 	private Timestamp review_rgstdate;
 	
-	private String user_name;
+	private String user_name; // 후기 목록에서 user_id 대신 user_name을 보여주기 위해 추가
 
 	public int getReview_idx() {
 		return review_idx;
@@ -64,8 +62,12 @@ public class ReviewListVO {
 	public void setReview_img(String review_img) {
 		this.review_img = review_img;
 	}
-	
-	public void setReview_score(float review_score) {
+
+	public double getReview_score() {
+		return review_score;
+	}
+
+	public void setReview_score(double review_score) {
 		this.review_score = review_score;
 	}
 
@@ -83,14 +85,6 @@ public class ReviewListVO {
 
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
-	}
-
-	public double getReview_score() {
-		return review_score;
-	}
-
-	public void setReview_score(double review_score) {
-		this.review_score = review_score;
 	}
 
 	@Override
