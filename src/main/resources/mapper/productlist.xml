@@ -99,7 +99,14 @@
 	 from product p inner join purchaseinfo p2 
 	 on p.product_idx = p2.product_idx 
 	 where user_id = #{user_id}
- </select>
+
+	 </select>
+ 
+ 	<select id = "getUserLevelValue" resultType="MemberVO" parameterType="String">
+ 		select level level 
+	 	from member
+	 	where user_id = #{user_id}
+ 	</select>
 	
 	
 	

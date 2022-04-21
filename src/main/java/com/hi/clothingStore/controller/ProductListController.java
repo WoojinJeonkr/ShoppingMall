@@ -17,6 +17,7 @@ import com.hi.clothingStore.dao.ProductListDAO;
 import com.hi.clothingStore.service.LikeListService;
 import com.hi.clothingStore.service.ProductListService;
 import com.hi.clothingStore.vo.LikeVO;
+import com.hi.clothingStore.vo.MemberVO;
 import com.hi.clothingStore.vo.ProductListVO;
 import com.hi.clothingStore.vo.ProductListVO2;
 import com.hi.clothingStore.vo.ProductListVO4;
@@ -48,9 +49,20 @@ public class ProductListController {
 	
 	//상품 상세보기 페이지 
 	@RequestMapping("productOne")
-	public void one(ProductListVO2 vo2, Model model) {
+	public void one(String user_id, MemberVO vo,ProductListVO2 vo2, Model model, HttpSession session) {
 		System.out.println("ProductlistController vo2:"+vo2);
 		ProductListVO2 vo3 = dao.productOne(vo2);
+		
+		//MemberVO getuserLevel = dao.getMemberLevel(user_id);
+		//MemberVO [user_id=null, user_pw=null, user_name=null, user_age=0, user_tel=null, user_tag=null, user_addr=null, level=2] 
+
+		//if(getuserLevel.getLevel()!="") {
+		//vo.setLevel(getuserLevel.getLevel());
+		//}
+		
+		session.setAttribute("user_level", vo.getLevel());
+		
+		
 		model.addAttribute("one", vo3);
 	}
 
@@ -70,8 +82,9 @@ public class ProductListController {
 									@RequestParam(value="currentPage",defaultValue = "1",required = false)int currentPage,
 								  @RequestParam(value = "rowPerPage", defaultValue = "20",required = false) int rowPerPage,
 								  @RequestParam(value="categoryName", required = false)String categoryName,
-								  @RequestParam(value="searchWord", required = false) String searchWord
+								  @RequestParam(value="searchWord", required = false) String searchWord,HttpSession session
 																														) {
+		
 		
 		//카테고리나 검색 이동 후 전체 상품목록으로 이동하는데 필요한 코드. 
 		

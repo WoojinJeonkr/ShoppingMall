@@ -8,7 +8,10 @@ public class ProductListVO2 {
 	private String product_title;
 	private String product_img;
 	private String product_price;
+	
 	private int likecheck;
+	
+	private int level; 
 	
 	private String product_category; 
 	
@@ -16,7 +19,6 @@ public class ProductListVO2 {
 	private String product_description;
 	private String product_rgstdate;          //상품 상세화면에서 출력용으로만 하고  
 	private String product_mdfydate;	      //날짜순으로 정렬은 이용하지 않을 것이기 떄문에 String으로 두어도 무방하다. 
-	
 	public int getProduct_idx() {
 		return product_idx;
 	}
@@ -40,6 +42,18 @@ public class ProductListVO2 {
 	}
 	public void setProduct_price(String product_price) {
 		this.product_price = product_price;
+	}
+	public int getLikecheck() {
+		return likecheck;
+	}
+	public void setLikecheck(int likecheck) {
+		this.likecheck = likecheck;
+	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
 	}
 	public String getProduct_category() {
 		return product_category;
@@ -72,19 +86,13 @@ public class ProductListVO2 {
 		this.product_mdfydate = product_mdfydate;
 	}
 	
-	public void setLikecheck(int likecheck) {
-		this.likecheck = likecheck;
-	}
-	public int getLikecheck() {
-		return likecheck;
-	}
-	
 	@Override
 	public String toString() {
 		return "ProductListVO2 [product_idx=" + product_idx + ", product_title=" + product_title + ", product_img="
-				+ product_img + ", product_price=" + product_price + ", likecheck=" + likecheck + ", product_category="
-				+ product_category + ", product_tag=" + product_tag + ", product_description=" + product_description
-				+ ", product_rgstdate=" + product_rgstdate + ", product_mdfydate=" + product_mdfydate + "]";
+				+ product_img + ", product_price=" + product_price + ", likecheck=" + likecheck + ", level=" + level
+				+ ", product_category=" + product_category + ", product_tag=" + product_tag + ", product_description="
+				+ product_description + ", product_rgstdate=" + product_rgstdate + ", product_mdfydate="
+				+ product_mdfydate + "]";
 	}
 	
 }

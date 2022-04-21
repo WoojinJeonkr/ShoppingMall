@@ -354,6 +354,38 @@ $(function () {
 				 +"&product_idx="+'<c:out value="${one.product_idx}"/>'+"&p_num1="+p_num1+"&product_img="+'<c:out value="${one.product_img}"/>'; 
     	}
 
+		 var level = [];
+		
+		$(function(){
+			//alert('test..')
+			$.ajax({
+				url : "getUserLevel",
+				type: "get", 
+				data:{
+					user_id: '${user_id}',
+				},
+				
+				success: function(result){
+					
+					console.log('levelValue 조회 성공')
+					console.log(result)
+					
+					$(result).each(function(index, item){
+					
+					level.push(item.level);
+					
+					console.log('getUserLevel level:'+level);
+					
+					});
+					
+				},
+				error: function() {
+					console.log('levelValue 조회 실패')
+				}
+			
+			})
+		})  
+		
 </script>
 </head>
 <body>
@@ -371,9 +403,7 @@ $(function () {
      	 <div class="product_right"> 
 		     <div style="display: none;">${one.product_idx}</div> <!-- one.getId() -->
 		     <div>이름:${one.product_title}</div> 
-		     <%-- <div>가격:${one.product_price}</div> --%>
 		     <div>카테고리:${one.product_category}</div>
-		    <%--  <div>좋아요 수:${one.product_like}</div>  --%>
 		     <div>상세 설명:${one.product_description}</div>
 	      	 <div>등록일:${one.product_rgstdate.substring(0,10)}</div> 
 	      	 <div>수정일:${one.product_mdfydate} </div>
@@ -389,59 +419,49 @@ $(function () {
                             </div>
                         </div>
 
+
+
+				
+
+					 <% if(((int)(session.getAttribute("user_level")) == 1 )|| (((int)session.getAttribute("user_level")) == 2)){ %> 
+					
+
                        	구매 시 버튼 클릭:<button onclick="total()"><div id = "sum" class="sum">total</div></button>
 
                     </div> 	 
-		      	 
-		      	 <%-- <div id = "love">
-					<%
-						if("${result}"==null){
-					%>
-								<button type = "button" id="likebtn" class="btn btn-light">♡</button>
-								<input type = "hidden" id="likeck" value="${result}">  
-					<%}else{ %>
-								<button type = "button" id="likebtn" class="btn btn-danger">❤</button>
-								<input type = "hidden" id="likeck" value="${result}">
-		      	 	<%}%>
-		      	 
-		      	 </div>  --%>
 	    		 
-	    		 			<div>
-								<button type = "button" id="likebtn" class="btn btn-light">❤</button>
-	    		  					<button type = "button" id="likeDelbtn" >like cancel</button>
-	    		  			</div>
-	    		 
-	    		 
-	
-	    			<!-- jsp는 값 넘길때 붙일 것. -->
-		      	 <!-- <button><a href="purchaseList">바로구매</a></button>  -->
-		      	 <button id = "add">장바구니</button> 
-		      	 <button><a href="reviewList.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
-		     <!-- 카테고리, 좋아요, 작업 이후에  구현되도록 수정할 것. -->
+   		 			<div>
+						<button type = "button" id="likebtn" class="btn btn-light">❤</button>
+  		  					<button type = "button" id="likeDelbtn" >like cancel</button>
+   		  			</div>
+      	 
+			      	 <button id = "add">장바구니</button> 
+			      	 
+		      	  <%}%>  
+			      	 
+			      	 <button><a href="reviewList.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
+	   			 </div>
 		    
-		    </div>
+		    <%if((int)(session.getAttribute("user_level"))==1){ %> 
      	 <div>
 	      	 <a href="productInsert"><button>상품 생성</button></a>
 			 <a href="productUp?product_idx=${one.product_idx}"><button>상품 내용 수정</button></a>
 			 <button id="deleteBtn">상품 삭제</button>
       	 </div>
+      	  <%} %> 
       	 
       	 <!-- 차트를 생성하려면 Chart 클래스를 인스턴스화 차트를 그리고 싶은 캔버스의 노드, jQuery 인스턴스 또는 2D 컨텍스트를 전달 -->
       	 <canvas id="myChart" width = "400" height = "400"></canvas>
       	 
       	 
-      	 	<!-- -------------------------------------------- -->
+   	 	<!-- -------------------------------------------- -->
 	 	<!-- <img src="resources/img/buy.PNG" style = width:30%;> 
 		 <img src="resources/img/love2.PNG" style = width:30%;> 
 		 <img id = "add" src="resources/img/basketimg.PNG" style = width:30%;>
 		 -->	
   </div>	 
 	  
-	      <!-- </div> -->
-   <!--  </div> -->
-   	
 <div id = "total">
-<!-- 유저아이디가 admin 관리자인경우 S버튼 활성화 -->
 	<!-- <%--  <% if (session.getAttribute("user_id").equals("admin")) {    %> --%>-->
 	<!--	<a href="productInsert"><button>생성</button></a>-->
 	<!--	<a href="productUp?p_idx=${one.product_idx}"><button id="updateBtn" style="width: 50px;">수정</button></a>-->
@@ -452,14 +472,10 @@ $(function () {
 		<button id="deleteBtn" style="display:none;">삭제</button> --%>
 	<!-- ========================================================================= -->
 	
-		
-		<a href="productInsert"><button style="display:none;">생성</button></a>
-		<a href="productUp?p_idx=${one.product_idx}"><button style="display:none;">수정</button></a>
-		<button id="deleteBtn" style="display:none;">삭제</button>
+			 <a href="productInsert"><button style="display:none;">생성</button></a>
+			<a href="productUp?p_idx=${one.product_idx}"><button style="display:none;">수정</button></a>
+			<button id="deleteBtn" style="display:none;">삭제</button> 
 	
-	<!-- ========================================================================= -->
-	
-	<!--<%-- <%}%> --%>-->
 </div>
 </body>
 </html>
