@@ -21,25 +21,14 @@
 	 });	
 	 */
 	$(function() {
-		$('#btnSearch').click(function() {
-			$.ajax({
-				url : "serviceSearch",
-				data : {
-					'searchType' : $("select[name='searchType']").val(),
-					'keyword' : $('#keyword').val()
-				},
-				success : function(result) {
-					$("#result").html(result);
-				},
-				error : function() {
-					alert('실패');
-				}
-			});
-		})
 		$.ajax({
-			url : "serviceList",
-			success : function(list1) {
-				$("#result").html(list1);
+			url : "serviceSearch",
+			data : {
+				'searchType' : 'user_id',
+				'keyword' : '${user_id}'
+			},
+			success : function(result) {
+				$("#result").html(result);
 			},
 			error : function() {
 				alert('실패');
@@ -92,33 +81,11 @@ th, td {
 			</div>
 			<% } %>
 		</div>
+</div>
+<hr>
 
-	</div>
-	<hr>
+<!-- 검색  -->
 
-	<!-- 검색  -->
-
-
-	<form action="serviceSearch" onsubmit="return false">
-		<select name="searchType"
-			style="padding-right: 10px; width: 100px; float: left">
-			<option value="service_title">제목</option>
-			<option value="user_id">작성자</option>
-		</select> <input type="text" class="form-control form-control-sm"
-			name="keyword" id="keyword" style="width: 300px; float: left">
-		<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
-	</form>
-
-	<div id="result"></div>
-	<!-- 로그인했을때만 글쓰기가 나타나도록 -->
-
-	<%
-		if (session.getAttribute("user_id") != null) {
-	%>
-	<br> <a href="serviceWrite.jsp"><button>글쓰기</button></a>
-	<%
-		}
-	%>
-
+<div id="result"></div>
 
 </div>

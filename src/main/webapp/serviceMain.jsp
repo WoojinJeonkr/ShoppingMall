@@ -145,6 +145,11 @@
 				<div id="NoticeBtn">
 					<a href="serviceNoticeList"><h4>Notice</h4></a>
 				</div>
+				<% if( session.getAttribute("user_id") != null) { %>
+				<div id="myBtn">
+					<a href="serviceMyQuestion.jsp"><h4>내 문의사항</h4></a>
+				</div>
+				<% } %>
 			</div>
 
 			<hr>

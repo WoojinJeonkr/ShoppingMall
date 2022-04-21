@@ -39,7 +39,7 @@ th, td {
 				<input type="hidden" name="service_id_origin" style="width:300px;"
 								value="<%= request.getParameter("service_idx") %>" readonly="readonly">
 				<input type="hidden" name="service_idx_re" style="width:300px;"
-								value="${one.service_idx_re}+1" readonly="readonly">
+								value="${one.service_idx_re}" readonly="readonly">
 					<table>
 						<tr>
 							<td class="left">제목</td>
