@@ -35,5 +35,3 @@ th, td {
 	</c:forEach>
 </table>
 
-
-</div>

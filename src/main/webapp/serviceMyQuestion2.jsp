@@ -49,14 +49,9 @@ th, td {
 	border-bottom: 1px solid #444444;
 	padding: 10px;
 }
-
-
 </style>
-
-</style><div id="top">
+<div id="top">
 	<jsp:include page="/WEB-INF/views/myPage.jsp"></jsp:include>
-</div>	
+</div>
 
 <div id="result"></div>
-
-</div>

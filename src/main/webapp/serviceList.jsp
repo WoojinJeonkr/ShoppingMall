@@ -72,25 +72,29 @@ th, td {
 	</div>
 	<h3>고객센터</h3>
 	<div id="center">
-		<div class="well" , style="width: 30%; height: 150px; float: left;">
+		<div class="well" style="width: 30%; height: 150px; float: left;">
 			<h1>QnA</h1>
 			<p>1:1 고객상담</p>
 		</div>
-		<div class="well" , style="width: 70%; height: 150px; float: left;">
+		<div class="well" style="width: 70%; height: 150px; float: left;">
 			<div id="faqBtn">
-				<a href="serviceMain.jsp"><h4>FAQ</h4></a>
+				<h4><a href="serviceMain.jsp">FAQ</a></h4>
 			</div>
 			<div id="qnaBtn">
-				<a href="serviceList.jsp"><h4>QnA</h4></a>
+				<h4><a href="serviceList.jsp">QnA</a></h4>
 			</div>
 			<div id="NoticeBtn">
-				<a href="serviceNoticeList"><h4>Notice</h4></a>
+				<h4><a href="serviceNoticeList">Notice</a></h4>
 			</div>
-			<% if( session.getAttribute("user_id") != null) { %>
+			<%
+				if (session.getAttribute("user_id") != null) {
+			%>
 			<div id="myBtn">
-				<a href="serviceMyQuestion.jsp"><h4>내 문의사항</h4></a>
+				<h4><a href="serviceMyQuestion.jsp">내 문의사항</a></h4>
 			</div>
-			<% } %>
+			<%
+				}
+			%>
 		</div>
 
 	</div>
@@ -101,13 +105,14 @@ th, td {
 
 	<form action="serviceSearch" onsubmit="return false">
 		<select name="searchType"
-			style="padding-right: 10px; width: 100px; float: left; width:80px;height:30px;">
+			style="padding-right: 10px; width: 100px; float: left; width: 80px; height: 30px;">
 			<option value="service_title">제목</option>
 			<option value="user_id">작성자</option>
-		</select> 
-		<input type="text" class="form-control form-control-sm"
-			name="keyword" id="keyword" style="width: 300px; height:30px;float: left">
-		<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch" style="width: 50px; height:30px;">검색</button>
+		</select> <input type="text" class="form-control form-control-sm"
+			name="keyword" id="keyword"
+			style="width: 300px; height: 30px; float: left">
+		<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch"
+			style="width: 50px; height: 30px;">검색</button>
 	</form>
 
 	<div id="result"></div>

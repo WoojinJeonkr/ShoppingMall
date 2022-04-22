@@ -32,15 +32,14 @@ th, td {
 			<td class="right"><a
 				href="serviceOne?service_idx=${one.service_idx}">${one.service_title}</a></td>
 			<td class="right">
-			
-			<% if (session.getAttribute("user_id") != null) {%>
-				<% if (session.getAttribute("user_id").equals("admin")) { %> 		
-					<a href="memberOne?user_id=${one.user_id}">
-			<% }%>
-			<% }%>
-			${one.user_id}</td>
+				<%
+					if (session.getAttribute("user_id") != null) {
+				%> <% if ((int) (session.getAttribute("user_level")) == 2) { %> 
+				<a href="memberOne?user_id=${one.user_id}"> 
+				<%} %> 
+				<%} %> 
+				${one.user_id} 
+			</td>
 	</c:forEach>
 </table>
 
-
-</div>
