@@ -54,4 +54,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public Double scoreAvg(int product_idx) throws Exception {
 		return sql.selectOne(namespace + ".scoreAvg", product_idx);
 	}
+	
+	// 후기 존재 여부 체크 --> 후기 평균 평점의 조건문을 위해 필요한 구문입니다
+	public int product_idxCheck(int product_idx) throws Exception {
+		return sql.selectOne(namespace + ".reviewPrductIdxCheck", product_idx);
+	}
 }

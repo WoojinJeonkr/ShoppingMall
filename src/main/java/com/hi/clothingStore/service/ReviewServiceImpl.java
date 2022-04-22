@@ -52,4 +52,10 @@ public class ReviewServiceImpl implements ReviewService {
 	public Double scoreAvg(int product_idx) throws Exception {
 		return dao.scoreAvg(product_idx);
 	}
+	
+	// 후기 존재 여부 체크 --> 후기 평균 평점의 조건문을 위해 필요한 구문입니다
+	@Override
+	public int product_idxCheck(int product_idx) throws Exception {
+		return dao.product_idxCheck(product_idx);
+	}
 }
