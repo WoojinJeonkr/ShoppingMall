@@ -6,12 +6,15 @@
 <meta charset="UTF-8">
 <title>고객센터</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-	<style>
+<style>
 table {
 	width: 100%;
 	border-top: 1px solid #444444;
@@ -37,13 +40,16 @@ th, td {
 			<jsp:include page="../../top2.jsp"></jsp:include>
 		</div>
 		<div id="center">
-			<div class="well"><h3>수정하기</h3></div>
-			
+			<div class="well">
+				<h3>수정하기</h3>
+			</div>
+
 
 			<div id="d1">
 				<hr>
 				<form action="serviceUpdate1">
-					<input type="hidden" name="service_idx" style="width: 300px;" value="${one.service_idx}">
+					<input type="hidden" name="service_idx" style="width: 300px;"
+						value="${one.service_idx}">
 					<table>
 						<tr>
 							<td class="left">제목</td>

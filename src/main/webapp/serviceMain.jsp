@@ -52,8 +52,8 @@
 				valueArr.push(list[i].value);
 			}
 		}
-		
-		location.href="serviceFaqUpdate2?service_faq_idx="+valueArr;
+
+		location.href = "serviceFaqUpdate2?service_faq_idx=" + valueArr;
 	}
 
 	var a = 0;
@@ -101,9 +101,9 @@
 		var myClass;
 		$(".cate").mouseenter(function() {
 			myClass = $(this).attr("id");
-			 $(this).addClass("active");
+			$(this).addClass("active");
 			$.ajax({
-				url : "faqListView?service_faq_category="+myClass,
+				url : "faqListView?service_faq_category=" + myClass,
 				type : 'POST',
 				traditional : true,
 
@@ -131,31 +131,35 @@
 		</div>
 		<div id="center">
 			<h3>고객센터</h3>
-			<div class="well"  style="width: 30%; height: 150px; float: left;">
+			<div class="well" style="width: 30%; height: 150px; float: left;">
 				<h1>FAQ</h1>
 				<p>자주 묻는 질문사항</p>
 			</div>
-			<div class="well"  style="width: 70%; height: 150px; float: left;">
+			<div class="well" style="width: 70%; height: 150px; float: left;">
 				<div id="faqBtn">
-					<a href="serviceMain.jsp"><h4>FAQ</h4></a>
+					<h4><a href="serviceMain.jsp">FAQ</a></h4>
 				</div>
 				<div id="qnaBtn">
-					<a href="serviceList.jsp"><h4>QnA</h4></a>
+					<h4><a href="serviceList.jsp">QnA</a></h4>
 				</div>
 				<div id="NoticeBtn">
-					<a href="serviceNoticeList"><h4>Notice</h4></a>
+					<h4><a href="serviceNoticeList">Notice</a></h4>
 				</div>
-				<% if( session.getAttribute("user_id") != null) { %>
+				<%
+					if (session.getAttribute("user_id") != null) {
+				%>
 				<div id="myBtn">
-					<a href="serviceMyQuestion.jsp"><h4>내 문의사항</h4></a>
+					<h4><a href="serviceMyQuestion.jsp">내 문의사항</a></h4>
 				</div>
-				<% } %>
+				<%
+					}
+				%>
 			</div>
 
 			<hr>
 
 			<ul class="nav nav-tabs" name="service_faq_category">
-				<li ><a href="#" class="tot" id="전체" value="*">전체</a></li>
+				<li><a href="#" class="tot" id="전체" value="*">전체</a></li>
 				<li><a href="" class="cate" id="교환/환불" value="교환/환불">교환/환불</a></li>
 				<li><a href="" class="cate" id="주문결제" value="주문결제">주문결제</a></li>
 				<li><a href="" class="cate" id="배송안내" value="배송안내">배송안내</a></li>
@@ -167,14 +171,16 @@
 				if (session.getAttribute("user_id") != null) {
 			%>
 			<%
-				if (session.getAttribute("user_id").equals("admin")) {
+				if ((int) (session.getAttribute("user_level")) == 2) {
 			%>
-			<div><a href="serviceFaqCreate.jsp"><button>추가</button></a> <input
-				type="button" name="chk" value="체크박스 활성화" onclick="showCheck()">
-			<input type="button" name="del" style="display: none" value="삭제"
-				onclick="deleteValue()"> <input type="button" name="modi"
-				style="display: none" value="수정" onclick="modifyValue()"></div>
-			
+			<div>
+				<a href="serviceFaqCreate.jsp"><button>추가</button></a> <input
+					type="button" name="chk" value="체크박스 활성화" onclick="showCheck()">
+				<input type="button" name="del" style="display: none" value="삭제"
+					onclick="deleteValue()"> <input type="button" name="modi"
+					style="display: none" value="수정" onclick="modifyValue()">
+			</div>
+
 			<%
 				}
 			%>
