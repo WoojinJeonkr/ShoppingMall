@@ -442,7 +442,10 @@ $(function () {
 			      	 <button><a href="reviewList.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
 	   			 </div>
 		    
-		    <%if((int)(session.getAttribute("user_level"))==1){ %> 
+
+		    <!-- 관리자만 버튼 보이게 -->
+		    <%if((int)(session.getAttribute("user_level"))==2){ %> 
+
      	 <div>
 	      	 <a href="productInsert"><button>상품 생성</button></a>
 			 <a href="productUp?product_idx=${one.product_idx}"><button>상품 내용 수정</button></a>
