@@ -19,7 +19,7 @@
 		<div id="center">
 			<h3>QnA등록완료</h3>
 			<hr>
-			<a href="serviceList"><button>목록보기.</button></a> <a
+			<a href="serviceList.jsp"><button>목록보기.</button></a> <a
 				href="serviceWrite.jsp"><button>글쓰기.</button></a>
 		</div>
 	</div>

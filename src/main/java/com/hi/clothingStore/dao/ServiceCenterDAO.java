@@ -32,12 +32,14 @@ public class ServiceCenterDAO {
 	}
 	
 	public int delete (ServiceCenterVO vo) {
-		return my.insert("servicecenter.del",vo);
+		return my.delete("servicecenter.del",vo);
 	}
 	public int number (ServiceCenterVO vo) {
 		return my.update("servicecenter.number",vo);
 	}
-
+	public int create2 (ServiceCenterVO vo) {
+		return my.insert("servicecenter.create2",vo);
+	}
 
 	public List<ServiceCenterVO> all2(ServiceCenterVO vo) {
 		if(vo.getSearchType().equals("service_title")) {
@@ -46,6 +48,11 @@ public class ServiceCenterDAO {
 			return my.selectList("servicecenter.list2",vo);
 		}
 	}
+	
+	public int update2 (ServiceCenterVO vo) {
+		return my.update("servicecenter.upseq",vo);
+	}
+	
 
 
 }
