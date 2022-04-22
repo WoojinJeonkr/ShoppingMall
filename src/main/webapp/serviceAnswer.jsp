@@ -58,7 +58,7 @@ $('#Answer').click(function() {
 						<table>
 							<tr>
 							<% int a= Integer.parseInt(request.getParameter("service_idx_re"));
-								String str="";
+								String str="ㄴRe:";
 								
 								for(int i=0; i<a; i++){
 									

@@ -21,8 +21,12 @@ public class ServiceCenterController {
 	ServiceCenterDAO dao;
 	
 	@RequestMapping("serviceWrite")
-	public String create(ServiceCenterVO vo) {
+	public String create(ServiceCenterVO vo,Model model) {
 		System.out.println("게시글등록요청");
+		System.out.println(vo.getService_id_origin());
+		System.out.println(vo.getService_idx_re());
+		System.out.println(vo.getService_reply_group());
+
 		int result =dao.create(vo);
 		dao.number(vo);
 		if(result==1) {
@@ -35,6 +39,27 @@ public class ServiceCenterController {
 			return "er";
 		}
 	}
+	
+	@RequestMapping("serviceAnswer")
+	public String create2(ServiceCenterVO vo,Model model) {
+		System.out.println("게시글등록요청");
+		System.out.println(vo.getService_id_origin());
+		System.out.println(vo.getService_idx_re());
+		System.out.println(vo.getService_reply_group());
+		dao.update2(vo);
+		int result =dao.create2(vo);
+		dao.number(vo);
+		if(result==1) {
+			System.out.println("게시글등록");
+			
+			return "serviceInsert";
+
+		}else {
+			System.out.println("실패");
+			return "er";
+		}
+	}
+	
 	
 	@RequestMapping("serviceUpdate1")
 	public void update(ServiceCenterVO vo) {
@@ -61,10 +86,7 @@ public class ServiceCenterController {
 	
 	@RequestMapping("serviceList")
 	public void readlist(Model model,HttpServletRequest request) {
-		String searchType =request.getParameter("searchType");
-		String keyword =request.getParameter("keyword");
-		System.out.println(searchType);
-		System.out.println(keyword);
+	
 		List<ServiceCenterVO> list=dao.all();
 		model.addAttribute("list", list);
 	}

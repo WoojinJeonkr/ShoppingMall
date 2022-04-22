@@ -7,43 +7,66 @@
 		select * from servicecenter where service_idx =
 		#{service_idx}
 	</select>
-	<select id="list" resultType="serviceVO" >
-		select *
-		from servicecenter order by service_id_origin desc, service_idx_re asc
+	<select id="list" resultType="serviceVO">
+		select *from servicecenter order by service_id_origin desc, service_reply_group asc
 	</select>
-	
-	<select id="list1" resultType="serviceVO" parameterType="serviceVO">
-		select *from servicecenter 
+
+	<select id="list1" resultType="serviceVO"
+		parameterType="serviceVO">
+		select *from servicecenter
 		<where>
 			<if test="keyword != null">
-			 service_title LIKE CONCAT ('%',#{keyword},'%') 
+				service_title LIKE CONCAT ('%',#{keyword},'%')
 			</if>
 		</where>
 		order by service_id_origin desc, service_idx_re asc
 	</select>
-	
-	
-	<select id="list2" resultType="serviceVO" parameterType="serviceVO">
-		select *from servicecenter 
+
+
+	<select id="list2" resultType="serviceVO"
+		parameterType="serviceVO">
+		select *from servicecenter
 		<where>
 			<if test="keyword != null">
-			 user_id LIKE CONCAT ('%',#{keyword},'%') 
+				user_id LIKE CONCAT ('%',#{keyword},'%')
 			</if>
 		</where>
 		order by service_id_origin desc, service_idx_re asc
 	</select>
-	
-	
-	
+
+
+
 	<insert id="create" parameterType="serviceVO">
 		insert into servicecenter values (null,
-		#{user_id},#{service_title},#{service_question}, null,
+		#{user_id},#{service_title},#{service_question}, now(),
 		#{service_idx_re}, #{service_id_origin},#{service_reply_group})
 		<!-- read 빼고 //return은 무조건 int -->
 	</insert>
+
+
+
+	<!-- 답글 쿼리 -->
+	<insert id="create2" parameterType="serviceVO">
+		insert into servicecenter
+		values (null,
+		#{user_id},#{service_title},#{service_question}, now(),
+		#{service_idx_re}+1, #{service_id_origin},#{service_reply_group}+1)
+	</insert>
+
+	<!-- 답글추가이후 순서수정 쿼리 -->
+	<update id="upseq" parameterType="serviceVO">
+		UPDATE servicecenter SET
+		service_reply_group = service_reply_group + 1 WHERE service_id_origin
+		= #{service_id_origin} AND service_reply_group> #{service_reply_group}
+	</update>
+
 	<delete id="del" parameterType="serviceVO">
-		delete from servicecenter where
-		service_idx = #{service_idx}
+		delete from servicecenter where service_idx = #{service_idx}
+		<if test="service_idx==service_id_origin">	<!-- 원글이 삭제되면 -->
+			delete from servicecenter where service_id_origin = #{service_idx}<!-- 
+				원글을 기준으로 그룹이었던것 모두 삭제. -->
+
+		</if>
 	</delete>
 
 	<update id="up" parameterType="serviceVO">
@@ -57,5 +80,6 @@
 		update servicecenter set
 		service_id_origin = service_idx where service_idx_re=0
 	</update>
+
 	<!-- https://gangnam-americano.tistory.com/25 -->
 </mapper>
