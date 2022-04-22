@@ -68,7 +68,7 @@ $(document).ready(function(){
 			
 			<% } else {%>
 			<script>
-			alert("${user_name}님!! 환영합니다~ 아이디가 ${user_id}로 로그인되었습니다.")
+			alert("환영합니다~ 아이디가 ${user_id}로 로그인되었습니다.")
 			location.href="productList.jsp";
 			</script>
 

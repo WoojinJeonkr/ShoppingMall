@@ -38,12 +38,20 @@
 		resultType="memberVO"><!--id가 MemberVO랑 연결되는거인지 찾아보기 -->
 		select * from member where user_id = #{user_id}
 	</select>
-	<!-- 관리자 회원관리 페이지 회원전체조회-->
-	<select id="readAll" resultType="memberVO"><!--id가 MemberVO랑 연결되는거인지 찾아보기 -->
+
+	<!-- 관리자 회원관리 페이지 회원전체조회-->	
+	<!-- 관리자가 회원검색 -->
+	<select id="readAll"  parameterType="memberVO" resultType="memberVO"><!--id가 MemberVO랑 연결되는거인지 찾아보기 -->
 		select * from member
+		<where>
+			<if test="keyword != null">
+				AND user_name LIKE CONCAT ('%',#{keyword},'%') 
+			</if>
+		</where>
+		order by user_name asc
 	</select>
+	
 	<select id="readOne" resultType="memberVO"><!--id가 MemberVO랑 연결되는거인지 찾아보기 -->
 		select * from member where user_id = #{user_id}
 	</select>
-
 </mapper>

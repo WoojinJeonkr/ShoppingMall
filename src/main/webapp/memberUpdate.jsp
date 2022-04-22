@@ -14,7 +14,6 @@
 	$(document).ready(function() {
 		$('#memberUp').click(function() {
 			console.log('addMember click!');
-
 						//return false;<-버튼이 submit일때만 return false가 작동. 필요없어서 막아놓음.
 						//ajax의 data값이 0일때만(비밀번호 중복확인 완료) 아래	조건 실행.
 						if ($('#pw').val() == '') {

@@ -1,6 +1,7 @@
 package com.hi.clothingStore.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -105,7 +106,6 @@ public class MemberController {
 		System.out.println("memberModyPw컨트롤러결과result는 >> " + result);
 		model.addAttribute("result", result);
 		//컨트롤러에서 jsp로 넘겨주는 값을 담아주기 위해 model메서드 사용.
-		///////////////////////////////그림그린거맞는지확인.
 	}
 	//회원 수정 컨트롤러
 	@RequestMapping("memberUpdate")
@@ -157,21 +157,27 @@ public class MemberController {
 				return "myPage";
 			} 
 		}
-	//관리자일시->회원전체검색
-	@RequestMapping("memberAdmin")
-	public void readAll(MemberVO vo, Model model) {
-		List<MemberVO> list = dao.readAll(vo);
-		//System.out.println("memberAdmin의 vo >> " + vo);vo는 //넣은값이 없어서 null이 나온다.
-		System.out.println("memberAdmin의 list >> " + list);
-		//model.addAttribute("readAll");
-		model.addAttribute("list", list);
-	}
 	@RequestMapping("one")
 	public void one(MemberVO vo, Model model) {
 		MemberVO one = dao.readOne(vo);
 		model.addAttribute("one", one);
 	}
-
+	//관리자일시->회원전체검색
+	//관리자일시->회원검색조회
+	@RequestMapping("memberAdmin")
+	public void readAll(MemberVO vo, Model model) {
+		List<MemberVO> list = dao.readAll(vo);
+		System.out.println("유저키워드" + vo.getKeyword());
+		System.out.println("memberAdmin의 vo >> " + vo); //넣은값이 없어서 null이 나온다.
+		System.out.println("memberAdmin의 list >> " + list);
+		
+		//model.addAttribute("readAll");
+		model.addAttribute("list", list);
+		 // Map<String,Object> map 파이선의 딕셔너리형태로 키 벨류 형태로 값을 가져올때 vo형태말고도 list나 다양한 형태로 값을 보낼수있어서 편하다.
+	
+	}	
+	//views아래에 memberOne을 호출해주기위해 컨트롤러에 맵핑해줌
+	//관리자로 로그인시 회원상세조회 창을 구현함.
 	@RequestMapping("memberOne")
 	public void one1(MemberVO vo, Model model) {
 		MemberVO one = dao.readOne(vo);

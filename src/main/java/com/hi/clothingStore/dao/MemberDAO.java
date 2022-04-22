@@ -1,6 +1,7 @@
 package com.hi.clothingStore.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -63,9 +64,12 @@ public class MemberDAO {
 	public MemberVO myPage(MemberVO vo) {
 		return my.selectOne("member.myPage", vo);
 	}
+//	관리자가 회원전체
 	public List<MemberVO> readAll(MemberVO vo) {
-	  return my.selectList("member.readAll");//왜 ("member.readAll", vo)이 코드가 아닌지 모르겠지만 ...일단해봄.
+		System.out.println("readALl DAO>> " + vo);
+	  return my.selectList("member.readAll",vo);//리스트가 리턴값이기 때문에 vo를 써주지 않는다.
 	}
+//	관리자가 회원검색
 	public MemberVO readOne(MemberVO vo) {
 		return my.selectOne("member.readOne", vo);
 	}

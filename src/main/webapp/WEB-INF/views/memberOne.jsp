@@ -45,7 +45,6 @@
 아이디 : <input type="text" name="user_id" value="${one.user_id}" readonly="readonly"><br>
 <button>회원삭제</button>
 </form>
-<hr color=pink>
 <h3>회원 수정</h3>
 <form action="memberUpdate">
 		<table>
@@ -70,7 +69,5 @@
 		</table>
 <button type="submit">회원수정</button>
 </form>
-<hr color=pink>
-<a href="serviceList.jsp"><button>돌아가기</button></a>
 </body>
 </html> 
