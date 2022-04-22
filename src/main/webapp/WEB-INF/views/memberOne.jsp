@@ -8,6 +8,11 @@
 </head>
 <!-- <body bgcolor="skyblue"> -->
 <body>
+<div id="total">
+		<div id="top">
+			<jsp:include page="../../top.jsp"></jsp:include>
+		</div>
+	</div>
 <h3>회원상세정보입니다</h3>
 <table border=2>
    <tr>

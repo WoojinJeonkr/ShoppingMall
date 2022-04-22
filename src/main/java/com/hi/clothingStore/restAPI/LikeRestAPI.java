@@ -1,6 +1,6 @@
 package com.hi.clothingStore.restAPI;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,15 +9,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hi.clothingStore.dao.LikeDAO;
-import com.hi.clothingStore.dao.ProductListDAO;
 import com.hi.clothingStore.vo.LikeVO;
-import com.hi.clothingStore.vo.ProductListVO4;
 
 @RestController
 public class LikeRestAPI {

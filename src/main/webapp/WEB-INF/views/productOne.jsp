@@ -354,7 +354,7 @@ $(function () {
 				 +"&product_idx="+'<c:out value="${one.product_idx}"/>'+"&p_num1="+p_num1+"&product_img="+'<c:out value="${one.product_img}"/>'; 
     	}
 
-		 var level = [];
+		/*  var level = [];
 		
 		$(function(){
 			//alert('test..')
@@ -384,7 +384,7 @@ $(function () {
 				}
 			
 			})
-		})  
+		})   */
 		
 </script>
 </head>

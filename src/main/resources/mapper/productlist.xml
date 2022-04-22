@@ -102,11 +102,11 @@
 
 	 </select>
  
- 	<select id = "getUserLevelValue" resultType="MemberVO" parameterType="String">
+ 	<!-- <select id = "getUserLevelValue" resultType="MemberVO" parameterType="String">
  		select level level 
 	 	from member
 	 	where user_id = #{user_id}
- 	</select>
+ 	</select> -->
 	
 	
 	

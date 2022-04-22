@@ -1,13 +1,13 @@
 package com.hi.clothingStore.dao;
 
 import java.util.List;
+
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.hi.clothingStore.vo.MemberVO;
 import com.hi.clothingStore.vo.ProductListVO;
 import com.hi.clothingStore.vo.ProductListVO2;
 import com.hi.clothingStore.vo.ProductListVO4;
@@ -67,20 +67,13 @@ public class ProductListDAO {
     	return  my.selectList("productlist.myOrderHistory", user_id); 
     }
     
-    public MemberVO getMemberLevel(String user_id) {
-    	System.out.println("ProductList의 getMemberLevel user_id"+user_id);
-
-    	
-    	if(user_id==null) {
-    	 user_id = ""; 	
-    	}
-    	
-    	
-		return my.selectOne("productlist.getUserLevelValue", user_id);
-    	
-    	
-    	
-    	}
-
+	/*
+	 * public MemberVO getMemberLevel(String user_id) {
+	 * System.out.println("ProductList의 getMemberLevel user_id"+user_id);
+	 * 
+	 * if(user_id==null) { user_id = "0"; }
+	 * 
+	 * return my.selectOne("productlist.getUserLevelValue", user_id); }
+	 */
 	
 }
