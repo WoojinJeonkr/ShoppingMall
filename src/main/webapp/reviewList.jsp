@@ -42,8 +42,10 @@
 						+ "<span class='userName'>" + this.user_name + "</span>"
 						+ "<span class='date'>" + review_rgstdate + "</span>" 
 						+ "</div>"
-						+ "<span class='review_score' readonly>" + "[" + this.review_score + "점]" + "&nbsp;" + "</span>" + "<span class='review_content'>" + this.review_content + "</span>"
-						+ "<span class='review_img' readonly>" + "<img src=resources/upload/" + ${savedName} + ">" + "</span>"
+						+ "<span class='review_score' readonly>" + "[" + this.review_score + "점]" + "&nbsp;" + "</span>" 
+						+ "<span class='review_content'>" + this.review_content + "</span>"
+						+ "<p></p>"
+						+ "<span class='review_img' readonly>" + "<img src=resources/upload/" + this.review_img + "></span>" 
 						+ "<c:if test='${user_id != null}'>"
 						+ "<div class='reviewFooter'>"
 						+ "<button type='button' class='update' data-review_idx='" + this.review_idx + "'>수정</button>"
@@ -68,29 +70,26 @@
 					return;
 				}
 				
-				const formData = new FormData();
+				var form = $('#form')[0];
+				const formData = new FormData(form);
 				formData.append("product_idx", $("#product_idx").val());
 				formData.append("review_content", $("textarea#review_content2").val());
-				formData.append("review_img", imageInput.files[0]);
+				formData.append("file", imageInput.files[0]);
 				formData.append("review_score", $("input:radio[name=star]:checked").val());
-				
-				// XXX 들어가는 키 값 확인
-				for (var key of formData.keys()) {
-					console.log(key);
-				}
-				for (var value of formData.values()) {
-					console.log(value);
-				}
 				
 				$.ajax({
 					url : "reviewCreate", // 데이터가 전송될 주소
 					type : "post", // 타입
 					processData: false,
 			        contentType: false,
+			        cache: false,
+			        timeout : 600000,
+			        enctype: 'multipart/form-data',
 					data : formData, // 전송될 데이터
 					success : function(){ // 데이터 전송이 성공되었을 경우 실행할 함수부
 						reviewList();
 						$("textarea#review_content2").val("") // 입력창 초기화
+						href.location="reviewList.jsp?product_idx=<%=product_idx%>"
 					},
 					error: function() {
 						alert('실패')
@@ -144,7 +143,7 @@
 		});
 		
 		/* 후기 수정 취소 버튼 클릭 시 */
-		function cancel2(){
+		function cancel(){
 			/* $(".reviewModal").attr("style", "display:none;"); */
 			$(".reviewModal").fadeOut(200);
 		}
@@ -176,38 +175,25 @@
 					}
 				});
 			}
-//		});
+		});
 		
 		/* 평균 평점 반영 */
+		var data = {product_idx : <%=product_idx%>}
 		
-			var data = {product_idx : <%=product_idx%>}
-			
-			$.ajax({ // 평균 평점 관련 ajax
-				url : "scoreAvg",
-				type : "post",
-				data : data,
-				success : function(result) {
-					// &emsp; : 큰 띄어쓰기, toFixed(1): 소수점 1자리까지 표시(2번째 자리에서 반올림된다)
-					$('#scoreTotal').html("&emsp;" + result.toFixed(1) + "점");
-				},
-				error : function() {
-					// alert("잘못된 요청입니다")
-					str2 = "&emsp;" + "현재 집계된 평점이 없습니다"
-					$('#scoreTotal').html(str2);
-				}
-			});
-
-		
-		$("#review_img").change(function(){
-			if(this.files && this.files[0]) {
-				var reader = new FileReader;
-				reader.onload = function(data) {
-					$(".select_img img").attr("src", data.target.result).width(500);        
-				}
-				reader.readAsDataURL(this.files[0]);
+		$.ajax({ // 평균 평점 관련 ajax
+			url : "scoreAvg",
+			type : "post",
+			data : data,
+			success : function(result) {
+				// &emsp; : 큰 띄어쓰기, toFixed(1): 소수점 1자리까지 표시(2번째 자리에서 반올림된다)
+				$('#scoreTotal').html("&emsp;" + result.toFixed(1) + "점");
+			},
+			error : function() {
+				// alert("잘못된 요청입니다")
+				str2 = "&emsp;" + "현재 집계된 평점이 없습니다"
+				$('#scoreTotal').html(str2);
 			}
 		});
-	});
 	</script>
 </head>
 <body>
@@ -222,8 +208,8 @@
 		</p>
 		<% }else{ %>
 		<!-- 회원의 경우 -->
-		<section class="reviewForm">
-			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
+		<form role="form" id="form" method="post" autocomplete="off" enctype="multipart/form-data" accept-charset="UTF-8">
+			<section class="reviewForm">
 				<input type="hidden" id="product_idx" name="product_idx" value='<%= request.getParameter("product_idx")%>'>
 				
 				<!-- 평점 선택 부분-->
@@ -286,13 +272,14 @@
 				<!-- 후기 내용 작성 -->
 				<h4>구매 후기</h4>
 					<div class="input_area">
-						<textarea name="review_content" id="review_content2" placeholder="바르고 고운 말이 세상을 아름답게 합니다"></textarea>
+						<textarea id="review_content2" placeholder="바르고 고운 말이 세상을 아름답게 합니다"></textarea>
 					</div>
 					<input type="file" name="file" id="file">
 					<!-- 후기 작성 버튼 -->
 					<div class="input_area">
 						<button type="button" id="review_btn">후기  작성</button>
 					</div>
+				
 				<!-- 작성한 후기 목록 보여주기 -->
 				<section class="reviewList">
 					<!-- 헤더 내부에 선언한 함수 호출 > 목록 보여주기 -->
@@ -309,13 +296,13 @@
 						
 						<div>
 							<button type="button" id="modal_update_btn" onclick="update()">후기 수정</button>
-							<button type="button" id="modal_cancel" onclick="cancel2()">수정 취소</button>
+							<button type="button" id="modal_cancel" onclick="cancel()">수정 취소</button>
 						</div>
 					</div>
 					<div class="modalBackground"></div>
 				</div>
-			</form>
-		</section>
+			</section>
+		</form>
 	<% } %>
 	</div>
 </div>

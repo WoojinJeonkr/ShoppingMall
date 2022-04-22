@@ -31,8 +31,7 @@
 	
 	<!-- 후기 수정 -->
 	<update id="reviewUpdate" parameterType="reviewVO">
-		update review set review_content = #{review_content}, review_img = #{review_img} 
-		where review_idx = #{review_idx} and user_id = #{user_id}
+		update review set review_content = #{review_content} where review_idx = #{review_idx} and user_id = #{user_id}
 	</update>
 	
 	<!-- 후기 삭제 -->
@@ -50,5 +49,10 @@
 	<select id="scoreAvg" resultType="double" parameterType="Integer">
   		select avg(review_score) from review where product_idx = #{product_idx}
   	</select>
+	
+	<!-- 후기 존재 여부 체크 -->
+	<select id="reviewPrductIdxCheck" parameterType="Integer" resultType="Integer">
+		select count(review_idx) from review where product_idx = #{product_idx}
+	</select>
 	
 </mapper>

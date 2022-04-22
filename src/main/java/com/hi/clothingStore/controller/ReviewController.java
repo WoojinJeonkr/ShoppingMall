@@ -3,6 +3,7 @@ package com.hi.clothingStore.controller;
 import java.io.File;
 import java.util.List;
 
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +18,17 @@ import com.hi.clothingStore.dao.ReviewDAOImpl;
 import com.hi.clothingStore.service.ReviewServiceImpl;
 import com.hi.clothingStore.vo.ReviewListVO;
 import com.hi.clothingStore.vo.ReviewVO;
+
+/*
+ 전송하는 데이터가 1메가바이트가 넘어가면 메모리 대신 디스크를 사용하고
+ 한 파일의 최대크기 - 1키로*1키로*50 = 50메가바이트
+ 전체 요청에 대한 사이즈 - 250메가
+ */
+@MultipartConfig(
+		fileSizeThreshold=1024*1024,
+		maxFileSize=1024*1024*50,
+		maxRequestSize=1024*1024*50*5
+)
 
 @Controller
 public class ReviewController {
@@ -42,7 +54,7 @@ public class ReviewController {
 	// 구매 후기 목록
 	// reviewList?product_idx=${one.product_idx}
 	@ResponseBody
-	@RequestMapping("reviewList")
+	@RequestMapping(value = "reviewList", method = RequestMethod.GET)
 	public List<ReviewListVO> getReviewList(int product_idx) throws Exception{
 		//public List<ReviewListVO> getReviewList(@RequestParam("n") int product_idx) throws Exception{
 		System.out.println("후기 목록이 호출되었습니다.");
@@ -53,23 +65,24 @@ public class ReviewController {
 	// 구매 후기 작성
 	@ResponseBody
 	@RequestMapping("reviewCreate")
-	public void reviewCreate(HttpServletRequest request, ReviewVO review, MultipartFile file, HttpSession session) throws Exception {
+	public void reviewCreate(HttpServletRequest request, ReviewVO review, MultipartFile file, HttpSession session, String url) throws Exception {
 		System.out.println(file);
 		System.out.println("후기 작성이 호출되었습니다.");
 		
 		String user_id = (String)session.getAttribute("user_id");
 		review.setUser_id(user_id);
-		
+		System.out.println(review.getReview_content());
 		String s1 = request.getContextPath();
 		System.out.println(s1);
 		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
+		String uploadPath2 = "D:\\local git\\ShoppingMall\\src\\main\\webapp\\resources\\upload";
 		System.out.println("업로드 경로는 " + uploadPath); 
 		/* System.out.println(file.getName()); */
 		/* System.out.println(file.getOriginalFilename()); */
 		String savedName = file.getOriginalFilename();
-		System.out.println(uploadPath + "/" + savedName);
-		File target = new File(uploadPath + "/" + savedName);
-		System.out.println(target.exists());
+		System.out.println(uploadPath2 + "\\" + savedName);
+		File target = new File(uploadPath2 + "\\" + savedName);
+		review.setReview_img(savedName);
 		
 		if (!target.isDirectory()) {
 			target.mkdir();
@@ -130,11 +143,16 @@ public class ReviewController {
 	
 	// 평균 평점 출력
 	@ResponseBody
-	@RequestMapping(value = "scoreAvg")
-	public double scoreAvg(int product_idx) throws Exception {
-		System.out.println("평균 평점이 출력되었습니다 ");
-		System.out.println(product_idx);
-		double scoreTotal = reviewServiceImpl.scoreAvg(product_idx);
-		return scoreTotal;
+	@RequestMapping("scoreAvg")
+	public double scoreAvg(ReviewVO review, int product_idx) throws Exception {
+		int reviewcount = reviewServiceImpl.product_idxCheck(review.getProduct_idx());
+		if (reviewcount != 0) {
+			double scoreTotal = reviewServiceImpl.scoreAvg(product_idx);
+			System.out.println(scoreTotal);
+			return scoreTotal;
+		} else {
+			return 0;
+		}
+		//System.out.println(scoreAvg(product_idx));
 	}
 }
