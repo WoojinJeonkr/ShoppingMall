@@ -12,31 +12,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-$(function() {
-	$('#Answer').click(function() {
-		
-		var a = 'service_id_origin'+${one.service_id_origin}+
-			'service_idx_re'+${one.service_idx_re}+
-			'service_reply_grop'+ ${one.service_reply_group};
-		alert(a);
-		$.ajax({
-			url : "serviceWrite.jsp",
-			data : {
-				'service_id_origin':${one.service_id_origin},
-				'service_idx_re': ${one.service_idx_re},
-				'service_reply_group': ${one.service_reply_group }
-			},
-			success : function(result) {
-				$("#result").html(result);
-			},
-			error : function() {
-				alert('실패');
-			}
-		});
-	})
-});
-</script>
 <style>
 button {
 	position: right;
