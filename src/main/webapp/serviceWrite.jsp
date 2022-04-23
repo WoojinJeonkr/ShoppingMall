@@ -21,6 +21,23 @@ th, td {
 	background: #dbdad5;
 }
 </style>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$('#btn').click(function() {
+		if ($('#tit').val() == '') {//아이디입력안했을 시 text 띄우기				
+			alert("제목을 입력해주세요.");
+			return false;
+		}else if ($('#con').val() == '') {//아이디입력안했을 시 text 띄우기				
+			alert("내용을 입력해주세요.");
+			return false;
+		}else {
+			$('#form').submit();
+		}
+	
+	});
+});
+</script>
 </head>
 <body>
 	<div id="total">
@@ -44,17 +61,17 @@ th, td {
 						<tr>
 							<td class="left">제목</td>
 							<td class="right"><input type="text" name="service_title"
-								style="width: 300px;"></td>
+								style="width: 300px;" id="tit"></td>
 						</tr>
 
 						<tr>
 							<td class="left">내용</td>
 							<td class="right"><input type="text" name="service_question"
-								style="width: 300px; height: 300px"></td>
+								style="width: 300px; height: 300px" id="con"></td>
 						</tr>
 
 					</table>
-					<button>등록</button>
+					<button id="btn">등록</button>
 				</form>
 			</div>
 		</div>
