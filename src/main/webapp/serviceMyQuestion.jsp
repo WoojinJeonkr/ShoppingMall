@@ -58,37 +58,48 @@ th, td {
 	<div id="top2">
 		<jsp:include page="top2.jsp"></jsp:include>
 	</div>
-	<h3>고객센터</h3>
-	<div id="center">
-		<div class="well" style="width: 30%; height: 150px; float: left;">
-			<h1>QnA</h1>
-			<p>1:1 고객상담</p>
+
+	<div class="row" style="width: 1200px; margin: auto;">
+		<h3>고객센터</h3>
+		<div id="center">
+			<div class="well" style="width: 30%; height: 150px; float: left;">
+				<h1>QnA</h1>
+				<p>1:1 고객상담</p>
+			</div>
+			<div class="well" style="width: 70%; height: 150px; float: left;">
+				<div id="faqBtn">
+					<h4>
+						<a href="serviceMain.jsp">FAQ</a>
+					</h4>
+				</div>
+				<div id="qnaBtn">
+					<h4>
+						<a href="serviceList.jsp">QnA</a>
+					</h4>
+				</div>
+				<div id="NoticeBtn">
+					<h4>
+						<a href="serviceNoticeList">Notice</a>
+					</h4>
+				</div>
+				<%
+					if (session.getAttribute("user_id") != null) {
+				%>
+				<div id="myBtn">
+					<h4>
+						<a href="serviceMyQuestion.jsp">내 문의사항</a>
+					</h4>
+				</div>
+				<%
+					}
+				%>
+			</div>
 		</div>
-		<div class="well" style="width: 70%; height: 150px; float: left;">
-			<div id="faqBtn">
-				<h4><a href="serviceMain.jsp">FAQ</a></h4>
-			</div>
-			<div id="qnaBtn">
-				<h4><a href="serviceList.jsp">QnA</a></h4>
-			</div>
-			<div id="NoticeBtn">
-				<h4><a href="serviceNoticeList">Notice</a></h4>
-			</div>
-			<%
-				if (session.getAttribute("user_id") != null) {
-			%>
-			<div id="myBtn">
-				<h4><a href="serviceMyQuestion.jsp">내 문의사항</a></h4>
-			</div>
-			<%
-				}
-			%>
-		</div>
+		<hr>
+
+		<!-- 검색  -->
+
+		<div id="result"></div>
 	</div>
-	<hr>
-
-	<!-- 검색  -->
-
-	<div id="result"></div>
 
 </div>
