@@ -1,5 +1,18 @@
 @charset "UTF-8";
 
+#center {
+	position: absolute;
+	top: 70%;
+	left: 50%;
+	width: 850px; height:250px;
+	margin-left: -400px;
+	/* margin-top:-170px; */
+	
+	display: flex;
+		flex-direction:column;
+		justify-content: center;
+		align-items: center;
+}
 /* reviewForm 관련 style */
 section.reviewForm {padding:30px 0;}
 section.reviewForm div.input_area {margin:10px 0;}
