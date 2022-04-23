@@ -13,6 +13,20 @@
 %>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <link rel = "stylesheet" type = "text/css" href = "resources/css/reviewStyle.css">
+<!-- Bootstrap core CSS -->
+<link href="resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="resources/assets/css/fontawesome.css">
+<link rel="stylesheet"
+	href="resources/assets/css/templatemo-eduwell-style.css">
+<link rel="stylesheet" href="resources/assets/css/owl.css">
+<link rel="stylesheet" href="resources/assets/css/lightbox.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 	<!-- 함수로 사용할 스크립트들은 특별한 이유가 있지 않은 한 헤드 내부에 위치시킨다 -->
 	<script>
 	review_idx2 = 0
@@ -49,7 +63,9 @@
 						+ "<c:if test='${user_id != null}'>"
 						+ "<div class='reviewFooter'>"
 						+ "<button type='button' class='update' data-review_idx='" + this.review_idx + "'>수정</button>"
+						+ "<% if((int)(session.getAttribute("user_level")) == 2) { %>"
 						+ "<button type='button' class='delete' data-review_idx='" + this.review_idx + "'>삭제</button>"
+						+ "<% } %>"
 						+ "</c:if>"
 						+ "</li>";
 				});
@@ -158,7 +174,7 @@
 			var deleteConfirm = confirm("정말로 삭제하시겠습니까? 삭제 후 복구가 불가능합니다.");
 			if (deleteConfirm) {
 				var data = {review_idx : $(this).attr("data-review_idx")}; // ajax를 통해 data-review_idx 값을 전달
-
+				
 				$.ajax({ // 후기 삭제 관련 ajax
 					url : "reviewDelete",
 					type : "post",
@@ -198,7 +214,7 @@
 </head>
 <body>
 <div id="top"><jsp:include page="top.jsp"></jsp:include></div>
-<div id="center" style="padding:30px;">
+<div id="center">
 <!-- 후기 시작 -->
 	<div id="review">
 		<!-- 비회원의 경우 -->
@@ -279,7 +295,7 @@
 					<div class="input_area">
 						<button type="button" id="review_btn">후기  작성</button>
 					</div>
-				
+
 				<!-- 작성한 후기 목록 보여주기 -->
 				<section class="reviewList">
 					<!-- 헤더 내부에 선언한 함수 호출 > 목록 보여주기 -->
