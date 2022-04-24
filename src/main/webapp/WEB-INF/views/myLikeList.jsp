@@ -66,7 +66,7 @@
 					
 	</td>
 	<%
-		if(i%3==0){
+		if(i%6==0){
 	%>
 		<tr>
 		</tr>
@@ -77,7 +77,24 @@
 				</c:forEach>
 				
 </table>
-
+<section class="simple-cta">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 offset-lg-1">
+          <div class="left-image">
+            <img src="assets/images/cta-left-image.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg-5 align-self-center">
+          <h4>Apparel ShoppingMall</h4>
+          <p class="copyright">Copyright © 2022 EduWell Co., Ltd. All Rights Reserved. 
+          <!-- <div class="white-button">
+            <a href="contact-us.html">View Courses</a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>	
 
 </body>
 </html>
