@@ -6,13 +6,35 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script type="text/javascript" src="resources/js/d3.layout.cloud.js"></script>
 <head>
-    <title>통계</title>
-	<!-- 통계 페이지에서는 d3.js를 사용하여 온라인 쇼핑몰에 관해 word cloud와 radar chart를 보여줍니다 -->
+<title>통계</title>
+
+<!-- Mobile Settings -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+<!-- TemplateMo 573 EduWell [https://templatemo.com/tm-573-eduwell] -->
+
+<!-- Bootstrap core CSS -->
+<link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="resources/assets/css/fontawesome.css">
+<link rel="stylesheet" href="resources/assets/css/templatemo-eduwell-style.css">
+<link rel="stylesheet" href="resources/assets/css/owl.css">
+<link rel="stylesheet" href="resources/assets/css/lightbox.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- TemplateMo 573 EduWell [https://templatemo.com/tm-573-eduwell] -->
+
+<!-- 통계 페이지에서는 d3.js를 사용하여 온라인 쇼핑몰에 관해 word cloud와 radar chart를 보여줍니다 -->
 <link rel = "stylesheet" type = "text/css" href = "resources/css/statistics.css">
 </head>
 <body>
-	<div id="top"><jsp:include page="top.jsp"></jsp:include></div>
-	<div id="chart" class="chart">
+<h1 style="margin:150px; margin-top: 150px;">통계</h1>
+<div id="top"><jsp:include page="top.jsp"></jsp:include></div>
+<div id="chart" class="chart">
 	<script>
 		var frequency_list = [{"text":"리브드 사이클링 쇼츠","size":20},{"text":"리브드 탑","size":43},{"text":"쇼트 트윌 스커트","size":20},{"text": "오버사이즈 데님 재킷","size":32},{"text":"오버사이즈 리넨 블렌드 재킷","size":20},{"text":"와이드 하이웨이스트 진","size":20},{"text":"집업 스웨트셔츠","size":20},{"text":"카고 팬츠","size":70},{"text":"컷아웃 재킷 드레스","size":46},{"text":"코튼 크롭트 셔츠","size":20},{"text":"크롭트 가디건","size":21}];
 		var color = d3.scale.linear()
@@ -46,9 +68,9 @@
 	                .text(function(d) { return d.text; });
 	    }
 	</script>
-	<div class="chart" style="float: right; width: 60%; margin:0 auto;">
-		<canvas id="radar-chart" width="400" height="400"></canvas>
-	</div>
+<div class="chart" style="float: right; width: 60%; margin:0 auto;">
+	<canvas id="radar-chart" width="400" height="400"></canvas>
+</div>
 	<script>
 	new Chart(document.getElementById("radar-chart"), {
 	    type: 'radar',
