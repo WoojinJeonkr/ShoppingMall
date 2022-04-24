@@ -1,31 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Review Page</title>
-
 <%
 	int product_idx = Integer.parseInt(request.getParameter("product_idx"));	
 %>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <link rel = "stylesheet" type = "text/css" href = "resources/css/reviewStyle.css">
-<!-- Bootstrap core CSS -->
-<link href="resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
 
+<!-- Mobile Settings -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+<!-- TemplateMo 573 EduWell [https://templatemo.com/tm-573-eduwell] -->
+
+<!-- Bootstrap core CSS -->
+<link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Additional CSS Files -->
 <link rel="stylesheet" href="resources/assets/css/fontawesome.css">
-<link rel="stylesheet"
-	href="resources/assets/css/templatemo-eduwell-style.css">
+<link rel="stylesheet" href="resources/assets/css/templatemo-eduwell-style.css">
 <link rel="stylesheet" href="resources/assets/css/owl.css">
 <link rel="stylesheet" href="resources/assets/css/lightbox.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- TemplateMo 573 EduWell [https://templatemo.com/tm-573-eduwell] -->
 
 	<!-- 함수로 사용할 스크립트들은 특별한 이유가 있지 않은 한 헤드 내부에 위치시킨다 -->
 	<script>
