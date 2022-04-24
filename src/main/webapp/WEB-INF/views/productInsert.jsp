@@ -114,7 +114,7 @@ $(document).ready(function(){
 				
 			
 		 </form>
-		 <button id="button" type="button" class="btn btn-success">Submit</button>
+		 <button id="button" type="button" class="btn btn-light">Submit</button>
 		</div>
 	</div>
 </body>

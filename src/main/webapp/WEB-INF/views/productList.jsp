@@ -125,7 +125,9 @@ img{display:block;}
 		</c:forEach>
 		
 		</select>
-    <button type="submit"> 검색</button>
+
+    <button type="submit" class="btn btn-light"> 검색</button>
+
 </form>    
     
 <form id = "productForm" action="${pageContext.request.contextPath}/productList" method ="get"> 
@@ -133,31 +135,18 @@ img{display:block;}
            <!--  <h4>What We Do</h4> -->
             <h4><label for = "searchWord">apperal name</label></h4> 
 	<input name = "searchWord" type = "text">
-	<button type="submit"> 검색</button>
+
+	<button type="submit" class="btn btn-light"> 검색</button>
+
 </form>    
     
 </section>
 <!-- 값을 넘겨줘야 하므로 form을 만들자 -->
 
-
-
-
-     
-
- 
  <!-- 원래는 form 하나에 담았으나.. form 하나에 하나의 변수만 넣어줄 수 있는것으로 보인다. --> 
 
 
 <br><br><br><br>
-
-	
-	
-
-
-
-
-
-
 
 <table border="1"> 
  <tr>

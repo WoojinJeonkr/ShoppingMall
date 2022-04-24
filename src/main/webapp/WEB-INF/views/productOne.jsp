@@ -19,16 +19,22 @@
 </style>
 <meta charset="UTF-8">
 <title>상품 상세 페이지</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script type="text/javascript" src="resources/js/basket.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script type="text/javascript" src="resources/js/basket.js"></script>
+	
+	<link rel = "stylesheet" type = "text/css" href = "resources/css/project.css">
+	<link rel = "stylesheet" type = "text/css" href = "resources/css/basket.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel = "stylesheet" type = "text/css" href = "resources/css/project.css">
-<link rel = "stylesheet" type = "text/css" href = "resources/css/basket.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-eduwell-style.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
 <script type="text/javascript">
 
 
@@ -390,17 +396,22 @@ $(function () {
 </head>
 <body>
 
+<div id = "top">
+	   <jsp:include page="../../top.jsp"></jsp:include>
+	   <!-- <button type="button" class="btn btn-light"><a href="productList.jsp">리스트 목록으로 </a></button> -->
+</div> 
 
-<%-- <span style="color: blue; float: right;">${userId}님 로그인되었습니다. 좋은 하루 되세요.</span><br> --%>
-	<div id = "top">
-		<jsp:include page="../../top.jsp"></jsp:include>
-	   <a href="productList.jsp">리스트 목록으로 </a>
-	</div> 
-	
-	<!-- 상품 정보 -->
+<section class="main-banner" id="top">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="header-text">
+            <h6>상품 상세정보</h6>
+            <div class="main-button-gradient">
+              <!-- 상품 정보 -->
     <div class="product_left"> 
    	   <img src="resources/img/${one.product_img}" style = width:50%; >
-     	 <div class="product_right"> 
+     	  
+     	  <div class="product_right"> 
 		     <div style="display: none;">${one.product_idx}</div> <!-- one.getId() -->
 		     <div>이름:${one.product_title}</div> 
 		     <div>카테고리:${one.product_category}</div>
@@ -425,21 +436,20 @@ $(function () {
 
 					 <% if(((int)(session.getAttribute("user_level")) == 1 )|| (((int)session.getAttribute("user_level")) == 2)){ %> 
 					
-
-                       	구매 시 버튼 클릭:<button onclick="total()"><div id = "sum" class="sum">total</div></button>
+                       	구매 시 버튼 클릭:<button onclick="total()" class="btn btn-light"><div id = "sum" class="sum">상품구매</div></button>
 
                     </div> 	 
 	    		 
    		 			<div>
-						<button type = "button" id="likebtn" class="btn btn-light">❤</button>
-  		  					<button type = "button" id="likeDelbtn" >like cancel</button>
+						<a><button type = "button" id="likebtn" class="btn btn-light">❤좋아요</button></a>
+  		  					<a><button type = "button" id="likeDelbtn" class="btn btn-light">❤ revert</button></a>
    		  			</div>
       	 
-			      	 <button id = "add">장바구니</button> 
+			      	 <a><button id = "add" class="btn btn-light">장바구니</button></a> 
 			      	 
 		      	  <%}%>  
 			      	 
-			      	 <button><a href="reviewList.jsp?product_idx=${one.product_idx}">리뷰 보기</a></button>
+			      	 <a href="reviewList.jsp?product_idx=${one.product_idx}" ><button class="btn btn-light">리뷰보기</button></a>
 	   			 </div>
 		    
 
@@ -447,38 +457,52 @@ $(function () {
 		    <%if((int)(session.getAttribute("user_level"))==2){ %> 
 
      	 <div>
-	      	 <a href="productInsert"><button>상품 생성</button></a>
-			 <a href="productUp?product_idx=${one.product_idx}"><button>상품 내용 수정</button></a>
-			 <button id="deleteBtn">상품 삭제</button>
+	      	 <a href="productInsert"><button class="btn btn-light">상품 생성</button></a>
+			 <a href="productUp?product_idx=${one.product_idx}"><button class="btn btn-light">상품 수정</button></a>
+			 <a><button id="deleteBtn" class="btn btn-light">상품 삭제</button></a>
       	 </div>
       	  <%} %> 
-      	 
+      	 <div class="right-content">
+                       
+9 a.m.-6 p.m. / Sat, Sun, Holiday
+Check the full sensitivity question.
+1:1 consultation is available.
+For product inquiries, please use the product Q&A.
+
+                        </div>
       	 <!-- 차트를 생성하려면 Chart 클래스를 인스턴스화 차트를 그리고 싶은 캔버스의 노드, jQuery 인스턴스 또는 2D 컨텍스트를 전달 -->
       	 <canvas id="myChart" width = "400" height = "400"></canvas>
       	 
-      	 
-   	 	<!-- -------------------------------------------- -->
-	 	<!-- <img src="resources/img/buy.PNG" style = width:30%;> 
-		 <img src="resources/img/love2.PNG" style = width:30%;> 
-		 <img id = "add" src="resources/img/basketimg.PNG" style = width:30%;>
-		 -->	
   </div>	 
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+<section class="simple-cta">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 offset-lg-1">
+          <div class="left-image">
+            <img src="assets/images/cta-left-image.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg-5 align-self-center">
+          <h4>Apparel ShoppingMall</h4>
+          <p class="copyright">Copyright © 2022 EduWell Co., Ltd. All Rights Reserved. 
+          <!-- <div class="white-button">
+            <a href="contact-us.html">View Courses</a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>	
+	
+	
 	  
 <div id = "total">
-	<!-- <%--  <% if (session.getAttribute("user_id").equals("admin")) {    %> --%>-->
-	<!--	<a href="productInsert"><button>생성</button></a>-->
-	<!--	<a href="productUp?p_idx=${one.product_idx}"><button id="updateBtn" style="width: 50px;">수정</button></a>-->
-	<!--	<button id="deleteBtn" style="width: 50px;">삭제</button>-->
-	<!--<%-- -<%}else { %> --%>-->
-		<%-- <a href="productInsert"><button style="display:none;">생성</button></a>
-		<a href="productUp?p_idx=${one.product_idx}"><button style="display:none;">수정</button></a>
-		<button id="deleteBtn" style="display:none;">삭제</button> --%>
-	<!-- ========================================================================= -->
-	
-			 <a href="productInsert"><button style="display:none;">생성</button></a>
-			<a href="productUp?p_idx=${one.product_idx}"><button style="display:none;">수정</button></a>
-			<button id="deleteBtn" style="display:none;">삭제</button> 
-	
+
 </div>
 </body>
 </html>

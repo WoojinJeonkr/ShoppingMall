@@ -37,7 +37,7 @@ td {
 	<br>
 			<p>성공적으로 완료되었습니다.</p>
 			<br><a href="productList.jsp">
-				<button>상품 목록으로</button>
+				<button class="btn btn-light">상품 목록으로</button>
 			</a>
 	</div>
 </div>

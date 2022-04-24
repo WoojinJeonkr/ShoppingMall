@@ -11,7 +11,16 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript" src="resources/js/basket.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/project.css">
+<script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
 <link rel = "stylesheet" type = "text/css" href = "resources/css/project.css">
 <link rel = "stylesheet" type = "text/css" href = "resources/css/basket.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -50,7 +59,7 @@ $(document).ready(function(){
 
 	<div id = "top">
 			<jsp:include page="../../top.jsp"></jsp:include>
-		   <a href="productList.jsp">리스트 목록으로 </a>
+		   <!-- <a href="productList.jsp">리스트 목록으로 </a> -->
 	</div> 
 	
 	<form id = "Form" action = "ProductpurchaseList">
@@ -63,24 +72,24 @@ $(document).ready(function(){
 		<div>
 			<input type = "hidden" name = "user_id" value = "${user_id}" >
 			이름: <br>
-				<input type = "text" id = "user_name" name = "user_name" value = "이름 입력" ><br/>
+				<input type = "text" id = "user_name" class="form-control" name = "user_name" value = "이름 입력" ><br/>
 			휴대전화:  <br>
-				<input type = "text" id = "user_tel" name = "user_tel" value = "전화번호 입력"><br/>
+				<input type = "text" id = "user_tel" class="form-control" name = "user_tel" value = "전화번호 입력"><br/>
 		</div>
 		<div>
 			받는 사람: <br>
-			<input type = "text" id = "recipient_info" name = "recipient_info" value = "받는 사람 입력"><br/>
+			<input type = "text" id = "recipient_info" class="form-control" name = "recipient_info" value = "받는 사람 입력"><br/>
 			주소: <br>
-			<input type = "text" id = "recipient_addr" name = "recipient_addr" value = "주소 입력"><br/>
+			<input type = "text" id = "recipient_addr" class="form-control" name = "recipient_addr" value = "주소 입력"><br/>
 		</div>
 		<div>
 			<div>
 			<!-- disabled를 해버리면 값이 아예 안넘어가버린다. -->
-				상품 이름: <input type="text" name="purchase_product" value = "${param.product_title}" readonly="readonly"><br>
-				 상품 가격:<input type="text" name="payment_total" value = "${param.payment_total}" readonly="readonly"><br>
+				상품 이름: <input type="text" name="purchase_product" class="form-control" value = "${param.product_title}" readonly="readonly"><br>
+				 상품 가격:<input type="text" name="payment_total" class="form-control" value = "${param.payment_total}" readonly="readonly"><br>
 			 	 <img src="resources/img/${param.product_img}" style = width:12%; ><br>
-			 	 상품 수량:	<input type="text" name="purchase_quantity"  value = "${param.p_num1}" readonly="readonly"><br>
-			 	 상품 번호: <input type="text" name="product_idx"  value = "${param.product_idx}" readonly="readonly">
+			 	 상품 수량:	<input type="text" name="purchase_quantity"  class="form-control" value = "${param.p_num1}" readonly="readonly"><br>
+			 	 상품 번호: <input type="text" name="product_idx"  class="form-control" value = "${param.product_idx}" readonly="readonly">
 			</div>
 			
 		</div>
@@ -94,6 +103,8 @@ $(document).ready(function(){
 		</div>
 	</div>
 	</form>
-	<button id = "addButton">완료</button>
+	<br>
+	
+	<button id = "addButton" class="btn btn-light">완료</button>
 </body>
 </html>

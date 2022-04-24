@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>productUp</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -131,7 +131,7 @@ input:invalid{
 						style="background: white-space;color: green; font-weight: bold;"
 					>${one.product_description}</textarea>
 				</div>
-				<button id = "button" type="button" class="btn btn-success">Submit</button>
+				<button id = "button" type="button" class="btn btn-light">Submit</button>
 			</form>
 		</div>
 	</div>

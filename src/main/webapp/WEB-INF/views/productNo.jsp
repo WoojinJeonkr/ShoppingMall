@@ -9,7 +9,7 @@
 <body>
 	<p>문제가 발생했습니다.</p>
 		<br><a href="productList.jsp">
-			<button>상품 목록으로</button>
+			<button class="btn btn-light">상품 목록으로</button>
 		</a>
 </body>
 </html>
