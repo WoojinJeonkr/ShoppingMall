@@ -7,27 +7,6 @@
 <script type="text/javascript" src="resources/js/d3.layout.cloud.js"></script>
 <head>
 <title>통계</title>
-
-<!-- Mobile Settings -->
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
-<!-- TemplateMo 573 EduWell [https://templatemo.com/tm-573-eduwell] -->
-
-<!-- Bootstrap core CSS -->
-<link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Additional CSS Files -->
-<link rel="stylesheet" href="resources/assets/css/fontawesome.css">
-<link rel="stylesheet" href="resources/assets/css/templatemo-eduwell-style.css">
-<link rel="stylesheet" href="resources/assets/css/owl.css">
-<link rel="stylesheet" href="resources/assets/css/lightbox.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-<!-- TemplateMo 573 EduWell [https://templatemo.com/tm-573-eduwell] -->
-
 <!-- 통계 페이지에서는 d3.js를 사용하여 온라인 쇼핑몰에 관해 word cloud와 radar chart를 보여줍니다 -->
 <link rel = "stylesheet" type = "text/css" href = "resources/css/statistics.css">
 </head>
