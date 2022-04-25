@@ -29,6 +29,21 @@ th, td {
 	border-bottom: 1px solid #444444;
 	padding: 10px;
 }
+
+button {
+	font-size: 10px;
+	color: #fff;
+	background: rgb(219, 138, 222);
+	background: linear-gradient(-145deg, rgba(219, 138, 222, 1) 0%,
+		rgba(246, 191, 159, 1) 100%);
+	padding: 12px 10px;
+	display: inline-block;
+	border-radius: 5px;
+	font-weight: 500;
+	transition: all .3s;
+	vertical-align: middle;
+}
+</style>
 </style>
 </head>
 <body>
@@ -103,6 +118,7 @@ th, td {
 				}
 			%>
 
-		</div></div>
+		</div>
+	</div>
 </body>
 </html>

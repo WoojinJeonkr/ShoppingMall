@@ -47,53 +47,66 @@ th, td {
 		<div id="top2">
 			<jsp:include page="../../top2.jsp"></jsp:include>
 		</div>
-		<div id="center">
+		<section class="contact-us">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4">
+						<div id="contact" style="width: 800px; margin: auto">
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="section-heading">
+										<h4>${one.service_faq_question}</h4>
+										<h6>관리자</h6>
+									</div>
+								</div>
+								<div class="col-lg-12" id="box">
+									<fieldset>
+										<td class="right" colspan="3" height=300px>${one.service_faq_answer}
+										</td>
+										<fieldset>
+								</div>
 
-			<h3>글 상세 페이지</h3>
-			<hr>
-
-			<table>
-				<tr>
-					<td class="left">제목</td>
-					<td class="right">${one.service_faq_question}</td>
-					<td class="left">글쓴이</td>
-					<td class="right">관리자</td>
-				</tr>
-				<tr>
-				</tr>
-				<tr>
-					<td class="left">내용</td>
-					<td class="right" colspan="3" height=300px>${one.service_faq_answer}</td>
-				</tr>
-
-
-
-				<tr>
-					<td colspan="4"><a href="serviceNoticeList"><button>목록</button></a>
-
-						<!--  자기 글일때만  삭제, 수정 버튼 활성화. --> <%
- 	if (session.getAttribute("user_id") != null) {
- %>
-						<%
-							if (session.getAttribute("user_id").equals("admin")) {
-						%> <a
-						href="serviceNoticeDelete?service_faq_idx=${one.service_faq_idx}"><button>삭제</button></a>
-						<a
-						href="serviceNoticeUpdate2?service_faq_idx=${one.service_faq_idx}"><button>수정</button></a>
-						<%
-							}
-						%> <%
+								<div class="col-lg-12">
+									<fieldset>
+										<td colspan="4"><a href="serviceList.jsp"><button
+													style="margin-left: 10px;">목록</button></a> <!--  자기 글일때만  삭제, 수정 버튼 활성화. -->
+											<%
+												if (session.getAttribute("user_id") != null) {
+											%> <!-- 유저아이디가 admin..즉 관리자인경우 답변하기 버튼 활성화 --> <%
+ 	if ((int) (session.getAttribute("user_level")) == 2) {
+ %> <a href="serviceNoticeDelete?service_faq_idx=${one.service_faq_idx}"><button
+													style="margin-left: 10px;">삭제</button></a> <a
+											href="serviceNoticeUpdate2?service_faq_idx=${one.service_faq_idx}"><button
+													style="margin-left: 10px;">수정</button></a> <%
+ 	}
+ %> <%
  	}
  %>
-				</tr>
-
-
-			</table>
-
-
-
-			<hr>
-		</div>
+										</tr>
+									</fieldset>
+								</div>
+								</tr>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-rss"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-lg-12">
+						<p class="copyright">
+							Copyright © 2022 EduWell Co., Ltd. All Rights Reserved. <br>Design:
+							<a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
 </body>
 </html>
