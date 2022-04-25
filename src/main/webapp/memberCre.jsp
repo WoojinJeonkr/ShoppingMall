@@ -28,7 +28,6 @@
 						//data=result(컨트롤러의 model의 result를 의미)
 						//result==1이면 db에 있는 아이디라는 의미이기 때문에 사용할 수 없는 아이디이다. 
 						$('#idc').text('사용할 수 없는 아이디 입니다');
-						return false;
 					}
 				}//success
 			})//ajax
@@ -96,9 +95,17 @@
 		$('#addr').click(function() {
 			$('#addrc').text('')
 		})
-
 		$("#pw").change(function() {
 			checkPassword($('#pw').val());
+		});
+		$("#id").change(function() {
+			checkId($('#id').val());
+		});
+		$("#name").change(function() {
+			checkName($('#name').val());
+		});
+		$("#addr").change(function() {
+			checkAddr($('#addr').val());
 		});
 
 	});//$(document)
@@ -115,9 +122,50 @@
 			$('#pw').val('').focus();
 			//focus=>#pw가 선택되었을 때 실행되어, pw안에 들어있는 값을 지워준다.=> 유효성 검사를 통과한 pw만 쓰기 위한 과정
 			//값을 지워주지 않았을 경우 회원가입하기 버튼을 누르면 회원가입이 완료되기 때문에 지워주어야 한다.
-			return false;
 		}//if
 	}//function checkPassword(pw)
+	
+	//아이디 유효성 검사
+	$("#id").change(function() {//change=> id의 값이 변경되었을 때 실행.
+		checkId($('#id').val());
+	});
+	function checkId(id) {
+
+		if (!/^(?=.*[a-z])(?=.*[0-9]).{4,11}$/.test(id)) {
+			alert('아이디는 4자~11자 이어야 하며, 숫자/영문소문자 모두 포함해야 합니다.');
+			$('#id').val('').focus();
+			//focus=>#id가 선택되었을 때 실행되어, pw안에 들어있는 값을 지워준다.=> 유효성 검사를 통과한 id만 쓰기 위한 과정
+			//값을 지워주지 않았을 경우 회원가입하기 버튼을 누르면 회원가입이 완료되기 때문에 지워주어야 한다.
+		}//if
+	}//function checkId(id)
+	
+	//이름 유효성 검사
+	$("#name").change(function() {//change=> pw의 값이 변경되었을 때 실행.
+		checkName($('#name').val());
+	});
+	function checkName(name) {
+
+		if ((!/^(?=.[가-힣a-zA-Z]).{1,11}$/.test(name))) {
+			alert('이름은 숫자/특수문자를 제외하고 10자 이하로 입력해주세요.');
+			$('#name').val('').focus();
+		}//if
+	}//
+
+	//주소 유효성 검사
+	//한글+숫자만 가능.
+	$("#addr").change(function() {//change=> pw의 값이 변경되었을 때 실행.
+		checkAddr($('#addr').val());
+	});
+	function checkAddr(addr) {
+
+		if ((!/^(?=.*[가-힣])(?=.*[0-9]).{4,30}$/.test(addr))) {
+			alert('주소 형식에 맞게 입력해주세요.');
+			$('#addr').val('').focus();
+			return false;
+		}//if
+	}//
+	
+	
 	
 	//취소버튼 눌렀을 때 productList.jsp호출
 	$(document).ready(function() {
@@ -125,7 +173,7 @@
 			alert("회원가입 취소 하시겠습니까?");
 			location.href = "productList.jsp";
 		})
-	});
+});
 </script>
 </head>
 <body>
@@ -163,7 +211,7 @@
 				<td class="left">전화번호</td>
 				<td class="right"><input class="form-control input-lg"
 					type="text" name="user_tel" id="tel" maxlength="11"
-					value="01012341234" placeholder="전화번호를 입력해주세요"> <!-- 아래 input에 maxlength="11"을 지정해주어 11글자가 최대가 되도록 구현 -->
+					value="01012341234" placeholder="하이폰을 제외한 핸드폰번호를 입력해주세요"> <!-- 아래 input에 maxlength="11"을 지정해주어 11글자가 최대가 되도록 구현 -->
 					<div id="tec"></div></td>
 			</tr>
 			<tr>
@@ -175,7 +223,7 @@
 			<tr>
 				<td class="left">주소</td>
 				<td class="right"><input class="form-control input-lg"
-					type="text" name="user_addr" id="addr" placeholder="주소를 입력해주세요">
+					type="text" name="user_addr" id="addr" placeholder="주소를 입력해주세요" value="서울특별시 종로구 342-12">
 					<div id="addrc"></div></td>
 			</tr>
 			<tr>
@@ -187,8 +235,6 @@
 			</tr>
 		</table>
 	</form>
-	<!-- 	<button style="width: 200px; height: 50px;" class="btn btn-success"
-		type="button" id="idCheck">아이디중복확인</button>-->
 	<hr>
 	<div id="result"></div>
 </body>

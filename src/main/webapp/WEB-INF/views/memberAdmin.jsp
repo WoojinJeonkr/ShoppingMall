@@ -1,16 +1,18 @@
 <!-- 관리자페이지 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <link rel="stylesheet" type="text/css" href="resources/css/project.css">
@@ -26,25 +28,25 @@
 </script>
 </head>
 <body>
- <div id = "top">
+	<div id="top">
 		<jsp:include page="../../top.jsp"></jsp:include>
-</div>
-<h3>회원관리</h3>
+	</div>
+	<h3>회원관리</h3>
 	<button type="button" id="mainPage">메인페이지로</button>
-<a href="memberAdmin">
-	<button>회원 전체검색</button>
-</a>
- <!-- 원래는 form 하나에 담았으나.. form 하나에 하나의 변수만 넣어줄 수 있는것으로 보인다. --> 
+	<a href="memberAdmin">
+		<button>회원 전체검색</button>
+	</a>
+	<!-- 원래는 form 하나에 담았으나.. form 하나에 하나의 변수만 넣어줄 수 있는것으로 보인다. -->
 
-<form id = "memberForm" action="${pageContext.request.contextPath}/memberAdmin">
-<!-- 컨트롤러의  memberAdmin으로 이동 후  -->
-<!-- views아래의(지금 이 파일) memberAdmin으로 action됨. -->
-	<label>회원이름검색</label>
-	<input  name = "keyword" type = "text"><!--검색어 받아오는 코드  -->
-	<button type="submit"> 검색</button>
-</form>
-
-
+	<form id="memberForm"
+		action="${pageContext.request.contextPath}/memberAdmin">
+		<!-- 컨트롤러의  memberAdmin으로 이동 후  -->
+		<!-- views아래의(지금 이 파일) memberAdmin으로 action됨. -->
+		<label>회원이름검색</label> <input name="keyword" type="text">
+		<!--검색어 받아오는 코드  -->
+		<button type="submit">검색</button>
+	</form>
+<body>
 	<table border=2>
 		<tr>
 			<td class="left">아이디</td>
@@ -56,10 +58,10 @@
 			<td class="left">레벨</td>
 		</tr>
 		<c:forEach items="${list}" var="one">
-		<!-- var="one"는  items="${list}"를 지칭해주는 말이다. ${list}를 one이라고 쓰겠다는 의미.-->
+			<!-- var="one"는  items="${list}"를 지칭해주는 말이다. ${list}를 one이라고 쓰겠다는 의미.-->
 			<tr>
 				<td class="right">${one.user_id}</td>
-				<td class="right"><a href= "memberOne?user_id=${one.user_id}">${one.user_name}</a></td>
+				<td class="right"><a href="memberOne?user_id=${one.user_id}">${one.user_name}</a></td>
 				<!-- 이름을 클릭하면 해당 아이디의 상세정보를 확인할 수 있도록 구현
 				 href="views아래에 있는 상세정보jsp이름"?"유저아이디 객체 이름"-->
 				<td class="right">${one.user_pw}</td>

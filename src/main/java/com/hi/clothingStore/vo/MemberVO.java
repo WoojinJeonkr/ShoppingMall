@@ -1,7 +1,8 @@
 package com.hi.clothingStore.vo;
 
-public class MemberVO {
+import java.sql.Timestamp;
 
+public class MemberVO {
 	private String user_id;
 	private String user_pw;
 	private String user_name;
@@ -10,14 +11,8 @@ public class MemberVO {
 	private String user_tag;
 	private String user_addr;
 	private int level;
-	
 	private String keyword;
-	public String getKeyword() {
-		return keyword;
-	}
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
+
 	public String getUser_id() {
 		return user_id;
 	}
@@ -66,13 +61,16 @@ public class MemberVO {
 	public void setLevel(int level) {
 		this.level = level;
 	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	@Override
 	public String toString() {
 		return "MemberVO [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_age="
 				+ user_age + ", user_tel=" + user_tel + ", user_tag=" + user_tag + ", user_addr=" + user_addr
 				+ ", level=" + level + ", keyword=" + keyword + "]";
 	}
-
-	
-	
 }

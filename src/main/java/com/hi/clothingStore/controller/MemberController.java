@@ -68,13 +68,13 @@ public class MemberController {
 		// String user_id는 memberCre.jsp의 ajax의 data가 넘어오는 값을 받기 위해 꼭 넣어주어야 한다.
 		// user_id라고 지정한 이유는 값을 컨트롤러로 받고 sql문의 user_id 컬럼과 같아야함.
 		//그래서 user_id로 씀
-		System.out.println(user_id);
+		System.out.println("memberIdCheck user_id는>> " + user_id);
 		//ajax로부터 데이터 넘어오는지 확인하기. 
 		MemberVO  vo2 = dao.idCheck(user_id);//dao라는idCheck라는 곳으로 user_id를 가지고 가겠다.
 		//dao의 리턴 vo2를 받은 값이dao.idCheck(user_id)인데 이 값을
 		// MemberVO타입의  vo2변수 안에 넣어준다.
 		//MemberVO타입은 user_id,user_pw,user_tel...등의 값을 받을 수 있는 바구니를 뜻한다.
-		System.out.println("컨트롤러 결과>> " + vo2);
+		System.out.println("memberIdCheck vo2컨트롤러 결과>> " + vo2);
 		int result = 1; //기존에 있는 id로 쓸 수 없는 id.
 		if (vo2 == null ) {//db에 같은 아이디가 없다면,
 			result = 0; //쓸 수 있는 id임.
@@ -137,6 +137,19 @@ public class MemberController {
 		System.out.println("memberAdDelete컨트롤러결과vo >> " + vo);
 	}
 	
+	//관리자 아이디로 회원 수정 컨트롤러
+	@RequestMapping("memberAdUpdate")
+	public String update1(MemberVO vo, Model model) {
+		System.out.println("회원수정vo를 찍어보자: "+vo);
+		//수정하고 싶은 것이 있으면 수정처리 요청
+		int result = dao.update(vo);
+		if(result == 0) {//리턴값 result가 0이면 update가 안되었다는 의미로  view의 memberNo.jsp를 호출
+			return "memberNo";
+		}else {//0이 아니면 업데이트가 되었다는 의미(1이므로)로  view의 memberUpdate.jsp를 호출
+			return "memberAdUpdate";
+		}
+	}
+		
 	@RequestMapping("member")
 	//member와 같은 이름이 views아래에 있어야 한다. 
 	//views아래에 있는 회원가입페이지(member.jsp)를 호출하려면 컨트롤러 꼭 거쳐가기때문에 컨트롤러에 해당 코드가 있어야함

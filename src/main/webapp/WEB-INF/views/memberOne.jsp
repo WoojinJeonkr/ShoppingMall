@@ -8,11 +8,6 @@
 </head>
 <!-- <body bgcolor="skyblue"> -->
 <body>
-<div id="total">
-		<div id="top">
-			<jsp:include page="../../top.jsp"></jsp:include>
-		</div>
-	</div>
 <h3>회원상세정보입니다</h3>
 <table border=2>
    <tr>
@@ -51,7 +46,7 @@
 <button>회원삭제</button>
 </form>
 <h3>회원 수정</h3>
-<form action="memberUpdate">
+<form action="memberAdUpdate">
 		<table>
 			<tr>
 				<td class="left">아이디</td>
