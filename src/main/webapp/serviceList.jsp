@@ -82,6 +82,22 @@ th, td {
 	border-bottom: 1px solid #444444;
 	padding: 10px;
 }
+
+button {
+	font-size: 10px;
+	color: #fff;
+	background: rgb(219, 138, 222);
+	background: linear-gradient(-145deg, rgba(219, 138, 222, 1) 0%,
+		rgba(246, 191, 159, 1) 100%);
+	padding: 12px 10px;
+	display: inline-block;
+	border-radius: 5px;
+	font-weight: 500;
+	transition: all .3s;
+	vertical-align: middle;
+	width: 80px;
+	height: 30px;
+}
 </style>
 </head>
 
@@ -93,7 +109,7 @@ th, td {
 		<jsp:include page="top2.jsp"></jsp:include>
 	</div>
 
-	<div class="row" style="width:1200px; margin:auto;">
+	<div class="row" style="width: 1200px; margin: auto;">
 		<h3>고객센터</h3>
 		<div id="center" class="col-lg-12">
 			<div class="well" style="width: 30%; height: 150px; float: left;">
@@ -140,7 +156,7 @@ th, td {
 				name="keyword" id="keyword"
 				style="width: 300px; height: 30px; float: left">
 			<button type="submit" class="main-gradient-button" name="btnSearch"
-				id="btnSearch" style="width: 50px; height: 30px;">검색</button>
+				id="btnSearch">검색</button>
 		</form>
 
 		<div id="result"></div>
@@ -159,3 +175,51 @@ th, td {
 
 	</div>
 </div>
+<section class="contact-us">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8" style="height: 420px;">
+				<div id="map">
+					<!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
+
+					<div class="row">
+						<div class="col-lg-4 offset-lg-1">
+							<div class="contact-info" style="width: 200px;">
+								<div class="icon">
+									<i class="fa fa-phone"></i>
+								</div>
+								<h4>Phone</h4>
+								<span>010-020-0340</span>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="contact-info" style="width: 200px;">
+								<div class="icon">
+									<i class="fa fa-phone"></i>
+								</div>
+								<h4>Mobile</h4>
+								<span>090-080-0760</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4"></div>
+			<div class="col-lg-12">
+				<ul class="social-icons">
+					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+					<li><a href="#"><i class="fa fa-rss"></i></a></li>
+					<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+				</ul>
+			</div>
+			<div class="col-lg-12">
+				<p class="copyright">
+					Copyright © 2022 EduWell Co., Ltd. All Rights Reserved. <br>Design:
+					<a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>

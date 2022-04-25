@@ -15,17 +15,19 @@
 <style>
 button {
 	position: right;
+	margin-left: 10px;
+	background: rgb(219, 138, 222)
 }
 
-table {
-	width: 800px;
-	border-top: 1px solid #444444;
-	border-collapse: collapse;
-}
-
-th, td {
-	border: 1px solid #444444;
-	padding: 10px;
+#box {
+	text-align: center;
+	font-size: 20px;
+	color: #7a7a7a;
+	padding: 20px;
+	margin: 10px;
+	-webkit-border-radius: 15px;
+	height: 150px;
+	background-color: #f5ebf3;
 }
 
 .left {
@@ -44,63 +46,83 @@ th, td {
 		<div id="top2">
 			<jsp:include page="../../top2.jsp"></jsp:include>
 		</div>
-		<div class="row" style="width: 1200px; margin: auto;">
-			<div id="center">
+		<section class="contact-us">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4">
+						<div id="contact" style="width: 800px; margin: auto">
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="section-heading">
+										<h4>${one.service_title}</h4>
+										<h6 style="display: inline;">${one.user_id}:</h6>
+										<h6 style="display: inline;">${one.service_rgstday}</h6>
+									</div>
+								</div>
+								<div class="col-lg-12" id="box">
+									<fieldset>
+										<td class="right" colspan="3" height=300px>${one.service_question}
+										</td>
+										<fieldset>
+								</div>
 
-				<h3>글 상세 페이지</h3>
-				<hr>
-				<table>
-					<tr>
-						<td class="left">제목</td>
-						<td class="right">${one.service_title}</td>
-						<td class="left">글쓴이</td>
-						<td class="right">${one.user_id}</td>
-					</tr>
-					<tr>
-						<td class="left">등록일</td>
-						<td class="right" colspan="3">${one.service_rgstday}</td>
-					</tr>
-					<tr>
-						<td class="left">내용</td>
-						<td class="right" colspan="3" height=300px>${one.service_question}</td>
-					</tr>
+								<div class="col-lg-12">
+									<fieldset>
+										<td colspan="4"><a href="serviceList.jsp"><button
+													style="margin-left: 10px;">목록</button></a> <!--  자기 글일때만  삭제, 수정 버튼 활성화. -->
+											<%
+												if (session.getAttribute("user_id") != null) {
+											%> <c:if test="${user_id eq one.user_id}">
+												<a href="serviceDelete?service_idx=${one.service_idx}"><button
+														style="margin-left: 10px;">삭제</button></a>
+												<a href="serviceUpdate2?service_idx=${one.service_idx}"><button
+														style="margin-left: 10px;">수정</button></a>
+												<a
+													href="serviceAnswer.jsp?service_idx=${one.service_idx}&service_id_origin=${one.service_id_origin}&service_idx_re=${one.service_idx_re}&service_reply_group=${one.service_reply_group}"><button
+														id="Answer" style="margin-left: 10px;">답변하기</button></a></td>
+										</c:if>
+										<!-- 유저아이디가 admin..즉 관리자인경우 답변하기 버튼 활성화 -->
+										<%
+											if ((int) (session.getAttribute("user_level")) == 2) {
+										%>
+										<a href="serviceDelete?service_idx=${one.service_idx}"><button>삭제</button></a>
+										<a href="serviceUpdate2?service_idx=${one.service_idx}"><button>수정</button></a>
+										<a
+											href="serviceAnswer.jsp?service_idx=${one.service_idx}&service_id_origin=${one.service_id_origin}&service_idx_re=${one.service_idx_re}&service_reply_group=${one.service_reply_group}"><button
+												id="Answer">답변하기</button></a>
+										</td>
+										<%
+											}
+										%>
+										<%
+											}
+										%>
 
-
-
-					<tr>
-						<td colspan="4"><a href="serviceList.jsp"><button>목록</button></a>
-
-							<!--  자기 글일때만  삭제, 수정 버튼 활성화. --> <%
- 	if (session.getAttribute("user_id") != null) {
- %>
-							<c:if test="${user_id eq one.user_id}">
-								<a href="serviceDelete?service_idx=${one.service_idx}"><button>삭제</button></a>
-								<a href="serviceUpdate2?service_idx=${one.service_idx}"><button>수정</button></a>
-								<a
-									href="serviceAnswer.jsp?service_idx=${one.service_idx}&service_id_origin=${one.service_id_origin}&service_idx_re=${one.service_idx_re}&service_reply_group=${one.service_reply_group}"><button
-										id="Answer">답변하기</button></a></td>
-						</c:if>
-						<!-- 유저아이디가 admin..즉 관리자인경우 답변하기 버튼 활성화 -->
-						<%
-							if ((int) (session.getAttribute("user_level")) == 2) {
-						%>
-						<a href="serviceDelete?service_idx=${one.service_idx}"><button>삭제</button></a>
-						<a href="serviceUpdate2?service_idx=${one.service_idx}"><button>수정</button></a>
-						<a
-							href="serviceAnswer.jsp?service_idx=${one.service_idx}&service_id_origin=${one.service_id_origin}&service_idx_re=${one.service_idx_re}&service_reply_group=${one.service_reply_group}"><button
-								id="Answer">답변하기</button></a>
-						</td>
-						<%
-							}
-						%>
-						<%
-							}
-						%>
-					</tr>
-				</table>
-				<hr>
+										</tr>
+									</fieldset>
+								</div>
+								</tr>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-rss"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-lg-12">
+						<p class="copyright">
+							Copyright © 2022 EduWell Co., Ltd. All Rights Reserved. <br>Design:
+							<a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+						</p>
+					</div>
+				</div>
 			</div>
-		</div>
+		</section>
 	</div>
 </body>
 </html>

@@ -23,13 +23,50 @@
 		<div id="top2">
 			<jsp:include page="../../top2.jsp"></jsp:include>
 		</div>
-		<div id="center">
-			<h3>게시글 삭제완료.</h3>
-			<hr>
-			<a href="serviceMain.jsp"><button>목록보기.</button></a> <a
-				href="serviceWrite.jsp"><button>글쓰기.</button></a>
-
-		</div>
+		<section class="get-info">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="left-image">
+							<img src="resources/assets/images/about-left-image.png" alt="">
+						</div>
+					</div>
+					<div class="col-lg-6 align-self-center">
+						<div class="section-heading">
+							<h6>FaQ 삭제 완료</h6>
+							<h4>
+								<em> 자주묻는 질문사항 </em>삭제를 성공적으로 마쳤습니다.
+							</h4>
+							<p></p>
+						</div>
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="info-item">
+									<div class="icon">
+										<img src="resources/assets/images/service-icon-01.png" alt="">
+									</div>
+									<h4>
+										<a href="serviceMain.jsp">목록보기</a>
+									</h4>
+									<p></p>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="info-item">
+									<div class="icon">
+										<img src="resources/assets/images/service-icon-02.png" alt="">
+									</div>
+									<h4>
+										<a href="serviceFaqCreate.jsp">FaQ 등록하러가기</a>
+									</h4>
+									<p></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
 </body>
 </html>

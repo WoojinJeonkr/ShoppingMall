@@ -20,12 +20,51 @@
 		<div id="top2">
 			<jsp:include page="../../top2.jsp"></jsp:include>
 		</div>
-		<div id="center">
-			<h3>업데이트완료</h3>
-			<hr>
-			<a href="serviceList"><button>목록보기.</button></a> <a
-				href="serviceWrite.jsp"><button>글쓰기.</button></a>
-		</div>
+		<section class="get-info">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="left-image">
+							<img src="resources/assets/images/about-left-image.png" alt="">
+						</div>
+					</div>
+					<div class="col-lg-6 align-self-center">
+						<div class="section-heading">
+							<h6>QnA 수정 완료</h6>
+							<h4>
+								<em> QnA 수정 </em>을 성공적으로 마쳤습니다.
+							</h4>
+							<p></p>
+						</div>
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="info-item">
+									<div class="icon">
+										<img src="resources/assets/images/service-icon-01.png" alt="">
+									</div>
+									<h4>
+										<a href="serviceList">목록보기</a>
+									</h4>
+									<p></p>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="info-item">
+									<div class="icon">
+										<img src="resources/assets/images/service-icon-02.png" alt="">
+									</div>
+									<h4>
+										<a href="serviceWrite.jsp">글쓰기</a>
+									</h4>
+									<p></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 	</div>
 
 </body>

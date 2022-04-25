@@ -150,11 +150,10 @@ https://templatemo.com/tm-573-eduwell
 	});
 </script>
 <style>
-
 .nav-tabs>li>a:hover {
-    background: #dc8cdb;
-    transition: background-color .5s;
-  }
+	background: #dc8cdb;
+	transition: background-color .5s;
+}
 </style>
 <body>
 	<div class="row" style="width: 1200px; margin: auto;">
@@ -167,6 +166,85 @@ https://templatemo.com/tm-573-eduwell
 			</div>
 			<div class="row" style="width: 1200px; margin: auto;">
 				<div id="center">
+					<section class="page-heading">
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="header-text">
+										<h4>What We Do</h4>
+										<h1>Our Services</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="services">
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="section-heading">
+										<h6>자주 묻는 질문 사항</h6>
+										<h4>
+											Fa<em>Q</em>
+										</h4>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="owl-service-item owl-carousel">
+										<div class="item">
+											<div class="service-item">
+												<div class="icon">
+													<img src="resources/assets/images/service-icon-01.png"
+														alt="">
+												</div>
+												<h4>
+													<a href="serviceMain.jsp">FAQ</a>
+												</h4>
+
+											</div>
+										</div>
+										<div class="item">
+											<div class="service-item">
+												<div class="icon">
+													<img src="resources/assets/images/service-icon-02.png"
+														alt="">
+												</div>
+												<h4>
+													<a href="serviceList.jsp">QnA</a>
+												</h4>
+
+											</div>
+										</div>
+										<div class="item">
+											<div class="service-item">
+												<div class="icon">
+													<img src="resources/assets/images/service-icon-03.png"
+														alt="">
+												</div>
+												<h4>
+													<a href="serviceNoticeList">Notice</a>
+												</h4>
+											</div>
+										</div>
+										<div class="item">
+											<div class="service-item">
+												<div class="icon">
+													<img src="resources/assets/images/service-icon-04.png"
+														alt="">
+												</div>
+												<h4>
+													<a href="serviceMyQuestion.jsp">MyQuestion</a>
+												</h4>
+												<p>Food & truck tumeric taxidermy hoodie chiasore
+													bitters retroed gentrify street portland.</p>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
 					<h3>고객센터</h3>
 					<div class="well" style="width: 30%; height: 150px; float: left;">
 						<h1>FAQ</h1>
@@ -203,7 +281,8 @@ https://templatemo.com/tm-573-eduwell
 
 					<hr>
 
-					<ul class="nav nav-tabs" name="service_faq_category" style="float:left">
+					<ul class="nav nav-tabs" name="service_faq_category"
+						style="float: left">
 						<li><a href="#" class="tot" id="전체" value="*">전체</a></li>
 						<li><a href="" class="cate" id="교환/환불" value="교환/환불">교환/환불</a></li>
 						<li><a href="" class="cate" id="주문결제" value="주문결제">주문결제</a></li>
@@ -235,6 +314,57 @@ https://templatemo.com/tm-573-eduwell
 
 				</div>
 			</div>
-		</div></div>
+		</div>
+	</div>
+
+	<section class="contact-us">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8" style="height: 420px;">
+					<div id="map">
+						<!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
+
+						<div class="row">
+							<div class="col-lg-4 offset-lg-1">
+								<div class="contact-info" style="width: 200px;">
+									<div class="icon">
+										<i class="fa fa-phone"></i>
+									</div>
+									<h4>Phone</h4>
+									<span>010-020-0340</span>
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="contact-info" style="width: 200px;">
+									<div class="icon">
+										<i class="fa fa-phone"></i>
+									</div>
+									<h4>Mobile</h4>
+									<span>090-080-0760</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4"></div>
+				<div class="col-lg-12">
+					<ul class="social-icons">
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa fa-rss"></i></a></li>
+						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-lg-12">
+					<p class="copyright">
+						Copyright © 2022 EduWell Co., Ltd. All Rights Reserved. <br>Design:
+						<a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
+
 </html>
