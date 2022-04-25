@@ -1,13 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<link rel="stylesheet" type="text/css" href="resources/css/project.css">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+
+<!-- Bootstrap core CSS -->
+<script type="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="resources/assets/css/fontawesome.css">
+<link rel="stylesheet" href="resources/assets/css/templatemo-eduwell-style.css">
+<link rel="stylesheet" href="resources/assets/css/owl.css">
+<link rel="stylesheet" href="resources/assets/css/lightbox.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- member.css파일 -->	
+<link rel = "stylesheet" type = "text/css" href = "resources/css/member.css">	
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	//빈 값이 있거나 조건에 맞지 않으면 회원가입이 안되도록 구현.
@@ -223,14 +241,17 @@
 			<tr>
 				<td class="left">주소</td>
 				<td class="right"><input class="form-control input-lg"
-					type="text" name="user_addr" id="addr" placeholder="주소를 입력해주세요" value="서울특별시 종로구 342-12">
+					type="text" name="user_addr" id="addr" placeholder="주소를 입력해주세요">
 					<div id="addrc"></div></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<button type="button" id="addMember">회원가입하기</button>
-					<button type="button" id="cancel">회원가입취소</button>
+				<div class="col-lg-12">
+					<button type="button" id="addMember" class="btn btn-light">회원가입하기</button>
+					<button type="button" id="cancel" class="btn btn-light">회원가입취소</button>
+				</div>
 				</td>
+				
 				
 			</tr>
 		</table>

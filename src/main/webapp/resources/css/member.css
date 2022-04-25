@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+body {
+	font-family: "Lucida Grande", "Droid Sans", Arial, Helvetica, sans-serif;
+	background-image: url('../img/testimonials-left-dec.png');
+}
+/* #form{
+	background-image: url('../img/testimonials-left-dec.png');
+} */
+form {
+	background-image: url('../img/testimonials-left-dec.png');
+}
+
+.active {
+	font-size: 2em;
+	margin-left: 650px;
+	padding: 10px;
+}
+
+h3 {
+	margin-left: 700px;
+}
+
+button {
+	background-color: #FFD4DF;
+	width: 200px;
+	padding: 10px;
+	border-radius: 5px; /* 버튼둥글게 */
+	border-radius: 50%; /* 버튼둥글게 */
+	height: 50px;
+	margin: 20px;
+	padding: 20px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+a {
+	margin-left: 650px;
+}
+
+label {
+	font-size: 1.5em;
+	margin: 20px;
+	padding: 20px;
+}
+
+table {
+	font-size: 1.5em;
+	margin: 20px;
+	padding: 20px;
+	margin-left: 500px;
+	border: 1;
+}
