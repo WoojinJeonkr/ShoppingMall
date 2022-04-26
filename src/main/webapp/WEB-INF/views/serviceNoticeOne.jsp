@@ -68,7 +68,7 @@ th, td {
 
 								<div class="col-lg-12">
 									<fieldset>
-										<td colspan="4"><a href="serviceList.jsp"><button
+										<td colspan="4"><a href="serviceNoticeList"><button
 													style="margin-left: 10px;">목록</button></a> <!--  자기 글일때만  삭제, 수정 버튼 활성화. -->
 											<%
 												if (session.getAttribute("user_id") != null) {
