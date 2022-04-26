@@ -48,9 +48,7 @@
 					+ "<c:if test='${user_id != null}'>"
 					+ "<div class='reviewFooter'>"
 					+ "<button type='button' class='update' data-review_idx='" + this.review_idx + "'>수정</button>"
-					+ "<% if((int)(session.getAttribute("user_level")) == 2) { %>"
 					+ "<button type='button' class='delete' data-review_idx='" + this.review_idx + "'>삭제</button>"
-					+ "<% } %>"
 					+ "</c:if>"
 					+ "</li>";
 			});
