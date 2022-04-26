@@ -10,18 +10,54 @@
 <style>
 table {
 	width: 100%;
-	border-top: 1px solid #444444;
 	border-collapse: collapse;
+	border-top: 3px solid #ff75b3;
+}
+
+#one {
+	color: #ffffff;
+	background: linear-gradient(-145deg, rgba(219, 138, 222, 1) 0%,
+		rgba(246, 191, 159, 1) 100%) !important;
 }
 
 th, td {
-	border-bottom: 1px solid #444444;
 	padding: 10px;
+	border-bottom: 2px solid #ff75b3;
+	padding: 10px;
+}
+
+th:first-child, td:first-child {
+	border-left: 0;
+}
+
+th:last-child, td:last-child {
+	border-right: 0;
+}
+
+.right > a:link {
+	color: pink;
+	text-decoration: none;
+}
+
+.right > a:visited {
+	color: gray;
+	text-decoration: none;
+}
+
+.right >a:hover {
+	color: red;
+	text-decoration: underline;
+}
+
+.right >a:active {
+	color: green;
+	text-decoration: none;
 }
 </style>
 
 <table>
-	<tr>
+
+	<tr id="one">
 		<td class="left">index</td>
 		<td class="left">title</td>
 		<td class="left">writer</td>
@@ -34,11 +70,13 @@ th, td {
 			<td class="right">
 				<%
 					if (session.getAttribute("user_id") != null) {
-				%> <% if ((int) (session.getAttribute("user_level")) == 2) { %> 
-				<a href="memberOne?user_id=${one.user_id}"> 
-				<%} %> 
-				<%} %> 
-				${one.user_id} 
+				%> <%
+ 	if ((int) (session.getAttribute("user_level")) == 2) {
+ %> <a href="memberOne?user_id=${one.user_id}"> <%
+ 	}
+ %> <%
+ 	}
+ %> ${one.user_id} 
 			</td>
 	</c:forEach>
 </table>

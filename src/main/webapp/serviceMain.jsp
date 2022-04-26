@@ -154,6 +154,11 @@ https://templatemo.com/tm-573-eduwell
 	background: #dc8cdb;
 	transition: background-color .5s;
 }
+
+a {
+	color: pink;
+	text-decoration: none;
+}
 </style>
 <body>
 	<div class="row" style="width: 1200px; margin: auto;">
@@ -189,54 +194,71 @@ https://templatemo.com/tm-573-eduwell
 										</h4>
 									</div>
 								</div>
-								<div class="col-lg-12">
-									<div class="owl-service-item owl-carousel">
-										<div class="item">
+								<div class="col-lg-12"
+									style="overflow: visible; width: 800px; margin: auto; text-align: center;">
+									<div class="owl-service-item owl-carousel"
+										style="display: inline-block; width: 800px; margin: auto; text-align: center;">
+										<div class="item" style="width: 200px; float: left;">
 											<div class="service-item">
 												<div class="icon">
 													<img src="resources/assets/images/service-icon-01.png"
 														alt="">
 												</div>
 												<h4>
-													<a href="serviceMain.jsp">FAQ</a>
+													<a href="serviceMain.jsp" style="color: #dc8cdb">FAQ</a>
 												</h4>
 
 											</div>
 										</div>
-										<div class="item">
+										<div class="item" style="width: 200px; float: left">
 											<div class="service-item">
 												<div class="icon">
 													<img src="resources/assets/images/service-icon-02.png"
 														alt="">
 												</div>
 												<h4>
-													<a href="serviceList.jsp">QnA</a>
+													<a href="serviceList.jsp" style="color: #dc8cdb">QnA</a>
 												</h4>
 
 											</div>
 										</div>
-										<div class="item">
+										<div class="item" style="width: 200px; float: left">
 											<div class="service-item">
 												<div class="icon">
 													<img src="resources/assets/images/service-icon-03.png"
 														alt="">
 												</div>
 												<h4>
-													<a href="serviceNoticeList">Notice</a>
+													<a href="serviceNoticeList" style="color: #dc8cdb">Notice</a>
 												</h4>
 											</div>
 										</div>
-										<div class="item">
+
+										<div class="item" style="width: 200px;">
 											<div class="service-item">
 												<div class="icon">
 													<img src="resources/assets/images/service-icon-04.png"
 														alt="">
 												</div>
 												<h4>
-													<a href="serviceMyQuestion.jsp">MyQuestion</a>
+													<%
+														if (session.getAttribute("user_id") != null) {
+													%>
+													<a href="serviceMyQuestion.jsp" style="color:#dc8cdb"> <%
+ 	} else {
+ %> <a href="member"> <%
+ 	}
+ %> MyQuestion
+													</a>
 												</h4>
-												<p>Food & truck tumeric taxidermy hoodie chiasore
-													bitters retroed gentrify street portland.</p>
+												<%
+													if (session.getAttribute("user_id") == null) {
+												%>
+												<p>로그인후 사용가능</p>
+												<%
+													}
+												%>
+
 											</div>
 										</div>
 
@@ -245,41 +267,7 @@ https://templatemo.com/tm-573-eduwell
 							</div>
 						</div>
 					</section>
-					<h3>고객센터</h3>
-					<div class="well" style="width: 30%; height: 150px; float: left;">
-						<h1>FAQ</h1>
-						<p>자주 묻는 질문사항</p>
-					</div>
-					<div class="well" style="width: 70%; height: 150px; float: left;">
-						<div id="faqBtn">
-							<h4>
-								<a href="serviceMain.jsp">FAQ</a>
-							</h4>
-						</div>
-						<div id="qnaBtn">
-							<h4>
-								<a href="serviceList.jsp">QnA</a>
-							</h4>
-						</div>
-						<div id="NoticeBtn">
-							<h4>
-								<a href="serviceNoticeList">Notice</a>
-							</h4>
-						</div>
-						<%
-							if (session.getAttribute("user_id") != null) {
-						%>
-						<div id="myBtn">
-							<h4>
-								<a href="serviceMyQuestion.jsp">내 문의사항</a>
-							</h4>
-						</div>
-						<%
-							}
-						%>
-					</div>
 
-					<hr>
 
 					<ul class="nav nav-tabs" name="service_faq_category"
 						style="float: left">
@@ -304,14 +292,12 @@ https://templatemo.com/tm-573-eduwell
 							onclick="deleteValue()"> <input type="button" name="modi"
 							style="display: none" value="수정" onclick="modifyValue()">
 					</div>
-
 					<%
 						}
 					%>
 					<%
 						}
 					%>
-
 				</div>
 			</div>
 		</div>
@@ -365,6 +351,62 @@ https://templatemo.com/tm-573-eduwell
 			</div>
 		</div>
 	</section>
+	<script src="resources/vendor/jquery/jquery.min.js"></script>
+	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<script src="resources/assets/js/isotope.min.js"></script>
+	<script src="resources/assets/js/owl-carousel.js"></script>
+	<script src="resources/assets/js/lightbox.js"></script>
+	<script src="resources/assets/js/tabs.js"></script>
+	<script src="resources/assets/js/video.js"></script>
+	<script src="resources/assets/js/slick-slider.js"></script>
+	<script src="resources/assets/js/custom.js"></script>
+	<script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+          var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+          if (isAnimate) {
+            $('body, html').animate({
+              scrollTop: reqSectionPos },
+            800);
+          } else {
+            $('body, html').scrollTop(reqSectionPos);
+          }
+
+        };
+
+        var checkSection = function checkSection() {
+          $('.section').each(function () {
+            var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+              var
+              currentId = $this.data('section'),
+              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+              reqLink.closest('li').addClass('active').
+              siblings().removeClass('active');
+            }
+          });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+          e.preventDefault();
+          showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+          checkSection();
+        });
+    </script>
 </body>
 
 </html>
