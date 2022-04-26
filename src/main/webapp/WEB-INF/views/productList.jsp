@@ -141,21 +141,7 @@ img{display:block;}
 <!-- 값을 넘겨줘야 하므로 form을 만들자 -->
 
 
-    <button type="submit" class="btn btn-light"> 검색</button>
-
- 
- <!-- 원래는 form 하나에 담았으나.. form 하나에 하나의 변수만 넣어줄 수 있는것으로 보인다. --> 
-
-
-<br><br><br><br>
-
-
-	<button type="submit" class="btn btn-light"> 검색</button>
-
-</form>    
     
-</section>
-<!-- 값을 넘겨줘야 하므로 form을 만들자 -->
 
  <!-- 원래는 form 하나에 담았으나.. form 하나에 하나의 변수만 넣어줄 수 있는것으로 보인다. --> 
 
