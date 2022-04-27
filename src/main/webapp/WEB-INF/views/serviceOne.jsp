@@ -68,34 +68,23 @@ button {
 
 								<div class="col-lg-12">
 									<fieldset>
-										<td colspan="4"><a href="serviceList.jsp"><button
-													style="margin-left: 10px;">목록</button></a> <a
-											href="serviceAnswer.jsp?service_idx=${one.service_idx}&service_id_origin=${one.service_id_origin}&service_idx_re=${one.service_idx_re}&service_reply_group=${one.service_reply_group}"><button
+										<td colspan="4">
+										<a href="serviceList.jsp"><button style="margin-left: 10px;">목록</button></a> 
+											<% if (session.getAttribute("user_id") != null) { %>
+											 <a href="serviceAnswer.jsp?service_idx=${one.service_idx}&service_id_origin=${one.service_id_origin}&service_idx_re=${one.service_idx_re}&service_reply_group=${one.service_reply_group}"><button
 													id="Answer" style="margin-left: 10px;">답변하기</button></a></td>
-
-
-										<!--  자기 글일때만  삭제, 수정 버튼 활성화. -->
-										<%
-											if (session.getAttribute("user_id") != null) {
-										%>
+													
 										<c:if test="${user_id eq one.user_id || user_level == 2}">
-											<a href="serviceDelete?service_idx=${one.service_idx}"><button
-													style="margin-left: 10px;">삭제</button></a>
-
-
+											<a href="serviceDelete?service_idx=${one.service_idx}&service_id_origin=${one.service_id_origin}">
+												<button style="margin-left: 10px;">삭제</button>
+											</a>
 											<c:if test="${user_id eq one.user_id}">
 												<!--  수정 버튼 활성화. -->
 												<a href="serviceUpdate2?service_idx=${one.service_idx}"><button
 														style="margin-left: 10px;">수정</button></a>
 											</c:if>
-
 										</c:if>
-										<!-- 유저아이디가 admin..즉 관리자인경우 답변하기 버튼 활성화 -->
-
-										<%
-											}
-										%>
-
+										<% } %>
 										</tr>
 									</fieldset>
 								</div>

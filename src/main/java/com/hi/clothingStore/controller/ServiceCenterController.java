@@ -22,18 +22,10 @@ public class ServiceCenterController {
 	
 	@RequestMapping("serviceWrite")
 	public String create(ServiceCenterVO vo,Model model) {
-		System.out.println("게시글등록요청");
-		System.out.println(vo.getService_id_origin());
-		System.out.println(vo.getService_idx_re());
-		System.out.println(vo.getService_reply_group());
-
 		int result =dao.create(vo);
 		dao.number(vo);
 		if(result==1) {
-			System.out.println("게시글등록");
-			
 			return "serviceInsert";
-
 		}else {
 			System.out.println("실패");
 			return "er";
@@ -42,20 +34,12 @@ public class ServiceCenterController {
 	
 	@RequestMapping("serviceAnswer")
 	public String create2(ServiceCenterVO vo,Model model) {
-		System.out.println("게시글등록요청");
-		System.out.println(vo.getService_id_origin());
-		System.out.println(vo.getService_idx_re());
-		System.out.println(vo.getService_reply_group());
 		dao.update2(vo);
 		int result =dao.create2(vo);
 		dao.number(vo);
 		if(result==1) {
-			System.out.println("게시글등록");
-			
 			return "serviceInsert";
-
 		}else {
-			System.out.println("실패");
 			return "er";
 		}
 	}
@@ -76,6 +60,8 @@ public class ServiceCenterController {
 	
 	@RequestMapping("serviceDelete")
 	public void delete(ServiceCenterVO vo) {
+		System.out.println(vo.getService_id_origin());
+		System.out.println(vo.getService_idx());
 		dao.delete(vo);
 	}
 	@RequestMapping("serviceOne")

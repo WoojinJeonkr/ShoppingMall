@@ -8,7 +8,8 @@
 		#{service_idx}
 	</select>
 	<select id="list" resultType="serviceVO">
-		select *from servicecenter order by service_id_origin desc, service_reply_group asc
+		select *from servicecenter order by
+		service_id_origin desc, service_reply_group asc
 	</select>
 
 	<select id="list1" resultType="serviceVO"
@@ -57,17 +58,18 @@
 	<update id="upseq" parameterType="serviceVO">
 		UPDATE servicecenter SET
 		service_reply_group = service_reply_group + 1 WHERE service_id_origin
-		= #{service_id_origin} AND service_reply_group> #{service_reply_group}
+		= #{service_id_origin} AND #{service_reply_group}>service_reply_group
 	</update>
 
 	<delete id="del" parameterType="serviceVO">
-		delete from servicecenter where service_idx = #{service_idx}
-		<if test="service_idx==service_id_origin">	<!-- 원글이 삭제되면 -->
-			delete from servicecenter where service_id_origin = #{service_idx}<!-- 
-				원글을 기준으로 그룹이었던것 모두 삭제. -->
-
-		</if>
+		delete from servicecenter where
+		service_idx = #{service_idx}
 	</delete>
+	<delete id="del2" parameterType="serviceVO">
+		delete from servicecenter where
+		service_id_origin = #{service_idx}
+	</delete>
+
 
 	<update id="up" parameterType="serviceVO">
 		update servicecenter set
@@ -81,5 +83,4 @@
 		service_id_origin = service_idx where service_idx_re=0
 	</update>
 
-	<!-- https://gangnam-americano.tistory.com/25 -->
 </mapper>

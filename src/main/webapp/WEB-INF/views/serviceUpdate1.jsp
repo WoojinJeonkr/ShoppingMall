@@ -43,7 +43,7 @@
 										<img src="resources/assets/images/service-icon-01.png" alt="">
 									</div>
 									<h4>
-										<a href="serviceList">목록보기</a>
+										<a href="serviceList.jsp">목록보기</a>
 									</h4>
 									<p></p>
 								</div>

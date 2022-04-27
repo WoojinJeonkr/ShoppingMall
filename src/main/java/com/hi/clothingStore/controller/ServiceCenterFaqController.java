@@ -28,13 +28,9 @@ public class ServiceCenterFaqController {
 	@RequestMapping("faqListView")
 	public void list_cate(ServiceCenterFaqVO vo, Model model, HttpServletRequest request) {
 		String msg =request.getParameter("service_faq_category");
-		System.out.println(msg);
 		List<ServiceCenterFaqVO>list=dao.cateList(vo, msg);
-		System.out.println("--------------------");
 		model.addAttribute("list", list);
-		System.out.println("----------3----------");
-		System.out.println(list);
-		System.out.println(vo);
+
 	}
 	
 	@RequestMapping("serviceNoticeList")
@@ -98,13 +94,10 @@ public class ServiceCenterFaqController {
 	@RequestMapping("serviceFaqDelete")
 	public String deletefaq (ServiceCenterFaqVO vo, HttpServletRequest request) {
 		String[] msg =request.getParameterValues("service_faq_idx");
-		System.out.println(msg);
 		int size = msg.length;
-		System.out.println(size);
 		for (int i=0; i<size; i++) {
 			System.out.println(msg[i]);
 			int s=Integer.parseInt(msg[i]);
-			System.out.println(vo);
 			dao.delete(vo, s);
 		}
 		return "redirect:serviceMain.jsp";

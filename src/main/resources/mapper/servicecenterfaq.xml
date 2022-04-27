@@ -11,7 +11,9 @@
 		select * from servicecenterfaq where service_notice = 1
 	</select>
 	<select id="list_cate" resultType="faqVO">
-		select * from servicecenterfaq where service_notice IS NULL and service_faq_category = #{service_faq_category}
+		select * from servicecenterfaq 
+		where service_notice IS NULL 
+		and service_faq_category = #{service_faq_category}
 	</select>
 	
 	<insert id="create" parameterType="faqVO">
@@ -26,7 +28,8 @@
 	</select>
 	
 	<delete id="del" parameterType="faqVO">
-		delete from servicecenterfaq where service_faq_idx = #{service_faq_idx} 
+		delete from servicecenterfaq 
+		where service_faq_idx = #{service_faq_idx} 
 	</delete>
 	
 	<insert id="create1" parameterType="faqVO">
