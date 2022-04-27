@@ -159,6 +159,7 @@ a {
 	color: pink;
 	text-decoration: none;
 }
+
 </style>
 <body>
 	<div class="row" style="width: 1200px; margin: auto;">
@@ -241,14 +242,12 @@ a {
 														alt="">
 												</div>
 												<h4>
-													<%
-														if (session.getAttribute("user_id") != null) {
-													%>
-													<a href="serviceMyQuestion.jsp" style="color:#dc8cdb"> <%
- 	} else {
- %> <a href="member"> <%
- 	}
- %> MyQuestion
+													<% if (session.getAttribute("user_id") != null) {%>
+													<a href="serviceMyQuestion.jsp" style="color: #dc8cdb">
+														<% } else { %> 
+														<a href="member" style="color: #dc8cdb"> 
+														<% }%> 
+														MyQuestion
 													</a>
 												</h4>
 												<%
@@ -279,9 +278,7 @@ a {
 					</ul>
 					<div id="result"></div>
 
-					<%
-						if (session.getAttribute("user_id") != null) {
-					%>
+					<% if (session.getAttribute("user_id") != null) {%>
 					<%
 						if ((int) (session.getAttribute("user_level")) == 2) {
 					%>

@@ -88,12 +88,15 @@ th, td {
 	border: 1px solid #ddd;
 	padding: 10px;
 }
+
 h:first-child, td:first-child {
-  border-left: 0;
+	border-left: 0;
 }
+
 th:last-child, td:last-child {
-  border-right: 0;
+	border-right: 0;
 }
+
 button {
 	font-size: 10px;
 	color: #fff;
@@ -140,7 +143,7 @@ button {
 								<div class="section-heading">
 									<h6>자주 묻는 질문 사항</h6>
 									<h4>
-										Fa<em>Q</em>
+										Qn<em>A</em>
 									</h4>
 								</div>
 							</div>
@@ -155,7 +158,7 @@ button {
 													alt="">
 											</div>
 											<h4>
-												<a href="serviceMain.jsp" style="color:#dc8cdb">FAQ</a>
+												<a href="serviceMain.jsp" style="color: #dc8cdb">FAQ</a>
 											</h4>
 
 										</div>
@@ -167,7 +170,7 @@ button {
 													alt="">
 											</div>
 											<h4>
-												<a href="serviceList.jsp" style="color:#dc8cdb">QnA</a>
+												<a href="serviceList.jsp" style="color: #dc8cdb">QnA</a>
 											</h4>
 
 										</div>
@@ -179,7 +182,7 @@ button {
 													alt="">
 											</div>
 											<h4>
-												<a href="serviceNoticeList" style="color:#dc8cdb">Notice</a>
+												<a href="serviceNoticeList" style="color: #dc8cdb">Notice</a>
 											</h4>
 										</div>
 									</div>
@@ -194,9 +197,10 @@ button {
 												<%
 													if (session.getAttribute("user_id") != null) {
 												%>
-												<a href="serviceMyQuestion.jsp" style="color:#dc8cdb"> <%
- 	} else {
- %> <a href="member"> <%
+												<a href="serviceMyQuestion.jsp" style="color: #dc8cdb">
+													<%
+														} else {
+													%> <a href="member" style="color: #dc8cdb"> <%
  	}
  %> MyQuestion
 												</a>
@@ -246,65 +250,66 @@ button {
 
 			</div>
 		</div>
-		<section class="contact-us">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8" style="height: 420px;">
-						<div id="map">
-							<!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
+	</div>
+</div>
+<section class="contact-us">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8" style="height: 420px;">
+				<div id="map">
+					<!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
 
-							<div class="row">
-								<div class="col-lg-4 offset-lg-1">
-									<div class="contact-info" style="width: 200px;">
-										<div class="icon">
-											<i class="fa fa-phone"></i>
-										</div>
-										<h4>Phone</h4>
-										<span>010-020-0340</span>
-									</div>
+					<div class="row">
+						<div class="col-lg-4 offset-lg-1">
+							<div class="contact-info" style="width: 200px;">
+								<div class="icon">
+									<i class="fa fa-phone"></i>
 								</div>
-								<div class="col-lg-4">
-									<div class="contact-info" style="width: 200px;">
-										<div class="icon">
-											<i class="fa fa-phone"></i>
-										</div>
-										<h4>Mobile</h4>
-										<span>090-080-0760</span>
-									</div>
+								<h4>Phone</h4>
+								<span>010-020-0340</span>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="contact-info" style="width: 200px;">
+								<div class="icon">
+									<i class="fa fa-phone"></i>
 								</div>
+								<h4>Mobile</h4>
+								<span>090-080-0760</span>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4"></div>
-					<div class="col-lg-12">
-						<ul class="social-icons">
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-rss"></i></a></li>
-							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-					<div class="col-lg-12">
-						<p class="copyright">
-							Copyright © 2022 EduWell Co., Ltd. All Rights Reserved. <br>Design:
-							<a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
-						</p>
-					</div>
 				</div>
 			</div>
-		</section>
-		<script src="resources/vendor/jquery/jquery.min.js"></script>
-		<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+			<div class="col-lg-4"></div>
+			<div class="col-lg-12">
+				<ul class="social-icons">
+					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+					<li><a href="#"><i class="fa fa-rss"></i></a></li>
+					<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+				</ul>
+			</div>
+			<div class="col-lg-12">
+				<p class="copyright">
+					Copyright © 2022 EduWell Co., Ltd. All Rights Reserved. <br>Design:
+					<a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+				</p>
+			</div>
+		</div>
+</section>
+<script src="resources/vendor/jquery/jquery.min.js"></script>
+<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-		<script src="resources/assets/js/isotope.min.js"></script>
-		<script src="resources/assets/js/owl-carousel.js"></script>
-		<script src="resources/assets/js/lightbox.js"></script>
-		<script src="resources/assets/js/tabs.js"></script>
-		<script src="resources/assets/js/video.js"></script>
-		<script src="resources/assets/js/slick-slider.js"></script>
-		<script src="resources/assets/js/custom.js"></script>
-		<script>
+<script src="resources/assets/js/isotope.min.js"></script>
+<script src="resources/assets/js/owl-carousel.js"></script>
+<script src="resources/assets/js/lightbox.js"></script>
+<script src="resources/assets/js/tabs.js"></script>
+<script src="resources/assets/js/video.js"></script>
+<script src="resources/assets/js/slick-slider.js"></script>
+<script src="resources/assets/js/custom.js"></script>
+<script>
         //according to loftblog tut
         $('.nav li:first').addClass('active');
 

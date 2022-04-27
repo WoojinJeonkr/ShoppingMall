@@ -81,21 +81,42 @@ th, td {
 	border-bottom: none;
 }
 </style>
+<script>
+	$(function() {
+		var article = ("table .show");
+		var cnt = 0; // 닫힌 상태
+		$("table .title").click(function() {
+			myArticle = $(this).next("tr");
+
+			if ($(myArticle).hasClass('hide')) {
+				$(myArticle).removeClass('hide').addClass('show');
+				$('#radi').css('width', '10px');
+			} else {
+				$(myArticle).removeClass('show').addClass('hide');
+				$('#radi').css('width', '10px');
+			}
+
+		});
+
+	});
+</script>
 </head>
 <body>
 	<table>
 		<c:forEach items="${list}" var="one">
 			<div class="menu">
 
-				<tr id="title">
-					<td><input name="RowCheck" type="checkbox"
-						value="${one.service_faq_idx}" style="display: none" /></td>
+				<tr id="title" class="title">
+					<td class="radi"><input name="RowCheck" type="checkbox"
+						value="${one.service_faq_idx}" style="display: none; width: 10px" /></td>
 					<!-- 자주 묻는 질문 -->
-					<td>${one.service_faq_question}</td>
+					<td class="real">${one.service_faq_question}</td>
 					<!-- 자주 묻는 질문 -->
 				</tr>
-			<td id="answer" class="sub" colspan="2">${one.service_faq_answer}</td>
-			<!-- 그에대한 답변 -->
+				<tr class="hide">
+					<td id="answer" class="anwer" colspan="2">${one.service_faq_answer}</td>
+					<!-- 그에대한 답변 -->
+				</tr>
 			</div>
 		</c:forEach>
 	</table>
