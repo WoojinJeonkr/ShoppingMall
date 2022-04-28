@@ -21,15 +21,14 @@ h3 {
 	margin-left: 700px;
 }
 
-button {
-	background-color: #FFD4DF;
+.btn-info {
+/* 	background-color: #FFD4DF; */
 	width: 200px;
 	padding: 10px;
-	border-radius: 5px; /* 버튼둥글게 */
-	border-radius: 50%; /* 버튼둥글게 */
+	border-radius: 5px 5px 5px 5px; /* 버튼둥글게 */
+/* 	border-radius: 50%; */ /* 버튼둥글게 */
 	height: 50px;
 	margin: 20px;
-	padding: 20px;
 	margin-bottom: 5px;
 	margin-top: 5px;
 }

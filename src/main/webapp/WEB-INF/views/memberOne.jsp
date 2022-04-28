@@ -96,16 +96,17 @@
 				</td>
 			</tr>
 		</table>
-		<button type="button" style="margin-left: 700px;"
-			class="btn btn-light" id="memberUp">회원수정</button>
-		</br>
-		<br>
+		<button type="button" class="btn btn-info"
+			style="border-radius: 6px 6px 6px 6px; width: 200px; margin-left: 700px;"
+			id="memberUp">회원수정</button>
+		</br> <br>
 		<h3>회원삭제</h3>
 		<form action="memberAdDelete">
 			<p style="margin-left: 670px;">해당아이디를 탈퇴시키겠습니까?</p>
 			<input type="text" style="margin-left: 700px;" name="user_id"
 				value="${one.user_id}" readonly="readonly"><br>
-			<button style="margin-left: 700px;" class="btn btn-light">회원삭제</button>
+			<button class="btn btn-info"
+				style="border-radius: 6px 6px 6px 6px; width: 200px; margin-left: 700px; margin-left: 700px;">회원삭제</button>
 		</form>
 	</form>
 </body>

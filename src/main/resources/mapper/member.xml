@@ -5,7 +5,7 @@
 
 	<select id="login" parameterType="memberVO"
 		resultType="memberVO">
-		select * from member where user_id = #{user_id} and user_pw = #{user_pw}
+		select user_id, user_pw, level from member where user_id = #{user_id} and user_pw = #{user_pw}
 	</select>
 
 	<insert id="create" parameterType="memberVO">

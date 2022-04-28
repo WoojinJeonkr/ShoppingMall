@@ -32,9 +32,12 @@
 		<jsp:include page="../../top.jsp"></jsp:include>
 	</div>
 	<h3 style="margin-left: 600px;">회원관리</h3>
-	<button type="button" id="mainPage" class="btn btn-light" style="margin-left: 530px;">메인페이지로</button>
+	<button type="button" id="mainPage" class="btn btn-info"
+		style="border-radius: 6px 6px 6px 6px; width: 200px; margin-left: 530px;">메인페이지로</button>
 	<a href="memberAdmin">
-		<button class="btn btn-light" style="margin-left: 20px;">회원 전체검색</button>
+		<button class="btn btn-info"
+			style="border-radius: 6px 6px 6px 6px; width: 200px; margin-left: 20px;">회원
+			전체검색</button>
 	</a>
 	<!-- 원래는 form 하나에 담았으나.. form 하나에 하나의 변수만 넣어줄 수 있는것으로 보인다. -->
 
@@ -42,7 +45,8 @@
 		action="${pageContext.request.contextPath}/memberAdmin">
 		<!-- 컨트롤러의  memberAdmin으로 이동 후  -->
 		<!-- views아래의(지금 이 파일) memberAdmin으로 action됨. -->
-		<label style="margin-left: 500px;">회원이름검색</label> <input name="keyword" type="text">
+		<label style="margin-left: 500px;">회원이름검색</label> <input
+			name="keyword" type="text">
 		<!--검색어 받아오는 코드  -->
 		<button type="submit" class="btn btn-light">검색</button>
 	</form>

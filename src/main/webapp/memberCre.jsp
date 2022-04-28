@@ -14,18 +14,20 @@
 
 <!-- Bootstrap core CSS -->
 <script type="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 
 
 <!-- Additional CSS Files -->
 <link rel="stylesheet" href="resources/assets/css/fontawesome.css">
-<link rel="stylesheet" href="resources/assets/css/templatemo-eduwell-style.css">
+<link rel="stylesheet"
+	href="resources/assets/css/templatemo-eduwell-style.css">
 <link rel="stylesheet" href="resources/assets/css/owl.css">
 <link rel="stylesheet" href="resources/assets/css/lightbox.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!-- member.css파일 -->	
-<link rel = "stylesheet" type = "text/css" href = "resources/css/member.css">	
+<!-- member.css파일 -->
+<link rel="stylesheet" type="text/css" href="resources/css/member.css">
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	//빈 값이 있거나 조건에 맞지 않으면 회원가입이 안되도록 구현.
@@ -142,7 +144,7 @@
 			//값을 지워주지 않았을 경우 회원가입하기 버튼을 누르면 회원가입이 완료되기 때문에 지워주어야 한다.
 		}//if
 	}//function checkPassword(pw)
-	
+
 	//아이디 유효성 검사
 	$("#id").change(function() {//change=> id의 값이 변경되었을 때 실행.
 		checkId($('#id').val());
@@ -156,7 +158,7 @@
 			//값을 지워주지 않았을 경우 회원가입하기 버튼을 누르면 회원가입이 완료되기 때문에 지워주어야 한다.
 		}//if
 	}//function checkId(id)
-	
+
 	//이름 유효성 검사
 	$("#name").change(function() {//change=> pw의 값이 변경되었을 때 실행.
 		checkName($('#name').val());
@@ -182,20 +184,18 @@
 			return false;
 		}//if
 	}//
-	
-	
-	
+
 	//취소버튼 눌렀을 때 productList.jsp호출
 	$(document).ready(function() {
 		$('#cancel').click(function() {
 			alert("회원가입 취소 하시겠습니까?");
 			location.href = "productList.jsp";
 		})
-});
+	});
 </script>
 </head>
 <body>
-<div id="top"><jsp:include page="top.jsp"></jsp:include></div>
+	<div id="top"><jsp:include page="top.jsp"></jsp:include></div>
 	<h3 class="active">회원가입</h3>
 	<form action="memberCreate1" id="form">
 		<table>
@@ -246,13 +246,18 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-				<div class="col-lg-12">
-					<button type="button" id="addMember" class="btn btn-light">회원가입하기</button>
-					<button type="button" id="cancel" class="btn btn-light">회원가입취소</button>
-				</div>
+						<div>
+								<button type="button" id="addMember"
+									class="btn btn-info"
+									style="border-radius: 6px 6px 6px 6px; width: 200px;">회원가입하기</button>
+								<button type="button" id="cancel" class="btn btn-info"
+									style="border-radius: 6px 6px 6px 6px; width: 200px;">회원가입취소</button>
+							
+						</div>
+					</div>
 				</td>
-				
-				
+
+
 			</tr>
 		</table>
 	</form>

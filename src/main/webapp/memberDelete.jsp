@@ -14,18 +14,20 @@
 
 <!-- Bootstrap core CSS -->
 <script type="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 
 
 <!-- Additional CSS Files -->
 <link rel="stylesheet" href="resources/assets/css/fontawesome.css">
-<link rel="stylesheet" href="resources/assets/css/templatemo-eduwell-style.css">
+<link rel="stylesheet"
+	href="resources/assets/css/templatemo-eduwell-style.css">
 <link rel="stylesheet" href="resources/assets/css/owl.css">
 <link rel="stylesheet" href="resources/assets/css/lightbox.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!-- member.css파일 -->	
-<link rel = "stylesheet" type = "text/css" href = "resources/css/member.css">	
+<!-- member.css파일 -->
+<link rel="stylesheet" type="text/css" href="resources/css/member.css">
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -37,15 +39,25 @@
 </head>
 <body>
 	<hr>
-	<% if(session.getAttribute("user_id") != null) { %>
-	<form  style="margin-left: 500px;" action="memberDelete"> <!-- 컨트롤러의 memberDelete 로 간다.-->
+	<%
+		if (session.getAttribute("user_id") != null) {
+	%>
+	<form style="margin-left: 500px;" action="memberDelete">
+		<!-- 컨트롤러의 memberDelete 로 간다.-->
 		<input type="hidden" name="user_id" value="${user_id}"><br>
-		<hr>정말로 회원을 탈퇴하시겠습니까?</hr>
-		<button class="btn btn-light">탈퇴하기</button>
+		<hr>
+		정말로 회원을 탈퇴하시겠습니까?
+		</hr>
+		<button class="btn btn-info"
+			style="border-radius: 6px 6px 6px 6px; width: 200px;">탈퇴하기</button>
 	</form>
-	<%}else{ %>
-		로그인을 먼저 해주세요.
-		<%}%>
-	
+	<%
+		} else {
+	%>
+	로그인을 먼저 해주세요.
+	<%
+		}
+	%>
+
 </body>
 </html>
