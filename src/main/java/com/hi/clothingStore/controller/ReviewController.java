@@ -75,13 +75,13 @@ public class ReviewController {
 		String s1 = request.getContextPath();
 		System.out.println(s1);
 		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
-		String uploadPath2 = "D:\\local git\\ShoppingMall\\src\\main\\webapp\\resources\\upload";
+		/* String uploadPath2 = "D:\\local git\\ShoppingMall\\src\\main\\webapp\\resources\\upload";*/
 		System.out.println("업로드 경로는 " + uploadPath); 
 		/* System.out.println(file.getName()); */
 		/* System.out.println(file.getOriginalFilename()); */
 		String savedName = file.getOriginalFilename();
-		System.out.println(uploadPath2 + "\\" + savedName);
-		File target = new File(uploadPath2 + "\\" + savedName);
+		System.out.println(uploadPath + "\\" + savedName);
+		File target = new File(uploadPath + "\\" + savedName);
 		review.setReview_img(savedName);
 		
 		if (!target.isDirectory()) {

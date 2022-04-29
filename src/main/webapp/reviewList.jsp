@@ -193,6 +193,35 @@
 			$('#scoreTotal').html(str2);
 		}
 	});
+	
+	/* 업로드하는 이미지 파일 크기 확인 */
+	function fileCheck(file)
+	{
+	    // 사이즈체크
+	    var maxSize  = 5 * 1024 * 1024    //30MB
+	    var fileSize = 0;
+
+		// 브라우저 확인
+		var browser=navigator.appName;
+		
+		// 익스플로러일 경우
+		if (browser=="Microsoft Internet Explorer")
+		{
+			var oas = new ActiveXObject("Scripting.FileSystemObject");
+			fileSize = oas.getFile( file.value ).size;
+		} else {
+		// 익스플로러가 아닐경우
+			fileSize = file.files[0].size;
+		}
+
+		alert("파일사이즈 : "+ fileSize +", 최대파일사이즈 : 5MB");
+
+        if(fileSize > maxSize)
+        {
+            alert("첨부파일 사이즈는 5MB 이내로 등록 가능합니다.");
+            return;
+        }
+	}
 </script>
 </head>
 <body>
@@ -276,7 +305,7 @@
 					<input type="file" name="file" id="file">
 					<!-- 후기 작성 버튼 -->
 					<div class="input_area">
-						<button type="button" id="review_btn">후기  작성</button>
+						<button type="button" id="review_btn" onclick= "fileCheck(this.form.file)">후기  작성</button>
 					</div>
 
 				<!-- 작성한 후기 목록 보여주기 -->

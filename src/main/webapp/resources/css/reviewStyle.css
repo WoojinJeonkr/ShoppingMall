@@ -93,3 +93,8 @@ div.modalContent button.modal_cancel { margin-left:20px;}
   height: 40px;
   pointer-events: none;
 }
+span img {
+	width:400px;
+	height:300px;
+	border: solid 1px #CCC"
+}
