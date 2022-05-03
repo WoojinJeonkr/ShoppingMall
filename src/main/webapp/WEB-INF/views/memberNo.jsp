@@ -48,9 +48,9 @@
 		<div id="center">
 			<br>
 			<p>수정에 문제가 있습니다.</p>
-			<br> <a href="myPage.jsp">
+			<br> <a href="productList.jsp">
 				<button class="btn btn-info"
-		style="border-radius: 6px 6px 6px 6px; width: 200px;">마이페이지</button>
+		style="border-radius: 6px 6px 6px 6px; width: 200px;">홈으로</button>
 			</a>
 		</div>
 	</div>
