@@ -223,6 +223,7 @@ public class ProductListController {
 		}
 	}
 
+	//공공데이터 페이지로 이동 
 	@RequestMapping("publicData")
 	public void publicData() {
 

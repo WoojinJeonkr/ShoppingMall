@@ -75,7 +75,6 @@ https://templatemo.com/tm-573-eduwell
 							href="basket.jsp?user_id=${user_id}">장바구니</a></li>
 						<li style="font-size: medium;"><a href="serviceMain.jsp">고객센터</a></li>
 						<li style="font-size: medium;"><a href="statistics.jsp">통계</a></li>
-
 					</ul>
 					<a class='menu-trigger'> <span>Menu</span>
 					</a>

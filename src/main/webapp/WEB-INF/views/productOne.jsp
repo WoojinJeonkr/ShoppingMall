@@ -460,6 +460,7 @@ $(function () {
 	      	 <a href="productInsert"><button class="btn btn-light">상품 생성</button></a>
 			 <a href="productUp?product_idx=${one.product_idx}"><button class="btn btn-light">상품 수정</button></a>
 			 <a><button id="deleteBtn" class="btn btn-light">상품 삭제</button></a>
+			 <a href="publicData"><button class="btn btn-light">공공 데이터</button></a>
       	 </div>
       	  <%} %> 
       	 <div class="right-content">
