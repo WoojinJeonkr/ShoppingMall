@@ -21,17 +21,7 @@
 			var str = "";
 			$.each(data, function(idx, one){
 				console.log(one); // 콘솔에서 data 확인
-				
-				/*
-				날짜/시간 변환 함수의 3가지 표현법의 차이점
-				
-				1. toLocaleTimeString(): 지정하지 않으면 기본 시간 형식을 사용하여 항상 시간을 입력
-				2. toLocaleDateString(): 위와 동일한 작업을 수행하지만 시간 대신 날짜에 대해 작동
-				3. toLocaleString(): 원하는 방식으로 날짜 형식을 지정할 수 있으며 추가로 아무것도 넣지 않음
-				
-				// https://stackoverflow.com/questions/61870462/
-				// what-is-the-difference-between-tolocalestring-tolocaledatestring-and-tolocalet
-				*/
+
 				var review_rgstdate = new Date(this.review_rgstdate);
 				review_rgstdate = review_rgstdate.toLocaleString()
 				
@@ -100,7 +90,7 @@
 	/* 후기 수정  */
 	function update(){
 		var updateConfirm = confirm("정말로 수정하시겠습니까?");
-		//review_idx : $(this).attr("data-review_idx"),
+
 		if(updateConfirm){
 			var data = {
 				review_idx : review_idx2,
@@ -121,7 +111,7 @@
 						alert("작성자 본인만 후기 수정이 가능합니다")
 					}
 				},
-				error: function(){ // 로그인하지 않은 상태에서 버튼을 눌렀을 경우
+				error: function(){
 					alert("로그인해주세요.")
 				}
 			});
@@ -131,11 +121,10 @@
 
 	/* 목록에서 후기 수정 버튼 클릭 시 */
 	$(document).on("click", ".update", function(){
-		/* $(".reviewModal").attr("style", "display:block;"); */
 		$(".reviewModal").fadeIn(200);
 		
-		var review_idx = $(this).attr("data-review_idx"); // 변수 review_idx에 버튼에 부여된 review_idx 저장
-		var review_content = $(this).parent().parent().children(".review_content").text(); // 변수 review_content에 버튼의 부모의 부모에서 자식 클래스가 review_content인 요소 값 저장
+		var review_idx = $(this).attr("data-review_idx"); 
+		var review_content = $(this).parent().parent().children(".review_content").text();
 		review_idx2 = review_idx
 		$(".modal_review_content").val(review_content);
 		$("#modal_update_btn").attr("data-review_idx", review_idx);
@@ -143,20 +132,15 @@
 	
 	/* 후기 수정 취소 버튼 클릭 시 */
 	function cancel(){
-		/* $(".reviewModal").attr("style", "display:none;"); */
 		$(".reviewModal").fadeOut(200);
 	}
 	
 	/* 후기 삭제  */
-	$(document).on("click", ".delete", function() { // .on() 메서드 : 클릭 메서드
-		/*
-			confirm 메서드
-			내부의 텍스트를 사용자에게 보여주며 확인 버튼과 취소 버튼을 같이 보여준다
-			확인 버튼을 클릭하면 참을 반환하고 취소 버튼을 클릭하면 거짓을 반환한다.
-		 */
+	$(document).on("click", ".delete", function() {
+
 		var deleteConfirm = confirm("정말로 삭제하시겠습니까? 삭제 후 복구가 불가능합니다.");
 		if (deleteConfirm) {
-			var data = {review_idx : $(this).attr("data-review_idx")}; // ajax를 통해 data-review_idx 값을 전달
+			var data = {review_idx : $(this).attr("data-review_idx")};
 			
 			$.ajax({ // 후기 삭제 관련 ajax
 				url : "reviewDelete",
@@ -184,11 +168,9 @@
 		type : "post",
 		data : data,
 		success : function(result) {
-			// &emsp; : 큰 띄어쓰기, toFixed(1): 소수점 1자리까지 표시(2번째 자리에서 반올림된다)
 			$('#scoreTotal').html("&emsp;" + result.toFixed(1) + "점");
 		},
 		error : function() {
-			// alert("잘못된 요청입니다")
 			str2 = "&emsp;" + "현재 집계된 평점이 없습니다"
 			$('#scoreTotal').html(str2);
 		}

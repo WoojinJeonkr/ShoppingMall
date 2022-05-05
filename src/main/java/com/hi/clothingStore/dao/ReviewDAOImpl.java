@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import com.hi.clothingStore.vo.ReviewListVO;
 import com.hi.clothingStore.vo.ReviewVO;
 
-// 인터페이스 구현
 @Repository
 public class ReviewDAOImpl implements ReviewDAO {
 
@@ -55,7 +54,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sql.selectOne(namespace + ".scoreAvg", product_idx);
 	}
 	
-	// 후기 존재 여부 체크 --> 후기 평균 평점의 조건문을 위해 필요한 구문입니다
+	// 후기 존재 여부 체크
 	public int product_idxCheck(int product_idx) throws Exception {
 		return sql.selectOne(namespace + ".reviewPrductIdxCheck", product_idx);
 	}

@@ -7,7 +7,7 @@
 <script type="text/javascript" src="resources/js/d3.layout.cloud.js"></script>
 <head>
 <title>통계</title>
-<!-- 통계 페이지에서는 d3.js를 사용하여 온라인 쇼핑몰에 관해 word cloud와 radar chart를 보여줍니다 -->
+<!-- 통계 페이지에서는 chart.js와 d3.js를 사용하여 온라인 쇼핑몰에 관해 word cloud와 radar chart를 보여줍니다 -->
 <link rel = "stylesheet" type = "text/css" href = "resources/css/statistics.css">
 </head>
 <body>
@@ -33,8 +33,6 @@
 	                .attr("height", 500)
 	                .attr("class", "wordcloud")
 	                .append("g")
-	                // without the transform, words words would get cutoff to the left and top, they would
-	                // appear outside of the SVG area
 	                .attr("transform", "translate(320,200)")
 	                .selectAll("text")
 	                .data(words)

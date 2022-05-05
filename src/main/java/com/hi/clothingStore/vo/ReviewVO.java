@@ -3,16 +3,7 @@ package com.hi.clothingStore.vo;
 import java.sql.Timestamp;
 
 public class ReviewVO {
-/*  DB 정보
 
-	review_idx          int(11)           not null
-	product_idx         int(11)           not null
-	user_id             varchar(45)       not null
-	review_content      varchar(5000)     not null
-	review_img          varchar(200)      not null
-	review_score        decimal(2,1)      not null
-	review_rgstdate     timestamp         current_timestamp
-*/
 	private int review_idx;
 	private int product_idx;
 	private String user_id;

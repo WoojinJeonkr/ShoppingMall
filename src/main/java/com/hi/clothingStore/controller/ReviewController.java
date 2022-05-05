@@ -39,24 +39,10 @@ public class ReviewController {
 	@Autowired
 	ReviewDAOImpl dao;
 	
-
-	/*
-	@RequestBody를 넣어 주는 이유
-	뷰에서 컨트롤러에 전달한 데이터와, 컨트롤러가 받으려는 매개변수 데이터형이 일치하지 않는 경우
-	또는 다수인 경우 @RequestBody를 넣어준다
-	
-	접근제한 함수에 대해
-	1. public : 모든 곳에서 접근 가능
-	2. private : 자기 자신 클래스에서만 접근 가능
-	3. protected : 자기 자신 클래스와 상속된 클래스에서 접근 가능
-	*/
-	
 	// 구매 후기 목록
-	// reviewList?product_idx=${one.product_idx}
 	@ResponseBody
 	@RequestMapping(value = "reviewList", method = RequestMethod.GET)
 	public List<ReviewListVO> getReviewList(int product_idx) throws Exception{
-		//public List<ReviewListVO> getReviewList(@RequestParam("n") int product_idx) throws Exception{
 		System.out.println("후기 목록이 호출되었습니다.");
 		List<ReviewListVO> review = reviewServiceImpl.reviewList(product_idx);
 		return review;
@@ -75,10 +61,7 @@ public class ReviewController {
 		String s1 = request.getContextPath();
 		System.out.println(s1);
 		String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
-		/* String uploadPath2 = "D:\\local git\\ShoppingMall\\src\\main\\webapp\\resources\\upload";*/
 		System.out.println("업로드 경로는 " + uploadPath); 
-		/* System.out.println(file.getName()); */
-		/* System.out.println(file.getOriginalFilename()); */
 		String savedName = file.getOriginalFilename();
 		System.out.println(uploadPath + "\\" + savedName);
 		File target = new File(uploadPath + "\\" + savedName);
@@ -98,15 +81,6 @@ public class ReviewController {
 	public int getReviewList(ReviewVO review, HttpSession session) throws Exception {
 		System.out.println("후기 삭제가 호출되었습니다.");
 		int result = 0;
-		/*
-		삭제 진행 과정
-		
-		1. 현재 세션에서 user_id를 가져와서 userId에 저장
-		2. 아이디 체크용 쿼리의 결과를 가져와서 변수 user_id에 저장
-		3. 두 아이디를 비교했을 때 결과가 
-		      참이라면 변수 result에 1을 저장 --> 아이디가 같아서  삭제 작업 진행 o
-		      거짓이라면 변수 result에 0을 저장 --> 아이다가 달라서 삭제 작업 진행 x
-		*/
 		String userId = (String)session.getAttribute("user_id");
 		String user_id = reviewServiceImpl.idCheck(review.getReview_idx());
 		
@@ -127,12 +101,7 @@ public class ReviewController {
 		
 		String userId = (String)session.getAttribute("user_id");
 		String user_id = reviewServiceImpl.idCheck(review.getReview_idx());
-		/*
-		 System.out.println("----" + review.getReview_content());
-		 System.out.println(review.getReview_idx()); System.out.println(userId);
-		 System.out.println(user_id);
-		 */
-		
+
 		if(userId.equals(user_id)){
 			review.setUser_id(userId);
 			reviewServiceImpl.reviewUpdate(review);
@@ -153,6 +122,5 @@ public class ReviewController {
 		} else {
 			return 0;
 		}
-		//System.out.println(scoreAvg(product_idx));
 	}
 }
