@@ -213,8 +213,8 @@
 	<div id="review">
 		<!-- 비회원의 경우 -->
 		<% if(session.getAttribute("user_id") == null) { %>
-		<p>
-			후기를 남기시려면 <a href="member">로그인</a>해주세요
+		<p class="loginnotice">
+			비회원 상태입니다. 후기를 남기시려면 <a href="member">&nbsp;로그인</a>해주세요
 		</p>
 		<% }else{ %>
 		<!-- 회원의 경우 -->
