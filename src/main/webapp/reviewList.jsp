@@ -6,6 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<!-- favicon.ico 404 Not found error 해결 -->
+<link rel="icon" href="data:;base64,iVBORw0KGgo="> 
 <title>Review Page</title>
 <%
 	int product_idx = Integer.parseInt(request.getParameter("product_idx"));	
@@ -47,6 +50,14 @@
 			$("section.reviewList ol").html(str);
 		});
 	}
+	
+	// 후기 목록 무한스크롤
+	$(window).scroll(function() {
+		if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+			reviewList();
+		}
+	});
+	
 	/* 버튼 관련 스크립트 */
 	$(function(){
 		/* 후기 작성  */
