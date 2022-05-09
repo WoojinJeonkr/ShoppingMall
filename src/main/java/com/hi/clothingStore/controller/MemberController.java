@@ -143,6 +143,7 @@ public class MemberController {
 		System.out.println("회원수정vo를 찍어보자: "+vo);
 		//수정하고 싶은 것이 있으면 수정처리 요청
 		int result = dao.update(vo);
+		System.out.println("회원수정result를 찍어보자" + result);
 		if(result == 0) {//리턴값 result가 0이면 update가 안되었다는 의미로  view의 memberNo.jsp를 호출
 			return "memberNo";
 		}else {//0이 아니면 업데이트가 되었다는 의미(1이므로)로  view의 memberUpdate.jsp를 호출

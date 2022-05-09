@@ -56,9 +56,10 @@ public class MemberDAO implements MemeberInter {
 
 	// 회원수정 update는 리턴값이 int
 	public int update(MemberVO vo) {
+		System.out.println("회원수정DAO에서 vo찍어보기"+ vo);
+		System.out.println("dao return값>> "+ my.update("member.update", vo));
 		return my.update("member.update", vo);
 	}
-
 	// 회원탈퇴
 	public int delete(MemberVO vo) {
 		return my.delete("member.delete", vo);

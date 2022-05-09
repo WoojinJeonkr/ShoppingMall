@@ -25,8 +25,7 @@
 		select * from member where user_id = #{user_id}
 	</select>
 
-	<update id="update" parameterType="memberVO"><!-- resultType="memberVO"가 왜 없어도 
-			되는지 선생님께 물어보기 -->
+	<update id="update" parameterType="memberVO">
 		update member set user_pw=#{user_pw}, user_name= #{user_name} where user_id = #{user_id}
 	</update>
 

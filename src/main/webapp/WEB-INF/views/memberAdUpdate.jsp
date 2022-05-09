@@ -31,7 +31,7 @@
 	//alert("회원수정 성공!!!")구현
 	$(function() {
 		alert('회원수정 되었습니다')
-		location.href="myPage";//회원수정 완료시 회원관리 페이지로 이동
+		location.href="myPage";//회원수정 완료시 메인 페이지로 이동
 	})
 </script>
 </head>

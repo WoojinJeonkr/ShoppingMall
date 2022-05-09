@@ -78,12 +78,6 @@
 	<form action="memberAdUpdate" id="form">
 		<table style="margin-left: 300px;">
 			<tr>
-				<td class="left">아이디</td>
-				<td class="right"><input class="form-control input-lg"
-					type="text" name="user_id" id="id" value="${one.user_id}">
-				</td>
-			</tr>
-			<tr>
 				<td class="left">이름</td>
 				<td class="right"><input class="form-control input-lg"
 					type="text" name="user_name" id="name" value="${one.user_name}">
