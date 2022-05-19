@@ -34,22 +34,22 @@ th:last-child, td:last-child {
 	border-right: 0;
 }
 
-.right > a:link {
+.right>a:link {
 	color: pink;
 	text-decoration: none;
 }
 
-.right > a:visited {
+.right>a:visited {
 	color: gray;
 	text-decoration: none;
 }
 
-.right >a:hover {
+.right>a:hover {
 	color: red;
 	text-decoration: underline;
 }
 
-.right >a:active {
+.right>a:active {
 	color: green;
 	text-decoration: none;
 }
@@ -80,4 +80,23 @@ th:last-child, td:last-child {
 			</td>
 	</c:forEach>
 </table>
+<ul class="btn-group pagination">
+	<c:if test="${pageMaker.prev}">
+		<li><a
+			href='<c:url value="serviceList?page=${pageMaker.startPage-1}"/>'
+			style="color: #ff75b3;"> <i class="fa fa-chevron-left"></i>
+		</a></li>
+	</c:if>
+	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}"
+		var="pageNum">
+		<li><a href='<c:url value="serviceList?page=${pageNum}"/>'
+			style="color: #ff75b3;"><i class="fa">${pageNum}</i></a></li>
+	</c:forEach>
+	<c:if test="${pageMaker.next && pageMaker.endPage>0}">
+		<li><a
+			href='<c:url value="serviceList?page=${pageMaker.endPage+1}"/>'
+			style="color: #ff75b3;"><i class="fa fa-chevron-right"></i></a></li>
+	</c:if>
+</ul>
+
 

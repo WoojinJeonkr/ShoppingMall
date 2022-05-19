@@ -10,7 +10,10 @@
 	<select id="list" resultType="serviceVO">
 		select *from servicecenter order by
 		service_id_origin desc, service_reply_group asc
+		LIMIT
+		#{pageStart},#{perPageNum}
 	</select>
+
 
 	<select id="list1" resultType="serviceVO"
 		parameterType="serviceVO">
@@ -82,5 +85,8 @@
 		update servicecenter set
 		service_id_origin = service_idx where service_idx_re=0
 	</update>
+	<select id="countBoardList" resultType="Integer">
+		SELECT count(*) FROM servicecenter
+	</select>
 
 </mapper>
