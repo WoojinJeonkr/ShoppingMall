@@ -33,7 +33,6 @@
 					+ "<div class='userInfo'>"
 					+ "<span class='userName'>" + this.user_name + "</span>"
 					+ "<span class='date'>" + review_rgstdate + "</span>"
-					+ "<span class='review_label' style='float:right'> &#x" + this.review_label + "; </span>"
 					+ "<p></p>"
 					+ "</div>"
 					+ "<span class='review_score' readonly>" + "[" + this.review_score + "점]" + "&nbsp;" + "</span>" 
