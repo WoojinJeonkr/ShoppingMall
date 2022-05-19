@@ -25,7 +25,7 @@
 	
 	<!-- 후기 보기 -->
 	<select id="reviewList" parameterType="reviewVO" resultType="reviewlistVO">
-		select r.review_idx, r.product_idx, r.user_id, r.review_content, r.review_img, r.review_score, r.review_rgstdate, m.user_name from review r 
+		select r.review_idx, r.product_idx, r.user_id, r.review_content, r.review_img, r.review_score, r.review_rgstdate, r.review_label, m.user_name from review r 
 		inner join member m on r.user_id = m.user_id where product_idx = #{product_idx} order by review_rgstdate desc
 	</select>
 	

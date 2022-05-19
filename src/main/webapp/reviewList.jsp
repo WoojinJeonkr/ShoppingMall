@@ -32,7 +32,9 @@
 				str += "<li>"
 					+ "<div class='userInfo'>"
 					+ "<span class='userName'>" + this.user_name + "</span>"
-					+ "<span class='date'>" + review_rgstdate + "</span>" 
+					+ "<span class='date'>" + review_rgstdate + "</span>"
+					+ "<span class='review_label' style='float:right'> &#x" + this.review_label + "; </span>"
+					+ "<p></p>"
 					+ "</div>"
 					+ "<span class='review_score' readonly>" + "[" + this.review_score + "점]" + "&nbsp;" + "</span>" 
 					+ "<span class='review_content'>" + this.review_content + "</span>"
@@ -291,7 +293,6 @@
 				</div>
 				
 				<!-- 후기 내용 작성 -->
-				<h4>구매 후기</h4>
 					<div class="input_area">
 						<textarea id="review_content2" placeholder="바르고 고운 말이 세상을 아름답게 합니다"></textarea>
 					</div>
@@ -303,6 +304,8 @@
 
 				<!-- 작성한 후기 목록 보여주기 -->
 				<section class="reviewList">
+				<h2> 구매 후기 </h2>
+				<p style='color:red'>중의적인 표현을 사용할 경우 부정으로 판단될 수 있으니 유의바랍니다</p>
 					<!-- 헤더 내부에 선언한 함수 호출 > 목록 보여주기 -->
 					<ol reversed></ol>
 					<script> reviewList();</script>

@@ -11,7 +11,7 @@ public class ReviewVO {
 	private String review_img;
 	private double review_score;
 	private Timestamp review_rgstdate;
-	
+	private String review_label;
 	public int getReview_idx() {
 		return review_idx;
 	}
@@ -54,11 +54,17 @@ public class ReviewVO {
 	public void setReview_rgstdate(Timestamp review_rgstdate) {
 		this.review_rgstdate = review_rgstdate;
 	}
+	public String getReview_label() {
+		return review_label;
+	}
+	public void setReview_label(String review_label) {
+		this.review_label = review_label;
+	}
 	
 	@Override
 	public String toString() {
 		return "ReviewVO [review_idx=" + review_idx + ", product_idx=" + product_idx + ", user_id=" + user_id
 				+ ", review_content=" + review_content + ", review_img=" + review_img + ", review_score=" + review_score
-				+ ", review_rgstdate=" + review_rgstdate + "]";
+				+ ", review_rgstdate=" + review_rgstdate + ", review_label=" + review_label + "]";
 	}
 }

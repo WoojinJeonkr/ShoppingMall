@@ -11,6 +11,7 @@ public class ReviewListVO {
 	private String review_img;
 	private double review_score;
 	private Timestamp review_rgstdate;
+	private String review_label;
 	
 	private String user_name; // 후기 목록에서 user_id 대신 user_name을 보여주기 위해 추가
 
@@ -70,6 +71,14 @@ public class ReviewListVO {
 		this.review_rgstdate = review_rgstdate;
 	}
 
+	public String getReview_label() {
+		return review_label;
+	}
+
+	public void setReview_label(String review_label) {
+		this.review_label = review_label;
+	}
+
 	public String getUser_name() {
 		return user_name;
 	}
@@ -82,6 +91,7 @@ public class ReviewListVO {
 	public String toString() {
 		return "ReviewListVO [review_idx=" + review_idx + ", product_idx=" + product_idx + ", user_id=" + user_id
 				+ ", review_content=" + review_content + ", review_img=" + review_img + ", review_score=" + review_score
-				+ ", review_rgstdate=" + review_rgstdate + ", user_name=" + user_name + "]";
+				+ ", review_rgstdate=" + review_rgstdate + ", review_label=" + review_label + ", user_name=" + user_name
+				+ "]";
 	}
 }
