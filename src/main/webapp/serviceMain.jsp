@@ -97,6 +97,7 @@ https://templatemo.com/tm-573-eduwell
 				$("input[name='RowCheck']").css("display", "inline");
 				$("input[name='modi']").css("display", "inline");
 				$("input[name='del']").css("display", "inline");
+				$(".radi").css("display", "block");
 
 			} else {
 				$("input[name='chk']").val('체크박스 활성화');

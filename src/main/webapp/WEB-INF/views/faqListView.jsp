@@ -107,7 +107,7 @@ th, td {
 			<div class="menu">
 
 				<tr id="title" class="title">
-					<td class="radi"><input name="RowCheck" type="checkbox"
+					<td class="radi" style="display: none; width: 30px"><input name="RowCheck" type="checkbox"
 						value="${one.service_faq_idx}" style="display: none; width: 10px" /></td>
 					<!-- 자주 묻는 질문 -->
 					<td class="real">${one.service_faq_question}</td>
