@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.hi.clothingStore.service.ServiceCenterCriteria;
 import com.hi.clothingStore.vo.ServiceCenterVO;
 
 @Component
@@ -22,8 +23,9 @@ public class ServiceCenterDAO {
 		return my.selectOne("servicecenter.one", vo);
 	}
 
-	public List<ServiceCenterVO> all() {
-		return my.selectList("servicecenter.list");
+	public List<ServiceCenterVO> all(ServiceCenterCriteria cri) {
+		return my.selectList("servicecenter.list", cri);
+
 	}
 
 	public int update(ServiceCenterVO vo) {
@@ -57,6 +59,9 @@ public class ServiceCenterDAO {
 
 	public int update2(ServiceCenterVO vo) {
 		return my.update("servicecenter.upseq", vo);
+	}
+	public int countBoardList(){
+	    return (Integer) my.selectOne("servicecenter.countBoardList");
 	}
 
 }

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hi.clothingStore.dao.ServiceCenterDAO;
+import com.hi.clothingStore.service.ServiceCenterCriteria;
+import com.hi.clothingStore.service.ServiceCenterPageMaker;
 import com.hi.clothingStore.vo.ServiceCenterVO;
 
 
@@ -71,10 +73,14 @@ public class ServiceCenterController {
 	}
 	
 	@RequestMapping("serviceList")
-	public void readlist(Model model,HttpServletRequest request) {
-	
-		List<ServiceCenterVO> list=dao.all();
+	public void readlist(Model model,HttpServletRequest request,ServiceCenterCriteria cri) {
+		ServiceCenterPageMaker pageMaker = new ServiceCenterPageMaker();
+	    pageMaker.setCri(cri);
+	    pageMaker.setTotalCount(dao.countBoardList());
+	    
+		List<ServiceCenterVO> list=dao.all(cri);
 		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	
 	@RequestMapping("serviceSearch")
