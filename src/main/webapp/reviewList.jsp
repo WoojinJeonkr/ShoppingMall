@@ -40,6 +40,7 @@
 					+ "<span class='review_content'>" + this.review_content + "</span>"
 					+ "<p></p>"
 					+ "<span class='review_img' readonly>" + "<img src=resources/upload/" + this.review_img + "></span>" 
+					+ "<span class='review_label' style='font-size:10rem;'> &#x" + this.review_label + "; </span>"
 					+ "<c:if test='${user_id != null}'>"
 					+ "<div class='reviewFooter'>"
 					+ "<button type='button' class='update' data-review_idx='" + this.review_idx + "'>수정</button>"
