@@ -32,6 +32,19 @@
 <link rel="stylesheet" type="text/css" href="resources/css/member.css">
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
 </head>
+<style>
+   table{
+      width:1000px;
+      border-top: 1px solid #444444; /* 표 테두리 설정 */
+      border-collapse: collapse; /* 표 사이 간격 제거 */
+      table-layout: fixed; /* 표 크기 고정 */
+   }
+   th, td {
+     border-bo: 1px solid #444444; /* 셀 테두리 설정 */
+     padding: 30px; /* 테두리와 내용 사이 간격 */
+     text-align: center; /* 가운데 정렬 */
+   }
+</style>
 <body>
 	<div id="top"><jsp:include page="../../top.jsp"></jsp:include></div>
 
@@ -47,41 +60,38 @@
 
 	<!-- 상품추천구현 코사인유사도,SVD로 구한 유사유저들이 구매한 상품 중 구매비율이 높은 상품 추천. -->
 	<p></p>
-	<h3 style="margin-left: 630px;">${user_id}님 이상품은 어떠신가요?</h3>
+	<h3 style="text-align:center">${user_id}님이상품은어떠신가요?</h3>
 	<p></p>
 	<!-- 상품이미지, 상품이름, 상품가격 띄우기.-->
-	<table border="1" style="margin-left: 350px;">
-		<tr>
-			<td><img onclick="javascript:newin=window.open('about:blank'); newin.location.href='http://localhost:8080/clothingStore/productOne?product_idx=244&product_img=mantoman.jpg&likecheck=0'" style="cursor: pointer; width: 100px;" src="resources/img/mantoman.jpg"></td>
-			<td>[추천1위] 빅 트위치 루즈핏 크루넥 네이비</td>
-		</tr>
-		<tr>
-			<td style="text-align:center";><img onclick="javascript:newin=window.open('about:blank'); newin.location.href='http://localhost:8080/clothingStore/productOne?product_idx=246&product_img=mantoman.jpg&likecheck=0'" style="cursor: pointer; width: 100px;" src="resources/img/blouse.jpg"></td>
-			<td>[추천2위] [정호연 착용]여 J218885 YAF화이트 스트레이트핏 모노그램 로고 반팔 티셔츠</td>
-		</tr>
-		<tr>
-			<td><img onclick="javascript:newin=window.open('about:blank'); newin.location.href='http://localhost:8080/clothingStore/productOne?product_idx=246&product_img=mantoman.jpg&likecheck=0'" style="cursor: pointer; width: 100px;" src="resources/img/blouse.jpg"></td>
-			<td>[추천3위] 헤비웨이트 오버사이즈 스웨트셔츠 [블랙]</td>
-		</tr>
-	</table>
-<!-- 	<div class="product_left">
-		<span style="margin-left: 600px;">[추천1위] 빅 트위치 루즈핏 크루넥 네이비</span>
-		<p></p>
-		<img onclick="javascript:newin=window.open('about:blank'); newin.location.href='http://localhost:8080/clothingStore/productOne?product_idx=244&product_img=mantoman.jpg&likecheck=0'" style="cursor: pointer; width: 100px; margin-left: 600px;" src="resources/img/mantoman.jpg">
+	<div>
+		<table>
+			<tr>
+				<td><div style="height: 100%">
+						<img
+							onclick="javascript:newin=window.open('about:blank'); newin.location.href='http://localhost:8080/ShoppingMall/productOne?product_idx=244&product_img=mantoman.jpg&likecheck=0'"
+							style="cursor: pointer;" src="resources/img/mantoman.jpg">
+					</div></td>
+				<td><div style="height: 100%">
+						<img
+							onclick="javascript:newin=window.open('about:blank'); newin.location.href='http://localhost:8080/ShoppingMall/productOne?product_idx=246&product_img=mantoman.jpg&likecheck=0'"
+							style="cursor: pointer;" src="resources/img/blouse.jpg">
+					</div></td>
+				<td><div style="height: 100%">
+						<img
+							onclick="javascript:newin=window.open('about:blank'); newin.location.href='http://localhost:8080/ShoppingMall/productOne?product_idx=246&product_img=mantoman.jpg&likecheck=0'"
+							style="cursor: pointer;" src="resources/img/blouse.jpg">
+					</div></td>
+			</tr>
+			<tr>
+				<td>[추천1위] 빅 트위치 루즈핏 크루넥 네이비</td>
+				<td>[추천2위] [정호연 착용] 여 J218885 YAF 화이트 <br /> 스트레이트핏 모노그램 로고 반팔
+					티셔츠
+				</td>
+				<td>[추천3위] 헤비웨이트 오버사이즈 스웨트셔츠 [블랙]</td>
+			</tr>
+		</table>
 	</div>
-	
-	<div class="product_left">
-		<span style="margin-left: 600px;">[추천2위] [정호연 착용]여 J218885 YAF
-			화이트 스트레이트핏 모노그램 로고 반팔 티셔츠</span>
-		<p></p>
-		<img onclick="javascript:newin=window.open('about:blank'); newin.location.href='http://localhost:8080/clothingStore/productOne?product_idx=299&product_img=tshirts.jpg&likecheck=0'" style="cursor: pointer; width: 100px; margin-left: 600px;" src="resources/img/tshirts.jpg">
-	</div>
-	
-	<div class="product_left">
-		<span style="margin-left: 600px;">[추천3위] 헤비웨이트 오버사이즈 스웨트셔츠 [블랙]</span>
-		<p></p>
-		<img onclick="javascript:newin=window.open('about:blank'); newin.location.href='http://localhost:8080/clothingStore/productOne?product_idx=246&product_img=mantoman.jpg&likecheck=0'" style="cursor: pointer; width: 100px; margin-left: 600px;" src="resources/img/blouse.jpg">
-	</div> -->
+	>
 
 </body>
 </html>
