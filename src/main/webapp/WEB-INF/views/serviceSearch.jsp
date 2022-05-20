@@ -53,6 +53,18 @@ th:last-child, td:last-child {
 	color: green;
 	text-decoration: none;
 }
+
+.rounded {
+	background: #ff3d84;
+	height: 25px;
+	width: 60px;
+	border-radius: 40%;
+}
+
+p {
+	text-align: center;
+	color: white;
+}
 </style>
 
 <table>
@@ -64,9 +76,32 @@ th:last-child, td:last-child {
 	<c:forEach items="${list}" var="one">
 		<tr>
 			<td class="right">${one.service_idx}</td>
-			<td class="right"><a
-				href="serviceOne?service_idx=${one.service_idx}">${one.service_title}</a></td>
+			<td class="right"><div class='rounded'
+					style="float: left; margin: 10px">
+					<p>${one.service_cate}</p>
+					<!-- ML -->
+				</div>
+				<a href="serviceOne?service_idx=${one.service_idx}">${one.service_title}</a></td>
 			<td class="right">${one.user_id}</td>
 	</c:forEach>
 </table>
+
+<ul class="btn-group pagination">
+	<c:if test="${pageMaker.prev}">
+		<li><a
+			href='<c:url value="serviceList?page=${pageMaker.startPage-1}"/>'
+			style="color: #ff75b3;"> <i class="fa fa-chevron-left"></i>
+		</a></li>
+	</c:if>
+	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}"
+		var="pageNum">
+		<li><a href='<c:url value="serviceList?page=${pageNum}"/>'
+			style="color: #ff75b3;"><i class="fa">${pageNum}</i></a></li>
+	</c:forEach>
+	<c:if test="${pageMaker.next && pageMaker.endPage>0}">
+		<li><a
+			href='<c:url value="serviceList?page=${pageMaker.endPage+1}"/>'
+			style="color: #ff75b3;"><i class="fa fa-chevron-right"></i></a></li>
+	</c:if>
+</ul>
 

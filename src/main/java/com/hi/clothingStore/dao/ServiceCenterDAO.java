@@ -63,5 +63,17 @@ public class ServiceCenterDAO {
 	public int countBoardList(){
 	    return (Integer) my.selectOne("servicecenter.countBoardList");
 	}
+	public int count_deli(){
+	    return (Integer) my.selectOne("servicecenter.count_1");
+	}
+	public int count_order(){
+	    return (Integer) my.selectOne("servicecenter.count_2");
+	}
+	public int count_product(){
+	    return (Integer) my.selectOne("servicecenter.count_3");
+	}
+	public int count_user(){
+	    return (Integer) my.selectOne("servicecenter.count_4");
+	}
 
 }

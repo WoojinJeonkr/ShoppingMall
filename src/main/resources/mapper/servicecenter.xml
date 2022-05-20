@@ -24,6 +24,7 @@
 			</if>
 		</where>
 		order by service_id_origin desc, service_idx_re asc
+
 	</select>
 
 
@@ -36,6 +37,7 @@
 			</if>
 		</where>
 		order by service_id_origin desc, service_idx_re asc
+
 	</select>
 
 
@@ -43,7 +45,7 @@
 	<insert id="create" parameterType="serviceVO">
 		insert into servicecenter values (null,
 		#{user_id},#{service_title},#{service_question}, now(),
-		#{service_idx_re}, #{service_id_origin},#{service_reply_group})
+		#{service_idx_re}, #{service_id_origin},#{service_reply_group},null)
 		<!-- read 빼고 //return은 무조건 int -->
 	</insert>
 
@@ -54,7 +56,7 @@
 		insert into servicecenter
 		values (null,
 		#{user_id},#{service_title},#{service_question}, now(),
-		#{service_idx_re}+1, #{service_id_origin},#{service_reply_group}+1)
+		#{service_idx_re}+1, #{service_id_origin},#{service_reply_group}+1,null)
 	</insert>
 
 	<!-- 답글추가이후 순서수정 쿼리 -->
@@ -89,4 +91,18 @@
 		SELECT count(*) FROM servicecenter
 	</select>
 
+	<select id="count_1" resultType="Integer">
+		SELECT count(*) FROM servicecenter where service_cate = "배송"
+	</select>
+	
+	<select id="count_2" resultType="Integer">
+		SELECT count(*) FROM servicecenter where service_cate = "주문"
+	</select>
+	
+	<select id="count_3" resultType="Integer">
+		SELECT count(*) FROM servicecenter where service_cate = "상품관련"
+	</select>
+	<select id="count_4" resultType="Integer">
+		SELECT count(*) FROM servicecenter where service_cate = "회원"
+	</select>
 </mapper>
