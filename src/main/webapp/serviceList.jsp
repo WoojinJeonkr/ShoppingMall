@@ -16,6 +16,19 @@
 	rel="stylesheet">
 
 
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script type="text/javascript" src="resources/js/d3.layout.cloud.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="index3.js"></script>
+
+<script src="https://d3js.org/d3.v3.min.js">
+
+</script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script type="text/javascript" src="resources/js/d3.layout.cloud.js"></script>
 <!-- Additional CSS Files -->
 <link rel="stylesheet" href="resources/assets/css/fontawesome.css">
 <link rel="stylesheet"
@@ -60,6 +73,7 @@ https://templatemo.com/tm-573-eduwell
 		})
 		$.ajax({
 			url : "serviceList",
+			async: false, 
 			success : function(list1) {
 				$("#result").html(list1);
 			},
@@ -67,9 +81,13 @@ https://templatemo.com/tm-573-eduwell
 				alert('실패');
 			}
 		});
+		
 	});
+	
+	
+	
+	
 </script>
-
 
 <style>
 table {
@@ -212,15 +230,33 @@ button {
 											<%
 												}
 											%>
-
 										</div>
 									</div>
+									<%
+										if (session.getAttribute("user_id") != null) {
+									%>
+									<c:if test="${user_level == 2}">
+										<div class="item" style="width: 200px;">
+											<div class="service-item">
+												<div class="icon">
+													<img src="resources/assets/images/service-icon-03.png"
+														alt="">
+												</div>
+												<h4>
 
+													<a href="serviceStatistics" style="color: #dc8cdb">
+														Statistics </a>
+									</c:if>
+									<%
+										}
+									%>
 								</div>
 							</div>
 						</div>
 					</div>
+
 				</section>
+
 				<!-- 검색  -->
 				<form action="serviceSearch" onsubmit="return false">
 					<select name="searchType"
@@ -250,66 +286,66 @@ button {
 
 			</div>
 		</div>
-	</div>
-</div>
-<section class="contact-us">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8" style="height: 420px;">
-				<div id="map">
-					<!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
 
-					<div class="row">
-						<div class="col-lg-4 offset-lg-1">
-							<div class="contact-info" style="width: 200px;">
-								<div class="icon">
-									<i class="fa fa-phone"></i>
+
+		<section class="contact-us">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8" style="height: 420px;">
+						<div id="map">
+							<!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
+
+							<div class="row">
+								<div class="col-lg-4 offset-lg-1">
+									<div class="contact-info" style="width: 200px;">
+										<div class="icon">
+											<i class="fa fa-phone"></i>
+										</div>
+										<h4>Phone</h4>
+										<span>010-020-0340</span>
+									</div>
 								</div>
-								<h4>Phone</h4>
-								<span>010-020-0340</span>
-							</div>
-						</div>
-						<div class="col-lg-4">
-							<div class="contact-info" style="width: 200px;">
-								<div class="icon">
-									<i class="fa fa-phone"></i>
+								<div class="col-lg-4">
+									<div class="contact-info" style="width: 200px;">
+										<div class="icon">
+											<i class="fa fa-phone"></i>
+										</div>
+										<h4>Mobile</h4>
+										<span>090-080-0760</span>
+									</div>
 								</div>
-								<h4>Mobile</h4>
-								<span>090-080-0760</span>
 							</div>
 						</div>
 					</div>
+					<div class="col-lg-4"></div>
+					<div class="col-lg-12">
+						<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-rss"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-lg-12">
+						<p class="copyright">
+							Copyright © 2022 EduWell Co., Ltd. All Rights Reserved. <br>Design:
+							<a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+						</p>
+					</div>
 				</div>
-			</div>
-			<div class="col-lg-4"></div>
-			<div class="col-lg-12">
-				<ul class="social-icons">
-					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-					<li><a href="#"><i class="fa fa-rss"></i></a></li>
-					<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-				</ul>
-			</div>
-			<div class="col-lg-12">
-				<p class="copyright">
-					Copyright © 2022 EduWell Co., Ltd. All Rights Reserved. <br>Design:
-					<a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
-				</p>
-			</div>
-		</div>
-</section>
-<script src="resources/vendor/jquery/jquery.min.js"></script>
-<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		</section>
+		<script src="resources/vendor/jquery/jquery.min.js"></script>
+		<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<script src="resources/assets/js/isotope.min.js"></script>
-<script src="resources/assets/js/owl-carousel.js"></script>
-<script src="resources/assets/js/lightbox.js"></script>
-<script src="resources/assets/js/tabs.js"></script>
-<script src="resources/assets/js/video.js"></script>
-<script src="resources/assets/js/slick-slider.js"></script>
-<script src="resources/assets/js/custom.js"></script>
-<script>
+		<script src="resources/assets/js/isotope.min.js"></script>
+		<script src="resources/assets/js/owl-carousel.js"></script>
+		<script src="resources/assets/js/lightbox.js"></script>
+		<script src="resources/assets/js/tabs.js"></script>
+		<script src="resources/assets/js/video.js"></script>
+		<script src="resources/assets/js/slick-slider.js"></script>
+		<script src="resources/assets/js/custom.js"></script>
+		<script>
         //according to loftblog tut
         $('.nav li:first').addClass('active');
 

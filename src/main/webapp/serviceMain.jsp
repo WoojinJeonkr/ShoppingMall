@@ -160,7 +160,6 @@ a {
 	color: pink;
 	text-decoration: none;
 }
-
 </style>
 <body>
 	<div class="row" style="width: 1200px; margin: auto;">
@@ -243,12 +242,16 @@ a {
 														alt="">
 												</div>
 												<h4>
-													<% if (session.getAttribute("user_id") != null) {%>
+													<%
+														if (session.getAttribute("user_id") != null) {
+													%>
 													<a href="serviceMyQuestion.jsp" style="color: #dc8cdb">
-														<% } else { %> 
-														<a href="member" style="color: #dc8cdb"> 
-														<% }%> 
-														MyQuestion
+														<%
+															} else {
+														%> <a href="member" style="color: #dc8cdb">
+															<%
+																}
+															%> MyQuestion
 													</a>
 												</h4>
 												<%
@@ -261,7 +264,23 @@ a {
 
 											</div>
 										</div>
+										<%
+											if (session.getAttribute("user_id") != null) {
+										%>
+										<c:if test="${user_level == 2}">
+											<div class="item" style="width: 200px;">
+												<div class="service-item">
+													<div class="icon">
+														<img src="resources/assets/images/service-icon-03.png"
+															alt="">
+													</div>
+													<h4>
 
+														<a href="serviceStatistics" style="color: #dc8cdb"> Statistics </a>
+										</c:if>
+										<%
+											}
+										%>
 									</div>
 								</div>
 							</div>
@@ -279,7 +298,9 @@ a {
 					</ul>
 					<div id="result"></div>
 
-					<% if (session.getAttribute("user_id") != null) {%>
+					<%
+						if (session.getAttribute("user_id") != null) {
+					%>
 					<%
 						if ((int) (session.getAttribute("user_level")) == 2) {
 					%>

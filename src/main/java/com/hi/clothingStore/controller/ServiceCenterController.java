@@ -83,13 +83,33 @@ public class ServiceCenterController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 	
-	@RequestMapping("serviceSearch")
-	public void readlist2(Model model,ServiceCenterVO vo) {
+	@RequestMapping("serviceStatistics")
+	public void readcnt(Model model,HttpServletRequest request) {
+		int a = dao.count_deli();
+		int b= dao.count_order();
+		int c = dao.count_product();
+		int d = dao.count_user();
+		
+		int result[]= {a,b,c,d};
+		for (int i=0; i<result.length; i++) {
+			System.out.println(result[i]);
+		}
+		
+		model.addAttribute("a", a);
+		model.addAttribute("b", b);
+		model.addAttribute("c", c);
+		model.addAttribute("d", d);
+		
+	}
 	
+	@RequestMapping("serviceSearch")
+	public void readlist2(Model model,ServiceCenterVO vo,ServiceCenterCriteria cri) {
+		
 		System.out.println(vo.getSearchType());
 		System.out.println(vo.getKeyword());
 		List<ServiceCenterVO> list=dao.all2(vo);
 		System.out.println(list);
+		
 		model.addAttribute("list", list);
 		
 	

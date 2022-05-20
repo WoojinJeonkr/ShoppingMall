@@ -168,7 +168,23 @@ th:last-child, td:last-child {
 
 											</div>
 										</div>
+										<%
+											if (session.getAttribute("user_id") != null) {
+										%>
+										<c:if test="${user_level == 2}">
+											<div class="item" style="width: 200px;">
+												<div class="service-item">
+													<div class="icon">
+														<img src="resources/assets/images/service-icon-03.png"
+															alt="">
+													</div>
+													<h4>
 
+														<a href="serviceStatistics" style="color: #dc8cdb"> Statistics </a>
+										</c:if>
+										<%
+											}
+										%>
 									</div>
 								</div>
 							</div>

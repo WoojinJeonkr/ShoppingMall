@@ -13,9 +13,21 @@ public class ServiceCenterVO {
 	private int service_idx_re ;
 	private int service_id_origin ;
 	private int service_reply_group;
-	
-	
+	private String service_cate;
+	private int count;
 
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public String getService_cate() {
+		return service_cate;
+	}
+	public void setService_cate(String service_cate) {
+		this.service_cate = service_cate;
+	}
 	private String searchType; 
 	private String keyword;
 	
@@ -85,9 +97,11 @@ public class ServiceCenterVO {
 		return "ServiceCenterVO [service_idx=" + service_idx + ", user_id=" + user_id + ", service_title="
 				+ service_title + ", service_question=" + service_question + ", service_rgstday=" + service_rgstday
 				+ ", service_idx_re=" + service_idx_re + ", service_id_origin=" + service_id_origin
-				+ ", service_reply_group=" + service_reply_group + ", searchType=" + searchType + ", keyword=" + keyword
-				+ "]";
+				+ ", service_reply_group=" + service_reply_group + ", service_cate=" + service_cate + ", count=" + count
+				+ ", searchType=" + searchType + ", keyword=" + keyword + "]";
 	}
+	
+	
 	
 	
 	

@@ -1,62 +1,132 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
+
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script type="text/javascript" src="resources/js/d3.layout.cloud.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="index3.js"></script>
 
-<script>
-	/* 	$(document).on('click', '#btnSearch', function(e){
-	 e.preventDefault();
-	 var url = "${pageContext.request.contextPath}/serviceSearch";
-	 url = url + "?searchType=" + $("select[name='searchType']").val();
-	 alert($("select[name='searchType']").val())
-	 url = url + "&keyword=" + $('#keyword').val();
-	 location.href = url;
-	 console.log(url);
+<script src="https://d3js.org/d3.v3.min.js">
 
-	 });	
-	 */
-	$(function() {
-		$.ajax({
-			url : "serviceSearch",
-			data : {
-				'searchType' : 'user_id',
-				'keyword' : '${user_id}'
-			},
-			success : function(result) {
-				$("#result").html(result);
-			},
-			error : function() {
-				alert('실패');
-			}
-		});
-	});
 </script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script type="text/javascript" src="resources/js/d3.layout.cloud.js"></script>
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="resources/assets/css/fontawesome.css">
+<link rel="stylesheet"
+	href="resources/assets/css/templatemo-eduwell-style.css">
+<link rel="stylesheet" href="resources/assets/css/owl.css">
+<link rel="stylesheet" href="resources/assets/css/lightbox.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
+<!--
+
+TemplateMo 573 EduWell
+
+https://templatemo.com/tm-573-eduwell
+
+-->
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+	google.charts.load('current', {
+		'packages' : [ 'bar' ]
+	});
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+				[ ' ', '배송', '주문', '상품관련', '회원' ], ['카테고리', ${a},${b},${c},${d}]]);
+
+		var options = {
+			chart : {
+				title : '고객센터 문의 현황',
+				subtitle : 'c/s, QnA, and Profit: 2022-',
+			},
+			bars : 'horizontal' // Required for Material Bar Charts.
+		};
+
+		var chart = new google.charts.Bar(document.getElementById('myChart'));
+
+		chart.draw(data, google.charts.Bar.convertOptions(options));
+	}
+</script>
 
 <style>
 table {
 	width: 100%;
-	border-top: 1px solid #444444;
 	border-collapse: collapse;
+	border-top: 3px solid #168;
+}
+
+th {
+	color: #168;
+	background: #f0f6f9;
 }
 
 th, td {
-	border-bottom: 1px solid #444444;
+	padding: 10px;
+	border: 1px solid #ddd;
 	padding: 10px;
 }
+
+h:first-child, td:first-child {
+	border-left: 0;
+}
+
+th:last-child, td:last-child {
+	border-right: 0;
+}
+
+button {
+	font-size: 10px;
+	color: #fff;
+	background: rgb(219, 138, 222);
+	background: linear-gradient(-145deg, rgba(219, 138, 222, 1) 0%,
+		rgba(246, 191, 159, 1) 100%);
+	padding: 12px 10px;
+	display: inline-block;
+	border-radius: 5px;
+	font-weight: 500;
+	transition: all .3s;
+	vertical-align: middle;
+	width: 80px;
+	height: 30px;
+}
 </style>
+</head>
 <div class="row" style="width: 1200px; margin: auto;">
 	<div id="total">
 		<div id="top">
-			<jsp:include page="top.jsp"></jsp:include>
+			<jsp:include page="../../top.jsp"></jsp:include>
 		</div>
 		<div id="top2">
-			<jsp:include page="top2.jsp"></jsp:include>
+			<jsp:include page="../../top2.jsp"></jsp:include>
 		</div>
 		<div class="row" style="width: 1200px; margin: auto;">
 			<div id="center">
@@ -77,9 +147,9 @@ th, td {
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="section-heading">
-									<h6>공지 사항</h6>
+									<h6>QnA통계</h6>
 									<h4>
-										<em>N</em>otice
+										<em>S</em>tatistics
 									</h4>
 								</div>
 							</div>
@@ -136,7 +206,7 @@ th, td {
 												<a href="serviceMyQuestion.jsp" style="color: #dc8cdb">
 													<%
 														} else {
-													%> <a href="member"> <%
+													%> <a href="member" style="color: #dc8cdb"> <%
  	}
  %> MyQuestion
 												</a>
@@ -168,19 +238,23 @@ th, td {
 									<%
 										}
 									%>
+									</h4>
+
+
 								</div>
 							</div>
+
 						</div>
 					</div>
-				</section>
-				<!-- 검색  -->
-
-				<div id="result"></div>
 			</div>
 		</div>
+
+		</section>
+		<div id="myChart"></div>
 	</div>
 </div>
-
+</div>
+</div>
 <section class="contact-us">
 	<div class="container">
 		<div class="row">
@@ -210,7 +284,6 @@ th, td {
 					</div>
 				</div>
 			</div>
-
 			<div class="col-lg-4"></div>
 			<div class="col-lg-12">
 				<ul class="social-icons">
@@ -228,7 +301,6 @@ th, td {
 				</p>
 			</div>
 		</div>
-	</div>
 </section>
 <script src="resources/vendor/jquery/jquery.min.js"></script>
 <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -286,3 +358,5 @@ th, td {
           checkSection();
         });
     </script>
+</head>
+</html>

@@ -53,6 +53,13 @@ th:last-child, td:last-child {
 	color: green;
 	text-decoration: none;
 }
+.rounded {
+  background: #ff3d84;
+  height: 25px; width: 60px;
+  border-radius: 40%;
+}
+
+p{text-align:center;color:white;}
 </style>
 
 <table>
@@ -64,8 +71,10 @@ th:last-child, td:last-child {
 	</tr>
 	<c:forEach items="${list}" var="one">
 		<tr>
-			<td class="right">${one.service_idx}</td>
-			<td class="right"><a
+			<td class="right">${one.service_idx}
+			<td class="right"><div class='rounded' style="float:left; margin:10px">
+				<p>${one.service_cate}</p><!-- ML -->
+			</div><a
 				href="serviceOne?service_idx=${one.service_idx}">${one.service_title}</a></td>
 			<td class="right">
 				<%
