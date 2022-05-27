@@ -47,20 +47,32 @@
 </style>
 <body>
 	<div id="top"><jsp:include page="../../top.jsp"></jsp:include></div>
-
-	<a href="orderHistory.jsp"><button class="btn btn-default"
-			style="border-radius: 6px 6px 6px 6px; width: 200px; margin-left: 400px; height: 60px;">주문내역조회</button></a>
-	<a href="memberUpdate.jsp"><button class="btn btn-default"
-			style="border-radius: 6px 6px 6px 6px; width: 200px; height: 60px;">회원수정</button></a>
-	<a href="memberDelete.jsp"><button class="btn btn-default"
-			style="border-radius: 6px 6px 6px 6px; width: 200px; height: 60px;">회원탈퇴</button></a>
-	<a href="serviceMyQuestion2.jsp"><button class="btn btn-default"
-			style="border-radius: 6px 6px 6px 6px; width: 200px; height: 60px;">내
-			문의 내역</button></a>
-
+<p style="text-align: center; font-size:20px">
+	<a href="orderHistory.jsp">
+		<button class="btn btn-info" style="border-radius: 6px 6px 6px 6px; width: 170px; font-size:20px;">
+			주문내역조회
+		</button>
+	</a>
+	<a href="memberUpdate.jsp">
+		<button class="btn btn-info" style="border-radius: 6px 6px 6px 6px; width: 170px; font-size:20px;">
+			회원수정
+		</button>
+	</a>
+	<a href="memberDelete.jsp">
+		<button class="btn btn-info" style="border-radius: 6px 6px 6px 6px; width: 170px; font-size:20px;">
+			회원탈퇴
+		</button>
+	</a>
+	<a href="serviceMyQuestion2.jsp">
+	<button class="btn btn-info" style="border-radius: 6px 6px 6px 6px; width: 170px; font-size:20px;">
+			내문의 내역
+	</button>
+	</a>
+</p>
 	<!-- 상품추천구현 코사인유사도,SVD로 구한 유사유저들이 구매한 상품 중 구매비율이 높은 상품 추천. -->
+	<!-- id=addr인 유저와 소비패턴이 비슷한 유저들이 구매한 다른 상품들을 추천해주는 시스템-->
 	<p></p>
-	<h3 style="text-align:center">${user_id}님이상품은어떠신가요?</h3>
+	<h3 style="text-align:center">${user_id}님 이상품은어떠신가요?</h3>
 	<p></p>
 	<!-- 상품이미지, 상품이름, 상품가격 띄우기.-->
 	<div>
@@ -74,7 +86,7 @@
 				<td><div style="height: 100%">
 						<img
 							onclick="javascript:newin=window.open('about:blank'); newin.location.href='http://localhost:8080/ShoppingMall/productOne?product_idx=246&product_img=mantoman.jpg&likecheck=0'"
-							style="cursor: pointer;" src="resources/img/blouse.jpg">
+							style="cursor: pointer;" src="resources/img/tshirts.jpg">
 					</div></td>
 				<td><div style="height: 100%">
 						<img

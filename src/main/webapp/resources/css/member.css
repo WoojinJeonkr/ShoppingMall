@@ -3,43 +3,54 @@
 body {
 	font-family: "Lucida Grande", "Droid Sans", Arial, Helvetica, sans-serif;
 	background-image: url('../img/testimonials-left-dec.png');
+	text-align: center;
+	margin: 0 auto;
 }
 /* #form{
 	background-image: url('../img/testimonials-left-dec.png');
 } */
 form {
 	background-image: url('../img/testimonials-left-dec.png');
+	text-align: center;
+	margin: auto;
 }
 
 .active {
 	font-size: 2em;
-	margin-left: 650px;
+	text-align: center;
+	margin: auto;
 	padding: 10px;
 }
 
 h3 {
-	margin-left: 700px;
+	text-align: center;
+	margin: auto;
 }
 
 .btn-info {
-/* 	background-color: #FFD4DF; */
+	/* 	background-color: #FFD4DF; */
 	width: 200px;
 	padding: 10px;
 	border-radius: 5px 5px 5px 5px; /* 버튼둥글게 */
-/* 	border-radius: 50%; */ /* 버튼둥글게 */
+	/* 	border-radius: 50%; */ /* 버튼둥글게 */
 	height: 50px;
-	margin: 20px;
+	text-align: center; margin : auto;
 	margin-bottom: 5px;
 	margin-top: 5px;
+	font-size: 20px;
+	font: 20px/1 맑은고딕;
+	margin: auto;
 }
 
 a {
-	margin-left: 650px;
+	text-align: center;
+	margin: auto;
 }
 
 label {
 	font-size: 1.5em;
-	margin: 20px;
+	text-align: center;
+	margin: auto;
 	padding: 20px;
 }
 
@@ -47,6 +58,31 @@ table {
 	font-size: 1.5em;
 	margin: 20px;
 	padding: 20px;
-	margin-left: 300px;
+	text-align: center;
+	margin: auto;
 	border: 1;
+}
+
+/* member.jsp의 <div id=total>인 태그 */
+#total {
+	font-size: 1.5em;
+	text-align: center;
+	margin: auto;
+	padding: 20px;
+}
+
+p {
+	text-align: center;
+	margin: auto;
+	padding: 20px;
+}
+
+div {
+	text-align: center;
+	margin: 0 auto;
+}
+
+* {
+	text-align: center;
+	margin: auto;
 }

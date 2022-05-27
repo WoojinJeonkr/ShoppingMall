@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,16 +15,6 @@
 <script type="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <link href="resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-
-
-<!-- Additional CSS Files -->
-<link rel="stylesheet" href="resources/assets/css/fontawesome.css">
-<link rel="stylesheet"
-	href="resources/assets/css/templatemo-eduwell-style.css">
-<link rel="stylesheet" href="resources/assets/css/owl.css">
-<link rel="stylesheet" href="resources/assets/css/lightbox.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <!-- member.css파일 -->
 <link rel="stylesheet" type="text/css" href="resources/css/member.css">
 <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
@@ -53,8 +42,16 @@
 		<div id="center">
 			<%
 				if (session.getAttribute("user_id") == null) {
-			%><h3 class="active">회원
-				로그인</h3>
+			%>
+		<br>
+			<!-- django페이지로 이동할 수 있는 링크 생성 -->
+		<p style="text-align: center; font-size:20px">
+			<br>
+			<a href="http://127.0.0.1:8000/">ML프로젝트 페이지로 이동(카테고리분류 확인하러가기)
+			</a>
+		</p>
+		<br>
+			<h3 class="active">회원로그인</h3>
 
 			<form action="memberCheck1" id="form1">
 				<table>
@@ -72,15 +69,14 @@
 					</tr>
 					<tr>
 						<td>
-							<button type="submit" id="login" class="btn btn-info"
-								style="border-radius: 6px 6px 6px 6px; width: 200px;">로그인하기</button>
+							<button type="submit" id="login" class="btn btn-info" style="font-size:20px;">로그인하기</button>
 						</td>
 					</tr>
 				</table>
 			</form>
-			<a href="memberCre.jsp"><button class="btn btn-info"
-					style="border-radius: 6px 6px 6px 6px; width: 200px; margin-left: 520px;">회원가입하기</button></a>
-
+			<a href="memberCre.jsp">
+				<button class="btn btn-info" style="font-size:20px; margin-left:320px">회원가입하기</button>
+			</a>
 
 			<%
 				} else {

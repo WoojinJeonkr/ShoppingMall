@@ -49,8 +49,7 @@
 			<br>
 			<p>수정에 문제가 있습니다.</p>
 			<br> <a href="productList.jsp">
-				<button class="btn btn-info"
-		style="border-radius: 6px 6px 6px 6px; width: 200px;">홈으로</button>
+				<button class="btn btn-info" style="font-size:20px;">홈으로</button>
 			</a>
 		</div>
 	</div>

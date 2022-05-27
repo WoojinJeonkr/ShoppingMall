@@ -41,6 +41,7 @@
 </head>
 <!-- <body bgcolor="skyblue"> -->
 <body>
+	<br>
 	<h3>회원상세정보입니다</h3>
 	<table border=2>
 		<tr>
@@ -74,9 +75,10 @@
 		</tr>
 	</table>
 	<br>
+	<br>
 	<h3>회원 수정</h3>
 	<form action="memberAdUpdate" id="form">
-		<table style="margin-left: 300px;">
+		<table>
 			<tr>
 				<td class="left">이름</td>
 				<td class="right"><input class="form-control input-lg"
@@ -90,17 +92,20 @@
 				</td>
 			</tr>
 		</table>
-		<button type="button" class="btn btn-info"
-			style="border-radius: 6px 6px 6px 6px; width: 200px; margin-left: 700px;"
-			id="memberUp">회원수정</button>
-		</br> <br>
+		<button type="button" class="btn btn-info" style="border-radius: 6px 6px 6px 6px; width: 200px; id="memberUp">
+			회원수정
+		</button>
+		</br> 
+		<br>
+		<br>
 		<h3>회원삭제</h3>
 		<form action="memberAdDelete">
-			<p style="margin-left: 670px;">해당아이디를 탈퇴시키겠습니까?</p>
-			<input type="text" style="margin-left: 700px;" name="user_id"
-				value="${one.user_id}" readonly="readonly"><br>
-			<button class="btn btn-info"
-				style="border-radius: 6px 6px 6px 6px; width: 200px; margin-left: 700px; margin-left: 700px;">회원삭제</button>
+			<p>해당아이디를 탈퇴시키겠습니까?</p>
+			<input type="text" name="user_id" value="${one.user_id}" readonly="readonly">
+				<br>
+			<button class="btn btn-info" style="font-size:20px;">
+				회원삭제
+			</button>
 		</form>
 	</form>
 </body>

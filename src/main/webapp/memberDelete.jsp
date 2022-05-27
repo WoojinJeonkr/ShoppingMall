@@ -42,14 +42,16 @@
 	<%
 		if (session.getAttribute("user_id") != null) {
 	%>
-	<form style="margin-left: 500px;" action="memberDelete">
+	<form action="memberDelete">
 		<!-- 컨트롤러의 memberDelete 로 간다.-->
 		<input type="hidden" name="user_id" value="${user_id}"><br>
-		<hr>
+		<h3>
 		정말로 회원을 탈퇴하시겠습니까?
-		</hr>
-		<button class="btn btn-info"
-			style="border-radius: 6px 6px 6px 6px; width: 200px;">탈퇴하기</button>
+		</h3>
+		<br>
+		<p style="text-align: center; font-size:20px">
+		<button class="btn btn-info" style="font-size:20px; text-align: center;">탈퇴하기</button>
+		</p>
 	</form>
 	<%
 		} else {

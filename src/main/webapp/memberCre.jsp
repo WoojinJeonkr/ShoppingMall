@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +15,6 @@
 <script type="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <link href="resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-
 
 <!-- Additional CSS Files -->
 <link rel="stylesheet" href="resources/assets/css/fontawesome.css">
@@ -249,9 +247,9 @@
 						<div>
 								<button type="button" id="addMember"
 									class="btn btn-info"
-									style="border-radius: 6px 6px 6px 6px; width: 200px;">회원가입하기</button>
+									style="border-radius: 6px 6px 6px 6px; width: 200px; font-size:20px;">회원가입하기</button>
 								<button type="button" id="cancel" class="btn btn-info"
-									style="border-radius: 6px 6px 6px 6px; width: 200px;">회원가입취소</button>
+									style="border-radius: 6px 6px 6px 6px; width: 200px; font-size:20px;">회원가입취소</button>
 							
 						</div>
 					</div>

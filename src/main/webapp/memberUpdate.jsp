@@ -145,10 +145,12 @@
 					<div id="nac"></div></td>
 			</tr>
 		</table>
-		<button type="button" id="memberUp" class="btn btn-info"
-			style="border-radius: 6px 6px 6px 6px; width: 200px; margin-left: 500px;">회원수정</button>
-		<button type="button" id="cancel" class="btn btn-info"
-			style="border-radius: 6px 6px 6px 6px; width: 200px;">회원수정취소</button>
+		<p style="text-align: center; font-size:20px">
+			<button type="button" id="memberUp" class="btn btn-info"
+				style="font-size:20px;">회원수정</button>
+			<button type="button" id="cancel" class="btn btn-info"
+				style="font-size:20px;">회원수정취소</button>
+		</p>
 	</form>
 </body>
 </html>
