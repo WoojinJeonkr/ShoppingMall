@@ -62,6 +62,15 @@
 	
 	/* 버튼 관련 스크립트 */
 	$(function(){
+		/* 긍정 사전, 부정 사전 워드클라우드 */
+		$.ajax({
+			url: 'http://127.0.0.1:8000/review/wordcloud_pn',
+			success: function(result) {
+				alert(result)
+				$('div#pic').append(result)
+			}
+		})
+		
 		/* 후기 작성  */
 		$("#review_btn").click(function(){
 			const imageInput = $("#file")[0]; // 파일을 여러 개 선택할 수 있으므로 files라는 객체에 담긴다.
@@ -234,77 +243,88 @@
 		<form role="form" id="form" method="post" autocomplete="off" enctype="multipart/form-data" accept-charset="UTF-8">
 			<section class="reviewForm">
 				<input type="hidden" id="product_idx" name="product_idx" value='<%= request.getParameter("product_idx")%>'>
+				<table>
+					<tr>
+						<td style="width:90%">
+							<!-- 평점 선택 부분-->
+							<div class="score_div">
+								<table>
+									<tr>
+										<th>총 평점:</th>
+										<th id="scoreTotal"></th>
+									</tr>
+									<tr>
+										<th>
+											<div class="startRadio">
+												<label class="startRadio__box">
+													<input type="radio" name="star" value="0.5">
+													<span class="startRadio__img"><span class="blind">별 0.5개</span></span>
+												</label>
+												<label class="startRadio__box">
+													<input type="radio" name="star"value="1.0">
+													<span class="startRadio__img"><span class="blind">별 1.0개</span></span>
+												</label>
+												<label class="startRadio__box">
+													<input type="radio" name="star" value="1.5">
+													<span class="startRadio__img"><span class="blind">별 1.5개</span></span>
+												</label>
+												<label class="startRadio__box">
+													<input type="radio" name="star" value="2.0">
+													<span class="startRadio__img"><span class="blind">별 2.0개</span></span>
+												</label>
+												<label class="startRadio__box">
+													<input type="radio" name="star" value="2.5">
+													<span class="startRadio__img"><span class="blind">별 2.5개</span></span>
+												</label>
+												<label class="startRadio__box">
+													<input type="radio" name="star" value="3.0">
+													<span class="startRadio__img"><span class="blind">별 3.0개</span></span>
+												</label>
+												<label class="startRadio__box">
+													<input type="radio" name="star" value="3.5">
+													<span class="startRadio__img"><span class="blind">별 3.5개</span></span>
+												</label>
+												<label class="startRadio__box">
+													<input type="radio" name="star" value="4.0">
+													<span class="startRadio__img"><span class="blind">별 4.0개</span></span>
+												</label>
+												<label class="startRadio__box">
+													<input type="radio" name="star" value="4.5">
+													<span class="startRadio__img"><span class="blind">별 4.5개</span></span>
+												</label>
+												<label class="startRadio__box">
+													<input type="radio" name="star" value="5.0">
+													<span class="startRadio__img"><span class="blind">별 5.0개</span></span>
+												</label>
+											</div>
+										</th>
+										<th style="color:red">&emsp;평점은 수정이 불가능하니 정확히 선택해주세요!!</th>
+									</tr>
+								</table>
+							</div>
+							<!-- 후기 내용 작성 -->
+							<div class="input_area">
+								<textarea id="review_content2" placeholder="바르고 고운 말이 세상을 아름답게 합니다"></textarea>
+							</div>
+							<input type="file" name="file" id="file">
+							<!-- 후기 작성 버튼 -->
+							<div class="input_area">
+								<button type="button" id="review_btn" onclick= "fileCheck(this.form.file)">후기  작성</button>
+							</div>
+						</td>
+						<!-- 긍정 사전, 부정 사전에 관한 워드클라우드 보여주기 -->
+						<td>
+							<div id='pic' style="width:300px; height:300px;"></div>
+						</td>
+					</tr>
+				</table>
 				
-				<!-- 평점 선택 부분-->
-				<div class="score_div">
-					<table>
-						<tr>
-							<th>총 평점:</th>
-							<th id="scoreTotal"></th>
-						</tr>
-						<tr>
-							<th>
-								<div class="startRadio">
-									<label class="startRadio__box">
-										<input type="radio" name="star" value="0.5">
-										<span class="startRadio__img"><span class="blind">별 0.5개</span></span>
-									</label>
-									<label class="startRadio__box">
-										<input type="radio" name="star"value="1.0">
-										<span class="startRadio__img"><span class="blind">별 1.0개</span></span>
-									</label>
-									<label class="startRadio__box">
-										<input type="radio" name="star" value="1.5">
-										<span class="startRadio__img"><span class="blind">별 1.5개</span></span>
-									</label>
-									<label class="startRadio__box">
-										<input type="radio" name="star" value="2.0">
-										<span class="startRadio__img"><span class="blind">별 2.0개</span></span>
-									</label>
-									<label class="startRadio__box">
-										<input type="radio" name="star" value="2.5">
-										<span class="startRadio__img"><span class="blind">별 2.5개</span></span>
-									</label>
-									<label class="startRadio__box">
-										<input type="radio" name="star" value="3.0">
-										<span class="startRadio__img"><span class="blind">별 3.0개</span></span>
-									</label>
-									<label class="startRadio__box">
-										<input type="radio" name="star" value="3.5">
-										<span class="startRadio__img"><span class="blind">별 3.5개</span></span>
-									</label>
-									<label class="startRadio__box">
-										<input type="radio" name="star" value="4.0">
-										<span class="startRadio__img"><span class="blind">별 4.0개</span></span>
-									</label>
-									<label class="startRadio__box">
-										<input type="radio" name="star" value="4.5">
-										<span class="startRadio__img"><span class="blind">별 4.5개</span></span>
-									</label>
-									<label class="startRadio__box">
-										<input type="radio" name="star" value="5.0">
-										<span class="startRadio__img"><span class="blind">별 5.0개</span></span>
-									</label>
-								</div>
-							</th>
-							<th style="color:red">&emsp;평점은 수정이 불가능하니 정확히 선택해주세요!!</th>
-						</tr>
-					</table>
-				</div>
-				
-				<!-- 후기 내용 작성 -->
-					<div class="input_area">
-						<textarea id="review_content2" placeholder="바르고 고운 말이 세상을 아름답게 합니다"></textarea>
-					</div>
-					<input type="file" name="file" id="file">
-					<!-- 후기 작성 버튼 -->
-					<div class="input_area">
-						<button type="button" id="review_btn" onclick= "fileCheck(this.form.file)">후기  작성</button>
-					</div>
-
 				<!-- 작성한 후기 목록 보여주기 -->
 				<section class="reviewList">
 				<h2> 구매 후기 </h2>
+				<% if(session.getAttribute("user_id").equals("admin")) { %>
+				<button class='b3' type="button" onClick="location.href='http://127.0.0.1:8000/review/'">후기 분석</button>
+				<% } %>
 				<p style='color:red'>중의적인 표현을 사용할 경우 부정으로 판단될 수 있으니 유의바랍니다</p>
 					<!-- 헤더 내부에 선언한 함수 호출 > 목록 보여주기 -->
 					<ol reversed></ol>
