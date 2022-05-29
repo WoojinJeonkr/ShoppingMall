@@ -11,9 +11,9 @@
 <link rel = "stylesheet" type = "text/css" href = "resources/css/statistics.css">
 </head>
 <body>
-<h1 style="margin:150px; margin-top: 150px;">통계</h1>
 <div id="top"><jsp:include page="top.jsp"></jsp:include></div>
-<div id="chart" class="chart">
+<h1 style="margin:150px; margin-top: 10px;">통계</h1>
+<div id="chart" class="chart" style="margin-top: 50px;">
 	<script>
 		var frequency_list = [{"text":"리브드 사이클링 쇼츠","size":20},{"text":"리브드 탑","size":43},{"text":"쇼트 트윌 스커트","size":20},{"text": "오버사이즈 데님 재킷","size":32},{"text":"오버사이즈 리넨 블렌드 재킷","size":20},{"text":"와이드 하이웨이스트 진","size":20},{"text":"집업 스웨트셔츠","size":20},{"text":"카고 팬츠","size":70},{"text":"컷아웃 재킷 드레스","size":46},{"text":"코튼 크롭트 셔츠","size":20},{"text":"크롭트 가디건","size":21}];
 		var color = d3.scale.linear()
