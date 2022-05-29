@@ -26,7 +26,7 @@
 </script>
 <div id = "total">
 	<p style="float:right">
-		<button type="button" class="btn btn-warning" onClick="location.href='http://127.0.0.1:8000/tag/index'">카테고리 분류</button>
+		<button type="button" class="btn btn-warning" onClick="location.href='http://127.0.0.1:8000/tag/'">카테고리 분류</button>
 		<button type="button" class="btn btn-warning" onClick="location.href='http://127.0.0.1:8000/chart'">차트 보기</button>
 	</p>
 	<div>
