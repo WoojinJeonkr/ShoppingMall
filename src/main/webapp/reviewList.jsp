@@ -322,6 +322,7 @@
 				<!-- 작성한 후기 목록 보여주기 -->
 				<section class="reviewList">
 				<h2> 구매 후기 </h2>
+				<!-- 관리자로 접속한 경우에만 후기에 대한 긍정 부정 분석하여 DB에 저장하는 페이지로 이동 버튼 보여주기 -->
 				<% if(session.getAttribute("user_id").equals("admin")) { %>
 				<button class='b3' type="button" onClick="location.href='http://127.0.0.1:8000/review/'">후기 분석</button>
 				<% } %>
