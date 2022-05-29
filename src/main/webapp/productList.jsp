@@ -25,9 +25,10 @@
 	}) 
 </script>
 <div id = "total">
-	<%-- <div id = "top">
-		<jsp:include page="top.jsp"></jsp:include>
-	</div> --%>
+	<p style="float:right">
+		<button type="button" class="btn btn-warning" onClick="location.href='http://127.0.0.1:8000/tag/index'">카테고리 분류</button>
+		<button type="button" class="btn btn-warning" onClick="location.href='http://127.0.0.1:8000/chart'">차트 보기</button>
+	</p>
 	<div>
 		<div id="d1"></div>
 	</div>
