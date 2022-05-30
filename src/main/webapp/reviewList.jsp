@@ -324,7 +324,7 @@
 				<h2> 구매 후기 </h2>
 				<!-- 관리자로 접속한 경우에만 후기에 대한 긍정 부정 분석하여 DB에 저장하는 페이지로 이동 버튼 보여주기 -->
 				<% if(session.getAttribute("user_id").equals("admin")) { %>
-				<button class='b3' type="button" onClick="location.href='http://127.0.0.1:8000/review/'">후기 분석</button>
+				<button class='b3' type="button" onClick="location.href='http://ec2-54-67-6-12.us-west-1.compute.amazonaws.com:9797/review/'">후기 분석</button>
 				<% } %>
 				<p style='color:red'>중의적인 표현을 사용할 경우 부정으로 판단될 수 있으니 유의바랍니다</p>
 					<!-- 헤더 내부에 선언한 함수 호출 > 목록 보여주기 -->
