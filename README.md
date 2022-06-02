@@ -19,3 +19,12 @@ main function
 
 project period:
 Early April to mid-May
+
+<hr/>
+
+## Implementation Part
+
+1) Purchase Review Page
+<img width="80%" src="https://github.com/WoojinJeonkr/ShoppingMall-Additional-Data-Analysis/blob/main/review_video/CRUD-review.gif?raw=true">
+2) Statistics page
+<img width="80%" src="https://github.com/WoojinJeonkr/ShoppingMall-Additional-Data-Analysis/blob/main/review_video/statistics.gif?raw=true">
