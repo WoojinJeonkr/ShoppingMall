@@ -5,7 +5,7 @@
 
 	<!-- 후기 작성 -->
 	<insert id="reviewCreate" parameterType="reviewVO">
-		insert into review values (null, #{product_idx}, #{user_id}, #{review_content}, #{review_img}, #{review_score}, now())
+		insert into review values (null, #{product_idx}, #{user_id}, #{review_content}, #{review_img}, #{review_score}, now(), 'blank')
 	</insert>
 	
 	<!--
