@@ -64,7 +64,7 @@
 	$(function(){
 		/* 긍정 사전, 부정 사전 워드클라우드 */
 		$.ajax({
-			url: 'http://127.0.0.1:8000/review/wordcloud_pn',
+			url: 'http://ec2-54-67-6-12.us-west-1.compute.amazonaws.com:9797/review/wordcloud_pn',
 			success: function(result) {
 				alert(result)
 				$('div#pic').append(result)
