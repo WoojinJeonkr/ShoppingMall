@@ -207,14 +207,13 @@
 				<td class="left">패스워드</td>
 				<td class="right"><input class="form-control input-lg"
 					type="password" name="user_pw" id="pw"
-					placeholder="숫자+영문자+특수문자합 8글자이상 써주세요" value="wls2gml2!!">
+					placeholder="숫자+영문자+특수문자합 8글자이상 써주세요">
 					<div id="pwc1"></div></td>
 			</tr>
 			<tr>
 				<td class="left">패스워드확인</td>
 				<td class="right"><input class="form-control input-lg"
-					type="password" name="pw2" id="pw2" placeholder="비밀번호를 재입력해주세요"
-					value="wls2gml2!!">
+					type="password" name="pw2" id="pw2" placeholder="비밀번호를 재입력해주세요">
 					<div id="pwc2"></div></td>
 			</tr>
 			<tr>
@@ -227,7 +226,7 @@
 				<td class="left">전화번호</td>
 				<td class="right"><input class="form-control input-lg"
 					type="text" name="user_tel" id="tel" maxlength="11"
-					value="01012341234" placeholder="하이폰을 제외한 핸드폰번호를 입력해주세요"> <!-- 아래 input에 maxlength="11"을 지정해주어 11글자가 최대가 되도록 구현 -->
+					placeholder="하이폰을 제외한 핸드폰번호를 입력해주세요"> <!-- 아래 input에 maxlength="11"을 지정해주어 11글자가 최대가 되도록 구현 -->
 					<div id="tec"></div></td>
 			</tr>
 			<tr>

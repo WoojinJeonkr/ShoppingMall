@@ -61,7 +61,7 @@
 						<button type="submit" id="login" class="btn btn-info" style="font-size:20px; margin-left:80px">로그인하기</button>
 					</td>
 					<td>
-						<button class="btn btn-info" style="font-size:20px; margin-right:20px" onclick="memberCre.jsp">회원가입하기</button>
+						<button type="button" class="btn btn-info" style="font-size:20px; margin-right:20px" onclick="location.href='memberCre.jsp';">회원가입하기</button>
 					</td>
 				</tr>
 			</table>
